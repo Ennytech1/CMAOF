@@ -59,6 +59,11 @@ app.use(limiter);
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 app.use('/api/tasks', require('./routes/taskRoutes'));
+app.use('/api/profiles', require('./routes/profileRoutes'));
+app.use('/api/courses', require('./routes/marketplaceRoutes'));
+app.use('/api/certifications', require('./routes/certificationRoutes'));
+app.use('/api/jobs', require('./routes/recruitmentRoutes'));
+app.use('/api/scholarships', require('./routes/scholarshipRoutes'));
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the Secure API Gateway' });

@@ -2,20 +2,36 @@ const crypto = require('crypto');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/asyncHandler');
 const User = require('../models/User');
+const Profile = require('../models/Profile');
 const sendEmail = require('../utils/sendEmail');
 
 // @desc    Register user
 // @route   POST /api/users
 // @access  Public
 exports.registerUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, role } = req.body;
 
   // Create user
   const user = await User.create({
     name,
     email,
-    password
+    password,
+    role: role || 'jobseeker'
   });
+
+  // Automatically create empty Profile for jobseekers
+  if (user.role === 'jobseeker') {
+    await Profile.create({
+      user: user._id,
+      headline: '',
+      summary: '',
+      skills: [],
+      experience: [],
+      education: [],
+      portfolioProjects: [],
+      certificates: []
+    });
+  }
 
   sendTokenResponse(user, 201, res);
 });

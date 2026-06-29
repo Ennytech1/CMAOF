@@ -19,8 +19,16 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['user', 'admin'],
-      default: 'user',
+      enum: ['jobseeker', 'employer', 'sponsor', 'admin'],
+      default: 'jobseeker',
+    },
+    subscriptionTier: {
+      type: String,
+      enum: ['free', 'pro', 'enterprise'],
+      default: 'free',
+    },
+    subscriptionExpires: {
+      type: Date,
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,

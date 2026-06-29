@@ -7,6 +7,12 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Notifications from './pages/Notifications';
 import Settings from './pages/Settings';
+import Profile from './pages/Profile';
+import Learning from './pages/Learning';
+import Certifications from './pages/Certifications';
+import Jobs from './pages/Jobs';
+import Scholarships from './pages/Scholarships';
+import Landing from './pages/Landing';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import MainLayout from './components/MainLayout';
@@ -53,11 +59,15 @@ const App = () => {
           >
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/profile" element={<Navigate to="/settings" />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/learning" element={<Learning />} />
+            <Route path="/certifications" element={<Certifications />} />
+            <Route path="/jobs" element={<Jobs />} />
+            <Route path="/scholarships" element={<Scholarships />} />
             <Route path="/notifications" element={<Notifications />} />
           </Route>
 
-          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/" element={<Landing />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </Router>

@@ -8,7 +8,11 @@ import {
   LogOut, 
   ChevronLeft,
   Menu,
-  CheckSquare
+  GraduationCap,
+  BookOpen,
+  Award,
+  Briefcase,
+  DollarSign
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,8 +23,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const navItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/dashboard' },
+    { name: 'Career Profile', icon: <User size={20} />, path: '/profile' },
+    { name: 'Learning Hub', icon: <BookOpen size={20} />, path: '/learning' },
+    { name: 'Certifications', icon: <Award size={20} />, path: '/certifications' },
+    { name: 'Job Openings', icon: <Briefcase size={20} />, path: '/jobs' },
+    { name: 'Scholarships', icon: <DollarSign size={20} />, path: '/scholarships' },
     { name: 'Notifications', icon: <Bell size={20} />, path: '/notifications', badge: 3 },
-    { name: 'Profile & Settings', icon: <Settings size={20} />, path: '/settings' },
+    { name: 'Settings', icon: <Settings size={20} />, path: '/settings' },
   ];
 
   const handleLogout = () => {
@@ -55,30 +64,30 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="h-20 flex items-center px-6 mb-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center text-primary shrink-0">
-              <CheckSquare size={24} />
+              <GraduationCap size={24} />
             </div>
             {isOpen && (
               <motion.span 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="font-bold text-xl tracking-tight"
+                className="font-bold text-xl tracking-tight text-white bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent"
               >
-                FlowDo
+                CareerMAX
               </motion.span>
             )}
           </div>
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 px-4 space-y-2">
+        <nav className="flex-1 px-4 space-y-1 overflow-y-auto custom-scrollbar">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.path}
               className={({ isActive }) => `
-                flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all group relative
+                flex items-center gap-4 px-4 py-3 rounded-xl transition-all group relative
                 ${isActive 
-                  ? 'bg-primary text-white shadow-lg shadow-primary/20' 
+                  ? 'bg-primary text-white shadow-lg shadow-primary/20 font-semibold' 
                   : 'text-slate-400 hover:bg-white/5 hover:text-white'}
                 ${!isOpen && 'justify-center px-0'}
               `}
@@ -88,7 +97,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 <motion.span 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="font-medium"
+                  className="font-medium text-sm"
                 >
                   {item.name}
                 </motion.span>
@@ -113,7 +122,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         {/* User Profile Section */}
         <div className="p-4 border-t border-white/5">
           <div className={`flex items-center gap-3 p-3 rounded-2xl bg-white/[0.03] ${!isOpen && 'justify-center border-none bg-transparent'}`}>
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center font-bold shrink-0 shadow-lg shadow-primary/20">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center font-bold shrink-0 shadow-lg shadow-primary/20 text-white">
               {user?.name?.charAt(0).toUpperCase()}
             </div>
             {isOpen && (
@@ -122,7 +131,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 animate={{ opacity: 1 }}
                 className="overflow-hidden"
               >
-                <p className="text-sm font-semibold truncate">{user?.name}</p>
+                <p className="text-sm font-semibold truncate text-white">{user?.name}</p>
                 <p className="text-xs text-slate-500 truncate">{user?.email}</p>
               </motion.div>
             )}
@@ -130,10 +139,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
           <button
             onClick={handleLogout}
-            className={`w-full mt-4 flex items-center gap-4 px-4 py-3.5 rounded-xl text-red-500 hover:bg-red-500/10 transition-all group relative ${!isOpen && 'justify-center px-0'}`}
+            className={`w-full mt-4 flex items-center gap-4 px-4 py-3 rounded-xl text-red-500 hover:bg-red-500/10 transition-all group relative ${!isOpen && 'justify-center px-0'}`}
           >
             <LogOut size={20} />
-            {isOpen && <span className="font-medium">Logout</span>}
+            {isOpen && <span className="font-medium text-sm">Logout</span>}
             {!isOpen && (
               <div className="absolute left-full ml-4 px-2 py-1 bg-red-500 text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-[60]">
                 Logout
