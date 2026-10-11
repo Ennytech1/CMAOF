@@ -1,78 +1,86 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import Notifications from './pages/Notifications';
-import Settings from './pages/Settings';
-import Profile from './pages/Profile';
-import Learning from './pages/Learning';
-import Certifications from './pages/Certifications';
-import Jobs from './pages/Jobs';
-import Scholarships from './pages/Scholarships';
-import Landing from './pages/Landing';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
-import MainLayout from './components/MainLayout';
-import Preloader from './components/Preloader';
 
-const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-  
-  if (loading) return <Preloader />;
-  if (!user) return <Navigate to="/login" />;
-  
-  return children;
-};
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import DonateModal from './components/DonateModal';
+import SearchModal from './components/SearchModal';
 
-const App = () => {
+// Pages
+import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
+import OurWork from './pages/OurWork';
+import EducationPillar from './pages/EducationPillar';
+import HealthPillar from './pages/HealthPillar';
+import CommunityPillar from './pages/CommunityPillar';
+import ImpactPage from './pages/ImpactPage';
+import NewsStories from './pages/NewsStories';
+import GetInvolved from './pages/GetInvolved';
+import ResourcesPage from './pages/ResourcesPage';
+import ContactPage from './pages/ContactPage';
+import PoliciesPage from './pages/PoliciesPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+function App() {
+  const [donateModalOpen, setDonateModalOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+
+  const handleOpenDonate = () => setDonateModalOpen(true);
+  const handleOpenSearch = () => setSearchModalOpen(true);
+
   return (
-    <AuthProvider>
-      <Router>
-        <Toaster 
-          position="top-right"
-          toastOptions={{
-            style: {
-              background: '#1e293b',
-              color: '#fff',
-              border: '1px solid rgba(255,255,255,0.1)',
-              backdropFilter: 'blur(10px)',
-            },
-          }}
+    <Router>
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-emerald-800 selection:text-white">
+        
+        {/* Toast Notification Container */}
+        <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
+
+        {/* Global Navigation Header */}
+        <Navbar
+          onOpenDonate={handleOpenDonate}
+          onOpenSearch={handleOpenSearch}
         />
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/resetpassword/:token" element={<ResetPassword />} />
 
-          {/* Protected Routes with Sidebar Layout */}
-          <Route
-            element={
-              <ProtectedRoute>
-                <MainLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/learning" element={<Learning />} />
-            <Route path="/certifications" element={<Certifications />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/scholarships" element={<Scholarships />} />
-            <Route path="/notifications" element={<Notifications />} />
-          </Route>
+        {/* Dynamic Route Pages — pt-[72px] offsets the fixed navbar for all inner pages */}
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home onOpenDonate={handleOpenDonate} />} />
+            <Route path="/about" element={<AboutUs onOpenDonate={handleOpenDonate} />} />
+            <Route path="/founder" element={<AboutUs onOpenDonate={handleOpenDonate} />} />
+            
+            <Route path="/our-work" element={<OurWork />} />
+            <Route path="/our-work/education" element={<EducationPillar onOpenDonate={handleOpenDonate} />} />
+            <Route path="/our-work/health" element={<HealthPillar onOpenDonate={handleOpenDonate} />} />
+            <Route path="/our-work/community-resilience" element={<CommunityPillar onOpenDonate={handleOpenDonate} />} />
+            
+            <Route path="/impact" element={<ImpactPage />} />
+            <Route path="/news" element={<NewsStories />} />
+            <Route path="/get-involved" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/policies" element={<PoliciesPage />} />
+            
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
 
-          <Route path="/" element={<Landing />} />
-          <Route path="*" element={<Navigate to="/dashboard" />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
+        {/* Global Institutional Footer */}
+        <Footer onOpenDonate={handleOpenDonate} />
+
+        {/* Modals */}
+        <DonateModal
+          isOpen={donateModalOpen}
+          onClose={() => setDonateModalOpen(false)}
+        />
+        <SearchModal
+          isOpen={searchModalOpen}
+          onClose={() => setSearchModalOpen(false)}
+        />
+
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;

@@ -1,274 +1,111 @@
-# 🚀 CareerMAX: Africa's Career Operating System
+# 🏛️ Chief Michael Ade.Ojo Foundation (CMAOF) — Institutional Website Platform
 
-**CareerMAX** is a unified, all-in-one Career Operating System designed to streamline professional growth in Africa. By consolidating learning, assessment, CV crafting, credential verification, job applications, scholarships, and AI career guidance into a single, cohesive ecosystem, CareerMAX eliminates the fragmentation of today's professional development journey.
-
-Instead of managing accounts across separate learning systems, resume builders, job boards, and certification platforms, every user owns a permanent **CareerMAX Profile** that evolves dynamically alongside their career.
-
----
-
-## 🏗️ Core Pillars of the Ecosystem
-
-### 1. 👤 Permanent Career Profile
-The core anchor of a user's professional identity on CareerMAX. It contains:
-*   **Dynamic CV & Portfolio:** Seamlessly structured and exportable resumes and digital portfolio showcases.
-*   **Verified Digital Badge System:** Certificates, skills, and assessment scores are directly attached to the profile after verification.
-*   **Consolidated Records:** Complete history of certified courses, employment, and examination accomplishments.
-
-### 2. 🛍️ Learning Marketplace
-A flexible training platform offering diverse educational options:
-*   **Multiple Training Modalities:** Paid and free courses, live virtual classes, in-person workshops, and professional internships.
-*   **Open Digital Library:** Access to resources, industry guidelines, and career preparation templates.
-*   *Note: Learning is optional; certifications can be taken independently.*
-
-### 3. 🎓 Professional Certification Centre
-A global-standard examination marketplace:
-*   **Independent Assessment Path:** Skilled professionals can book assessments, sit for examinations, and earn CareerMAX Professional Certifications directly without course registration.
-*   **Automated Issuance & QR Verification:** Certificates are instantly added to profiles and feature a secure, QR-code-enabled verification page.
-
-### 4. 💼 Career Recruitment Hub
-An advanced Applicant Tracking System (ATS) and job portal for employers:
-*   **Verified Candidates Database:** Searchable profiles backed by verified assessment scores.
-*   **AI-Powered Match Engine:** Instant compatibility matching between job requirements and candidate profiles.
-*   **Employer Dashboards:** Seamless job posting, application filtering, and candidate tracking.
-
-### 5. 🤝 Scholarship Marketplace
-Provides funding opportunities via three distinct pathways:
-*   **Open Scholarships:** Publicly accessible funding opportunities where candidates submit standard applications.
-*   **Nomination Scholarships:** Allows institutions (schools, NGOs, communities, employers) to recommend candidates for targeted financial aid.
-*   **Sponsored Talent Pipelines:** Companies fund custom cohorts through structured learning, assessment, certification, and direct hiring pipelines.
-
-### 6. 🧠 AI Career Intelligence
-An active AI assistant running across all modules to help users:
-*   Optimize CVs and highlight skill gaps.
-*   Suggest relevant courses, certifications, and scholarship opportunities.
-*   Conduct simulated, role-specific interview preparation.
+> **Core Positioning:** *CMAOF — Stronger People. Brighter Communities.*  
+> A premium institutional website for the Chief Michael Ade.Ojo Foundation, focused on creating pathways to better futures through **Education & Human Capital**, **Health & Well-being**, and **Community Resilience & Social Well-being**.
 
 ---
 
-## 🛠️ Technology Stack
+## 📌 Master Overview & Strategic Pillars
 
-*   **Frontend:** React 19 (Vite), TailwindCSS 4.0, Framer Motion (micro-animations), React Router 7, Axios, React Hot Toast.
-*   **Backend:** Node.js, Express.js.
-*   **Database:** MongoDB, Mongoose ODM.
-*   **Security & Protection:** Helmet (headers), Express Rate Limit, Mongo Sanitize, HPP (parameter pollution protection), JWT & BcryptJS.
-*   **Transactional Messaging:** Nodemailer.
+The Chief Michael Ade.Ojo Foundation (CMAOF) website is designed as a dignified, evidence-led, transparent institutional philanthropy platform. It communicates trust, compassion, dignity, credibility, measurable impact, and long-term legacy.
 
----
+### 🎯 Strategic Pillars & Objectives
 
-## 💾 Database Schema Design (Mongoose)
+| Strategic Pillar | Strategic Pathway | Strategic Intent & Focus |
+| :--- | :--- | :--- |
+| **1. Education & Human Capital** | `Learn → Develop → Excel` | Empowering minds, strengthening educators, nurturing leadership, technical mastery, and academic excellence across Nigeria. |
+| **2. Health & Well-being** | `Prevent → Treat → Restore` | Elevating community healthcare, maternal & child nutrition, eye care, primary health access, and essential treatment support. |
+| **3. Community Resilience & Social Well-being** | `Support → Protect → Strengthen` | Building resilient communities through food security, clean water, elderly care, emergency response, and inclusion. |
 
-### 1. User Schema (`users`)
-```javascript
-{
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  role: { type: String, enum: ['jobseeker', 'employer', 'sponsor', 'admin'], default: 'jobseeker' },
-  subscriptionTier: { type: String, enum: ['free', 'pro', 'enterprise'], default: 'free' },
-  subscriptionExpires: { type: Date },
-  createdAt: { type: Date, default: Date.now }
-}
-```
-
-### 2. Career Profile Schema (`profiles`)
-```javascript
-{
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  headline: { type: String },
-  summary: { type: String },
-  skills: [{ name: String, isVerified: Boolean, verifiedBy: String }],
-  experience: [{
-    company: String,
-    role: String,
-    startDate: Date,
-    endDate: Date,
-    description: String
-  }],
-  education: [{
-    institution: String,
-    degree: String,
-    year: Number
-  }],
-  portfolioProjects: [{
-    title: String,
-    description: String,
-    link: String,
-    images: [String]
-  }],
-  certificates: [{
-    title: String,
-    issuingAuthority: String,
-    issueDate: Date,
-    credentialUrl: String,
-    qrCodeId: String,
-    isVerified: { type: Boolean, default: true }
-  }],
-  aiReadinessScore: { type: Number, default: 0 }
-}
-```
-
-### 3. Course Schema (`courses`)
-```javascript
-{
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  instructor: { type: String, required: true },
-  modality: { type: String, enum: ['self-paced', 'virtual-class', 'physical-workshop', 'internship'], required: true },
-  price: { type: Number, default: 0 },
-  curriculum: [String],
-  duration: { type: String },
-  createdAt: { type: Date, default: Date.now }
-}
-```
-
-### 4. Certification Schema (`certifications`)
-```javascript
-{
-  title: { type: String, required: true },
-  code: { type: String, required: true, unique: true }, // e.g., CLP, CLAFP
-  description: { type: String, required: true },
-  examDurationMinutes: { type: Number, required: true },
-  price: { type: Number, required: true },
-  passingScore: { type: Number, default: 70 },
-  examQuestions: [{
-    questionText: String,
-    options: [String],
-    correctAnswerIndex: Number
-  }]
-}
-```
-
-### 5. Exam Booking Schema (`exambookings`)
-```javascript
-{
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  certification: { type: Schema.Types.ObjectId, ref: 'Certification', required: true },
-  bookingDate: { type: Date, required: true },
-  status: { type: String, enum: ['scheduled', 'completed', 'cancelled'], default: 'scheduled' },
-  examScore: { type: Number },
-  passed: { type: Boolean },
-  qrCodeId: { type: String, unique: true }
-}
-```
-
-### 6. Job Posting Schema (`jobs`)
-```javascript
-{
-  employer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  title: { type: String, required: true },
-  company: { type: String, required: true },
-  location: { type: String, required: true },
-  type: { type: String, enum: ['full-time', 'part-time', 'contract', 'remote'], required: true },
-  salaryRange: { type: String },
-  description: { type: String, required: true },
-  requirements: [String],
-  applicants: [{
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    appliedAt: { type: Date, default: Date.now },
-    aiMatchScore: Number
-  }],
-  status: { type: String, enum: ['open', 'closed'], default: 'open' }
-}
-```
-
-### 7. Scholarship Schema (`scholarships`)
-```javascript
-{
-  provider: { type: String, required: true },
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  type: { type: String, enum: ['open', 'nomination', 'sponsored-pipeline'], required: true },
-  slotsAvailable: { type: Number },
-  requirements: [String],
-  deadline: { type: Date },
-  nominations: [{
-    nominator: { type: String }, // school, community name
-    candidateName: { type: String },
-    candidateEmail: { type: String },
-    reason: { type: String }
-  }],
-  applicants: [{
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
-    status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' }
-  }]
-}
-```
+*Note: Economic empowerment and separate backend application portals (such as LearningHub, StartupHub, or user dashboards) are explicitly excluded in favor of a single, unified public institutional website.*
 
 ---
 
-## 📡 API Route Matrix
+## 🧭 Information Architecture & Navigation Structure
 
-| Module | Route | HTTP Method | Description |
-| :--- | :--- | :--- | :--- |
-| **Auth** | `/api/users/register` | `POST` | Create user profile |
-| **Auth** | `/api/users/login` | `POST` | Authenticate user & generate JWT |
-| **Profile** | `/api/profiles/me` | `GET` | Retrieve logged-in user profile |
-| **Profile** | `/api/profiles/me` | `PUT` | Update profile / CV components |
-| **Profile** | `/api/profiles/ai-optimize` | `POST` | Trigger AI review of profile/CV |
-| **Courses** | `/api/courses` | `GET` | List available marketplace courses |
-| **Courses** | `/api/courses/enroll/:id`| `POST` | Register for course/workshop |
-| **Certifications**| `/api/certifications` | `GET` | List professional certifications |
-| **Certifications**| `/api/certifications/book`| `POST` | Book certification exam slot |
-| **Certifications**| `/api/certifications/verify/:qrCodeId` | `GET` | Public validation link for digital certificate |
-| **Recruitment** | `/api/jobs` | `GET` | Query available job listings |
-| **Recruitment** | `/api/jobs` | `POST` | Post new career opportunity (Employers) |
-| **Recruitment** | `/api/jobs/:id/apply` | `POST` | Submit verified profile for position |
-| **Scholarships**| `/api/scholarships` | `GET` | Retrieve scholarship listings |
-| **Scholarships**| `/api/scholarships/apply` | `POST` | Standard open scholarship application |
-| **Scholarships**| `/api/scholarships/nominate` | `POST` | Submit peer/organization nomination |
-
----
-
-## 💳 Subscription Tiers
-
-### 🆓 Free Tier
-*   Basic Permanent Profile
-*   Basic Resume Builder
-*   Standard Job Search & Open Courses
-*   Limited self-assessments
-
-### 🌟 CareerMAX Pro (`₦25,000 / month`)
-*   Access to Unlimited Premium Courses & Digital Library
-*   2 Professional Certification assessment attempts included
-*   AI Career Coach, Resume Optimizer, & simulated interview prep
-*   Verified Professional Profile badge + priority job matchmaking
-
-### 🏢 CareerMAX Enterprise (`₦100,000+ / month`)
-*   Unlimited Job postings and complete Recruitment ATS Dashboard
-*   Access to Verified candidates database with AI compatibility match scoring
-*   Corporate learning portal & cohort performance dashboard
-*   Sponsor pipelines management interface
+Persistent Top Navigation:
+- **HOME**
+- **ABOUT US**
+  - Our Story
+  - Founder (Chief Michael Ade.Ojo OON)
+  - Purpose, Vision & Mission
+  - Core Values
+  - Governance & Leadership
+  - Our Strategic Approach
+- **OUR WORK**
+  - Overview
+  - Education & Human Capital
+  - Health & Well-being
+  - Community Resilience & Social Well-being
+- **IMPACT**
+  - Impact at a Glance
+  - Our Verified Results
+  - Stories of Impact
+  - Downloadable Reports
+  - SDG Alignment
+- **NEWS & STORIES**
+  - Foundation News
+  - Programme Highlights
+  - Beneficiary Stories
+  - Key Events
+  - Media & Press
+- **GET INVOLVED**
+  - Donate
+  - Partner With Us
+  - Volunteer
+  - Corporate CSR & Co-funding
+- **RESOURCES**
+  - Annual Reports
+  - Research & Publications
+  - Institutional Policies
+  - Media Kit & Downloads
+- **CONTACT**
+- **DONATE** *(Persistent Primary Call-To-Action Button)*
 
 ---
 
-## 🚀 Development Setup
+## 🎨 Visual Identity & Design System Rules
 
-### Prerequisites
-*   Node.js (v18+)
-*   MongoDB Instance (Local database or Atlas URI)
+- **Predominant Aesthetic:** Deep institutional white space with rich accents, elevated editorial typography, subtle micro-animations, and authentic imagery of Nigerian students, healthcare workers, mothers, children, and community members.
+- **Color Palette:**
+  - `Deep Forest Emerald / Green`: `#0F4C3A` (Primary Brand & Trust)
+  - `Institutional Navy`: `#0D1B2A` & `#1E293B` (Structure & Leadership)
+  - `Warm Gold / Amber`: `#D4AF37` (Legacy & Excellence Accents)
+  - `Restrained Medical Red`: `#DC2626` (Used strictly for healthcare visual emphasis)
+  - `Clean White / Slate Off-White`: `#FFFFFF` & `#F8FAFC` (Generous white space)
+- **Typography:** Modern sans-serif (`Plus Jakarta Sans` / `Inter`) combined with elegant serif accents for editorial quotes and institutional titles.
+- **User Journey:** `PURPOSE → PEOPLE → PROGRAMMES → IMPACT → TRUST → PARTICIPATION`
 
-### Local Configuration
-1.  **Configure Environment Variables**:
-    *   Create a `.env` file in the `server` directory:
-        ```env
-        PORT=5000
-        MONGO_URI=mongodb://localhost:27017/careermax
-        JWT_SECRET=your_jwt_signing_secret
-        NODE_ENV=development
-        ```
-    *   Create a `.env` file in the `client` directory:
-        ```env
-        VITE_API_URL=http://localhost:5000/api
-        ```
+---
 
-2.  **Start Services**:
-    *   Start Backend:
-        ```bash
-        cd server
-        npm run dev
-        ```
-    *   Start Frontend:
-        ```bash
-        cd client
-        npm run dev
-        ```
+## 📂 Complete 20-Page Screen Inventory
+
+1. **Home Page:** Premium hero section, Founder introduction, Strategic purpose, 3 Strategic pillars, Key impact statistics, Featured programmes, Beneficiary stories, Latest updates, Partnership banner, Donation CTA, Newsletter, and Institutional footer.
+2. **About Us:** Founder legacy, strategic evolution, purpose, vision, mission, core values, governance model, leadership team, approach, and geographic focus.
+3. **Our Story / Founder Page:** Dedicated legacy storytelling for Chief Michael Ade.Ojo OON, featuring an archival timeline, quotes, philanthropic philosophy, and transition to institutional giving.
+4. **Our Work Landing Page:** Pillars overview highlighting Education, Health, and Community Resilience with distinct cards, outcomes, and target groups.
+5. **Education & Human Capital Pillar Page:** Detailed showcase of 10 core programme families (Academic Excellence, Scholarships, Teacher Excellence, Finishing Readiness, Skills, Startup Incubation, Enterprise, Mission 1,000 Ilara Professionals, Manufacturing & Technical Academy, Mentorship & Talent).
+6. **Health & Well-being Pillar Page:** Detailed showcase of 10 healthcare initiatives (Maternal & Reproductive Health, Child Health & Nutrition, Outreach, Primary Healthcare Strengthening, Eye Care, Essential Medicine, Healthy Ageing, Mental Health, Health Champions, Specialist Access).
+7. **Community Resilience Pillar Page:** Detailed showcase of 10 community resilience initiatives (Food Security, Clean Water & Sanitation, Elderly Care, Emergency Response, Household Resilience, Disability Inclusion, Volunteer Action Corps, Community Development, Referral Centre, Social Protection).
+8. **Impact & Accountability Page:** Interactive data engine featuring verified metrics, map visualization, beneficiary stories, annual financial breakdown, and SDG alignment.
+9. **News & Stories Hub:** Sophisticated institutional newsroom with editorial cards, search, category filters, media releases, and event highlights.
+10. **Article & Story Detail Page:** High-readability editorial layout featuring author details, pull quotes, inline images, social sharing, related stories, and programmatic CTAs.
+11. **Get Involved Hub:** Multi-pathway engagement platform for individuals, corporations, volunteers, and funding partners.
+12. **Donation Experience:** Streamlined giving interface with support for one-time/recurring giving, purpose selection, preset/custom amounts, donor privacy options, and instant receipt generation.
+13. **Partnerships & Corporate CSR:** Dedicated portal for institutional co-funding, ESG alignment, employee volunteering, and strategic alliances.
+14. **Resources Library:** Institutional document repository featuring searchable annual reports, policy papers, research publications, and downloadable media assets.
+15. **Contact Us:** Interactive contact directory with multi-purpose enquiry forms, office locations, phone/email, and regional map.
+16. **Events Hub:** Showcase of upcoming and past foundation events, medical outreaches, community town halls, and photo galleries.
+17. **Photo & Video Gallery:** Categorized multimedia gallery emphasizing human impact, community progress, and transparent documentation.
+18. **Global Search Interface:** Comprehensive search functionality across all stories, reports, programmes, and policies with structured categorization.
+19. **Policies & Legal Hub:** Institutional compliance templates covering Privacy, Safeguarding, Child Protection, Whistleblowing, Data Protection, and Complaints.
+20. **404 / Error State Page:** Thoughtfully designed error state maintaining brand dignity with instant navigation paths back to core sections.
+
+---
+
+## 🛠️ Technology Architecture
+
+- **Frontend Framework:** React 19 with Vite
+- **Styling & UI:** TailwindCSS v4 with custom color tokens & CSS variables
+- **Icons & Motion:** Lucide React & Framer Motion
+- **Router:** React Router v7

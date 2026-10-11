@@ -1,32 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --color-primary: #00b4d8;
-  --color-primary-hover: #0092b0;
-  --color-bg-dark: #0a192f;
-  --color-bg-card: rgba(17, 34, 64, 0.7);
-  --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
-}
-
 @layer base {
+  :root {
+    --cmaof-green: #0F4C3A;
+    --cmaof-green-medium: #14634C;
+    --cmaof-green-hover: #0a382b;
+    --cmaof-navy: #0F2B5B;
+    --cmaof-orange: #F59E0B;
+    --cmaof-orange-hover: #d97706;
+    --cmaof-gold: #D4AF37;
+  }
+
   body {
-    @apply bg-bg-dark text-[#f8fafc] font-plus-jakarta antialiased overflow-x-hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+    overflow-x: hidden;
+  }
+
+  p {
+    color: #334155;
+    font-weight: 500;
   }
 }
 
-@layer components {
-  .glass {
-    @apply bg-[rgba(30,41,59,0.7)] backdrop-blur-xl border border-[rgba(255,255,255,0.1)];
-  }
+.font-serif-cmaof {
+  font-family: 'Playfair Display', serif;
 }
 
-/* Custom animations still useful */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Custom shadow & glass styles */
+.shadow-cmaof-soft {
+  box-shadow: 0 10px 30px -10px rgba(15, 76, 58, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+.shadow-cmaof-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.shadow-cmaof-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -12px rgba(15, 76, 58, 0.15);
+}
+
+.glass-cmaof {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0F4C3A;
 }
