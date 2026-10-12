@@ -32,7 +32,7 @@ const ImpactHero = () => {
       />
 
       {/* ── Main Content Container ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 lg:py-12 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
 
           {/* ── Left Column: Branding, Eyebrow, Heading, Subtitle & CTAs (Span 7) ── */}

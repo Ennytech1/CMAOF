@@ -75,7 +75,7 @@ const commitments = [
 
 const ImpactStatsStrip = () => {
   return (
-    <section className="w-full bg-white border-t border-b border-slate-100 py-8 md:py-10">
+    <section className="w-full bg-white border-t border-b border-slate-100 py-5 sm:py-6">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4 lg:gap-3.5 xl:gap-4 items-stretch">
           

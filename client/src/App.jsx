@@ -54,7 +54,7 @@ function App() {
             <Route path="/our-work/health" element={<HealthPillar onOpenDonate={handleOpenDonate} />} />
             <Route path="/our-work/community-resilience" element={<CommunityPillar onOpenDonate={handleOpenDonate} />} />
             
-            <Route path="/impact" element={<ImpactPage />} />
+            <Route path="/impact" element={<ImpactPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/news" element={<NewsStories />} />
             <Route path="/get-involved" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
             <Route path="/resources" element={<ResourcesPage />} />
