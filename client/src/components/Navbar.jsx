@@ -52,53 +52,12 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
         <div className="flex items-center justify-between">
           
           {/* CMAOF Institutional Logo (Left) */}
-          <Link to="/" className="flex items-center gap-3 group">
-            
-            {/* Tree Emblem SVG matching design */}
-            <div className="relative w-12 h-12 shrink-0 flex items-center justify-center">
-              <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Tree Canopy Leaves (Green & Orange) */}
-                <circle cx="50" cy="22" r="9" fill="#0F4C3A" />
-                <circle cx="36" cy="30" r="10" fill="#0F4C3A" />
-                <circle cx="64" cy="30" r="10" fill="#0F4C3A" />
-                <circle cx="26" cy="42" r="9" fill="#14634C" />
-                <circle cx="74" cy="42" r="9" fill="#14634C" />
-                <circle cx="40" cy="22" r="6" fill="#F59E0B" />
-                <circle cx="60" cy="22" r="6" fill="#EA580C" />
-                
-                {/* Human Silhouettes as Tree Trunk */}
-                <path d="M50 42 C44 42, 40 50, 35 55 C41 56, 47 53, 50 48 C53 53, 59 56, 65 55 C60 50, 56 42, 50 42 Z" fill="#EA580C" />
-                <path d="M47 52 C47 52, 42 70, 36 82 C43 79, 48 70, 50 62 C52 70, 57 79, 64 82 C58 70, 53 52, 53 52 Z" fill="#0F4C3A" />
-                <circle cx="50" cy="40" r="4" fill="#F59E0B" />
-                <circle cx="37" cy="48" r="3.5" fill="#EA580C" />
-                <circle cx="63" cy="48" r="3.5" fill="#EA580C" />
-              </svg>
-            </div>
-
-            {/* Typography Stack */}
-            <div className="flex flex-col">
-              <span className={`font-black text-2xl tracking-tight leading-none transition-colors ${
-                isScrolled ? 'text-[#0F4C3A] group-hover:text-[#14634C]' : 'text-[#0F4C3A] group-hover:text-[#14634C]'
-              }`}>
-                CMAOF
-              </span>
-              <span className={`text-[10px] font-extrabold tracking-wider uppercase leading-tight mt-0.5 ${
-                isScrolled ? 'text-[#0F4C3A]' : 'text-[#0F4C3A]'
-              }`}>
-                CHIEF MICHAEL ADE.OJO
-              </span>
-              <span className={`text-[10px] font-black tracking-widest uppercase leading-tight ${
-                isScrolled ? 'text-[#0F4C3A]' : 'text-[#0F4C3A]'
-              }`}>
-                FOUNDATION
-              </span>
-              <span className={`text-[9px] italic font-semibold leading-none mt-0.5 ${
-                isScrolled ? 'text-emerald-800' : 'text-emerald-900'
-              }`}>
-                Stronger People. Brighter Communities.
-              </span>
-            </div>
-
+          <Link to="/" className="flex items-center group shrink-0" aria-label="Chief Michael Ade.Ojo Foundation Home">
+            <img
+              src="/images/CMAO Foundation hhhh.png"
+              alt="Chief Michael Ade.Ojo Foundation"
+              className="h-10 sm:h-12 w-auto max-w-[210px] sm:max-w-[280px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            />
           </Link>
 
           {/* Desktop Navigation Links (Center) */}

@@ -1,4 +1,6 @@
 import React from 'react';
+import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import BeneficiaryStories from '../components/BeneficiaryStories';
 
 const NewsStories = () => {
@@ -24,14 +26,69 @@ const NewsStories = () => {
   ];
 
   return (
-    <div className="py-12 lg:py-16 space-y-16 animate-fade-in">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <span className="inline-block px-3.5 py-1.5 rounded-full bg-emerald-100 text-[#0F4C3A] text-xs font-extrabold uppercase tracking-wider">
-          Foundation Newsroom & Media
-        </span>
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0D1B2A] tracking-tight">
-          News, Impact Stories & Updates
-        </h1>
+    <div className="w-full bg-white space-y-16 animate-fade-in pb-16">
+      
+      {/* ── Hero Section matching Hero.jsx and AboutHero.jsx ── */}
+      <section className="relative w-full overflow-hidden bg-white" style={{ minHeight: '520px' }}>
+        <div
+          className="absolute inset-0 bg-cover bg-right sm:bg-[position:82%_center] bg-no-repeat"
+          style={{ backgroundImage: `url('/images/banner_schoolgirl.jpg')` }}
+          aria-hidden="true"
+        />
+
+        {/* ── Exact Linear Gradient Overlay matching reference screenshot ── */}
+        <div
+          className="absolute inset-0 hidden md:block pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.78) 8%, rgba(255,255,255,0.97) 20%, rgba(255,255,255,0.97) 38%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.25) 58%, transparent 68%)',
+          }}
+          aria-hidden="true"
+        />
+        {/* Mobile vertical gradient fallback */}
+        <div
+          className="absolute inset-0 md:hidden pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.40) 100%)',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* ── Content wrapper with balanced padding matching Home Hero & About Hero ── */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[98px] sm:pt-[115px] lg:pt-[128px] pb-14 sm:pb-16 lg:pb-20 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              
+              {/* Breadcrumb Navigation */}
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0F2B5B]">
+                <div className="w-1 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                <Link to="/" className="hover:text-[#0F4C3A] transition-colors">Home</Link>
+                <ChevronRight size={14} className="text-slate-400" />
+                <span className="text-[#0F2B5B]">News & Stories</span>
+              </div>
+
+              {/* Eyebrow */}
+              <div className="flex items-center gap-2">
+                <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
+                <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F4C3A]">
+                  FOUNDATION NEWSROOM & MEDIA
+                </span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.2rem] font-extrabold tracking-tight leading-[1.12] text-[#0F2B5B]">
+                News, Impact Stories & Updates
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-[#1E355E] text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-medium">
+                Explore the latest programme announcements, field reports, community transformation milestones, and inspiring stories of change.
+              </p>
+
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

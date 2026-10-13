@@ -49,45 +49,45 @@ const StrategicPillars = () => {
   ];
 
   return (
-    <section id="our-work" className="py-14 sm:py-18 bg-white">
+    <section id="our-work" className="py-8 sm:py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── Section Header ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-          <div className="space-y-1.5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-6 sm:mb-7">
+          <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="w-1 h-5 bg-[#EA580C] rounded-full inline-block" />
+              <span className="w-1 h-4 sm:h-5 bg-[#EA580C] rounded-full inline-block" />
               <span className="text-xs font-extrabold uppercase tracking-widest text-[#0F4C3A]">
                 OUR WORK
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F2B5B] tracking-tight">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0F2B5B] tracking-tight">
               Three Pillars for Stronger Communities
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
+            <p className="text-slate-600 text-xs sm:text-sm max-w-2xl">
               We focus on three interconnected areas that create lasting change in people’s lives and communities.
             </p>
           </div>
 
           <Link
             to="/our-work"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0F4C3A] hover:text-[#14634C] hover:underline shrink-0 group cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0F4C3A] hover:text-[#14634C] hover:underline shrink-0 group cursor-pointer"
           >
             <span>View All Programmes</span>
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
         {/* ── 3 Pillar Cards Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
           {pillars.map((pillar) => (
             <div
               key={pillar.id}
-              className={`bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group ${pillar.bottomBorder}`}
+              className={`bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group ${pillar.bottomBorder}`}
             >
               <div>
                 {/* Card Image Banner */}
-                <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-slate-100">
                   <img
                     src={pillar.image}
                     alt={pillar.title}
@@ -96,38 +96,38 @@ const StrategicPillars = () => {
                 </div>
 
                 {/* Overlapping Floating Circle Badge */}
-                <div className="px-6 relative -mt-6 z-10">
+                <div className="px-5 relative -mt-5 z-10">
                   <div
-                    className={`w-12 h-12 rounded-full ${pillar.badgeBg} text-white flex items-center justify-center border-4 border-white shadow-md`}
+                    className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full ${pillar.badgeBg} text-white flex items-center justify-center border-[3px] border-white shadow-sm`}
                   >
                     {pillar.icon}
                   </div>
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 pt-3 space-y-3">
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#0F2B5B] leading-snug group-hover:text-[#0F4C3A] transition-colors">
+                <div className="px-5 pt-2 pb-2 space-y-2">
+                  <h3 className="text-base sm:text-lg font-extrabold text-[#0F2B5B] leading-snug group-hover:text-[#0F4C3A] transition-colors">
                     {pillar.title}
                   </h3>
 
-                  <div className={`text-xs sm:text-sm font-bold tracking-tight ${pillar.accentColor}`}>
+                  <div className={`text-xs font-bold tracking-tight ${pillar.accentColor}`}>
                     {pillar.pathway}
                   </div>
 
-                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
               </div>
 
               {/* Bottom Action Link */}
-              <div className="px-6 pb-6 pt-1">
+              <div className="px-5 pb-4 pt-1">
                 <Link
                   to={pillar.link}
                   className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold ${pillar.accentColor} hover:gap-2.5 transition-all group-hover:underline cursor-pointer`}
                 >
                   <span>{pillar.linkText}</span>
-                  <ArrowRight size={15} strokeWidth={2.4} />
+                  <ArrowRight size={14} strokeWidth={2.4} />
                 </Link>
               </div>
 

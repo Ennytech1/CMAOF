@@ -1,23 +1,24 @@
 import React from 'react';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ImpactHero = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-white min-h-[360px] md:min-h-[400px] lg:min-h-[430px] flex items-center">
+    <section className="relative w-full overflow-hidden bg-white" style={{ minHeight: '520px' }}>
 
       {/* ── Full-bleed Background Image with Smiling Schoolboy on Right ── */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-[position:88%_center] sm:bg-[position:78%_center]"
+        className="absolute inset-0 bg-cover bg-right sm:bg-[position:82%_center] bg-no-repeat"
         style={{ backgroundImage: `url('/images/impact_hero_boy.jpg')` }}
         aria-hidden="true"
       />
 
-      {/* ── Exact Linear Gradient Overlay matching reference ── */}
+      {/* ── Exact Linear Gradient Overlay matching reference screenshot ── */}
       <div
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.96) 32%, rgba(255,255,255,0.82) 46%, rgba(255,255,255,0.30) 58%, transparent 68%)',
+            'linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.78) 8%, rgba(255,255,255,0.97) 20%, rgba(255,255,255,0.97) 38%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.25) 58%, transparent 68%)',
         }}
         aria-hidden="true"
       />
@@ -26,18 +27,25 @@ const ImpactHero = () => {
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 55%, rgba(255,255,255,0.35) 100%)',
+            'linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.40) 100%)',
         }}
         aria-hidden="true"
       />
 
-      {/* ── Main Content Container ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full">
+      {/* ── Main Content Container matching Home Hero & About Hero ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[98px] sm:pt-[115px] lg:pt-[128px] pb-14 sm:pb-16 lg:pb-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
 
           {/* ── Left Column: Branding, Eyebrow, Heading, Subtitle & CTAs (Span 7) ── */}
-          <div className="lg:col-span-7 xl:col-span-7 space-y-4 max-w-2xl">
+          <div className="lg:col-span-7 xl:col-span-7 space-y-5 max-w-2xl">
 
+            {/* Breadcrumb Navigation */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0F2B5B]">
+              <div className="w-1 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+              <Link to="/" className="hover:text-[#0F4C3A] transition-colors">Home</Link>
+              <ChevronRight size={14} className="text-slate-400" />
+              <span className="text-[#0F2B5B]">Impact</span>
+            </div>
 
             {/* Category Eyebrow Header with Orange Indicator */}
             <div className="flex items-center gap-2.5 pt-0.5">

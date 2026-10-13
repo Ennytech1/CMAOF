@@ -49,7 +49,7 @@ function App() {
             <Route path="/about" element={<AboutUs onOpenDonate={handleOpenDonate} />} />
             <Route path="/founder" element={<AboutUs onOpenDonate={handleOpenDonate} />} />
             
-            <Route path="/our-work" element={<OurWork />} />
+            <Route path="/our-work" element={<OurWork onOpenDonate={handleOpenDonate} />} />
             <Route path="/our-work/education" element={<EducationPillar onOpenDonate={handleOpenDonate} />} />
             <Route path="/our-work/health" element={<HealthPillar onOpenDonate={handleOpenDonate} />} />
             <Route path="/our-work/community-resilience" element={<CommunityPillar onOpenDonate={handleOpenDonate} />} />
@@ -57,7 +57,7 @@ function App() {
             <Route path="/impact" element={<ImpactPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/news" element={<NewsStories />} />
             <Route path="/get-involved" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
-            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/resources" element={<ResourcesPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/policies" element={<PoliciesPage />} />
             

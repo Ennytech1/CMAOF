@@ -1,17 +1,19 @@
 import React from 'react';
 import OurWorkHero from '../components/our-work/OurWorkHero';
-import StrategicPillars from '../components/StrategicPillars';
+import OurWorkStrategicPillars from '../components/our-work/OurWorkStrategicPillars';
+import OurWorkApproachAndCTA from '../components/our-work/OurWorkApproachAndCTA';
 
-const OurWork = () => {
+const OurWork = ({ onOpenDonate }) => {
   return (
-    <div className="w-full bg-white space-y-8 animate-fade-in pb-12">
-      {/* 1. Official Hero Section replicating image_6.png */}
+    <div className="w-full bg-white animate-fade-in pb-0">
+      {/* 1. Official Hero Section */}
       <OurWorkHero />
 
-      {/* 2. Three Interconnected Strategic Pillars */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <StrategicPillars />
-      </div>
+      {/* 2. Detailed Three Strategic Pillars Section */}
+      <OurWorkStrategicPillars />
+
+      {/* 3. Our Approach (Connected for Greater Impact) + Call to Action Banner */}
+      <OurWorkApproachAndCTA onOpenDonate={onOpenDonate} />
     </div>
   );
 };

@@ -43,10 +43,12 @@ const DonateModal = ({ isOpen, onClose }) => {
             
             {/* Modal Header */}
             <div className="text-center space-y-2">
-              <div className="w-12 h-12 rounded-full bg-amber-100 text-[#F59E0B] flex items-center justify-center mx-auto">
-                <Heart size={24} className="fill-amber-500" />
-              </div>
-              <h3 className="text-2xl font-extrabold text-[#0D1B2A]">
+              <img
+                src="/images/CMAO Foundation hhhh.png"
+                alt="Chief Michael Ade.Ojo Foundation"
+                className="h-11 w-auto max-w-[220px] mx-auto object-contain mb-1"
+              />
+              <h3 className="text-xl sm:text-2xl font-extrabold text-[#0D1B2A]">
                 Support CMAOF Initiatives
               </h3>
               <p className="text-slate-500 text-xs sm:text-sm">

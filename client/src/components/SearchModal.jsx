@@ -24,6 +24,21 @@ const SearchModal = ({ isOpen, onClose }) => {
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 sm:p-6 pt-16 sm:pt-24 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
       <div className="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative border border-slate-100">
         
+        {/* Modal Brand Header */}
+        <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+          <img
+            src="/images/CMAO Foundation hhhh.png"
+            alt="Chief Michael Ade.Ojo Foundation"
+            className="h-8 sm:h-9 w-auto object-contain"
+          />
+          <button
+            onClick={onClose}
+            className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
         {/* Search Input Bar */}
         <div className="relative flex items-center mb-6">
           <Search className="absolute left-4 w-5 h-5 text-slate-400" />
@@ -32,15 +47,9 @@ const SearchModal = ({ isOpen, onClose }) => {
             placeholder="Search programs, stories, reports, policies..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-12 py-3.5 text-slate-900 placeholder:text-slate-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-700"
+            className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 placeholder:text-slate-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-700"
             autoFocus
           />
-          <button
-            onClick={onClose}
-            className="absolute right-3 p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-200 transition-colors"
-          >
-            <X size={20} />
-          </button>
         </div>
 
         {/* Results / Quick Links */}

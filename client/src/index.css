@@ -2,12 +2,13 @@
 
 @layer base {
   :root {
-    --cmaof-green: #0F4C3A;
+    --cmaof-green: #06402B;
     --cmaof-green-medium: #14634C;
-    --cmaof-green-hover: #0a382b;
-    --cmaof-navy: #0F2B5B;
-    --cmaof-orange: #F59E0B;
-    --cmaof-orange-hover: #d97706;
+    --cmaof-green-hover: #042D1E;
+    --cmaof-navy: #0B2D6E;
+    --cmaof-slate: #5A6E85;
+    --cmaof-orange: #EA580C;
+    --cmaof-orange-hover: #C2410C;
     --cmaof-gold: #D4AF37;
   }
 
@@ -20,7 +21,7 @@
 
   p {
     color: #334155;
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 
@@ -60,4 +61,15 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #0F4C3A;
+}
+
+/* Hide scrollbar for clean tab carousels */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

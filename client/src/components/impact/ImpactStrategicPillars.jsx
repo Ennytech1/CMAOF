@@ -4,7 +4,7 @@ import { ArrowRight, MapPin } from 'lucide-react';
 
 // Exact Book with open pages icon for Education badge
 const EducationBookIcon = () => (
-  <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
     {/* Left open page */}
     <path
       d="M3 4.5C3 3.67 3.67 3 4.5 3H11v16.5H4.5C3.67 19.5 3 18.83 3 18V4.5z"
@@ -28,7 +28,7 @@ const EducationBookIcon = () => (
 
 // Exact Heart with ECG pulse line icon for Health badge
 const HealthHeartIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
     <path
       d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
       fill="#FFFFFF"
@@ -46,7 +46,7 @@ const HealthHeartIcon = () => (
 
 // Exact 2-Person filled group icon for Community badge
 const CommunityUsersIcon = () => (
-  <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
     <circle cx="8" cy="8" r="2.8" />
     <path d="M8 12.2c-2.4 0-5 1.2-5 3.3V18h10v-2.5c0-2.1-2.6-3.3-5-3.3z" />
     <circle cx="16" cy="8" r="2.8" />
@@ -141,11 +141,11 @@ const ImpactStrategicPillars = () => {
   ];
 
   return (
-    <section className="w-full py-3 sm:py-4 bg-white">
+    <section className="w-full py-2 sm:py-3 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── Section Header ── */}
-        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4 sm:mb-5">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4 sm:mb-5">
           <div className="flex items-start gap-2.5">
             {/* Orange Vertical Bar */}
             <div className="w-[3.5px] h-6 sm:h-6.5 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
@@ -169,15 +169,15 @@ const ImpactStrategicPillars = () => {
         </div>
 
         {/* ── 3 Pillar Cards Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 items-stretch">
           {pillars.map((pillar) => (
             <div
               key={pillar.id}
-              className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              className="bg-white rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group"
             >
               <div>
                 {/* Card Top Image Banner */}
-                <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-slate-100">
                   <img
                     src={pillar.image}
                     alt={pillar.title}
@@ -186,21 +186,21 @@ const ImpactStrategicPillars = () => {
                 </div>
 
                 {/* Overlapping Floating Circle Badge */}
-                <div className="px-6 relative -mt-7 z-10">
+                <div className="px-5 relative -mt-5 z-10">
                   <div
-                    className={`w-14 h-14 rounded-full ${pillar.badgeBg} text-white flex items-center justify-center border-4 border-white shadow-md`}
+                    className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full ${pillar.badgeBg} text-white flex items-center justify-center border-[3px] border-white shadow-sm`}
                   >
                     {pillar.icon}
                   </div>
                 </div>
 
                 {/* Card Body Content */}
-                <div className="px-6 pt-3 pb-2 space-y-2.5">
-                  <h3 className="text-lg sm:text-[19px] font-extrabold text-[#0F2B5B] leading-snug tracking-tight">
+                <div className="px-5 pt-2 pb-1.5 space-y-1.5 sm:space-y-2">
+                  <h3 className="text-base sm:text-lg font-extrabold text-[#0F2B5B] leading-snug tracking-tight">
                     {pillar.title}
                   </h3>
 
-                  <div className={`text-xs sm:text-[13px] font-bold tracking-tight ${pillar.pathwayColor}`}>
+                  <div className={`text-xs font-bold tracking-tight ${pillar.pathwayColor}`}>
                     {pillar.pathway}
                   </div>
 
@@ -211,39 +211,39 @@ const ImpactStrategicPillars = () => {
               </div>
 
               {/* Bottom Section: Stats & Navigation Link */}
-              <div className="px-6 pb-6 pt-1 space-y-4">
+              <div className="px-5 pb-4 pt-1 space-y-3">
                 {/* 3 Metric Columns with Vertical Divider Lines */}
-                <div className="grid grid-cols-3 pt-3.5 border-t border-slate-100">
+                <div className="grid grid-cols-3 pt-2.5 border-t border-slate-100">
                   
                   {/* Metric 1 */}
-                  <div className="pr-2 flex flex-col justify-start">
-                    <div className={`flex items-center text-base sm:text-lg font-black leading-none ${pillar.statColor}`}>
+                  <div className="pr-1.5 flex flex-col justify-start">
+                    <div className={`flex items-center text-sm sm:text-base font-black leading-none ${pillar.statColor}`}>
                       {pillar.stat1.hasLocationPin && (
-                        <MapPin size={16} className="text-[#065F46] fill-[#065F46]/20 stroke-[2.4] shrink-0 mr-1 inline-block" />
+                        <MapPin size={14} className="text-[#065F46] fill-[#065F46]/20 stroke-[2.4] shrink-0 mr-0.5 inline-block" />
                       )}
                       <span>{pillar.stat1.value}</span>
                     </div>
-                    <span className="text-[11px] text-slate-500 leading-tight pt-1.5 font-normal">
+                    <span className="text-[10.5px] text-slate-500 leading-tight pt-1 font-normal">
                       {pillar.stat1.label}
                     </span>
                   </div>
 
                   {/* Metric 2 */}
-                  <div className="px-2.5 border-l border-slate-200/90 flex flex-col justify-start">
-                    <div className={`text-base sm:text-lg font-black leading-none ${pillar.statColor}`}>
+                  <div className="px-2 border-l border-slate-200/90 flex flex-col justify-start">
+                    <div className={`text-sm sm:text-base font-black leading-none ${pillar.statColor}`}>
                       {pillar.stat2.value}
                     </div>
-                    <span className="text-[11px] text-slate-500 leading-tight pt-1.5 font-normal">
+                    <span className="text-[10.5px] text-slate-500 leading-tight pt-1 font-normal">
                       {pillar.stat2.label}
                     </span>
                   </div>
 
                   {/* Metric 3 */}
-                  <div className="pl-2.5 border-l border-slate-200/90 flex flex-col justify-start">
-                    <div className={`text-base sm:text-lg font-black leading-none ${pillar.statColor}`}>
+                  <div className="pl-2 border-l border-slate-200/90 flex flex-col justify-start">
+                    <div className={`text-sm sm:text-base font-black leading-none ${pillar.statColor}`}>
                       {pillar.stat3.value}
                     </div>
-                    <span className="text-[11px] text-slate-500 leading-tight pt-1.5 font-normal">
+                    <span className="text-[10.5px] text-slate-500 leading-tight pt-1 font-normal">
                       {pillar.stat3.label}
                     </span>
                   </div>
@@ -257,7 +257,7 @@ const ImpactStrategicPillars = () => {
                     className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold ${pillar.linkColor} hover:gap-2 transition-all cursor-pointer group-hover:underline`}
                   >
                     <span>{pillar.linkText}</span>
-                    <ArrowRight size={15} strokeWidth={2.4} />
+                    <ArrowRight size={14} strokeWidth={2.4} />
                   </Link>
                 </div>
 

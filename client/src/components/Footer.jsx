@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Heart, 
   ArrowRight, 
@@ -9,6 +9,7 @@ import {
   Gift 
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import ResourcesFooter from './resources/ResourcesFooter';
 
 // Inline SVG components for Social Media Icons
 const LinkedinIcon = () => (
@@ -44,56 +45,26 @@ const YoutubeIcon = () => (
 );
 
 const CmaofTreeLogo = () => (
-  <div className="flex items-center gap-3 select-none">
-    {/* Golden/Orange/White Tree of People SVG Emblem */}
-    <div className="w-11 h-11 shrink-0 relative flex items-center justify-center">
-      <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Tree Trunk formed by supportive open arms */}
-        <path d="M50 90 L50 48 M42 90 Q50 65 50 48 M58 90 Q50 65 50 48" stroke="#F59E0B" strokeWidth="5" strokeLinecap="round" />
-        
-        {/* Human figures forming branches & leaves */}
-        {/* Center top figure (White) */}
-        <circle cx="50" cy="22" r="4.5" fill="#FFFFFF" />
-        <path d="M50 28 C45 32 38 35 32 32 M50 28 C55 32 62 35 68 32 M50 28 L50 46" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" />
-
-        {/* Left top figure (Orange) */}
-        <circle cx="34" cy="28" r="4" fill="#EA580C" />
-        <path d="M34 34 Q24 40 20 48 M34 34 Q42 42 46 50 M34 34 L40 52" stroke="#EA580C" strokeWidth="3" strokeLinecap="round" />
-
-        {/* Right top figure (Orange) */}
-        <circle cx="66" cy="28" r="4" fill="#EA580C" />
-        <path d="M66 34 Q76 40 80 48 M66 34 Q58 42 54 50 M66 34 L60 52" stroke="#EA580C" strokeWidth="3" strokeLinecap="round" />
-
-        {/* Outer leaf dots (Gold, Orange, White) */}
-        <circle cx="22" cy="38" r="3" fill="#F59E0B" />
-        <circle cx="78" cy="38" r="3" fill="#F59E0B" />
-        <circle cx="50" cy="12" r="3.5" fill="#F59E0B" />
-        <circle cx="28" cy="18" r="3" fill="#FFFFFF" />
-        <circle cx="72" cy="18" r="3" fill="#FFFFFF" />
-        
-        {/* Bottom figures holding base */}
-        <circle cx="40" cy="76" r="3.5" fill="#EA580C" />
-        <circle cx="60" cy="76" r="3.5" fill="#F59E0B" />
-      </svg>
-    </div>
-
-    {/* Typography */}
-    <div className="flex flex-col text-left leading-none">
-      <span className="text-2xl font-black text-white tracking-tight font-sans">
-        CMAOF
-      </span>
-      <span className="text-[9px] font-extrabold text-slate-300 tracking-wider uppercase mt-0.5 font-sans">
-        CHIEF MICHAEL ADE.OJO FOUNDATION
-      </span>
-      <span className="text-[10px] font-medium text-slate-400 italic mt-0.5">
-        Stronger People. Brighter Communities.
-      </span>
-    </div>
-  </div>
+  <Link to="/" className="inline-block group select-none" aria-label="Chief Michael Ade.Ojo Foundation Home">
+    <img
+      src="/images/CMAO Foundation Logo.png"
+      alt="Chief Michael Ade.Ojo Foundation"
+      className="h-14 sm:h-16 w-auto max-w-[280px] sm:max-w-[320px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+    />
+    <p className="text-[11px] font-medium text-slate-400 italic mt-2.5">
+      Stronger People. Brighter Communities.
+    </p>
+  </Link>
 );
 
 const Footer = ({ onOpenDonate }) => {
+  const location = useLocation();
   const [newsletterEmail, setNewsletterEmail] = useState('');
+
+  // When visiting Resources section page, render the dedicated Resources Footer
+  if (location.pathname.startsWith('/resources')) {
+    return <ResourcesFooter onOpenDonate={onOpenDonate} />;
+  }
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
