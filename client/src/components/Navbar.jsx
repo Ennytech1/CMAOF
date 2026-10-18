@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, Heart, Menu, X } from 'lucide-react';
 
+import CmaofLogo from './CmaofLogo';
+
 const Navbar = ({ onOpenDonate, onOpenSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,14 +22,16 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
     { name: 'About Us', path: '/about' },
     { name: 'Our Work', path: '/our-work' },
     { name: 'Impact', path: '/impact' },
-    { name: 'News & Stories', path: '/news' },
-    { name: 'Get Involved', path: '/get-involved' },
+    { name: 'Multimedia Gallery', path: '/gallery' },
+    { name: 'Event', path: '/event' },
     { name: 'Resources', path: '/resources' },
     { name: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path) => {
     if (path === '/' && location.pathname === '/') return true;
+    if (path === '/gallery' && (location.pathname.startsWith('/gallery') || location.pathname.startsWith('/news'))) return true;
+    if (path === '/event' && (location.pathname.startsWith('/event') || location.pathname.startsWith('/events') || location.pathname.startsWith('/get-involved'))) return true;
     if (path !== '/' && location.pathname.startsWith(path)) return true;
     return false;
   };
@@ -51,14 +55,8 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* CMAOF Institutional Logo (Left) */}
-          <Link to="/" className="flex items-center group shrink-0" aria-label="Chief Michael Ade.Ojo Foundation Home">
-            <img
-              src="/images/CMAO Foundation hhhh.png"
-              alt="Chief Michael Ade.Ojo Foundation"
-              className="h-10 sm:h-12 w-auto max-w-[210px] sm:max-w-[280px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-          </Link>
+          {/* CMAOF Institutional Logo (Left) with Official Brand Colors */}
+          <CmaofLogo imgClassName="h-11 sm:h-12 md:h-13 w-auto object-contain" />
 
           {/* Desktop Navigation Links (Center) */}
           <nav className="hidden xl:flex items-center space-x-6 lg:space-x-7">

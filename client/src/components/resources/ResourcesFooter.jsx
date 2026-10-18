@@ -36,6 +36,8 @@ const YoutubeIcon = () => (
   </svg>
 );
 
+import CmaofLogo from '../CmaofLogo';
+
 /**
  * ResourcesFooter Component
  * Replicated with 100% pixel fidelity to the reference image.
@@ -53,25 +55,15 @@ const ResourcesFooter = ({ onOpenDonate }) => {
   };
 
   return (
-    <footer className="w-full font-sans bg-white border-t border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-9 sm:pt-10 pb-6">
+    <footer className="w-full font-sans bg-white border-t-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 sm:pt-8 pb-6">
         
         {/* Main Content Row: Logo, Quick Links, Connect With Us, Divider, Subscribe */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-6">
           
-          {/* 1. Official CMAOF Logo */}
+          {/* 1. Official CMAOF Logo with Brand Colors */}
           <div className="shrink-0 flex items-start pt-0.5">
-            <Link 
-              to="/" 
-              className="inline-block group select-none" 
-              aria-label="Chief Michael Ade.Ojo Foundation Home"
-            >
-              <img
-                src="/images/CMAO Foundation hhhh.png"
-                alt="Chief Michael Ade.Ojo Foundation"
-                className="h-13 sm:h-14 lg:h-15 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-              />
-            </Link>
+            <CmaofLogo imgClassName="h-13 sm:h-14 lg:h-15 w-auto object-contain" />
           </div>
 
           {/* 2. Quick Links (3 Columns of Navigation Links) */}
@@ -107,8 +99,8 @@ const ResourcesFooter = ({ onOpenDonate }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/news" className="hover:text-[#06402B] transition-colors">
-                    News & Stories
+                  <Link to="/gallery" className="hover:text-[#06402B] transition-colors">
+                    Multimedia Gallery
                   </Link>
                 </li>
                 <li>

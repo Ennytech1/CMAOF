@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, X, ArrowRight, FileText, Globe, BookOpen, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import CmaofLogo from './CmaofLogo';
 
 const SearchModal = ({ isOpen, onClose }) => {
   const [query, setQuery] = useState('');
@@ -12,6 +13,7 @@ const SearchModal = ({ isOpen, onClose }) => {
     { title: 'Mission 1,000 Ilara Professionals', category: 'Education', link: '/our-work/education' },
     { title: 'Maternal & Child Health Outreach', category: 'Health', link: '/our-work/health' },
     { title: 'Clean Water Borehole Projects', category: 'Community', link: '/our-work/community-resilience' },
+    { title: 'Multimedia Photo & Video Gallery', category: 'Gallery', link: '/gallery' },
     { title: 'Annual Financial & Impact Report', category: 'Resources', link: '/resources' },
     { title: 'Chief Michael Ade.Ojo Founder Legacy', category: 'About', link: '/founder' }
   ];
@@ -26,11 +28,7 @@ const SearchModal = ({ isOpen, onClose }) => {
         
         {/* Modal Brand Header */}
         <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
-          <img
-            src="/images/CMAO Foundation hhhh.png"
-            alt="Chief Michael Ade.Ojo Foundation"
-            className="h-8 sm:h-9 w-auto object-contain"
-          />
+          <CmaofLogo asLink={false} imgClassName="h-8 sm:h-9 w-auto object-contain" />
           <button
             onClick={onClose}
             className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"

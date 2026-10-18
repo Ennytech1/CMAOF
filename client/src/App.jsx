@@ -15,7 +15,7 @@ import EducationPillar from './pages/EducationPillar';
 import HealthPillar from './pages/HealthPillar';
 import CommunityPillar from './pages/CommunityPillar';
 import ImpactPage from './pages/ImpactPage';
-import NewsStories from './pages/NewsStories';
+import MultimediaGallery from './pages/MultimediaGallery';
 import GetInvolved from './pages/GetInvolved';
 import ResourcesPage from './pages/ResourcesPage';
 import ContactPage from './pages/ContactPage';
@@ -55,7 +55,10 @@ function App() {
             <Route path="/our-work/community-resilience" element={<CommunityPillar onOpenDonate={handleOpenDonate} />} />
             
             <Route path="/impact" element={<ImpactPage onOpenDonate={handleOpenDonate} />} />
-            <Route path="/news" element={<NewsStories />} />
+            <Route path="/gallery" element={<MultimediaGallery onOpenDonate={handleOpenDonate} />} />
+            <Route path="/news" element={<MultimediaGallery onOpenDonate={handleOpenDonate} />} />
+            <Route path="/event" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
+            <Route path="/events" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
             <Route path="/get-involved" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
             <Route path="/resources" element={<ResourcesPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/contact" element={<ContactPage />} />

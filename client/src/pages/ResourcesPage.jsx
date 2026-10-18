@@ -416,7 +416,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
   };
 
   return (
-    <div className="w-full bg-[#F8FAFC] font-sans animate-fade-in pb-12 sm:pb-14">
+    <div className="w-full bg-[#F8FAFC] font-sans animate-fade-in pb-0">
       
       {/* ── 1. Resources Hero Banner ── */}
       <ResourcesHero />
@@ -1144,9 +1144,9 @@ const ResourcesPage = ({ onOpenDonate }) => {
         </div>
       </section>
 
-      {/* ── 5. Widescreen CTA Banner: Knowledge Today. Stronger Communities Tomorrow. ── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10">
-        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 min-h-[140px] sm:min-h-[160px] flex items-center">
+      {/* ── 5. Full-Width CTA Banner: Knowledge Today. Stronger Communities Tomorrow. ── */}
+      <section className="w-full mt-10 sm:mt-14">
+        <div className="relative w-full overflow-hidden min-h-[145px] sm:min-h-[165px] flex items-center">
           
           {/* Background Image: Smiling Boy & Natural Outdoor Setting */}
           <div 
@@ -1176,8 +1176,8 @@ const ResourcesPage = ({ onOpenDonate }) => {
             aria-hidden="true"
           />
 
-          {/* Banner Content Wrapper */}
-          <div className="relative z-10 w-full px-6 py-6 sm:px-8 sm:py-8 lg:px-10 lg:py-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          {/* Banner Content Wrapper (Constrained to max-w-7xl to align with footer content) */}
+          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-7 sm:py-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             
             {/* Text Block (offset on desktop to preserve smiling boy) */}
             <div className="flex items-start gap-4 lg:pl-[24%] xl:pl-[26%] max-w-4xl">

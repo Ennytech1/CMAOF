@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Heart, ShieldCheck, CheckCircle2, Lock } from 'lucide-react';
 import toast from 'react-hot-toast';
+import CmaofLogo from './CmaofLogo';
 
 const DonateModal = ({ isOpen, onClose }) => {
   const [frequency, setFrequency] = useState('one-time');
@@ -43,11 +44,9 @@ const DonateModal = ({ isOpen, onClose }) => {
             
             {/* Modal Header */}
             <div className="text-center space-y-2">
-              <img
-                src="/images/CMAO Foundation hhhh.png"
-                alt="Chief Michael Ade.Ojo Foundation"
-                className="h-11 w-auto max-w-[220px] mx-auto object-contain mb-1"
-              />
+              <div className="flex justify-center mb-1">
+                <CmaofLogo asLink={false} imgClassName="h-11 w-auto max-w-[220px] object-contain" />
+              </div>
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#0D1B2A]">
                 Support CMAOF Initiatives
               </h3>

@@ -203,10 +203,10 @@ const BeneficiaryStories = () => {
 
             {/* Right Link: View All News -> */}
             <Link
-              to="/news"
+              to="/gallery"
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#0F4C3A] hover:underline cursor-pointer shrink-0 group self-start sm:self-end pb-1"
             >
-              <span>View All News</span>
+              <span>View Multimedia Gallery</span>
               <ArrowRight size={15} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
 

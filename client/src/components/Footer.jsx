@@ -44,25 +44,18 @@ const YoutubeIcon = () => (
   </svg>
 );
 
+import CmaofLogo from './CmaofLogo';
+
 const CmaofTreeLogo = () => (
-  <Link to="/" className="inline-block group select-none" aria-label="Chief Michael Ade.Ojo Foundation Home">
-    <img
-      src="/images/CMAO Foundation Logo.png"
-      alt="Chief Michael Ade.Ojo Foundation"
-      className="h-14 sm:h-16 w-auto max-w-[280px] sm:max-w-[320px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-    />
-    <p className="text-[11px] font-medium text-slate-400 italic mt-2.5">
-      Stronger People. Brighter Communities.
-    </p>
-  </Link>
+  <CmaofLogo variant="dark" imgClassName="h-14 sm:h-16 w-auto max-w-[280px] sm:max-w-[320px] object-contain" />
 );
 
 const Footer = ({ onOpenDonate }) => {
   const location = useLocation();
   const [newsletterEmail, setNewsletterEmail] = useState('');
 
-  // When visiting Resources section page, render the dedicated Resources Footer
-  if (location.pathname.startsWith('/resources')) {
+  // When visiting Resources or Multimedia Gallery section page, render the dedicated institutional footer
+  if (location.pathname.startsWith('/resources') || location.pathname.startsWith('/gallery') || location.pathname.startsWith('/news')) {
     return <ResourcesFooter onOpenDonate={onOpenDonate} />;
   }
 
@@ -153,7 +146,7 @@ const Footer = ({ onOpenDonate }) => {
                 <li><Link to="/about" className="hover:text-emerald-400 transition-colors">About Us</Link></li>
                 <li><Link to="/our-work" className="hover:text-emerald-400 transition-colors">Our Work</Link></li>
                 <li><Link to="/impact" className="hover:text-emerald-400 transition-colors">Impact</Link></li>
-                <li><Link to="/news" className="hover:text-emerald-400 transition-colors">News & Stories</Link></li>
+                <li><Link to="/gallery" className="hover:text-emerald-400 transition-colors">Multimedia Gallery</Link></li>
               </ul>
             </div>
 
