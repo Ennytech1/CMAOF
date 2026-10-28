@@ -15,7 +15,6 @@ import {
   ExternalLink,
   ChevronRight,
   ArrowUpRight,
-  TrendingUp,
   Home,
   ArrowLeft,
   ArrowRight,
