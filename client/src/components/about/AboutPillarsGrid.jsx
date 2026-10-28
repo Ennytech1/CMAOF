@@ -3,7 +3,7 @@ import { Target, Eye, Mountain, HeartHandshake, Heart, Users, Shield, BarChart3 
 
 const AboutPillarsGrid = () => {
   return (
-    <section id="purpose-vision" className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="purpose-vision" className="pt-8 sm:pt-12 pb-3 sm:pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         
         {/* 1. OUR PURPOSE */}

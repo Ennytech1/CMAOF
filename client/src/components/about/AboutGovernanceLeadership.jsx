@@ -1,4 +1,5 @@
 import React from 'react';
+import { founderImages } from '../../assets/founderImages';
 
 // Custom filled SVG icons matching the reference image 100%
 const ShieldCheckIcon = () => (
@@ -80,8 +81,8 @@ const governancePillars = [
 const leaders = [
   {
     id: 1,
-    image: '/images/leader_chairman.jpg',
-    role: 'Chairman',
+    image: founderImages.founder7,
+    role: 'Founder & Chairman',
     subRole: 'Board of Trustees',
   },
   {
@@ -235,7 +236,7 @@ const AboutGovernanceLeadership = () => {
                     <img 
                       src={leader.image} 
                       alt={leader.role}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                     />
                   </div>
 

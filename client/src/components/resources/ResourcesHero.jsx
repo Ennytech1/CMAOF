@@ -13,22 +13,22 @@ const ResourcesHero = () => {
         aria-hidden="true"
       />
 
-      {/* ── Exact Linear Gradient Overlay matching reference screenshot ── */}
+      {/* ── High-Contrast Linear Gradient Overlay: ensures 100% solid, crisp white backing behind all text ── */}
       <div
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 28%, rgba(255,255,255,0.92) 42%, rgba(255,255,255,0.65) 54%, rgba(255,255,255,0.20) 66%, transparent 78%)',
+            'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 32%, rgba(255,255,255,0.92) 46%, rgba(255,255,255,0.40) 60%, transparent 72%)',
         }}
         aria-hidden="true"
       />
 
-      {/* Mobile vertical gradient overlay to preserve readability on small screens */}
+      {/* Mobile vertical gradient overlay fallback */}
       <div
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 58%, rgba(255,255,255,0.40) 100%)',
+            'linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.96) 65%, rgba(255,255,255,0.40) 100%)',
         }}
         aria-hidden="true"
       />

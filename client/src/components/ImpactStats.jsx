@@ -68,7 +68,7 @@ const ImpactStats = () => {
               </div>
             </div>
 
-            <p className="text-slate-100/90 text-xs sm:text-sm leading-snug pl-4 font-medium max-w-sm">
+            <p className="text-white text-xs sm:text-sm leading-snug pl-4 font-semibold drop-shadow-xs max-w-sm">
               Together, we are creating measurable impact in communities across Nigeria.
             </p>
 

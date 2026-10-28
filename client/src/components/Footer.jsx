@@ -54,16 +54,33 @@ const Footer = ({ onOpenDonate }) => {
   const location = useLocation();
   const [newsletterEmail, setNewsletterEmail] = useState('');
 
-  // When visiting Resources or Multimedia Gallery section page, render the dedicated institutional footer
-  if (location.pathname.startsWith('/resources') || location.pathname.startsWith('/gallery') || location.pathname.startsWith('/news')) {
+  if (location.pathname.startsWith('/admin')) {
+    return null;
+  }
+
+  // Render the Multimedia Gallery / Section footer design on all section pages;
+  // Only the home page ('/') retains the dark navy institutional footer.
+  const isHomePage = location.pathname === '/' || location.pathname === '';
+  if (!isHomePage) {
     return <ResourcesFooter onOpenDonate={onOpenDonate} />;
   }
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    if (newsletterEmail) {
+    if (newsletterEmail && newsletterEmail.includes('@')) {
+      try {
+        await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: newsletterEmail.trim(), source: 'home_footer' }),
+        });
+      } catch (err) {
+        console.warn('Newsletter sync notice:', err.message);
+      }
       toast.success('Thank you for subscribing to CMAOF Institutional Gazette!');
       setNewsletterEmail('');
+    } else {
+      toast.error('Please enter a valid email address.');
     }
   };
 
@@ -156,7 +173,7 @@ const Footer = ({ onOpenDonate }) => {
                 Get Involved
               </h4>
               <ul className="space-y-2 text-xs font-medium">
-                <li><button onClick={onOpenDonate} className="hover:text-emerald-400 transition-colors text-left cursor-pointer">Donate</button></li>
+                <li><Link to="/donate" className="hover:text-emerald-400 transition-colors text-left">Donate</Link></li>
                 <li><Link to="/get-involved" className="hover:text-emerald-400 transition-colors">Partner With Us</Link></li>
                 <li><Link to="/get-involved" className="hover:text-emerald-400 transition-colors">Volunteer</Link></li>
                 <li><Link to="/get-involved" className="hover:text-emerald-400 transition-colors">Support a Programme</Link></li>

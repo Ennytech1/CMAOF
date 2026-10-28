@@ -64,7 +64,7 @@ const OurWorkApproachAndCTA = ({ onOpenDonate }) => {
                 <h2 className="text-2xl sm:text-3xl lg:text-[27px] font-extrabold text-[#0F2B5B] tracking-tight leading-tight">
                   Connected for Greater Impact
                 </h2>
-                <p className="text-slate-600 text-xs sm:text-[13.5px] font-normal leading-relaxed max-w-md pt-0.5">
+                <p className="text-slate-700 text-sm sm:text-[14.5px] font-medium leading-relaxed max-w-md pt-0.5">
                   Our three pillars are interconnected, creating a continuum of support that helps individuals and communities overcome barriers, unlock their potential and build better futures.
                 </p>
               </div>
@@ -77,18 +77,18 @@ const OurWorkApproachAndCTA = ({ onOpenDonate }) => {
                   <React.Fragment key={step.id}>
                     
                     {/* Step Node */}
-                    <div className="flex flex-col items-center text-center flex-1 min-w-[85px] sm:min-w-[95px] max-w-[125px] group">
+                    <div className="flex flex-col items-center text-center flex-1 min-w-[90px] sm:min-w-[105px] max-w-[135px] group">
                       <div
                         className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${step.bg} text-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-105 shrink-0`}
                       >
                         {step.icon}
                       </div>
 
-                      <div className="mt-2 space-y-0.5">
-                        <div className="text-xs sm:text-[12.5px] font-bold text-[#0F2B5B] leading-tight">
+                      <div className="mt-2 space-y-1">
+                        <div className="text-xs sm:text-[13px] font-bold text-[#0F2B5B] leading-tight">
                           {step.title}
                         </div>
-                        <div className="text-[10px] sm:text-[11px] text-slate-500 leading-tight max-w-[100px] mx-auto font-normal">
+                        <div className="text-[11px] sm:text-[11.5px] text-slate-700 leading-snug max-w-[115px] mx-auto font-medium">
                           {step.subtitle}
                         </div>
                       </div>
@@ -134,7 +134,7 @@ const OurWorkApproachAndCTA = ({ onOpenDonate }) => {
         />
 
         {/* Mobile vertical overlay for small screens to ensure full readability */}
-        <div className="absolute inset-0 bg-[#022c1e]/75 sm:hidden pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#022c1e]/90 sm:hidden pointer-events-none" aria-hidden="true" />
 
         {/* Content Row Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-8 md:py-9">
@@ -146,15 +146,15 @@ const OurWorkApproachAndCTA = ({ onOpenDonate }) => {
               <div className="w-1.5 h-12 sm:h-14 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
               
               <div className="space-y-1">
-                <span className="block text-xs font-black uppercase tracking-wider text-white/90">
+                <span className="block text-xs font-black uppercase tracking-wider text-emerald-300 drop-shadow-xs">
                   BE PART OF THE CHANGE
                 </span>
                 
-                <h2 className="text-xl sm:text-2xl lg:text-[27px] font-black text-white tracking-tight leading-tight">
+                <h2 className="text-xl sm:text-2xl lg:text-[27px] font-black text-white tracking-tight leading-tight drop-shadow-xs">
                   Your Support Creates Brighter Futures.
                 </h2>
                 
-                <p className="text-white/85 text-xs sm:text-[13px] font-normal leading-relaxed max-w-md pt-0.5">
+                <p className="text-white text-xs sm:text-[13px] font-medium leading-relaxed max-w-md pt-0.5 drop-shadow-xs">
                   Join us in expanding opportunities, improving lives and strengthening communities across Nigeria.
                 </p>
               </div>

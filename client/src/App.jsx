@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 import Navbar from './components/Navbar';
@@ -17,9 +17,20 @@ import CommunityPillar from './pages/CommunityPillar';
 import ImpactPage from './pages/ImpactPage';
 import MultimediaGallery from './pages/MultimediaGallery';
 import GetInvolved from './pages/GetInvolved';
+import EventsPage from './pages/EventsPage';
 import ResourcesPage from './pages/ResourcesPage';
 import ContactPage from './pages/ContactPage';
 import PoliciesPage from './pages/PoliciesPage';
+import DonatePage from './pages/DonatePage';
+import AdminLoginPage from './pages/AdminLoginPage';
+import AdminDashboard from './pages/AdminDashboard';
+import BeneficiaryProfilePage from './pages/BeneficiaryProfilePage';
+import RegisterBeneficiaryPage from './pages/RegisterBeneficiaryPage';
+import NeedsAssessmentPage from './pages/NeedsAssessmentPage';
+import ProgrammeDetailPage from './pages/ProgrammeDetailPage';
+import DonationsPage from './pages/DonationsPage';
+import ImpactDashboardPage from './pages/ImpactDashboardPage';
+import CaseTimelinePage from './pages/CaseTimelinePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -57,12 +68,37 @@ function App() {
             <Route path="/impact" element={<ImpactPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/gallery" element={<MultimediaGallery onOpenDonate={handleOpenDonate} />} />
             <Route path="/news" element={<MultimediaGallery onOpenDonate={handleOpenDonate} />} />
-            <Route path="/event" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
-            <Route path="/events" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
+            <Route path="/event" element={<EventsPage onOpenDonate={handleOpenDonate} />} />
+            <Route path="/events" element={<EventsPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/get-involved" element={<GetInvolved onOpenDonate={handleOpenDonate} />} />
             <Route path="/resources" element={<ResourcesPage onOpenDonate={handleOpenDonate} />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/contact" element={<ContactPage onOpenDonate={handleOpenDonate} />} />
             <Route path="/policies" element={<PoliciesPage />} />
+            <Route path="/donate" element={<DonatePage />} />
+            
+            <Route path="/admin" element={<AdminLoginPage />} />
+            <Route path="/admin/login" element={<AdminLoginPage />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard initialTab="dashboard" />} />
+            <Route path="/admin/beneficiaries" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-overview" />} />
+            <Route path="/admin/beneficiaries/directory" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-directory" />} />
+            <Route path="/admin/beneficiaries/cases" element={<Navigate to="/admin/beneficiaries/directory" replace />} />
+            <Route path="/admin/beneficiaries/register" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-register" />} />
+            <Route path="/admin/beneficiaries/:id/assessment" element={<NeedsAssessmentPage />} />
+            <Route path="/admin/beneficiaries/:id/cases" element={<CaseTimelinePage />} />
+            <Route path="/admin/beneficiaries/:id" element={<BeneficiaryProfilePage />} />
+            <Route path="/admin/programmes" element={<AdminDashboard initialTab="programmes" />} />
+            <Route path="/admin/programmes/:id" element={<ProgrammeDetailPage />} />
+            <Route path="/admin/donations" element={<AdminDashboard initialTab="donations" />} />
+            <Route path="/admin/impact" element={<AdminDashboard initialTab="impact" />} />
+            <Route path="/admin/communications" element={<AdminDashboard initialTab="communications" />} />
+            <Route path="/admin/events" element={<AdminDashboard initialTab="events" />} />
+            <Route path="/admin/resources" element={<AdminDashboard initialTab="resources" />} />
+            <Route path="/admin/media" element={<AdminDashboard initialTab="media" />} />
+            <Route path="/admin/reports" element={<AdminDashboard initialTab="reports" />} />
+            <Route path="/admin/users" element={<AdminDashboard initialTab="users" />} />
+            <Route path="/admin/approvals" element={<AdminDashboard initialTab="approvals" />} />
+            <Route path="/admin/audit" element={<AdminDashboard initialTab="audit" />} />
+            <Route path="/admin/settings" element={<AdminDashboard initialTab="settings" />} />
             
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { BookOpen, Users } from 'lucide-react';
+import { BookOpen, Users, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { founderImages } from '../../assets/founderImages';
 
 /**
- * Pixel-perfect Branching Tree Icon matching reference image_8.png
+ * Pixel-perfect Branching Tree Icon representing growth and multi-pillar expansion
  */
 const BranchingTreeIcon = () => (
   <svg
@@ -15,15 +16,12 @@ const BranchingTreeIcon = () => (
     className="w-5 h-5 text-white"
     aria-hidden="true"
   >
-    {/* Trunk */}
     <line x1="12" y1="22" x2="12" y2="13" strokeWidth="2.5" />
-    {/* Branching limbs */}
     <path d="M12 16L7 11" strokeWidth="2" />
     <path d="M12 14l5-5" strokeWidth="2" />
     <path d="M12 13V6" strokeWidth="2" />
     <path d="M9 13l-3 1" strokeWidth="1.8" />
     <path d="M15 11l3 1" strokeWidth="1.8" />
-    {/* Leaf clusters */}
     <circle cx="12" cy="5" r="2" fill="currentColor" stroke="none" />
     <circle cx="6" cy="10" r="1.8" fill="currentColor" stroke="none" />
     <circle cx="18" cy="8" r="1.8" fill="currentColor" stroke="none" />
@@ -33,7 +31,7 @@ const BranchingTreeIcon = () => (
 );
 
 /**
- * Ascending 3-Bar Chart Icon matching reference image_8.png
+ * Ascending 3-Bar Chart Icon representing measurable lasting impact
  */
 const BarChartIcon = () => (
   <svg
@@ -51,174 +49,181 @@ const BarChartIcon = () => (
 const AboutTimelineSection = () => {
   const milestones = [
     {
+      step: '01',
       year: '2007',
+      tag: 'Genesis',
+      tagBg: 'bg-emerald-50 text-[#0F4C3A] border-emerald-200/60',
       yearColor: 'text-[#0F4C3A]',
+      accentBg: 'bg-[#0F4C3A]',
+      ringColor: 'ring-emerald-100',
       icon: <BookOpen size={20} strokeWidth={2.4} className="text-white" />,
-      badgeBg: 'bg-[#054E3B]',
       title: 'Elizade Ojo Educational Foundation',
-      desc: 'Established to support education and human development.'
+      desc: 'Established by Chief Michael Ade.Ojo to support higher education, university scholarships, and human capital development across Nigeria.',
+      highlight: 'Scholarships & Education',
     },
     {
+      step: '02',
       year: '2015',
-      yearColor: 'text-[#0F4C3A]',
+      tag: 'Expansion',
+      tagBg: 'bg-teal-50 text-[#054E3B] border-teal-200/60',
+      yearColor: 'text-[#054E3B]',
+      accentBg: 'bg-[#054E3B]',
+      ringColor: 'ring-teal-100',
       icon: <Users size={20} strokeWidth={2.4} className="text-white" />,
-      badgeBg: 'bg-[#054E3B]',
-      title: 'Expanding Impact',
-      desc: 'Increased support for scholarships, schools and community initiatives.'
+      title: 'Expanding Impact & Community Reach',
+      desc: 'Increased reach with substantial support for schools, infrastructure, community development programs, and youth empowerment.',
+      highlight: 'Community Outreach',
     },
     {
+      step: '03',
       year: '2021',
+      tag: 'Historic Rebrand',
+      tagBg: 'bg-orange-50 text-[#EA580C] border-orange-200/60',
       yearColor: 'text-[#EA580C]',
+      accentBg: 'bg-[#EA580C]',
+      ringColor: 'ring-orange-100',
       icon: <BranchingTreeIcon />,
-      badgeBg: 'bg-[#EA580C]',
       title: 'Chief Michael Ade.Ojo Foundation (CMAOF)',
-      desc: 'Rebranded with an expanded focus beyond education to include health and community development.'
+      desc: 'Formally restructured with an expanded multi-pillar mandate: Education & Human Capital, Health & Well-being, and Community Resilience.',
+      highlight: 'Three Strategic Pillars',
+      isFeatured: true,
     },
     {
+      step: '04',
       year: 'Today',
-      yearColor: 'text-[#0F4C3A]',
+      tag: 'Current Mission',
+      tagBg: 'bg-blue-50 text-[#0F2B5B] border-blue-200/60',
+      yearColor: 'text-[#0F2B5B]',
+      accentBg: 'bg-[#0F2B5B]',
+      ringColor: 'ring-blue-100',
       icon: <BarChartIcon />,
-      badgeBg: 'bg-[#0F2B5B]',
       title: 'Stronger People. Brighter Communities.',
-      desc: 'Continuing the legacy with greater reach, deeper impact and a commitment to a brighter Nigeria.'
-    }
+      desc: 'Continuing the founder’s legacy with nationwide reach, deeper measurable impact, and an unshakeable commitment to building a brighter Nigeria.',
+      highlight: 'Nationwide Transformation',
+      isCurrent: true,
+    },
   ];
 
   return (
-    <section className="py-8 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans">
-      {/* ── Main Widescreen Banner Container ── */}
-      <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-[#FAFBFD]">
+    <section className="pt-3 sm:pt-4 pb-12 sm:pb-16 bg-gradient-to-b from-white via-slate-50/60 to-white font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="flex flex-col lg:flex-row items-stretch">
-
-          {/* ════ LEFT PORTION: 35% Photographic Banner & Hero Text ════ */}
-          <div className="lg:w-[35%] xl:w-[34%] relative overflow-hidden flex flex-col justify-center p-6 sm:p-8 lg:p-9 shrink-0 min-h-[300px] lg:min-h-[360px]">
-            
-            {/* Seedling macro photo background */}
-            <div 
-              className="absolute inset-0 bg-cover bg-no-repeat"
-              style={{ 
-                backgroundImage: `url('/images/our_journey_seedling.jpg')`,
-                backgroundPosition: 'right 65%'
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Seamless gradient fade blending smoothly into right timeline */}
-            <div 
-              className="absolute inset-0"
-              style={{
-                background: 'linear-gradient(to right, rgba(4,26,16,0.94) 0%, rgba(4,26,16,0.82) 42%, rgba(4,26,16,0.3) 76%, rgba(250,251,253,0.85) 94%, #FAFBFD 100%)'
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Subtle soft bottom shadow for rich soil feel */}
-            <div 
-              className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
-              style={{
-                background: 'linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 100%)'
-              }}
-              aria-hidden="true"
-            />
-
-            {/* Hero text overlay with high contrast */}
-            <div className="relative z-10 space-y-4 max-w-md">
-              
-              {/* Vertical Orange Accent Bar + Eyebrow & Title */}
-              <div className="flex items-start gap-3.5">
-                <div className="w-[3.5px] self-stretch min-h-[78px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
-                <div className="space-y-1.5">
-                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-white/95 block font-sans">
-                    OUR JOURNEY
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl lg:text-[1.95rem] font-black text-white tracking-tight leading-[1.14] font-sans">
-                    From a Bold Vision<br className="hidden sm:inline" /> to a Broader Impact
-                  </h2>
-                </div>
-              </div>
-
-              {/* Body text aligned with the title */}
-              <p className="text-white/90 text-xs sm:text-[12.5px] leading-relaxed font-normal pl-[17.5px] max-w-sm">
-                What began as a commitment to education has evolved into a broader mission to improve lives across education, health and community development.
-              </p>
-
+        {/* ── Top Header with Provenance Badge ── */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-slate-200/80">
+          <div className="max-w-2xl space-y-3">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
+              <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F4C3A]">
+                OUR JOURNEY
+              </span>
             </div>
 
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0F2B5B] tracking-tight leading-tight">
+              From a Bold Vision to a Broader Impact
+            </h2>
+
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-medium">
+              What began as a personal commitment to education in 2007 has evolved into an enduring institutional foundation empowering people, improving health, and strengthening communities across Nigeria.
+            </p>
           </div>
 
-          {/* ════ RIGHT PORTION: 65% Horizontal Timeline Grid ════ */}
-          <div className="lg:w-[65%] xl:w-[66%] bg-[#FAFBFD] p-5 sm:p-7 lg:p-8 flex flex-col justify-center relative">
-            
-            <div className="relative w-full">
-              
-              {/* ── Horizontal Connecting Timeline Line (Desktop) ── */}
-              <div className="hidden lg:block absolute top-[22px] left-[22px] right-[4px] h-[1.5px] bg-[#94A3B8]/60 z-0">
-                {/* Subtle segment marker dots */}
-                <div className="absolute top-1/2 left-[28%] -translate-y-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#CBD5E1]" />
-                <div className="absolute top-1/2 left-[53%] -translate-y-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#EA580C]/70" />
-                <div className="absolute top-1/2 left-[78%] -translate-y-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#CBD5E1]" />
+          {/* Founder Provenance Citation Badge */}
+          <div className="inline-flex items-center gap-3.5 p-2 sm:p-2.5 pr-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm self-start lg:self-end">
+            <div className="w-11 h-11 rounded-xl overflow-hidden border-2 border-[#0F4C3A] shrink-0 bg-slate-100 shadow-xs">
+              <img 
+                src={founderImages.founder7} 
+                alt="Chief Michael Ade.Ojo, OON" 
+                className="w-full h-full object-cover object-top" 
+              />
+            </div>
+            <div>
+              <span className="block text-xs sm:text-sm font-bold text-[#0F2B5B] leading-snug">
+                Chief Michael Ade.Ojo, OON
+              </span>
+              <span className="block text-[11px] font-semibold text-[#0F4C3A]">
+                Founding Visionary (2007 – Present)
+              </span>
+            </div>
+          </div>
+        </div>
 
-                {/* Subtle terminating arrow pointing right */}
-                <div className="absolute top-1/2 -right-2 -translate-y-1/2 text-[#0F2B5B] flex items-center">
-                  <svg 
-                    width="14" 
-                    height="14" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2.5" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="4" y1="12" x2="20" y2="12" />
-                    <polyline points="13 5 20 12 13 19" />
-                  </svg>
-                </div>
-              </div>
+        {/* ── Horizontal Interactive Timeline ── */}
+        <div className="pt-6 sm:pt-8 relative">
+          
+          {/* Connecting Track Line (Desktop) */}
+          <div className="hidden lg:block absolute top-[68px] left-[6%] right-[6%] h-1 bg-gradient-to-r from-[#0F4C3A] via-[#EA580C] to-[#0F2B5B] rounded-full z-0 opacity-20" />
 
-              {/* ── Mobile Vertical Line (< lg) ── */}
-              <div className="lg:hidden absolute top-[22px] bottom-[60px] left-[22px] w-[1.5px] bg-[#94A3B8]/50 z-0" />
-
-              {/* ── 4 Milestone Columns / Cards Grid ── */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4 lg:gap-3.5 relative z-10 items-stretch">
-                {milestones.map((m, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    
-                    {/* Circular Icon Node perched at top margin */}
-                    <div className="mb-3 pl-0 sm:pl-0">
-                      <div 
-                        className={`w-11 h-11 rounded-full ${m.badgeBg} flex items-center justify-center text-white shadow-md ring-4 ring-[#FAFBFD] shrink-0 transition-transform duration-300 hover:scale-110 cursor-default`}
-                      >
-                        {m.icon}
-                      </div>
+          {/* 4 Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 relative z-10 items-stretch">
+            {milestones.map((m) => (
+              <div 
+                key={m.step} 
+                className={`group flex flex-col justify-between rounded-3xl p-6 sm:p-7 transition-all duration-300 relative ${
+                  m.isFeatured 
+                    ? 'bg-white border-2 border-[#EA580C]/40 shadow-xl shadow-orange-500/5 hover:-translate-y-2' 
+                    : 'bg-white border border-slate-200/80 shadow-md hover:shadow-xl hover:-translate-y-2'
+                }`}
+              >
+                {/* Top Node Indicator & Step Marker */}
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    {/* Icon Badge */}
+                    <div 
+                      className={`w-12 h-12 rounded-2xl ${m.accentBg} flex items-center justify-center shadow-lg ring-4 ${m.ringColor} transition-transform duration-300 group-hover:scale-110`}
+                    >
+                      {m.icon}
                     </div>
 
-                    {/* Timeline Card Record */}
-                    <div className="bg-white rounded-2xl p-4 sm:p-5 shadow-[0_4px_22px_rgba(15,43,91,0.05)] border border-slate-100 flex-1 flex flex-col justify-start space-y-1.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_28px_rgba(15,43,91,0.09)]">
-                      {/* Year */}
-                      <span className={`text-lg sm:text-xl font-extrabold tracking-tight ${m.yearColor} font-sans block`}>
+                    {/* Step Number Tag */}
+                    <div className="flex items-center gap-1.5">
+                      {m.isCurrent && (
+                        <span className="relative flex h-2.5 w-2.5 mr-1">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                        </span>
+                      )}
+                      <span className="text-xs font-black font-mono tracking-wider text-slate-400 group-hover:text-[#0F2B5B] transition-colors">
+                        STEP {m.step}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Year & Milestone Tag */}
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2">
+                      <span className={`text-2xl sm:text-3xl font-black tracking-tight ${m.yearColor}`}>
                         {m.year}
                       </span>
-
-                      {/* Title */}
-                      <h3 className="font-extrabold text-[13px] sm:text-[13.5px] text-[#0F2B5B] leading-snug font-sans">
-                        {m.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed font-normal pt-0.5">
-                        {m.desc}
-                      </p>
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider border ${m.tagBg}`}>
+                        {m.tag}
+                      </span>
                     </div>
 
+                    {/* Milestone Title */}
+                    <h3 className="text-base sm:text-[17px] font-black text-[#0F2B5B] leading-snug pt-1">
+                      {m.title}
+                    </h3>
+
+                    {/* Description Paragraph */}
+                    <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed font-normal pt-1.5">
+                      {m.desc}
+                    </p>
                   </div>
-                ))}
+                </div>
+
+                {/* Bottom Highlight Pill */}
+                <div className="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] sm:text-xs font-bold text-slate-700 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className={m.isFeatured ? 'text-[#EA580C]' : 'text-[#0F4C3A]'} />
+                    {m.highlight}
+                  </span>
+                  <span className="text-slate-400 group-hover:translate-x-1 transition-transform">
+                    <ArrowRight size={14} />
+                  </span>
+                </div>
+
               </div>
-
-            </div>
-
+            ))}
           </div>
 
         </div>

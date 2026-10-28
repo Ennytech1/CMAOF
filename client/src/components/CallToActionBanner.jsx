@@ -19,10 +19,10 @@ const CallToActionBanner = ({ onOpenDonate }) => {
           <div className="flex items-start gap-3 max-w-lg shrink-0">
             <div className="w-1.5 h-11 sm:h-12 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
             <div className="space-y-0.5 text-left">
-              <h2 className="text-xl sm:text-2xl lg:text-[1.6rem] font-extrabold text-white tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-[1.6rem] font-extrabold text-white tracking-tight leading-tight drop-shadow-xs">
                 Be Part of a Brighter Tomorrow
               </h2>
-              <p className="text-emerald-100/90 text-xs sm:text-[13px] leading-snug font-normal">
+              <p className="text-white text-xs sm:text-[13.5px] leading-snug font-medium drop-shadow-xs">
                 Your support helps us expand opportunities, improve lives and build stronger communities across Nigeria.
               </p>
             </div>

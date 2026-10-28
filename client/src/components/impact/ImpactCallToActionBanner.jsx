@@ -23,7 +23,7 @@ const ImpactCallToActionBanner = ({ onOpenDonate }) => {
       </div>
 
       {/* Dark overlay for mobile clarity */}
-      <div className="absolute inset-0 bg-[#023D28]/70 sm:bg-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[#023D28]/90 sm:bg-transparent pointer-events-none" />
 
       {/* ── Banner Content Row inside max-w-7xl ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10 min-h-[175px] sm:min-h-[190px] flex items-center">
@@ -36,17 +36,17 @@ const ImpactCallToActionBanner = ({ onOpenDonate }) => {
             
             <div className="space-y-1">
               {/* Category Eyebrow */}
-              <span className="block text-xs sm:text-[12px] font-extrabold uppercase tracking-wider text-[#34D399]">
+              <span className="block text-xs sm:text-[12px] font-extrabold uppercase tracking-wider text-[#34D399] drop-shadow-xs">
                 BE PART OF THE IMPACT
               </span>
               
               {/* Headline */}
-              <h2 className="text-xl sm:text-2xl lg:text-[27px] font-black text-white tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-[27px] font-black text-white tracking-tight leading-tight drop-shadow-xs">
                 Your Support Creates Brighter Futures.
               </h2>
               
               {/* Paragraph */}
-              <p className="text-emerald-100/90 text-xs sm:text-[13px] font-normal leading-relaxed max-w-md pt-0.5">
+              <p className="text-white text-xs sm:text-[13px] font-medium leading-relaxed max-w-md pt-0.5 drop-shadow-xs">
                 Join us in expanding opportunities, improving lives and strengthening communities across Nigeria.
               </p>
             </div>

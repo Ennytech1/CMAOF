@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { founderImages } from '../../assets/founderImages';
 import { 
   LayoutGrid, 
   BookOpen, 
@@ -7,6 +9,7 @@ import {
   Search, 
   ChevronDown, 
   ArrowRight, 
+  ArrowLeft,
   X, 
   Image as ImageIcon, 
   Video, 
@@ -17,8 +20,10 @@ import {
   HeartPulse,
   Bookmark,
   ChevronLeft,
+  ChevronRight,
   Share2,
-  Check
+  Check,
+  Award
 } from 'lucide-react';
 
 const ResourcesMediaAlbums = () => {
@@ -32,6 +37,50 @@ const ResourcesMediaAlbums = () => {
   const [activeModalVideo, setActiveModalVideo] = useState(null);
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  const albumThumbnailContainerRef = useRef(null);
+  const albumThumbnailRefs = useRef([]);
+
+  // Auto-scroll active album thumbnail into view smoothly
+  useEffect(() => {
+    if (activeModalAlbum && albumThumbnailRefs.current[activePhotoIndex]) {
+      albumThumbnailRefs.current[activePhotoIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [activePhotoIndex, activeModalAlbum]);
+
+  const handleShare = (title) => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2500);
+    }
+  };
+
+  // Body scroll lock and Escape key listener
+  useEffect(() => {
+    const isModalOpen = Boolean(activeModalAlbum || activeModalVideo);
+    if (isModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setActiveModalAlbum(null);
+          setActiveModalVideo(null);
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [activeModalAlbum, activeModalVideo]);
 
   // 1. Pillar Filter Tabs (Matching Screenshot 1 exactly)
   const filterTabs = [
@@ -67,6 +116,27 @@ const ResourcesMediaAlbums = () => {
 
   // 2. Featured Albums Dataset (Matching Screenshot 1 exactly)
   const albums = [
+    {
+      id: 'founder-album',
+      pillar: 'all',
+      title: 'Chief Michael Ade.Ojo: A Life of Service',
+      subtitle: 'Philanthropic Journey & Impact Legacy',
+      image: founderImages.founder1,
+      photos: 7,
+      videos: 2,
+      date: '2026-03-20',
+      views: 3840,
+      gallery: [
+        founderImages.founder1,
+        founderImages.founder2,
+        founderImages.founder3,
+        founderImages.founder4,
+        founderImages.founder5,
+        founderImages.founder6,
+        founderImages.founder7
+      ],
+      description: 'A curated visual retrospective documenting Chief Michael Ade.Ojo’s lifetime of philanthropic stewardship, university patronship, and transformative grassroots interventions across Nigeria.'
+    },
     {
       id: 'education-album',
       pillar: 'education',
@@ -240,14 +310,6 @@ const ResourcesMediaAlbums = () => {
         return 0;
       });
   }, [videos, selectedPillar, searchQuery, filterType, sortBy]);
-
-  const handleShare = (title) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2500);
-    }
-  };
 
   return (
     <section className="w-full bg-white font-sans pt-5 sm:pt-6 pb-9 sm:pb-11 border-b border-slate-100">
@@ -571,181 +633,351 @@ const ResourcesMediaAlbums = () => {
 
 
       {/* ══════════════════════════════════════════════════════════════
-          4. INTERACTIVE ALBUM VIEWER MODAL (WITH PHOTO SLIDER)
+          4. INTERACTIVE ALBUM VIEWER MODAL - FULL SCREEN 100VH LIGHTBOX
       ══════════════════════════════════════════════════════════════ */}
-      {activeModalAlbum && (
+      {activeModalAlbum && typeof document !== 'undefined' && createPortal(
         <div 
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 animate-fade-in"
-          onClick={() => setActiveModalAlbum(null)}
+          className="fixed inset-0 z-[9999] h-screen h-[100dvh] w-screen bg-slate-50 text-slate-900 flex flex-col overflow-hidden animate-fade-in font-sans"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeModalAlbum.title}
         >
-          <div 
-            className="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-hidden shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="px-5 sm:px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-              <div>
-                <h3 className="text-base sm:text-lg font-black text-[#0F2B5B]">
-                  {activeModalAlbum.title}
-                </h3>
-                <p className="text-xs text-slate-500">
-                  {activeModalAlbum.photos} photos • {activeModalAlbum.videos} videos • {activeModalAlbum.subtitle}
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActiveModalAlbum(null)}
-                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <X size={18} />
-              </button>
-            </div>
+          {/* Subtle ambient glow effects */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Modal Photo Slider Showcase */}
-            <div className="p-4 sm:p-6 overflow-y-auto space-y-4">
+          {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
+          <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
               
-              {/* Featured Main Slide */}
-              <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
+              {/* Left: Back Button + Breadcrumbs + Album Title */}
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveModalAlbum(null)}
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  title="Back to Media Gallery"
+                >
+                  <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
+                  <span className="font-sans">Back</span>
+                </button>
+
+                <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
+
+                {/* Breadcrumbs with vertical orange indicator bar */}
+                <div className="min-w-0 flex flex-col justify-center">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveModalAlbum(null)}
+                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                    >
+                      Home
+                    </button>
+                    <ChevronRight size={13} className="text-slate-400 shrink-0" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveModalAlbum(null)}
+                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                    >
+                      Resources
+                    </button>
+                    <ChevronRight size={13} className="text-slate-400 shrink-0" />
+                    <span className="text-[#0F2B5B] font-bold truncate">Media Album</span>
+                  </div>
+
+                  {/* Title and Category Badge */}
+                  <div className="flex items-center gap-2.5 mt-0.5">
+                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                      {activeModalAlbum.title}
+                    </h3>
+                    <span className="hidden md:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#0F4C3A]/10 text-[#0F4C3A] border border-[#0F4C3A]/20">
+                      {activeModalAlbum.photos} Photos • {activeModalAlbum.videos} Videos
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right: Slide Counter + Close Button */}
+              <div className="flex items-center gap-3 shrink-0">
+                <div className="hidden md:flex flex-col items-end text-right">
+                  <span className="text-xs font-extrabold text-[#0F2B5B]">
+                    Photo {activePhotoIndex + 1} of {activeModalAlbum.gallery.length}
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveModalAlbum(null)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  title="Close album (Esc)"
+                >
+                  <X size={18} strokeWidth={2.4} />
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 2. Modal Center Showcase - Takes 100% remaining vertical space */}
+          <div className="flex-1 min-h-0 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4 sm:py-6 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center overflow-y-auto z-10">
+            
+            {/* Left Photo Display Stage */}
+            <div className="md:col-span-7 h-full max-h-[56vh] sm:max-h-[62vh] lg:max-h-[66vh] flex items-center justify-center relative">
+              <div className="relative w-full h-full max-w-xl rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-2xl group flex items-center justify-center">
                 <img
                   src={activeModalAlbum.gallery[activePhotoIndex]}
-                  alt={`${activeModalAlbum.title} view ${activePhotoIndex + 1}`}
-                  className="w-full h-full object-contain"
+                  alt={`${activeModalAlbum.title} photo ${activePhotoIndex + 1}`}
+                  className="w-full h-full object-contain md:object-cover md:object-center transition-all duration-300"
                 />
 
-                {/* Left/Right Arrow Navigation */}
+                {/* Navigation Arrows on Photo */}
                 {activeModalAlbum.gallery.length > 1 && (
                   <>
                     <button
                       type="button"
                       onClick={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : activeModalAlbum.gallery.length - 1))}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-all cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      title="Previous photo (Left Arrow)"
                     >
-                      <ChevronLeft size={20} />
+                      <ChevronLeft size={24} />
                     </button>
                     <button
                       type="button"
                       onClick={() => setActivePhotoIndex((prev) => (prev < activeModalAlbum.gallery.length - 1 ? prev + 1 : 0))}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center transition-all cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      title="Next photo (Right Arrow)"
                     >
-                      <ArrowRight size={20} />
+                      <ChevronRight size={24} />
                     </button>
                   </>
                 )}
 
-                {/* Photo Counter Pill */}
-                <span className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-xs text-white text-xs font-bold px-3 py-1 rounded-full">
-                  {activePhotoIndex + 1} of {activeModalAlbum.gallery.length}
-                </span>
+                {/* Floating Photo Counter Badge */}
+                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#0F2B5B] border border-slate-200 shadow-md">
+                  Photo {activePhotoIndex + 1} of {activeModalAlbum.gallery.length}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Photo Narrative */}
+            <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+                <span>{activeModalAlbum.photos} photos • {activeModalAlbum.videos} videos</span>
               </div>
 
-              {/* Thumbnails Row */}
-              <div className="grid grid-cols-5 gap-2.5 pt-1">
-                {activeModalAlbum.gallery.map((imgSrc, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActivePhotoIndex(i)}
-                    className={`aspect-video rounded-xl overflow-hidden bg-slate-100 border-2 transition-all cursor-pointer ${
-                      activePhotoIndex === i ? 'border-[#0F4C3A] ring-2 ring-[#0F4C3A]/20 scale-102' : 'border-transparent opacity-75 hover:opacity-100'
-                    }`}
-                  >
-                    <img src={imgSrc} alt={`Thumbnail ${i}`} className="w-full h-full object-cover" />
-                  </button>
-                ))}
-              </div>
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+                {activeModalAlbum.title}
+              </h4>
 
-              {/* Album Description */}
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed pt-1">
+              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+                {activeModalAlbum.subtitle}
+              </p>
+
+              <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-medium">
                 {activeModalAlbum.description}
               </p>
 
-            </div>
+              {/* Archival Callout */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Strategic Initiative Record</span>
+                <span className="leading-relaxed font-medium">Chief Michael Ade.Ojo Foundation official archival record documenting grassroots impact, community empowerment, and institutional progress.</span>
+              </div>
 
-            {/* Modal Footer with Share Button */}
-            <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs text-slate-500 font-medium">
-                Chief Michael Ade.Ojo Foundation Media Archive
-              </span>
-              <div className="flex items-center gap-2">
+              {/* Action Buttons: Share & Close */}
+              <div className="flex items-center gap-3 pt-1">
                 <button
                   type="button"
                   onClick={() => handleShare(activeModalAlbum.title)}
-                  className="px-3.5 py-1.5 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  {copiedLink ? <Check size={14} className="text-emerald-600" /> : <Share2 size={14} />}
-                  <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
+                  {copiedLink ? <Check size={15} className="text-emerald-600" /> : <Share2 size={15} />}
+                  <span>{copiedLink ? 'Link Copied!' : 'Share Album'}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveModalAlbum(null)}
-                  className="px-4 py-1.5 bg-[#0F2B5B] hover:bg-[#0F4C3A] text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                  className="px-5 py-2 bg-[#06402B] hover:bg-[#042A1D] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  Close
+                  Done
                 </button>
               </div>
             </div>
 
           </div>
-        </div>
+
+          {/* 3. Modal Bottom Thumbnail Strip Dock with Smooth Scroll & Nav Controls */}
+          <div className="shrink-0 py-3 sm:py-3.5 px-4 bg-white/95 border-t border-slate-200/80 backdrop-blur-md flex items-center justify-center gap-2 sm:gap-3 z-10 shadow-xs">
+            <button
+              type="button"
+              onClick={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : activeModalAlbum.gallery.length - 1))}
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              title="Previous slide"
+            >
+              <ChevronLeft size={16} strokeWidth={2.4} />
+            </button>
+
+            <div 
+              ref={albumThumbnailContainerRef}
+              className="flex items-center gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1"
+            >
+              {activeModalAlbum.gallery.map((imgSrc, idx) => (
+                <button
+                  key={idx}
+                  ref={(el) => (albumThumbnailRefs.current[idx] = el)}
+                  type="button"
+                  onClick={() => setActivePhotoIndex(idx)}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                    activePhotoIndex === idx
+                      ? 'border-[#EA580C] ring-4 ring-[#EA580C]/30 scale-105 sm:scale-110 shadow-lg shadow-[#EA580C]/20'
+                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#0F4C3A] hover:scale-105'
+                  }`}
+                  title={`View photo ${idx + 1}`}
+                >
+                  <img src={imgSrc} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover object-center" />
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setActivePhotoIndex((prev) => (prev < activeModalAlbum.gallery.length - 1 ? prev + 1 : 0))}
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              title="Next slide"
+            >
+              <ChevronRight size={16} strokeWidth={2.4} />
+            </button>
+          </div>
+
+        </div>,
+        document.body
       )}
 
 
       {/* ══════════════════════════════════════════════════════════════
-          5. INTERACTIVE VIDEO PLAYER MODAL
+          5. INTERACTIVE VIDEO PLAYER MODAL - FULL SCREEN 100VH SHOWCASE
       ══════════════════════════════════════════════════════════════ */}
-      {activeModalVideo && (
+      {activeModalVideo && typeof document !== 'undefined' && createPortal(
         <div 
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 animate-fade-in"
-          onClick={() => setActiveModalVideo(null)}
+          className="fixed inset-0 z-[9999] h-screen h-[100dvh] w-screen bg-slate-50 text-slate-900 flex flex-col overflow-hidden animate-fade-in font-sans"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeModalVideo.title}
         >
-          <div 
-            className="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-hidden shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="px-5 sm:px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-              <div>
-                <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold border mb-1 ${activeModalVideo.badgeClass}`}>
-                  {activeModalVideo.badgeIcon}
-                  <span>{activeModalVideo.category}</span>
-                </span>
-                <h3 className="text-base sm:text-lg font-black text-[#0F2B5B]">
-                  {activeModalVideo.title}
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActiveModalVideo(null)}
-                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <X size={18} />
-              </button>
-            </div>
+          {/* Subtle ambient glow effects */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Video Player Display Container */}
-            <div className="p-4 sm:p-6 overflow-y-auto space-y-4">
-              <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-lg">
+          {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
+          <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              
+              {/* Left: Back Button + Breadcrumbs + Video Title */}
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveModalVideo(null)}
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  title="Back to Documentaries"
+                >
+                  <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
+                  <span className="font-sans">Back</span>
+                </button>
+
+                <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
+
+                {/* Breadcrumbs with vertical orange indicator bar */}
+                <div className="min-w-0 flex flex-col justify-center">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveModalVideo(null)}
+                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                    >
+                      Home
+                    </button>
+                    <ChevronRight size={13} className="text-slate-400 shrink-0" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveModalVideo(null)}
+                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                    >
+                      Resources
+                    </button>
+                    <ChevronRight size={13} className="text-slate-400 shrink-0" />
+                    <span className="text-[#0F2B5B] font-bold truncate">Documentary Showcase</span>
+                  </div>
+
+                  {/* Title and Category Badge */}
+                  <div className="flex items-center gap-2.5 mt-0.5">
+                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                      {activeModalVideo.title}
+                    </h3>
+                    <span className={`hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border ${activeModalVideo.badgeClass}`}>
+                      {activeModalVideo.badgeIcon}
+                      <span>{activeModalVideo.category}</span>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right: Duration + Close Button */}
+              <div className="flex items-center gap-3 shrink-0">
+                <div className="hidden md:flex flex-col items-end text-right">
+                  <span className="text-xs font-extrabold text-[#0F2B5B] flex items-center gap-1.5">
+                    <Clock size={13} className="text-[#EA580C]" /> {activeModalVideo.duration}
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveModalVideo(null)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  title="Close video (Esc)"
+                >
+                  <X size={18} strokeWidth={2.4} />
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 2. Modal Center Showcase - Takes 100% remaining vertical space */}
+          <div className="flex-1 min-h-0 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4 sm:py-6 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center overflow-y-auto z-10">
+            
+            {/* Left Video Player Stage (7 Cols) */}
+            <div className="md:col-span-7 h-full max-h-[56vh] sm:max-h-[62vh] lg:max-h-[66vh] flex items-center justify-center relative">
+              <div className="relative w-full aspect-video max-w-2xl rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 border border-slate-200/90 shadow-2xl group flex items-center justify-center">
                 <img
                   src={activeModalVideo.thumbnail}
                   alt={activeModalVideo.title}
                   className="w-full h-full object-cover"
                 />
-                
+
                 {/* Simulated Player Controls Overlay */}
-                <div className="absolute inset-0 bg-black/40 flex flex-col justify-between p-4 sm:p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50 flex flex-col justify-between p-4 sm:p-6">
                   <div className="flex items-center justify-between text-white text-xs font-semibold">
-                    <span className="bg-black/60 px-3 py-1 rounded-full backdrop-blur-xs flex items-center gap-1.5">
-                      <Clock size={12} /> Duration: {activeModalVideo.duration}
+                    <span className="bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 border border-white/10">
+                      <Clock size={12} className="text-[#EA580C]" /> Duration: {activeModalVideo.duration}
                     </span>
-                    <span className="bg-black/60 px-3 py-1 rounded-full backdrop-blur-xs">
+                    <span className="bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10 font-bold">
                       1080p HD
                     </span>
                   </div>
 
-                  {/* Big Play Button */}
+                  {/* Big Play Button with CMAOF Orange */}
                   <div className="self-center">
                     <button 
-                      onClick={() => alert('Streaming video preview...')}
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#EA580C] hover:bg-[#F97316] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer"
+                      type="button"
+                      onClick={() => alert('Streaming documentary presentation...')}
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#EA580C] hover:bg-[#c2410c] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer ring-4 ring-white/30"
+                      title="Play Documentary"
                     >
                       <Play size={30} className="fill-white translate-x-1" />
                     </button>
@@ -754,51 +986,77 @@ const ResourcesMediaAlbums = () => {
                   {/* Bottom Player Bar */}
                   <div className="space-y-2">
                     <div className="w-full bg-white/30 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-[#EA580C] h-full w-[38%]" />
+                      <div className="bg-gradient-to-r from-[#EA580C] to-[#F97316] h-full w-[42%]" />
                     </div>
                     <div className="flex items-center justify-between text-white text-[11px] font-medium">
-                      <span>01:24 / {activeModalVideo.duration}</span>
-                      <span>Chief Michael Ade.Ojo Foundation Productions</span>
+                      <span>01:45 / {activeModalVideo.duration}</span>
+                      <span className="font-semibold text-white/90">Chief Michael Ade.Ojo Foundation Productions</span>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Video Description */}
-              <div className="space-y-1 pt-1">
-                <h4 className="text-sm font-bold text-[#0F2B5B]">About this story:</h4>
-                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                  {activeModalVideo.desc} This recorded field documentary illustrates the measurable impact achieved through our strategic partnerships and active community interventions.
-                </p>
-              </div>
             </div>
 
-            {/* Modal Footer */}
-            <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs text-slate-500 font-medium">
-                CMAOF Documentary Archives
-              </span>
-              <div className="flex items-center gap-2">
+            {/* Right Video Narrative (5 Cols) */}
+            <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+                <span>{activeModalVideo.category}</span>
+              </div>
+
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+                {activeModalVideo.title}
+              </h4>
+
+              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+                Field Impact & Community Documentary
+              </p>
+
+              <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-medium">
+                {activeModalVideo.desc} This recorded field documentary illustrates the measurable impact achieved through our strategic partnerships and active community interventions.
+              </p>
+
+              {/* Strategic Callout */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Production Provenance</span>
+                <span className="leading-relaxed font-medium">Official Chief Michael Ade.Ojo Foundation field media production. Recorded in high-definition to preserve grassroots stories of lasting transformation.</span>
+              </div>
+
+              {/* Action Buttons: Share & Close */}
+              <div className="flex items-center gap-3 pt-1">
                 <button
                   type="button"
                   onClick={() => handleShare(activeModalVideo.title)}
-                  className="px-3.5 py-1.5 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  {copiedLink ? <Check size={14} className="text-emerald-600" /> : <Share2 size={14} />}
-                  <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
+                  {copiedLink ? <Check size={15} className="text-emerald-600" /> : <Share2 size={15} />}
+                  <span>{copiedLink ? 'Link Copied!' : 'Share Documentary'}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveModalVideo(null)}
-                  className="px-4 py-1.5 bg-[#0F2B5B] hover:bg-[#0F4C3A] text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                  className="px-5 py-2 bg-[#06402B] hover:bg-[#042A1D] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  Close
+                  Done
                 </button>
               </div>
             </div>
 
           </div>
-        </div>
+
+          {/* 3. Modal Bottom Status Bar */}
+          <div className="shrink-0 py-3 sm:py-3.5 px-6 sm:px-12 bg-white/95 border-t border-slate-200/80 backdrop-blur-md flex items-center justify-between z-10 shadow-xs">
+            <span className="text-xs text-[#06402B] font-bold">
+              Chief Michael Ade.Ojo Foundation Documentary Archives
+            </span>
+            <div className="flex items-center gap-4 text-xs font-semibold text-slate-500">
+              <span>Full HD 1080p</span>
+              <span>•</span>
+              <span>Official Media Archive</span>
+            </div>
+          </div>
+
+        </div>,
+        document.body
       )}
 
     </section>

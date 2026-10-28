@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { founderImages } from '../assets/founderImages';
 
 const BeneficiaryStories = () => {
   const [activeStoryIdx, setActiveStoryIdx] = useState(0);
@@ -35,10 +36,10 @@ const BeneficiaryStories = () => {
   const newsItems = [
     {
       id: 1,
-      image: '/images/pillar_education.jpg',
+      image: founderImages.founder3,
       date: '12 Oct 2026',
-      title: 'CMAOF Supports 200 Students with New Scholarships',
-      link: '/news',
+      title: 'Founder Chief Michael Ade.Ojo Inspects Elizade University & 200 Scholarship Awards',
+      link: '/about',
     },
     {
       id: 2,

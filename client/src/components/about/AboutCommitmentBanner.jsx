@@ -12,6 +12,8 @@ const AboutCommitmentBanner = () => {
 
       {/* Dark Forest Green Gradient Overlay: keeps children clear on the left, dark background for text & buttons */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#052e22]/90 to-[#032118]/95 pointer-events-none" />
+      {/* Mobile vertical overlay for small screens to ensure full text readability */}
+      <div className="absolute inset-0 bg-[#052e22]/90 md:hidden pointer-events-none" />
 
       {/* Content Container */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-7 md:py-8">
@@ -24,13 +26,13 @@ const AboutCommitmentBanner = () => {
 
             {/* Eyebrow, Heading, Body */}
             <div>
-              <span className="block text-xs font-bold text-white uppercase tracking-wider mb-1">
+              <span className="block text-xs font-bold text-emerald-300 uppercase tracking-wider mb-1 drop-shadow-xs">
                 OUR COMMITMENT
               </span>
-              <h2 className="text-xl sm:text-2xl md:text-[26px] font-bold text-white tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-[26px] font-bold text-white tracking-tight leading-tight drop-shadow-xs">
                 Stronger People. Brighter Communities.
               </h2>
-              <p className="text-white/90 text-xs sm:text-[13px] leading-relaxed max-w-xl mt-1">
+              <p className="text-white font-medium text-xs sm:text-[13px] leading-relaxed max-w-xl mt-1 drop-shadow-xs">
                 Join us in creating opportunities, improving lives and strengthening communities across Nigeria.
               </p>
             </div>

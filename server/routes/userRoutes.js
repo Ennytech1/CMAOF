@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
   authUser,
+  verifyOtp,
   registerUser,
   getUserProfile,
   updateUserProfile,
@@ -14,6 +15,7 @@ const { validateRegister, validateLogin } = require('../middleware/validator');
 
 router.post('/', validateRegister, registerUser);
 router.post('/login', validateLogin, authUser);
+router.post('/verify-otp', verifyOtp);
 router.get('/logout', logout);
 router.post('/forgotpassword', forgotPassword);
 router.put('/resetpassword/:resettoken', resetPassword);

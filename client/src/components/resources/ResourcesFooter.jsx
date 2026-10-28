@@ -46,16 +46,27 @@ import CmaofLogo from '../CmaofLogo';
 const ResourcesFooter = ({ onOpenDonate }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    if (newsletterEmail.trim()) {
+    if (newsletterEmail.trim() && newsletterEmail.includes('@')) {
+      try {
+        await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: newsletterEmail.trim(), source: 'resources_footer' }),
+        });
+      } catch (err) {
+        console.warn('Newsletter sync notice:', err.message);
+      }
       toast.success('Thank you for subscribing to CMAOF updates!');
       setNewsletterEmail('');
+    } else {
+      toast.error('Please enter a valid email address.');
     }
   };
 
   return (
-    <footer className="w-full font-sans bg-white border-t-0">
+    <footer className="w-full font-sans bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 sm:pt-8 pb-6">
         
         {/* Main Content Row: Logo, Quick Links, Connect With Us, Divider, Subscribe */}
@@ -104,8 +115,8 @@ const ResourcesFooter = ({ onOpenDonate }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/get-involved" className="hover:text-[#06402B] transition-colors">
-                    Get Involved
+                  <Link to="/event" className="hover:text-[#06402B] transition-colors">
+                    Event
                   </Link>
                 </li>
               </ul>
@@ -123,13 +134,12 @@ const ResourcesFooter = ({ onOpenDonate }) => {
                   </Link>
                 </li>
                 <li>
-                  <button 
-                    type="button"
-                    onClick={onOpenDonate} 
-                    className="hover:text-[#06402B] transition-colors text-left cursor-pointer"
+                  <Link 
+                    to="/donate" 
+                    className="hover:text-[#06402B] transition-colors text-left"
                   >
                     Donate
-                  </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -228,7 +238,7 @@ const ResourcesFooter = ({ onOpenDonate }) => {
         {/* Bottom Legal Copyright Bar */}
         <div className="border-t border-[#E2E8F0] mt-8 pt-4 pb-2 flex flex-col md:flex-row items-center justify-between text-xs text-[#5A6E85] gap-3">
           <p className="text-[#5A6E85] text-xs font-normal">
-            © 2025 Chief Michael Ade.Ojo Foundation. All rights reserved.
+            © {new Date().getFullYear()} Chief Michael Ade.Ojo Foundation. All rights reserved.
           </p>
 
           <div className="flex items-center flex-wrap gap-2 text-xs text-[#5A6E85]">

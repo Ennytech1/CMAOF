@@ -1185,13 +1185,13 @@ const ResourcesPage = ({ onOpenDonate }) => {
               <div className="w-1.5 self-stretch min-h-[64px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
               
               <div className="space-y-1">
-                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.16em] text-white/90 font-sans block">
+                <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.16em] text-emerald-300 font-sans block drop-shadow-xs">
                   BE PART OF THE CHANGE
                 </span>
-                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-black text-white tracking-tight leading-snug font-sans">
+                <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-black text-white tracking-tight leading-snug font-sans drop-shadow-xs">
                   Knowledge Today. Stronger Communities Tomorrow.
                 </h3>
-                <p className="text-white/85 text-xs sm:text-[13.5px] leading-relaxed font-normal max-w-2xl">
+                <p className="text-white text-xs sm:text-[13.5px] leading-relaxed font-medium max-w-2xl drop-shadow-xs">
                   Your support helps us document, share and scale solutions that create lasting impact across Nigeria.
                 </p>
               </div>

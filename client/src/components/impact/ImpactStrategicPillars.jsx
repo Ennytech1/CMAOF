@@ -204,7 +204,7 @@ const ImpactStrategicPillars = () => {
                     {pillar.pathway}
                   </div>
 
-                  <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed font-normal">
+                  <p className="text-slate-700 text-sm leading-relaxed font-medium">
                     {pillar.description}
                   </p>
                 </div>

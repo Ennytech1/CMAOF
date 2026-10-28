@@ -1,0 +1,21 @@
+{
+  "name": "cmaof-foundation",
+  "version": "1.0.0",
+  "description": "Chief Michael Ade.Ojo Foundation (CMAOF) Full-Stack Application",
+  "scripts": {
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "build:client": "npm run build --prefix client",
+    "start:server": "npm run start --prefix server"
+  },
+  "keywords": [
+    "cmaof",
+    "foundation",
+    "ngo",
+    "react",
+    "express",
+    "node"
+  ],
+  "author": "Chief Michael Ade.Ojo Foundation",
+  "license": "ISC"
+}

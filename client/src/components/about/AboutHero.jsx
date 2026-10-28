@@ -1,47 +1,50 @@
 import React from 'react';
 import { ArrowRight, Play, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import founderAboutHero from '../../assets/founder_about_hero.jpg';
 
 const AboutHero = ({ onWatchStory }) => {
   return (
-    <section className="relative w-full overflow-hidden bg-white" style={{ minHeight: '520px' }}>
+    <section className="relative w-full overflow-hidden bg-white min-h-[580px] lg:min-h-[640px] flex items-center">
       
-      {/* ── Full-bleed background image featuring Chief Michael Ade.Ojo on the right ── */}
+      {/* ── Professional Background image featuring Chief Michael Ade.Ojo seamlessly integrated ── */}
       <div 
-        className="absolute inset-0 bg-cover bg-right sm:bg-[position:82%_center] bg-no-repeat"
-        style={{ backgroundImage: `url('/images/about_hero_bg.jpg')` }}
+        className="absolute inset-0 bg-no-repeat bg-cover bg-[center_top] sm:bg-[right_center] lg:bg-[right_top] pointer-events-none"
+        style={{ 
+          backgroundImage: `url("${founderAboutHero}")`,
+        }}
         aria-hidden="true"
       />
 
-      {/* ── Exact Linear Gradient Overlay matching Home Hero ── */}
+      {/* ── Soft linear gradient overlay smoothly blending text area with the bright executive backdrop ── */}
       <div 
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.78) 8%, rgba(255,255,255,0.97) 20%, rgba(255,255,255,0.97) 38%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.25) 58%, transparent 68%)',
+            'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 35%, rgba(255,255,255,0.90) 48%, rgba(255,255,255,0.30) 62%, transparent 75%)',
         }}
         aria-hidden="true"
       />
-      {/* Mobile vertical gradient fallback */}
+      {/* Mobile vertical gradient fallback for maximum readability */}
       <div 
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.40) 100%)',
+            'linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 65%, rgba(255,255,255,0.40) 100%)',
         }}
         aria-hidden="true"
       />
 
       {/* ── Content wrapper with balanced padding matching Home Hero ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[98px] sm:pt-[115px] lg:pt-[128px] pb-14 sm:pb-16 lg:pb-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[104px] sm:pt-[118px] lg:pt-[132px] pb-14 sm:pb-16 lg:pb-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* ── Left Column: Breadcrumb, Headline & CTAs (col-span-7) ── */}
-          <div className="lg:col-span-7 space-y-5">
+          {/* ── Left Column: Breadcrumb, Headline, Description, CTAs & Quote (col-span-7) ── */}
+          <div className="lg:col-span-7 xl:col-span-6 space-y-5">
             
             {/* Top Breadcrumb Navigation */}
             <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0F2B5B]">
-              <div className="w-1 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+              <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
               <Link to="/" className="hover:text-[#0F4C3A] transition-colors">Home</Link>
               <ChevronRight size={14} className="text-slate-400" />
               <span className="text-[#0F2B5B]">About Us</span>
@@ -71,7 +74,7 @@ const AboutHero = ({ onWatchStory }) => {
             </p>
 
             {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <div className="flex flex-wrap items-center gap-3.5 pt-1">
               <a
                 href="#purpose-vision"
                 className="bg-[#0F4C3A] hover:bg-[#14634C] text-white font-extrabold text-xs sm:text-sm px-7 py-3.5 rounded-full inline-flex items-center gap-2 shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
@@ -81,6 +84,7 @@ const AboutHero = ({ onWatchStory }) => {
               </a>
 
               <button
+                type="button"
                 onClick={onWatchStory}
                 className="border-2 border-[#0F4C3A] bg-white text-[#0F4C3A] hover:bg-[#0F4C3A]/5 font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full inline-flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs"
               >
@@ -93,36 +97,8 @@ const AboutHero = ({ onWatchStory }) => {
 
           </div>
 
-          {/* ── Right Column: Floating Quote Card with Linear Gradient Backdrop (col-span-5) ── */}
-          <div className="lg:col-span-5 flex justify-end items-end pt-6 lg:pt-0">
-            <div 
-              className="rounded-3xl p-6 sm:p-7 shadow-2xl border border-white/80 max-w-xs sm:max-w-sm"
-              style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
-              }}
-            >
-              <div className="space-y-3">
-                {/* Green Quotation Mark */}
-                <span className="text-4xl sm:text-5xl font-serif font-black text-[#0F4C3A] leading-none select-none block">
-                  “
-                </span>
-
-                <p className="text-slate-700 text-xs sm:text-sm italic font-semibold leading-relaxed">
-                  When we empower people and strengthen communities, we build a brighter Nigeria for generations to come."
-                </p>
-
-                <div className="pt-2">
-                  <span className="font-extrabold text-xs text-[#0F2B5B] uppercase tracking-wider block font-sans">
-                    CHIEF MICHAEL ADE.OJO
-                  </span>
-                  {/* Horizontal Orange Accent Line */}
-                  <div className="w-12 h-1 bg-[#EA580C] rounded-full mt-2" />
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* ── Right Column: Free space allowing the founder portrait to be fully seen ── */}
+          <div className="hidden lg:block lg:col-span-5 xl:col-span-6" />
 
         </div>
       </div>

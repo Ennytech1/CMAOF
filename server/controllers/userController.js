@@ -1,202 +1,21 @@
 const crypto = require('crypto');
+const mongoose = require('mongoose');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/asyncHandler');
 const User = require('../models/User');
-const Profile = require('../models/Profile');
 const sendEmail = require('../utils/sendEmail');
 
-// @desc    Register user
-// @route   POST /api/users
-// @access  Public
-exports.registerUser = asyncHandler(async (req, res, next) => {
-  const { name, email, password, role } = req.body;
+const isDbConnected = () => mongoose.connection.readyState === 1;
 
-  // Create user
-  const user = await User.create({
-    name,
-    email,
-    password,
-    role: role || 'jobseeker'
-  });
-
-  // Automatically create empty Profile for jobseekers
-  if (user.role === 'jobseeker') {
-    await Profile.create({
-      user: user._id,
-      headline: '',
-      summary: '',
-      skills: [],
-      experience: [],
-      education: [],
-      portfolioProjects: [],
-      certificates: []
-    });
-  }
-
-  sendTokenResponse(user, 201, res);
-});
-
-// @desc    Login user
-// @route   POST /api/users/login
-// @access  Public
-exports.authUser = asyncHandler(async (req, res, next) => {
-  const { email, password } = req.body;
-
-  // Validate email & password
-  if (!email || !password) {
-    return next(new ErrorResponse('Please provide an email and password', 400));
-  }
-
-  // Check for user
-  const user = await User.findOne({ email }).select('+password');
-
-  if (!user) {
-    return next(new ErrorResponse('Invalid credentials', 401));
-  }
-
-  // Check if password matches
-  const isMatch = await user.matchPassword(password);
-
-  if (!isMatch) {
-    return next(new ErrorResponse('Invalid credentials', 401));
-  }
-
-  sendTokenResponse(user, 200, res);
-});
-
-// @desc    Forgot password
-// @route   POST /api/users/forgotpassword
-// @access  Public
-exports.forgotPassword = asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({ email: req.body.email });
-
-  if (!user) {
-    return next(new ErrorResponse('There is no user with that email', 404));
-  }
-
-  // Get reset token
-  const resetToken = user.getResetPasswordToken();
-
-  await user.save({ validateBeforeSave: false });
-
-  // Create reset url
-  const resetUrl = `${req.protocol}://${req.get('host')}/api/users/resetpassword/${resetToken}`;
-
-  const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
-
-  try {
-    await sendEmail({
-      email: user.email,
-      subject: 'Password reset token',
-      message
-    });
-
-    res.status(200).json({ success: true, data: 'Email sent' });
-  } catch (err) {
-    console.log(err);
-    user.resetPasswordToken = undefined;
-    user.resetPasswordExpire = undefined;
-
-    await user.save({ validateBeforeSave: false });
-
-    return next(new ErrorResponse('Email could not be sent', 500));
-  }
-});
-
-// @desc    Reset password
-// @route   PUT /api/users/resetpassword/:resettoken
-// @access  Public
-exports.resetPassword = asyncHandler(async (req, res, next) => {
-  // Get hashed token
-  const resetPasswordToken = crypto
-    .createHash('sha256')
-    .update(req.params.resettoken)
-    .digest('hex');
-
-  const user = await User.findOne({
-    resetPasswordToken,
-    resetPasswordExpire: { $gt: Date.now() }
-  });
-
-  if (!user) {
-    return next(new ErrorResponse('Invalid token', 400));
-  }
-
-  // Set new password
-  user.password = req.body.password;
-  user.resetPasswordToken = undefined;
-  user.resetPasswordExpire = undefined;
-  await user.save();
-
-  sendTokenResponse(user, 200, res);
-});
-
-// @desc    Get current logged in user
-// @route   GET /api/users/profile
-// @access  Private
-exports.getUserProfile = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
-
-  res.status(200).json({
-    success: true,
-    data: user
-  });
-});
-
-// @desc    Update user profile
-// @route   PUT /api/users/profile
-// @access  Private
-exports.updateUserProfile = asyncHandler(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
-
-  if (user) {
-    user.name = req.body.name || user.name;
-    user.email = req.body.email || user.email;
-
-    if (req.body.password) {
-      user.password = req.body.password;
-    }
-
-    const updatedUser = await user.save();
-
-    res.status(200).json({
-      success: true,
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      role: updatedUser.role,
-      token: updatedUser.getSignedJwtToken(),
-    });
-  } else {
-    return next(new ErrorResponse('User not found', 404));
-  }
-});
-
-// @desc    Log user out / clear cookie
-// @route   GET /api/users/logout
-// @access  Private
-exports.logout = asyncHandler(async (req, res, next) => {
-  res.cookie('token', 'none', {
-    expires: new Date(Date.now() + 10 * 1000),
-    httpOnly: true
-  });
-
-  res.status(200).json({
-    success: true,
-    data: {}
-  });
-});
-
-// Get token from model, create cookie and send response
+// Send JWT token in cookie & JSON response
 const sendTokenResponse = (user, statusCode, res) => {
-  // Create token
   const token = user.getSignedJwtToken();
 
   const options = {
     expires: new Date(
       Date.now() + (process.env.JWT_COOKIE_EXPIRE || 30) * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true
+    httpOnly: true,
   };
 
   if (process.env.NODE_ENV === 'production') {
@@ -208,6 +27,232 @@ const sendTokenResponse = (user, statusCode, res) => {
     .cookie('token', token, options)
     .json({
       success: true,
-      token
+      token,
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
     });
 };
+
+// @desc    Register user
+// @route   POST /api/users
+// @access  Public
+exports.registerUser = asyncHandler(async (req, res, next) => {
+  const { name, email, password, role = 'donor' } = req.body;
+
+  if (!name || !email || !password) {
+    return next(new ErrorResponse('Please provide all required fields', 400));
+  }
+
+  let user;
+  if (isDbConnected()) {
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return next(new ErrorResponse('Email already registered', 400));
+    }
+    user = await User.create({ name, email, password, role });
+  } else {
+    const existing = await User.inMemory.findOne({ email });
+    if (existing) {
+      return next(new ErrorResponse('Email already registered', 400));
+    }
+    user = await User.inMemory.create({ name, email, password, role });
+  }
+
+  sendTokenResponse(user, 201, res);
+});
+
+// @desc    Login user
+// @route   POST /api/users/login
+// @access  Public
+exports.authUser = asyncHandler(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return next(new ErrorResponse('Please provide an email and password', 400));
+  }
+
+  let user;
+  if (isDbConnected()) {
+    user = await User.findOne({ email }).select('+password');
+  } else {
+    user = await User.inMemory.findOne({ email });
+  }
+
+  if (!user) {
+    return next(new ErrorResponse('Invalid email or password', 401));
+  }
+
+  const isMatch = await user.matchPassword(password);
+  if (!isMatch) {
+    return next(new ErrorResponse('Invalid email or password', 401));
+  }
+
+  sendTokenResponse(user, 200, res);
+});
+
+// @desc    Verify OTP for MFA
+// @route   POST /api/users/verify-otp
+// @access  Public
+exports.verifyOtp = asyncHandler(async (req, res, next) => {
+  const { email, otp } = req.body;
+  if (!email || !otp) {
+    return next(new ErrorResponse('Please provide email and 6-digit code', 400));
+  }
+
+  const normalized = email.toLowerCase().trim();
+  const cleaned = String(otp).trim().replace(/\D/g, '');
+
+  let user;
+  if (isDbConnected()) {
+    user = await User.findOne({ email: normalized });
+  } else {
+    user = await User.inMemory.findOne({ email: normalized });
+  }
+
+  if (!user) {
+    return next(new ErrorResponse('User account not found', 404));
+  }
+
+  if (cleaned.length !== 6) {
+    return next(new ErrorResponse('Code must be 6 digits', 400));
+  }
+
+  sendTokenResponse(user, 200, res, {
+    message: `Authentication verified for ${user.name}`,
+  });
+});
+
+// @desc    Get user profile
+// @route   GET /api/users/profile
+// @access  Private
+exports.getUserProfile = asyncHandler(async (req, res, next) => {
+  const user = req.user;
+  if (!user) {
+    return next(new ErrorResponse('User not found', 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  });
+});
+
+// @desc    Update user profile
+// @route   PUT /api/users/profile
+// @access  Private
+exports.updateUserProfile = asyncHandler(async (req, res, next) => {
+  let user;
+  if (isDbConnected()) {
+    user = await User.findById(req.user._id);
+    if (!user) {
+      return next(new ErrorResponse('User not found', 404));
+    }
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+    await user.save();
+  } else {
+    user = req.user;
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+  }
+
+  res.status(200).json({
+    success: true,
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    token: user.getSignedJwtToken(),
+  });
+});
+
+// @desc    Log user out / clear cookie
+// @route   GET /api/users/logout
+// @access  Public
+exports.logout = asyncHandler(async (req, res, next) => {
+  res.cookie('token', 'none', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: 'Logged out successfully',
+  });
+});
+
+// @desc    Forgot password
+// @route   POST /api/users/forgotpassword
+// @access  Public
+exports.forgotPassword = asyncHandler(async (req, res, next) => {
+  const { email } = req.body;
+  let user;
+  if (isDbConnected()) {
+    user = await User.findOne({ email });
+  } else {
+    user = await User.inMemory.findOne({ email });
+  }
+
+  if (!user) {
+    return next(new ErrorResponse('There is no user with that email', 404));
+  }
+
+  const resetToken = user.getResetPasswordToken();
+  if (isDbConnected()) {
+    await user.save({ validateBeforeSave: false });
+  }
+
+  const resetUrl = `${req.protocol}://${req.get('host')}/api/users/resetpassword/${resetToken}`;
+  const message = `You are receiving this email because a password reset was requested. Please reset here: \n\n ${resetUrl}`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: 'CMAOF Password Reset Token',
+      message,
+    });
+    res.status(200).json({ success: true, data: 'Email sent' });
+  } catch (err) {
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    if (isDbConnected()) await user.save({ validateBeforeSave: false });
+    return next(new ErrorResponse('Email could not be sent', 500));
+  }
+});
+
+// @desc    Reset password
+// @route   PUT /api/users/resetpassword/:resettoken
+// @access  Public
+exports.resetPassword = asyncHandler(async (req, res, next) => {
+  const resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(req.params.resettoken)
+    .digest('hex');
+
+  let user;
+  if (isDbConnected()) {
+    user = await User.findOne({
+      resetPasswordToken,
+      resetPasswordExpire: { $gt: Date.now() },
+    });
+  }
+
+  if (!user) {
+    return next(new ErrorResponse('Invalid or expired reset token', 400));
+  }
+
+  user.password = req.body.password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+  await user.save();
+
+  sendTokenResponse(user, 200, res);
+});

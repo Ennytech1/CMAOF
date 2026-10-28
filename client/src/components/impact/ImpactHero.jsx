@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Download, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { founderImages } from '../../assets/founderImages';
 
 const ImpactHero = () => {
   return (
@@ -13,12 +14,12 @@ const ImpactHero = () => {
         aria-hidden="true"
       />
 
-      {/* ── Exact Linear Gradient Overlay matching reference screenshot ── */}
+      {/* ── High-Contrast Linear Gradient Overlay: ensures 100% solid, crisp white backing behind all text ── */}
       <div
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.78) 8%, rgba(255,255,255,0.97) 20%, rgba(255,255,255,0.97) 38%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.25) 58%, transparent 68%)',
+            'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 32%, rgba(255,255,255,0.92) 46%, rgba(255,255,255,0.40) 60%, transparent 72%)',
         }}
         aria-hidden="true"
       />
@@ -27,7 +28,7 @@ const ImpactHero = () => {
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.40) 100%)',
+            'linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.96) 65%, rgba(255,255,255,0.40) 100%)',
         }}
         aria-hidden="true"
       />
@@ -111,11 +112,17 @@ const ImpactHero = () => {
               </p>
 
               {/* Attribution & Orange Underline Bar */}
-              <div className="pt-3">
-                <span className="block text-[11px] font-bold text-[#0F2B5B] uppercase tracking-wider">
-                  CHIEF MICHAEL ADE.OJO
-                </span>
-                <div className="w-10 h-1 bg-[#EA580C] rounded-full mt-2" />
+              <div className="pt-3 flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#064E3B] shrink-0 shadow-xs bg-white">
+                  <img src={founderImages.founder5} alt="Chief Michael Ade.Ojo" className="w-full h-full object-cover object-top" />
+                </div>
+                <div>
+                  <span className="block text-[11px] font-bold text-[#0F2B5B] uppercase tracking-wider">
+                    CHIEF MICHAEL ADE.OJO
+                  </span>
+                  <span className="text-[10px] text-[#064E3B] font-semibold block">Founding Visionary</span>
+                  <div className="w-8 h-0.5 bg-[#EA580C] rounded-full mt-1" />
+                </div>
               </div>
             </div>
           </div>

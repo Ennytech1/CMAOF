@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Target, Eye, Users } from 'lucide-react';
+import { founderImages } from '../assets/founderImages';
 
 const FounderIntro = () => {
   return (
@@ -9,18 +10,18 @@ const FounderIntro = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
           {/* ── Left Column: Founder Portrait ── */}
-          <div className="lg:col-span-3 flex justify-center">
-            <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none aspect-[4/4.5] sm:aspect-[4/5] lg:aspect-[3.8/4.8] rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg border border-slate-100 group">
+          <div className="lg:col-span-4 flex justify-center">
+            <div className="relative w-full max-w-[300px] sm:max-w-[340px] aspect-[4/4.8] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 group bg-slate-100">
               <img
-                src="/images/founder_new.jpg"
-                alt="Chief Michael Ade.Ojo"
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                src={founderImages.founder1}
+                alt="Chief Michael Ade.Ojo, OON"
+                className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
               />
             </div>
           </div>
 
           {/* ── Middle Column: Story & CTA ── */}
-          <div className="lg:col-span-5 space-y-4">
+          <div className="lg:col-span-4 space-y-4">
             <span className="text-[#EA580C] font-extrabold text-xs tracking-widest uppercase block">
               OUR FOUNDER
             </span>

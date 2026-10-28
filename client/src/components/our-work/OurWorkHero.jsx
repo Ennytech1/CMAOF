@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, X } from 'lucide-react';
 
@@ -33,6 +34,24 @@ const BarChartIcon = () => (
 const OurWorkHero = () => {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
+  // Body scroll lock and Escape key listener
+  useEffect(() => {
+    if (videoModalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setVideoModalOpen(false);
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [videoModalOpen]);
+
   return (
     <section className="relative w-full overflow-hidden bg-white" style={{ minHeight: '440px' }}>
       
@@ -43,12 +62,12 @@ const OurWorkHero = () => {
         aria-hidden="true"
       />
 
-      {/* ── Exact Linear Gradient Overlay matching reference screenshot ── */}
+      {/* ── High-Contrast Linear Gradient Overlay: ensures 100% solid, crisp white backing behind all text ── */}
       <div
         className="absolute inset-0 hidden md:block pointer-events-none"
         style={{
           background:
-            'linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.78) 8%, rgba(255,255,255,0.97) 20%, rgba(255,255,255,0.97) 38%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0.25) 58%, transparent 68%)',
+            'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 32%, rgba(255,255,255,0.92) 46%, rgba(255,255,255,0.40) 60%, transparent 72%)',
         }}
         aria-hidden="true"
       />
@@ -57,7 +76,7 @@ const OurWorkHero = () => {
         className="absolute inset-0 md:hidden pointer-events-none"
         style={{
           background:
-            'linear-gradient(to bottom, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.92) 60%, rgba(255,255,255,0.40) 100%)',
+            'linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.96) 65%, rgba(255,255,255,0.40) 100%)',
         }}
         aria-hidden="true"
       />
@@ -87,7 +106,7 @@ const OurWorkHero = () => {
             </h1>
 
             {/* Body Description */}
-            <p className="text-slate-700 text-xs sm:text-[13.5px] leading-relaxed max-w-lg font-normal pt-0.5">
+            <p className="text-slate-800 text-xs sm:text-[13.5px] leading-relaxed max-w-lg font-medium pt-0.5">
               At CMAOF, we work across three interconnected areas to expand opportunities,
               improve lives and strengthen communities. Our programmes are designed to address
               real needs, create lasting impact and build a more inclusive, resilient and prosperous Nigeria.
@@ -211,31 +230,61 @@ const OurWorkHero = () => {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          3. WATCH OUR STORY VIDEO MODAL (Interactive Enhancement)
+          3. WATCH OUR STORY VIDEO MODAL (Interactive Enhancement) - PORTAL
           ───────────────────────────────────────────────────────────── */}
-      {videoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="relative w-full max-w-3xl bg-black rounded-2xl overflow-hidden shadow-2xl">
+      {videoModalOpen && typeof document !== 'undefined' && createPortal(
+        <div 
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fade-in"
+          onClick={() => setVideoModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Chief Michael Ade.Ojo Foundation Story"
+        >
+          <div 
+            className="relative w-full max-w-3xl bg-slate-950 rounded-3xl overflow-hidden shadow-2xl border border-emerald-900/30 flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Tricolor top brand bar */}
+            <div className="h-1.5 bg-gradient-to-r from-[#06402B] via-[#0B2D6E] to-[#EA580C]" />
+
             <button
               onClick={() => setVideoModalOpen(false)}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer"
-              aria-label="Close video"
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/10 hover:bg-[#EA580C] text-white flex items-center justify-center transition-all cursor-pointer shadow-md"
+              aria-label="Close video (Esc)"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
-            <div className="aspect-video w-full flex items-center justify-center text-white bg-slate-900">
-              <div className="text-center p-6 space-y-3">
-                <div className="w-16 h-16 rounded-full bg-[#EA580C] text-white flex items-center justify-center mx-auto shadow-lg">
-                  <Play size={28} className="fill-white ml-1" />
+
+            <div className="aspect-video w-full flex items-center justify-center text-white bg-gradient-to-b from-slate-900 via-slate-950 to-black p-6 sm:p-10">
+              <div className="text-center space-y-4 max-w-md mx-auto">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#EA580C] to-[#C2410C] text-white flex items-center justify-center mx-auto shadow-2xl hover:scale-105 transition-transform cursor-pointer">
+                  <Play size={32} className="fill-white translate-x-1" />
                 </div>
-                <h3 className="text-lg font-bold text-white">Chief Michael Ade.Ojo Foundation Story</h3>
-                <p className="text-slate-400 text-xs max-w-sm mx-auto">
-                  Watch how our programmes empower individuals, build resilience, and create lasting generational change across Nigeria.
+                <div className="space-y-1.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37] block">
+                    Institutional Documentary
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold font-serif-cmaof text-white">
+                    Chief Michael Ade.Ojo Foundation Story
+                  </h3>
+                </div>
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  Watch how our philanthropic programmes empower individuals, build resilient communities, and create lasting generational change across Nigeria.
                 </p>
+                <div className="pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setVideoModalOpen(false)}
+                    className="px-6 py-2 rounded-xl bg-[#06402B] hover:bg-[#04281B] text-white text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    Return to Overview
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
     </section>

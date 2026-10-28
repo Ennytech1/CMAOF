@@ -9,6 +9,10 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  if (location.pathname.startsWith('/admin')) {
+    return null;
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -95,13 +99,13 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
             </button>
 
             {/* Gradient Orange Donate Pill Button */}
-            <button
-              onClick={onOpenDonate}
+            <Link
+              to="/donate"
               className="bg-gradient-to-r from-[#F59E0B] via-[#E67E22] to-[#EA580C] hover:opacity-95 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all hover:scale-[1.03] active:scale-95 cursor-pointer"
             >
               <Heart size={16} className="fill-white/20 stroke-[2.5]" />
               <span>Donate</span>
-            </button>
+            </Link>
 
             {/* Mobile Menu Toggle Button */}
             <button
@@ -134,16 +138,14 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
             </Link>
           ))}
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenDonate();
-              }}
+            <Link
+              to="/donate"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full bg-gradient-to-r from-[#F59E0B] to-[#EA580C] text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow"
             >
               <Heart size={18} className="fill-white/20 stroke-[2.5]" />
               <span>Donate to CMAOF</span>
-            </button>
+            </Link>
           </div>
         </div>
       )}

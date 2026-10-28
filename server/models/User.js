@@ -2,33 +2,33 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, 'Please provide a name'],
+      trim: true,
     },
     email: {
       type: String,
-      required: true,
+      required: [true, 'Please provide an email'],
       unique: true,
+      lowercase: true,
+      match: [
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+        'Please enter a valid email address',
+      ],
     },
     password: {
       type: String,
-      required: true,
+      required: [true, 'Please provide a password'],
+      minlength: 6,
+      select: false,
     },
     role: {
       type: String,
-      enum: ['jobseeker', 'employer', 'sponsor', 'admin'],
-      default: 'jobseeker',
-    },
-    subscriptionTier: {
-      type: String,
-      enum: ['free', 'pro', 'enterprise'],
-      default: 'free',
-    },
-    subscriptionExpires: {
-      type: Date,
+      enum: ['admin', 'staff', 'donor', 'supporter'],
+      default: 'donor',
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
@@ -52,28 +52,79 @@ userSchema.pre('save', async function (next) {
 });
 
 userSchema.methods.getSignedJwtToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
+  return jwt.sign(
+    { id: this._id, role: this.role },
+    process.env.JWT_SECRET || 'cmaof_jwt_secret_dev_mode',
+    {
+      expiresIn: process.env.JWT_EXPIRE || '30d',
+    }
+  );
 };
 
-// Generate and hash password token
 userSchema.methods.getResetPasswordToken = function () {
-  // Generate token
   const resetToken = require('crypto').randomBytes(20).toString('hex');
-
-  // Hash token and set to resetPasswordToken field
   this.resetPasswordToken = require('crypto')
     .createHash('sha256')
     .update(resetToken)
     .digest('hex');
 
-  // Set expire
   this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
-
   return resetToken;
 };
 
-const User = mongoose.model('User', userSchema);
+const memoryUsers = [];
 
-module.exports = User;
+// Seed default foundation admin for development
+bcrypt.hash('admin123', 10).then(hashed => {
+  memoryUsers.push({
+    _id: 'admin_cmaof_root',
+    name: 'CMAOF Administrator',
+    email: 'admin@cmaof.org',
+    password: hashed,
+    role: 'admin',
+    createdAt: new Date(),
+    matchPassword: async (entered) => await bcrypt.compare(entered, hashed),
+    getSignedJwtToken: () => jwt.sign(
+      { id: 'admin_cmaof_root', role: 'admin' },
+      process.env.JWT_SECRET || 'cmaof_jwt_secret_dev_mode',
+      { expiresIn: '30d' }
+    ),
+  });
+});
+
+const UserModel = mongoose.model('User', userSchema);
+
+UserModel.inMemory = {
+  create: async (data) => {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(data.password, salt);
+    const record = {
+      _id: 'user_' + Date.now(),
+      name: data.name,
+      email: data.email.toLowerCase(),
+      password: hashedPassword,
+      role: data.role || 'donor',
+      createdAt: new Date(),
+    };
+    record.matchPassword = async (enteredPassword) => {
+      return await bcrypt.compare(enteredPassword, record.password);
+    };
+    record.getSignedJwtToken = () => {
+      return jwt.sign(
+        { id: record._id, role: record.role },
+        process.env.JWT_SECRET || 'cmaof_jwt_secret_dev_mode',
+        { expiresIn: '30d' }
+      );
+    };
+    memoryUsers.push(record);
+    return record;
+  },
+  findOne: async (query) => {
+    return memoryUsers.find(u => u.email === query.email?.toLowerCase()) || null;
+  },
+  findById: async (id) => {
+    return memoryUsers.find(u => u._id === id) || null;
+  },
+};
+
+module.exports = UserModel;

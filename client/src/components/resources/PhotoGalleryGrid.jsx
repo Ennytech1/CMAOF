@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { founderGallery, founderImages } from '../../assets/founderImages';
 import { 
   Images, 
   BookOpen, 
@@ -9,8 +11,10 @@ import {
   Building2, 
   Handshake, 
   ArrowRight, 
+  ArrowLeft,
   Maximize2, 
   ChevronLeft, 
+  ChevronRight,
   X, 
   Share2, 
   Check, 
@@ -24,6 +28,20 @@ const PhotoGalleryGrid = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [activeLightboxIndex, setActiveLightboxIndex] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  const galleryThumbnailContainerRef = useRef(null);
+  const galleryThumbnailRefs = useRef([]);
+
+  // Auto-scroll active photo thumbnail into view smoothly
+  useEffect(() => {
+    if (activeLightboxIndex !== null && galleryThumbnailRefs.current[activeLightboxIndex]) {
+      galleryThumbnailRefs.current[activeLightboxIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [activeLightboxIndex]);
 
   // 1. Category Filter Pills matching screenshot
   const categories = [
@@ -83,10 +101,102 @@ const PhotoGalleryGrid = () => {
       activeClass: 'bg-[#EA580C] text-white shadow-xs border-[#EA580C]',
       inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
     },
+    {
+      id: 'founder',
+      label: 'Founder & Legacy',
+      icon: <Award size={15} strokeWidth={2.4} className="text-[#D4AF37]" />,
+      activeClass: 'bg-[#0D1B2A] text-white shadow-xs border-[#0D1B2A]',
+      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+    },
   ];
 
-  // 2. 12 Photos Dataset (Matching the 12 cards in the screenshot)
+  // 2. Photos Dataset featuring all Authentic Founder Photos + Core Interventions
   const photos = [
+    // Authentic Founder Photos
+    {
+      id: 'founder-p1',
+      title: 'Chief Michael Ade.Ojo, OON',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-amber-800',
+      badgeIcon: <Award size={13} className="text-amber-600" />,
+      image: founderImages.founder1,
+      caption: 'Official institutional portrait of Chief Michael Ade.Ojo, founding visionary and benefactor of CMAOF.',
+      location: 'Ilara-Mokin / Lagos, Nigeria',
+      year: 'Official'
+    },
+    {
+      id: 'founder-p2',
+      title: 'A Vision for Community Prosperity',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-emerald-800',
+      badgeIcon: <Users size={13} className="text-emerald-700" />,
+      image: founderImages.founder2,
+      caption: 'Chief Michael Ade.Ojo engaging with grassroots community leaders and advocates.',
+      location: 'Ondo State, Nigeria',
+      year: 'Community'
+    },
+    {
+      id: 'founder-p3',
+      title: 'Commitment to Academic Excellence',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-blue-800',
+      badgeIcon: <School size={13} className="text-blue-600" />,
+      image: founderImages.founder3,
+      caption: 'Championing higher education, university patronage, and youth academic scholarships.',
+      location: 'Elizade University, Ilara-Mokin',
+      year: 'Education'
+    },
+    {
+      id: 'founder-p4',
+      title: 'Institutional Governance & Leadership',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-slate-800',
+      badgeIcon: <Building2 size={13} className="text-slate-700" />,
+      image: founderImages.founder4,
+      caption: 'Guiding the foundation Board of Trustees in strategic governance and impact scaling.',
+      location: 'Victoria Island, Lagos',
+      year: 'Governance'
+    },
+    {
+      id: 'founder-p5',
+      title: 'Enduring Philanthropic Legacy',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-amber-800',
+      badgeIcon: <Sparkles size={13} className="text-amber-600" />,
+      image: founderImages.founder5,
+      caption: 'Decades of transformative giving advancing healthcare, scholarships, and rural infrastructure.',
+      location: 'Ilara-Mokin, Ondo State',
+      year: 'Legacy'
+    },
+    {
+      id: 'founder-p6',
+      title: 'Empowering Next-Generation Leaders',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-purple-800',
+      badgeIcon: <Smile size={13} className="text-purple-600" />,
+      image: founderImages.founder6,
+      caption: 'Mentoring young innovators and professionals under the foundation human capital programs.',
+      location: 'Lagos State, Nigeria',
+      year: 'Mentorship'
+    },
+    {
+      id: 'founder-p7',
+      title: 'A Life of Dedicated National Service',
+      category: 'Founder & Legacy',
+      categoryId: 'founder',
+      badgeClass: 'text-orange-800',
+      badgeIcon: <Handshake size={13} className="text-orange-600" />,
+      image: founderImages.founder7,
+      caption: 'Embodying integrity, industry, and selfless commitment to the Nigerian people.',
+      location: 'National Civic Assembly',
+      year: 'Leadership'
+    },
     // Row 1
     {
       id: 'p1',
@@ -264,6 +374,30 @@ const PhotoGalleryGrid = () => {
     }
   };
 
+  // Keyboard navigation and body scroll lock for lightbox
+  useEffect(() => {
+    if (activeLightboxIndex !== null) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setActiveLightboxIndex(null);
+        } else if (e.key === 'ArrowRight') {
+          handleNext();
+        } else if (e.key === 'ArrowLeft') {
+          handlePrev();
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [activeLightboxIndex, filteredPhotos.length]);
+
   return (
     <section className="w-full bg-white font-sans pt-4 sm:pt-6 pb-16 sm:pb-20 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7">
@@ -363,110 +497,227 @@ const PhotoGalleryGrid = () => {
       </div>
 
       {/* ── 4. Full-Featured Interactive Photo Lightbox Modal ── */}
-      {currentPhoto && (
+      {/* ── 4. Full-Featured Interactive Photo Lightbox Modal rendered via Portal (Full 100vh / Full Page) ── */}
+      {currentPhoto && typeof document !== 'undefined' && createPortal(
         <div 
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fade-in"
-          onClick={() => setActiveLightboxIndex(null)}
+          className="fixed inset-0 z-[9999] h-screen h-[100dvh] w-screen bg-slate-50 text-slate-900 flex flex-col overflow-hidden animate-fade-in font-sans"
+          role="dialog"
+          aria-modal="true"
+          aria-label={currentPhoto.title}
         >
-          <div 
-            className="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-hidden shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Lightbox Header */}
-            <div className="px-5 sm:px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 border border-slate-200">
-                  {currentPhoto.badgeIcon}
-                  <span>{currentPhoto.category}</span>
-                </span>
-                <span className="text-xs text-slate-400 font-medium">
+          {/* Subtle ambient glow effects */}
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
+
+          {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
+          <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
+            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+              
+              {/* Left: Back Button + Breadcrumbs + Photo Title */}
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveLightboxIndex(null)}
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  title="Back to Photo Gallery"
+                >
+                  <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
+                  <span className="font-sans">Back</span>
+                </button>
+
+                <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
+
+                {/* Breadcrumbs with vertical orange indicator bar */}
+                <div className="min-w-0 flex flex-col justify-center">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveLightboxIndex(null)}
+                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                    >
+                      Home
+                    </button>
+                    <ChevronRight size={13} className="text-slate-400 shrink-0" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveLightboxIndex(null)}
+                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                    >
+                      Resources
+                    </button>
+                    <ChevronRight size={13} className="text-slate-400 shrink-0" />
+                    <span className="text-[#0F2B5B] font-bold truncate">Photo Archive</span>
+                  </div>
+
+                  {/* Title and Category Badge */}
+                  <div className="flex items-center gap-2.5 mt-0.5">
+                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                      {currentPhoto.title}
+                    </h3>
+                    <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#06402B]/10 text-[#06402B] border border-[#06402B]/20">
+                      {currentPhoto.badgeIcon}
+                      <span>{currentPhoto.category}</span>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right: Slide Counter + Close Button */}
+              <div className="flex items-center gap-3 shrink-0">
+                <div className="hidden md:flex flex-col items-end text-right">
+                  <span className="text-xs font-extrabold text-[#0F2B5B]">
+                    Photo {activeLightboxIndex + 1} of {filteredPhotos.length}
+                  </span>
+                  <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveLightboxIndex(null)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  title="Close gallery (Esc)"
+                >
+                  <X size={18} strokeWidth={2.4} />
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 2. Modal Center Showcase - Takes 100% remaining vertical space */}
+          <div className="flex-1 min-h-0 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4 sm:py-6 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center overflow-y-auto z-10">
+            
+            {/* Left Photo Display Stage */}
+            <div className="md:col-span-7 h-full max-h-[56vh] sm:max-h-[62vh] lg:max-h-[66vh] flex items-center justify-center relative">
+              <div className="relative w-full h-full max-w-xl rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-2xl group flex items-center justify-center">
+                <img
+                  src={currentPhoto.image}
+                  alt={currentPhoto.title}
+                  className="w-full h-full object-contain md:object-cover md:object-center transition-all duration-300"
+                />
+
+                {/* Navigation Arrows on Photo */}
+                {filteredPhotos.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handlePrev}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      title="Previous photo (Left Arrow)"
+                    >
+                      <ChevronLeft size={24} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      title="Next photo (Right Arrow)"
+                    >
+                      <ChevronRight size={24} />
+                    </button>
+                  </>
+                )}
+
+                {/* Floating Photo Counter Badge */}
+                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#0F2B5B] border border-slate-200 shadow-md">
                   Photo {activeLightboxIndex + 1} of {filteredPhotos.length}
-                </span>
+                </div>
               </div>
-
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={() => setActiveLightboxIndex(null)}
-                className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
-                title="Close Lightbox"
-              >
-                <X size={18} />
-              </button>
             </div>
 
-            {/* Lightbox Image Stage with Previous/Next Controls */}
-            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-slate-950 flex items-center justify-center overflow-hidden">
-              <img
-                src={currentPhoto.image}
-                alt={currentPhoto.title}
-                className="w-full h-full object-contain"
-              />
-
-              {/* Navigation Arrows */}
-              {filteredPhotos.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={handlePrev}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center transition-all cursor-pointer shadow-lg"
-                    title="Previous Photo"
-                  >
-                    <ChevronLeft size={22} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNext}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/60 hover:bg-black/85 text-white flex items-center justify-center transition-all cursor-pointer shadow-lg"
-                    title="Next Photo"
-                  >
-                    <ArrowRight size={22} />
-                  </button>
-                </>
-              )}
-            </div>
-
-            {/* Lightbox Caption & Details */}
-            <div className="p-5 sm:p-6 space-y-2 border-t border-slate-100">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <h3 className="text-base sm:text-lg font-black text-[#0F2B5B]">
-                  {currentPhoto.title}
-                </h3>
-                <span className="text-xs text-slate-500 font-semibold">
-                  {currentPhoto.location} • {currentPhoto.year}
-                </span>
+            {/* Right Photo Narrative */}
+            <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+                <span>{currentPhoto.category}</span>
               </div>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+                {currentPhoto.title}
+              </h4>
+
+              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+                {currentPhoto.location} • {currentPhoto.year}
+              </p>
+
+              <p className="text-xs sm:text-sm lg:text-base text-slate-600 leading-relaxed font-medium">
                 {currentPhoto.caption}
               </p>
-            </div>
 
-            {/* Lightbox Footer */}
-            <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-              <span className="text-xs text-slate-400 font-medium">
-                Official CMAOF Multimedia Gallery
-              </span>
-              <div className="flex items-center gap-2">
+              {/* Archival Callout */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Field Provenance</span>
+                <span className="leading-relaxed font-medium">Chief Michael Ade.Ojo Foundation official photographic archive documenting our strategic interventions across Nigerian communities.</span>
+              </div>
+
+              {/* Action Buttons: Share & Close */}
+              <div className="flex items-center gap-3 pt-1">
                 <button
                   type="button"
                   onClick={handleShare}
-                  className="px-3.5 py-1.5 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  {copiedLink ? <Check size={14} className="text-emerald-600" /> : <Share2 size={14} />}
-                  <span>{copiedLink ? 'Link Copied!' : 'Share'}</span>
+                  {copiedLink ? <Check size={15} className="text-emerald-600" /> : <Share2 size={15} />}
+                  <span>{copiedLink ? 'Link Copied!' : 'Share Photo'}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="px-4 py-1.5 bg-[#0F2B5B] hover:bg-[#0F4C3A] text-white rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                  className="px-5 py-2 bg-[#06402B] hover:bg-[#042A1D] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  Close
+                  Done
                 </button>
               </div>
             </div>
 
           </div>
-        </div>
+
+          {/* 3. Modal Bottom Thumbnail Strip Dock with Smooth Scroll & Nav Controls */}
+          <div className="shrink-0 py-3 sm:py-3.5 px-4 bg-white/95 border-t border-slate-200/80 backdrop-blur-md flex items-center justify-center gap-2 sm:gap-3 z-10 shadow-xs">
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              title="Previous photo"
+            >
+              <ChevronLeft size={16} strokeWidth={2.4} />
+            </button>
+
+            <div 
+              ref={galleryThumbnailContainerRef}
+              className="flex items-center gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1"
+            >
+              {filteredPhotos.map((photo, idx) => (
+                <button
+                  key={photo.id || idx}
+                  ref={(el) => (galleryThumbnailRefs.current[idx] = el)}
+                  type="button"
+                  onClick={() => setActiveLightboxIndex(idx)}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
+                    activeLightboxIndex === idx
+                      ? 'border-[#EA580C] ring-4 ring-[#EA580C]/30 scale-105 sm:scale-110 shadow-lg shadow-[#EA580C]/20'
+                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#0F4C3A] hover:scale-105'
+                  }`}
+                  title={`View ${photo.title}`}
+                >
+                  <img src={photo.image} alt={photo.title} className="w-full h-full object-cover object-center" />
+                </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              title="Next photo"
+            >
+              <ChevronRight size={16} strokeWidth={2.4} />
+            </button>
+          </div>
+
+        </div>,
+        document.body
       )}
 
     </section>

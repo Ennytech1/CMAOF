@@ -24,7 +24,7 @@ const MultimediaCtaBanner = ({ onOpenDonate }) => {
       </div>
 
       {/* Dark overlay for mobile clarity so text remains easily legible on small screens */}
-      <div className="absolute inset-0 bg-[#063B28]/75 sm:bg-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[#063B28]/90 sm:bg-transparent pointer-events-none" />
 
       {/* ── Banner Content Row inside max-w-7xl ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 lg:py-7 relative z-10 min-h-[140px] sm:min-h-[155px] lg:min-h-[165px] flex items-center">
@@ -37,12 +37,12 @@ const MultimediaCtaBanner = ({ onOpenDonate }) => {
             
             <div className="space-y-1">
               {/* Headline */}
-              <h2 className="text-xl sm:text-2xl lg:text-[1.7rem] font-extrabold text-white tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-[1.7rem] font-extrabold text-white tracking-tight leading-tight drop-shadow-xs">
                 More Stories. Greater Impact.
               </h2>
               
               {/* Paragraph */}
-              <p className="text-emerald-50/90 text-xs sm:text-[13.5px] font-normal leading-relaxed">
+              <p className="text-white text-xs sm:text-[13.5px] font-medium leading-relaxed drop-shadow-xs">
                 These are real people, real communities and real change.<br className="hidden sm:inline" />
                 {' '}Join us in creating more stories of hope across Nigeria.
               </p>
