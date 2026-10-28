@@ -96,6 +96,11 @@ const ResourcesFooter = ({ onOpenDonate }) => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/founder" className="hover:text-[#06402B] transition-colors font-medium">
+                    Founder's Profile
+                  </Link>
+                </li>
+                <li>
                   <Link to="/our-work" className="hover:text-[#06402B] transition-colors">
                     Our Work
                   </Link>

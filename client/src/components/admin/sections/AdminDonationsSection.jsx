@@ -15,7 +15,7 @@ import {
   ExternalLink,
   ChevronRight,
   ArrowUpRight,
-  Sparkles,
+  TrendingUp,
   Home,
   ArrowLeft,
   ArrowRight,
@@ -630,7 +630,7 @@ const AdminDonationsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-2 mb-3">
             <div className="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-800 flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
-              <Sparkles size={18} />
+              <TrendingUp size={18} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-50 text-purple-800 border border-purple-100">
               Blended Size

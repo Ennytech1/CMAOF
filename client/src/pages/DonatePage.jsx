@@ -4,7 +4,7 @@ import {
   Heart, ShieldCheck, Users, CreditCard, ArrowRight, ArrowLeft,
   Check, Info, BookOpen, HeartPulse, RefreshCw, Copy, Download,
   Building2, CheckCircle2, Smartphone, ChevronRight, Lock, Mail,
-  Wallet, Sparkles, Send, Star, TrendingUp, Globe, Zap, Receipt,
+  Wallet, Send, Star, TrendingUp, Globe, Zap, Receipt,
   BadgeCheck,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -33,7 +33,7 @@ const PRESET_AMOUNTS = [
     label: '₦25,000',
     impact: 'Clean water & sanitation for a family',
     popular: true,
-    icon: <Sparkles size={14} />,
+    icon: <Heart size={14} />,
   },
   {
     value: 50000,

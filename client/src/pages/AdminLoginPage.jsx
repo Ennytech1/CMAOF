@@ -11,7 +11,6 @@ import {
   Smartphone,
   Mail,
   KeyRound,
-  Sparkles,
   Users,
   DollarSign,
   FileText,
@@ -244,7 +243,7 @@ const AdminLoginPage = () => {
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-[#06402B] text-xs font-bold shadow-sm transition-all border border-slate-200 cursor-pointer hover:scale-[1.02]"
               title="Auto-fill demo credentials"
             >
-              <Sparkles size={13} className="text-[#EA580C]" />
+              <KeyRound size={13} className="text-[#EA580C]" />
               <span>Fill Demo</span>
             </button>
           )}

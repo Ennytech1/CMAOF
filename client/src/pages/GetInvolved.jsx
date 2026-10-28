@@ -10,7 +10,7 @@ import {
   Mail,
   Phone,
   User,
-  Sparkles,
+  Laptop,
   Send,
   Building,
   GraduationCap,
@@ -37,7 +37,7 @@ const GetInvolved = ({ onOpenDonate }) => {
     { id: 'education', label: 'Education & STEM Mentorship', icon: GraduationCap },
     { id: 'healthcare', label: 'Medical & Healthcare Clinics', icon: HeartPulse },
     { id: 'community', label: 'Community Infrastructure & Water', icon: Droplets },
-    { id: 'technical', label: 'Technical & Data Systems', icon: Sparkles },
+    { id: 'technical', label: 'Technical & Data Systems', icon: Laptop },
     { id: 'event_support', label: 'Field Logistics & Events', icon: Users },
     { id: 'csr_partner', label: 'Corporate CSR & Institutional Co-Funding', icon: Building },
   ];

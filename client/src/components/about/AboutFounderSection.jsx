@@ -1,19 +1,20 @@
 import React from 'react';
-import { ArrowRight, GraduationCap, Heart, Users, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, GraduationCap, Heart, Users, Star, Images } from 'lucide-react';
 import { founderImages } from '../../assets/founderImages';
 
 const AboutFounderSection = ({ onReadStory }) => {
   return (
-    <section className="py-12 sm:py-16 bg-white">
+    <section className="py-6 sm:py-8 lg:py-10 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* ── Column 1: Founder Portrait (4 cols) ── */}
           <div className="lg:col-span-4 flex justify-center">
-            <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-[4/4.8] rounded-2xl overflow-hidden shadow-lg border border-slate-200/90 group bg-slate-100">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/4.8] rounded-2xl overflow-hidden shadow-lg border border-slate-200/90 group bg-slate-100">
               <img
-                src={founderImages.founder4}
-                alt="Chief Michael Ade.Ojo, OON"
+                src={founderImages.founder1}
+                alt="Chief Michael Ade. Ojo, OON"
                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -26,34 +27,42 @@ const AboutFounderSection = ({ onReadStory }) => {
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
               <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F4C3A] font-sans">
-                OUR FOUNDER
+                FOUNDER'S PROFILE
               </span>
             </div>
 
             {/* Name */}
             <h2 className="text-2xl sm:text-3xl lg:text-[2.2rem] font-black text-[#0F2B5B] tracking-tight leading-tight font-sans">
-              Chief Michael Ade.Ojo, OON
+              Chief Michael Ade. Ojo, OON
             </h2>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base font-bold text-[#0F2B5B] font-sans">
-              A Life of Service, A Legacy of Impact
+            <p className="text-sm sm:text-base font-bold text-[#EA580C] font-sans leading-snug">
+              Entrepreneurship, Education and a Legacy of Community Development
             </p>
 
             {/* Bio text */}
-            <p className="text-slate-700 text-xs sm:text-base leading-relaxed font-medium">
-              Chief Michael Ade.Ojo is a distinguished entrepreneur, philanthropist and community leader whose life of service and commitment to nation-building continues to inspire generations. His belief in the power of education, health and strong communities laid the foundation for CMAOF and continues to shape its mission today.
+            <p className="text-slate-700 text-xs sm:text-base leading-relaxed font-normal">
+              Chief Michael Ade. Ojo, OON, is a Nigerian entrepreneur whose career spans business development, education, investment and community advancement. From the establishment of Elizade Independent Agencies in 1971 to sustained investments in institutions and local infrastructure, his story reflects a long-standing commitment to creating opportunities beyond commercial enterprise.
             </p>
 
-            {/* Pill Button */}
+            {/* Pill Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-3">
+              <Link
+                to="/founder"
+                className="bg-[#0F4C3A] hover:bg-[#14634C] text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full inline-flex items-center gap-2 shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <span>Read Full Biography</span>
+                <ArrowRight size={16} strokeWidth={2.5} />
+              </Link>
+
               <button
                 type="button"
                 onClick={onReadStory}
-                className="bg-[#0F4C3A] hover:bg-[#14634C] text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full inline-flex items-center gap-2 shadow-sm transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                className="border border-slate-300 hover:border-[#0F4C3A] text-slate-700 hover:text-[#0F4C3A] font-bold text-xs sm:text-sm px-5 py-3 rounded-full inline-flex items-center gap-2 transition-all hover:bg-emerald-50/50 cursor-pointer"
               >
-                <span>View Founder's Story & Gallery</span>
-                <ArrowRight size={16} strokeWidth={2.5} />
+                <Images size={15} />
+                <span>Archival Photos</span>
               </button>
             </div>
 

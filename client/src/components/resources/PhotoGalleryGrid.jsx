@@ -20,7 +20,6 @@ import {
   Check, 
   Download,
   Calendar,
-  Sparkles,
   School
 } from 'lucide-react';
 
@@ -76,7 +75,7 @@ const PhotoGalleryGrid = () => {
     {
       id: 'events',
       label: 'Events',
-      icon: <Sparkles size={15} strokeWidth={2.4} className="text-[#0B4891]" />,
+      icon: <Calendar size={15} strokeWidth={2.4} className="text-[#0B4891]" />,
       activeClass: 'bg-[#0B4891] text-white shadow-xs border-[#0B4891]',
       inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
     },
@@ -167,7 +166,7 @@ const PhotoGalleryGrid = () => {
       category: 'Founder & Legacy',
       categoryId: 'founder',
       badgeClass: 'text-amber-800',
-      badgeIcon: <Sparkles size={13} className="text-amber-600" />,
+      badgeIcon: <Heart size={13} className="text-amber-600" />,
       image: founderImages.founder5,
       caption: 'Decades of transformative giving advancing healthcare, scholarships, and rural infrastructure.',
       location: 'Ilara-Mokin, Ondo State',

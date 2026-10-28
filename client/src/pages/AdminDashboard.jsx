@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Sparkles } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 // Core Admin Components

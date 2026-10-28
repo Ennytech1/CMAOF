@@ -11,7 +11,7 @@ import {
   Eye,
   CheckCircle2,
   Copy,
-  Sparkles,
+  Tag,
   Home,
   ChevronRight,
   ArrowLeft,
@@ -328,7 +328,7 @@ const AdminMediaSection = () => {
         {currentStep === 2 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
             <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Sparkles size={18} className="text-[#06402B]" />
+              <Tag size={18} className="text-[#06402B]" />
               <span>Taxonomy, Keywords, Geo-location & Captions</span>
             </h2>
 

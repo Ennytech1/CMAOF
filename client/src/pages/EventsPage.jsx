@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, ArrowRight, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, ArrowRight, Users } from 'lucide-react';
 import EventHero from '../components/events/EventHero';
 import UpcomingEventsSection from '../components/events/UpcomingEventsSection';
 import PastEventsSection from '../components/events/PastEventsSection';
@@ -67,7 +67,7 @@ const EventsPage = ({ onOpenDonate }) => {
 
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
                   <div className="w-8 h-8 rounded-xl bg-orange-100 text-[#EA580C] flex items-center justify-center shrink-0 mt-0.5">
-                    <Sparkles size={16} />
+                    <Users size={16} />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-[#0B2D6E]">Partner or Propose an Event</h4>

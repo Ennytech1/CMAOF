@@ -31,6 +31,7 @@ import ProgrammeDetailPage from './pages/ProgrammeDetailPage';
 import DonationsPage from './pages/DonationsPage';
 import ImpactDashboardPage from './pages/ImpactDashboardPage';
 import CaseTimelinePage from './pages/CaseTimelinePage';
+import FounderProfilePage from './pages/FounderProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -58,7 +59,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home onOpenDonate={handleOpenDonate} />} />
             <Route path="/about" element={<AboutUs onOpenDonate={handleOpenDonate} />} />
-            <Route path="/founder" element={<AboutUs onOpenDonate={handleOpenDonate} />} />
+            <Route path="/founder" element={<FounderProfilePage onOpenDonate={handleOpenDonate} />} />
+            <Route path="/about/founder" element={<FounderProfilePage onOpenDonate={handleOpenDonate} />} />
             
             <Route path="/our-work" element={<OurWork onOpenDonate={handleOpenDonate} />} />
             <Route path="/our-work/education" element={<EducationPillar onOpenDonate={handleOpenDonate} />} />

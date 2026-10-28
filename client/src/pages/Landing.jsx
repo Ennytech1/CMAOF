@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 // Modular Component Imports
@@ -152,7 +151,7 @@ const Landing = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,180,216,0.03),transparent_60%)] pointer-events-none" />
 
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00B4D8]/5 border border-[#00B4D8]/10 text-xs font-bold text-[#00B4D8] z-10 relative">
-                    <Sparkles size={14} className="text-amber-500" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00B4D8]" />
                     <span>Africa's Unified Career Operating System</span>
                 </div>
 

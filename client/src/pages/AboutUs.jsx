@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { Play, X, ChevronLeft, ChevronRight, Images, Award, Sparkles, ArrowLeft, ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Play, X, ChevronLeft, ChevronRight, Images, ArrowLeft, ArrowUp, ArrowRight } from 'lucide-react';
 import AboutHero from '../components/about/AboutHero';
 import AboutFounderSection from '../components/about/AboutFounderSection';
 import AboutPillarsGrid from '../components/about/AboutPillarsGrid';
@@ -262,7 +263,19 @@ const AboutUs = () => {
               {/* Historical Context Callout */}
               <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
                 <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Historical Context</span>
-                <span className="leading-relaxed font-medium">Chief Michael Ade.Ojo’s enduring legacy in higher education, community empowerment, and national industrial leadership.</span>
+                <span className="leading-relaxed font-medium">Chief Michael Ade. Ojo’s enduring legacy in higher education, community empowerment, and national industrial leadership.</span>
+              </div>
+
+              {/* Link to Dedicated Founder Profile Page */}
+              <div className="pt-1">
+                <Link
+                  to="/founder"
+                  onClick={() => setGalleryModalOpen(false)}
+                  className="inline-flex items-center gap-2 bg-[#0F4C3A] hover:bg-[#14634C] text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <span>Read Full Biographical Profile</span>
+                  <ArrowRight size={15} strokeWidth={2.4} />
+                </Link>
               </div>
             </div>
 

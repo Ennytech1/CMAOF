@@ -161,6 +161,7 @@ const Footer = ({ onOpenDonate }) => {
               <ul className="space-y-2 text-xs font-medium">
                 <li><Link to="/" className="hover:text-emerald-400 transition-colors">Home</Link></li>
                 <li><Link to="/about" className="hover:text-emerald-400 transition-colors">About Us</Link></li>
+                <li><Link to="/founder" className="hover:text-amber-400 transition-colors font-semibold">Founder's Profile</Link></li>
                 <li><Link to="/our-work" className="hover:text-emerald-400 transition-colors">Our Work</Link></li>
                 <li><Link to="/impact" className="hover:text-emerald-400 transition-colors">Impact</Link></li>
                 <li><Link to="/gallery" className="hover:text-emerald-400 transition-colors">Multimedia Gallery</Link></li>

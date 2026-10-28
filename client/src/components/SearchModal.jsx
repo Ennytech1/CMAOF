@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { Search, X, ArrowRight, FileText, Globe, BookOpen, HeartPulse, Sparkles } from 'lucide-react';
+import { Search, X, ArrowRight, FileText, Globe, BookOpen, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CmaofLogo from './CmaofLogo';
 
@@ -37,18 +36,23 @@ const SearchModal = ({ isOpen, onClose }) => {
   if (!isOpen || typeof document === 'undefined') return null;
 
   const quickLinks = [
+    { title: 'Chief Michael Ade. Ojo, OON — Official Founder Profile', category: 'About', link: '/founder', keywords: 'elizade founder oon ade ojo bio ilara-mokin assembly plant smtb toyota' },
+    { title: 'Elizade University & Academic Sponsorships', category: 'Education', link: '/founder', keywords: 'elizade university accreditation nuc higher education scholarship' },
     { title: 'University Scholarships Program', category: 'Education', link: '/our-work/education' },
     { title: 'Mission 1,000 Ilara Professionals', category: 'Education', link: '/our-work/education' },
     { title: 'Maternal & Child Health Outreach', category: 'Health', link: '/our-work/health' },
     { title: 'Clean Water Borehole Projects', category: 'Community', link: '/our-work/community-resilience' },
     { title: 'Multimedia Photo & Video Gallery', category: 'Gallery', link: '/gallery' },
     { title: 'Annual Financial & Impact Report', category: 'Resources', link: '/resources' },
-    { title: 'Chief Michael Ade.Ojo Founder Legacy', category: 'About', link: '/founder' },
-    { title: 'Chief Michael Ade.Ojo Photo Archive & Retrospective', category: 'Gallery', link: '/gallery' }
+    { title: 'Chief Michael Ade. Ojo Archival Photo Gallery', category: 'Gallery', link: '/gallery' }
   ];
 
   const filtered = query.trim() 
-    ? quickLinks.filter(item => item.title.toLowerCase().includes(query.toLowerCase()) || item.category.toLowerCase().includes(query.toLowerCase()))
+    ? quickLinks.filter(item => 
+        item.title.toLowerCase().includes(query.toLowerCase()) || 
+        item.category.toLowerCase().includes(query.toLowerCase()) ||
+        (item.keywords && item.keywords.toLowerCase().includes(query.toLowerCase()))
+      )
     : quickLinks;
 
   return createPortal(
