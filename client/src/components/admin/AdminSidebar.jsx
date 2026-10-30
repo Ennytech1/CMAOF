@@ -19,7 +19,12 @@ import {
   Plus,
   LogOut,
   X,
+  FileCheck2,
+  GitBranch,
+  ExternalLink,
+  Send,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import CmaofLogo from '../CmaofLogo';
 
 const AdminSidebar = ({
@@ -34,10 +39,13 @@ const AdminSidebar = ({
   const [beneficiariesExpanded, setBeneficiariesExpanded] = useState(true);
   const [programmesExpanded, setProgrammesExpanded] = useState(false);
 
-  // Beneficiaries sub-navigation items (Overview is accessed directly by clicking 'Beneficiaries')
+  // Beneficiaries sub-navigation items
   const beneficiarySubItems = [
-    { id: 'beneficiaries-register', label: 'Register Beneficiary', hasPlus: true, route: '/admin/beneficiaries/register' },
-    { id: 'beneficiaries-directory', label: 'Beneficiary Directory', route: '/admin/beneficiaries/directory' },
+    { id: 'beneficiaries-overview', label: 'Overview & Metrics', icon: LayoutDashboard, route: '/admin/beneficiaries' },
+    { id: 'beneficiaries-directory', label: 'Beneficiary Directory', icon: Users, route: '/admin/beneficiaries/directory' },
+    { id: 'beneficiaries-assessments', label: 'Needs Assessment', icon: FileCheck2, iconColor: 'text-amber-500', route: '/admin/beneficiaries/assessments' },
+    { id: 'beneficiaries-cases', label: 'Case Management', icon: GitBranch, iconColor: 'text-sky-500', route: '/admin/beneficiaries/cases' },
+    { id: 'beneficiaries-register', label: 'Register Beneficiary', icon: Plus, hasPlus: true, route: '/admin/beneficiaries/register' },
   ];
 
   // Programmes sub-navigation items (Portfolio is accessed directly by clicking 'Programmes')
@@ -169,8 +177,16 @@ const AdminSidebar = ({
                         }
                       `}
                     >
-                      {sub.hasPlus && <Plus size={12} strokeWidth={3} className={isSubActive ? 'text-white' : 'text-slate-400'} />}
-                      <span>{sub.label}</span>
+                      {sub.icon ? (
+                        <sub.icon
+                          size={13}
+                          className={isSubActive ? 'text-white' : sub.iconColor || 'text-slate-400'}
+                          strokeWidth={sub.hasPlus ? 3 : 2.2}
+                        />
+                      ) : sub.hasPlus ? (
+                        <Plus size={12} strokeWidth={3} className={isSubActive ? 'text-white' : 'text-slate-400'} />
+                      ) : null}
+                      <span className="truncate">{sub.label}</span>
                     </button>
                   );
                 })}
@@ -287,7 +303,7 @@ const AdminSidebar = ({
             <span>Donations</span>
           </button>
 
-          {/* 6. Communications */}
+          {/* 6. Newsletters & Broadcasts */}
           <button
             type="button"
             onClick={() => onTabChange('communications')}
@@ -300,8 +316,10 @@ const AdminSidebar = ({
               }
             `}
           >
-            <MessageSquare size={17} className={activeTab === 'communications' ? 'text-white' : 'text-slate-500'} />
-            <span>Communications</span>
+            <Send size={17} className={activeTab === 'communications' ? 'text-white' : 'text-slate-500'} />
+            <div className="flex items-center justify-between flex-1">
+              <span>Newsletters & Broadcasts</span>
+            </div>
           </button>
 
           {/* 7. Events */}
@@ -372,21 +390,21 @@ const AdminSidebar = ({
             <span>Reports</span>
           </button>
 
-          {/* 11. Users */}
+          {/* 11. Team */}
           <button
             type="button"
-            onClick={() => onTabChange('users')}
+            onClick={() => onTabChange('team')}
             className={`
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
-                activeTab === 'users'
+                activeTab === 'users' || activeTab === 'team'
                   ? 'bg-[#06402B] text-white shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
               }
             `}
           >
-            <UserCheck size={17} className={activeTab === 'users' ? 'text-white' : 'text-slate-500'} />
-            <span>Users</span>
+            <UserCheck size={17} className={activeTab === 'users' || activeTab === 'team' ? 'text-white' : 'text-slate-500'} />
+            <span>Team</span>
           </button>
 
           {/* 12. Approvals */}
@@ -447,8 +465,23 @@ const AdminSidebar = ({
         </nav>
 
         {/* Bottom Sidebar Footer & Logout */}
-        <div className="p-3.5 border-t border-slate-100 bg-slate-50/80 shrink-0">
-          <div className="flex items-center justify-between px-2 py-1 text-xs">
+        <div className="p-3.5 border-t border-slate-100 bg-slate-50/80 shrink-0 space-y-2">
+          {/* Quick 1-Click Link to Live Public Website */}
+          <Link
+            to="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white hover:bg-emerald-50 text-slate-700 hover:text-[#06402B] text-xs font-bold transition-all border border-slate-200/80 hover:border-emerald-200 shadow-2xs group"
+            title="Open Live CMAOF Public Website in new tab"
+          >
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <span>Live Website</span>
+            </span>
+            <ExternalLink size={13} className="text-slate-400 group-hover:text-[#06402B] group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+
+          <div className="flex items-center justify-between px-1 text-xs">
             <span className="font-semibold text-[11px] text-slate-400">System v1.0 • 2026</span>
             <button
               type="button"

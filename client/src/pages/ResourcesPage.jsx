@@ -20,13 +20,22 @@ import {
   Presentation,
   PieChart,
   Headphones,
-  Heart
+  Heart,
+  Eye,
+  X,
+  Copy,
+  Share2,
+  Calendar,
+  Layers,
+  Sparkles,
+  HardDrive
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ResourcesHero from '../components/resources/ResourcesHero';
+import { INITIAL_RESOURCES } from '../data/resourcesData';
 
 /**
- * Custom 4-Bar Chart Icon matching reference screenshot
+ * Custom 4-Bar Chart Icon matching reference design
  */
 const FourBarChartIcon = ({ className = "w-[22px] h-[22px]" }) => (
   <svg
@@ -42,7 +51,164 @@ const FourBarChartIcon = ({ className = "w-[22px] h-[22px]" }) => (
   </svg>
 );
 
+/**
+ * Public Institutional Resource Dossier Modal
+ */
+const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
+  if (!resource) return null;
+
+  const copyPublicLink = () => {
+    const link = `${window.location.origin}/resources#${resource.id}`;
+    navigator.clipboard.writeText(link);
+    toast.success('Document link copied to clipboard!');
+  };
+
+  const copyCitation = () => {
+    const citation = `Chief Michael Ade.Ojo Foundation. (${resource.year}). ${resource.title} (${resource.version || 'v1.0'}). CMAOF Institutional Repository.`;
+    navigator.clipboard.writeText(citation);
+    toast.success('APA Citation copied to clipboard!');
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease]">
+      <div 
+        className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col max-h-[90vh] animate-[scaleUp_0.2s_ease]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Modal Header */}
+        <div className="p-5 sm:p-6 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between sticky top-0 z-10">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-white border border-slate-200 text-[#0B2D6E]">
+              {resource.format}
+            </span>
+            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#06402B] border border-emerald-200">
+              {resource.categoryName || resource.category}
+            </span>
+            <span className="text-xs text-slate-400 font-medium hidden sm:inline">
+              Ref: {resource.id}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Modal Body */}
+        <div className="p-6 sm:p-7 overflow-y-auto space-y-6 text-xs sm:text-sm">
+          {/* Hero Banner */}
+          <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-md border border-slate-200 bg-slate-100">
+            <img
+              src={resource.coverImage || resource.thumbnail}
+              alt={resource.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-white">
+              <span className="text-[10px] font-extrabold uppercase text-emerald-300 tracking-wider block mb-1">
+                {resource.pillar || 'CMAOF Strategic Publication'}
+              </span>
+              <h2 className="text-base sm:text-xl font-black leading-snug">
+                {resource.title}
+              </h2>
+            </div>
+          </div>
+
+          {/* Key Specs Bar */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-center">
+            <div>
+              <span className="text-[10px] font-bold uppercase text-slate-400 block">Format</span>
+              <span className="font-extrabold text-slate-800 text-sm">{resource.format}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase text-slate-400 block">File Size</span>
+              <span className="font-extrabold text-slate-800 text-sm">{resource.size}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase text-slate-400 block">Published</span>
+              <span className="font-extrabold text-[#0B2D6E] text-sm">{resource.publishedDate}</span>
+            </div>
+            <div>
+              <span className="text-[10px] font-bold uppercase text-slate-400 block">Downloads</span>
+              <span className="font-extrabold text-[#06402B] text-sm">
+                {resource.downloads?.toLocaleString() || 0}
+              </span>
+            </div>
+          </div>
+
+          {/* Executive Summary */}
+          <div className="space-y-2">
+            <h3 className="text-xs font-black uppercase tracking-wider text-slate-400">
+              Executive Abstract & Institutional Scope
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed bg-white p-4 rounded-xl border border-slate-200/80 shadow-2xs">
+              {resource.summary || resource.subtitle || 'Official report documenting CMAOF interventions, verified field assessments, and strategic governance outcomes.'}
+            </p>
+          </div>
+
+          {/* Issuing Authority & Pillar */}
+          <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+            <div>
+              <span className="text-[10px] font-bold text-slate-400 uppercase block">Issuing Authority</span>
+              <span className="font-bold text-[#06402B] text-sm">{resource.author || 'Chief Michael Ade.Ojo Foundation Policy Directorate'}</span>
+            </div>
+            <div className="sm:text-right">
+              <span className="text-[10px] font-bold text-slate-400 uppercase block">Version & Status</span>
+              <span className="font-mono font-bold text-slate-800">{resource.version || 'v1.0'} • Verified</span>
+            </div>
+          </div>
+
+          {/* Citation & Share actions */}
+          <div className="grid grid-cols-2 gap-3 pt-1">
+            <button
+              type="button"
+              onClick={copyPublicLink}
+              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition-colors cursor-pointer shadow-2xs"
+            >
+              <Copy size={13} />
+              <span>Copy Public Link</span>
+            </button>
+            <button
+              type="button"
+              onClick={copyCitation}
+              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[#0B2D6E] font-bold text-xs transition-colors cursor-pointer shadow-2xs"
+            >
+              <Share2 size={13} />
+              <span>Copy APA Citation</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Modal Footer */}
+        <div className="p-5 sm:p-6 border-t border-slate-100 bg-slate-50/80 flex items-center justify-between gap-3 sticky bottom-0">
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            onClick={() => onDownload(resource)}
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
+          >
+            <span>Download {resource.format} File ({resource.size})</span>
+            <Download size={15} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const ResourcesPage = ({ onOpenDonate }) => {
+  // Resources Dataset State
+  const [resources, setResources] = useState(INITIAL_RESOURCES);
+
   // Filters State
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,8 +216,8 @@ const ResourcesPage = ({ onOpenDonate }) => {
   const [selectedDocTypes, setSelectedDocTypes] = useState([]);
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
   const [sortBy, setSortBy] = useState('latest');
-  const [featuredIndex, setFeaturedIndex] = useState(0);
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [activeDossierResource, setActiveDossierResource] = useState(null);
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
@@ -61,12 +227,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
     }
   };
 
-  // 1. Top 8 Horizontal Category Tabs (Exact match to reference image 1)
+  // 1. Top 8 Horizontal Category Tabs
   const topTabs = [
     {
       id: 'all',
       title: 'All Resources',
-      subtitle: 'View all',
+      subtitle: 'View all publications',
       icon: <FileText size={20} strokeWidth={2.2} />,
       iconColor: 'text-white',
     },
@@ -87,7 +253,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
     {
       id: 'programme-reports',
       title: 'Programme Reports',
-      subtitle: 'By pillar and initiative',
+      subtitle: 'By pillar & initiative',
       icon: <FileText size={20} strokeWidth={2.2} />,
       iconColor: 'text-[#EA580C]',
     },
@@ -121,238 +287,38 @@ const ResourcesPage = ({ onOpenDonate }) => {
     },
   ];
 
-  // 2. Sidebar Category Options with Counts
-  const categoryOptions = [
-    { id: 'all', label: 'All Resources', count: 42 },
-    { id: 'annual-reports', label: 'Annual Reports', count: 6 },
-    { id: 'impact-reports', label: 'Impact Reports', count: 8 },
-    { id: 'programme-reports', label: 'Programme Reports', count: 10 },
-    { id: 'publications', label: 'Publications', count: 7 },
-    { id: 'policies', label: 'Policies', count: 6 },
-    { id: 'newsletters', label: 'Newsletters', count: 4 },
-    { id: 'media-kit', label: 'Media Kit', count: 3 },
-  ];
+  // 2. Dynamic Sidebar Category Options with Counts from dataset
+  const categoryOptions = useMemo(() => {
+    return [
+      { id: 'all', label: 'All Resources', count: resources.length },
+      { id: 'annual-reports', label: 'Annual Reports', count: resources.filter((r) => r.category === 'annual-reports').length },
+      { id: 'impact-reports', label: 'Impact Reports', count: resources.filter((r) => r.category === 'impact-reports').length },
+      { id: 'programme-reports', label: 'Programme Reports', count: resources.filter((r) => r.category === 'programme-reports').length },
+      { id: 'publications', label: 'Publications', count: resources.filter((r) => r.category === 'publications').length },
+      { id: 'policies', label: 'Policies', count: resources.filter((r) => r.category === 'policies').length },
+      { id: 'newsletters', label: 'Newsletters', count: resources.filter((r) => r.category === 'newsletters').length },
+      { id: 'media-kit', label: 'Media Kit', count: resources.filter((r) => r.category === 'media-kit').length },
+    ];
+  }, [resources]);
 
   // 3. Document Type Options with Counts
-  const docTypeOptions = [
-    { id: 'pdf', label: 'PDF', count: 36 },
-    { id: 'video', label: 'Video', count: 4 },
-    { id: 'presentation', label: 'Presentation', count: 2 },
-    { id: 'infographic', label: 'Infographic', count: 3 },
-    { id: 'image', label: 'Image', count: 3 },
-  ];
+  const docTypeOptions = useMemo(() => {
+    return [
+      { id: 'pdf', label: 'PDF Document', count: resources.filter((r) => r.type === 'pdf').length },
+      { id: 'docx', label: 'Word Document', count: resources.filter((r) => r.type === 'docx').length },
+      { id: 'xlsx', label: 'Spreadsheet', count: resources.filter((r) => r.type === 'xlsx').length },
+      { id: 'zip', label: 'ZIP Archive', count: resources.filter((r) => r.type === 'zip').length },
+    ];
+  }, [resources]);
 
-  // 4. Featured Resources (Section A - 4 Large Cards)
-  const featuredResources = [
-    {
-      id: 'feat-1',
-      title: 'Annual Report 2024',
-      subtitle: 'Our progress, achievements and financial overview for 2024.',
-      coverImage: '/images/cover_annual_report_2024.jpg',
-      format: 'PDF',
-      size: '12.4 MB',
-      category: 'annual-reports',
-      year: '2024',
-      type: 'pdf',
-    },
-    {
-      id: 'feat-2',
-      title: 'Impact Report 2024',
-      subtitle: 'Stories of impact across education, health and community programmes.',
-      coverImage: '/images/cover_impact_report_2024.jpg',
-      format: 'PDF',
-      size: '8.7 MB',
-      category: 'impact-reports',
-      year: '2024',
-      type: 'pdf',
-    },
-    {
-      id: 'feat-3',
-      title: 'Strategic Plan 2026 – 2030',
-      subtitle: 'Our roadmap for a stronger, more inclusive Nigeria.',
-      coverImage: '/images/cover_strategic_plan.jpg',
-      format: 'PDF',
-      size: '5.1 MB',
-      category: 'publications',
-      year: '2025',
-      type: 'pdf',
-    },
-    {
-      id: 'feat-4',
-      title: 'Governance & Policy Manual',
-      subtitle: 'Our key policies, standards and governance framework.',
-      coverImage: '/images/cover_governance_policy.jpg',
-      format: 'PDF',
-      size: '3.6 MB',
-      category: 'policies',
-      year: '2024',
-      type: 'pdf',
-    },
-  ];
-
-  // 5. All Resources (Section B - 8+ Compact Cards with Thumbnails)
-  const allResources = [
-    {
-      id: 1,
-      title: 'Medical Outreach Report 2024',
-      categoryName: 'Programme Report',
-      category: 'programme-reports',
-      date: 'March 2025',
-      year: '2025',
-      format: 'PDF',
-      size: '4.2 MB',
-      type: 'pdf',
-      thumbnail: '/images/album_health.jpg',
-      thumbnailBg: 'bg-[#06402B]',
-    },
-    {
-      id: 2,
-      title: 'Education Programme Report 2024',
-      categoryName: 'Programme Report',
-      category: 'programme-reports',
-      date: 'February 2025',
-      year: '2025',
-      format: 'PDF',
-      size: '3.8 MB',
-      type: 'pdf',
-      thumbnail: '/images/album_education.jpg',
-      thumbnailBg: 'bg-[#0B3B82]',
-    },
-    {
-      id: 3,
-      title: 'CMAOF Newsletter Q1 2025',
-      categoryName: 'Newsletter',
-      category: 'newsletters',
-      date: 'January 2025',
-      year: '2025',
-      format: 'PDF',
-      size: '2.1 MB',
-      type: 'pdf',
-      thumbnail: '/images/banner_schoolgirl.jpg',
-      thumbnailBg: 'bg-[#06402B]',
-    },
-    {
-      id: 4,
-      title: 'Child Protection Policy',
-      categoryName: 'Policy',
-      category: 'policies',
-      date: 'January 2025',
-      year: '2025',
-      format: 'PDF',
-      size: '1.5 MB',
-      type: 'pdf',
-      thumbnail: '/images/cover_governance_policy.jpg',
-      thumbnailBg: 'bg-[#C28224]',
-    },
-    {
-      id: 5,
-      title: 'Clean Water Initiative Brief',
-      categoryName: 'Publication',
-      category: 'publications',
-      date: 'December 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '2.8 MB',
-      type: 'pdf',
-      thumbnail: '/images/album_community.jpg',
-      thumbnailBg: 'bg-[#0F2B5B]',
-    },
-    {
-      id: 6,
-      title: 'Community Health Impact Study',
-      categoryName: 'Research Report',
-      category: 'impact-reports',
-      date: 'November 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '4.5 MB',
-      type: 'pdf',
-      thumbnail: '/images/pillar_health.jpg',
-      thumbnailBg: 'bg-[#06402B]',
-    },
-    {
-      id: 7,
-      title: 'CMAOF Brand Kit',
-      categoryName: 'Media Kit',
-      category: 'media-kit',
-      date: 'October 2024',
-      year: '2024',
-      format: 'ZIP',
-      size: '25.6 MB',
-      type: 'image',
-      thumbnail: '/images/timeline_sprout_bg.jpg',
-      thumbnailBg: 'bg-[#EA580C]',
-    },
-    {
-      id: 8,
-      title: 'Safeguarding Policy',
-      categoryName: 'Policy',
-      category: 'policies',
-      date: 'September 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '1.9 MB',
-      type: 'pdf',
-      thumbnail: '/images/cover_governance_policy.jpg',
-      thumbnailBg: 'bg-[#C28224]',
-    },
-    {
-      id: 9,
-      title: 'Tertiary Scholarship Cohort Review',
-      categoryName: 'Programme Report',
-      category: 'programme-reports',
-      date: 'August 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '3.1 MB',
-      type: 'pdf',
-      thumbnail: '/images/pillar_graduates.jpg',
-      thumbnailBg: 'bg-[#06402B]',
-    },
-    {
-      id: 10,
-      title: 'Audited Financial Statements 2023–2024',
-      categoryName: 'Annual Report',
-      category: 'annual-reports',
-      date: 'July 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '5.4 MB',
-      type: 'pdf',
-      thumbnail: '/images/cover_annual_report_2024.jpg',
-      thumbnailBg: 'bg-[#0B3B82]',
-    },
-    {
-      id: 11,
-      title: 'Mission 1,000 Ilara Community Brief',
-      categoryName: 'Publication',
-      category: 'publications',
-      date: 'June 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '2.4 MB',
-      type: 'pdf',
-      thumbnail: '/images/hero_community.jpg',
-      thumbnailBg: 'bg-[#0F2B5B]',
-    },
-    {
-      id: 12,
-      title: 'Foundation Institutional Charter',
-      categoryName: 'Policy',
-      category: 'policies',
-      date: 'May 2024',
-      year: '2024',
-      format: 'PDF',
-      size: '1.8 MB',
-      type: 'pdf',
-      thumbnail: '/images/cover_governance_policy.jpg',
-      thumbnailBg: 'bg-[#C28224]',
-    },
-  ];
+  // 4. Featured Resources (Section A - Top Flagship Publications)
+  const featuredResources = useMemo(() => {
+    return resources.filter((r) => r.featured).slice(0, 4);
+  }, [resources]);
 
   // Filtering Logic
   const filteredAllResources = useMemo(() => {
-    return allResources
+    return resources
       .filter((item) => {
         // Category Filter
         const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
@@ -360,7 +326,9 @@ const ResourcesPage = ({ onOpenDonate }) => {
         // Search Filter
         const matchesSearch = 
           item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          item.categoryName.toLowerCase().includes(searchQuery.toLowerCase());
+          (item.categoryName && item.categoryName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.summary && item.summary.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.pillar && item.pillar.toLowerCase().includes(searchQuery.toLowerCase()));
 
         // Year Filter
         const matchesYear = selectedYear === 'all' || item.year === selectedYear;
@@ -372,14 +340,14 @@ const ResourcesPage = ({ onOpenDonate }) => {
         return matchesCategory && matchesSearch && matchesYear && matchesDocType;
       })
       .sort((a, b) => {
-        if (sortBy === 'latest') return b.id - a.id;
-        if (sortBy === 'oldest') return a.id - b.id;
+        if (sortBy === 'latest') return (b.year || 0) - (a.year || 0);
+        if (sortBy === 'downloads') return (b.downloads || 0) - (a.downloads || 0);
         if (sortBy === 'title') return a.title.localeCompare(b.title);
         return 0;
       });
-  }, [allResources, activeCategory, searchQuery, selectedYear, selectedDocTypes, sortBy]);
+  }, [resources, activeCategory, searchQuery, selectedYear, selectedDocTypes, sortBy]);
 
-  // Handle Category Toggle from Sidebar or Top Tabs
+  // Handle Category Toggle
   const handleCategorySelect = (catId) => {
     setActiveCategory(catId);
   };
@@ -402,11 +370,16 @@ const ResourcesPage = ({ onOpenDonate }) => {
   };
 
   // Download Trigger
-  const handleDownload = (title) => {
-    toast.success(`Downloading "${title}"...`, {
+  const handleDownload = (resource) => {
+    // Increment local counter
+    setResources((prev) =>
+      prev.map((r) => (r.id === resource.id ? { ...r, downloads: (r.downloads || 0) + 1 } : r))
+    );
+
+    toast.success(`Downloading "${resource.title}" (${resource.format} • ${resource.size})...`, {
       icon: '📥',
       style: {
-        borderRadius: '12px',
+        borderRadius: '14px',
         background: '#06402B',
         color: '#fff',
         fontSize: '13px',
@@ -469,7 +442,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
           
-          {/* ════════ LEFT SIDEBAR: Sticky Filter Control Panel (Width ~22-25%) ════════ */}
+          {/* ════════ LEFT SIDEBAR: Sticky Filter Control Panel ════════ */}
           <aside className="w-full lg:w-[260px] xl:w-[280px] shrink-0 sticky top-24 z-20 space-y-6 bg-transparent">
             
             <div className="bg-white rounded-2xl border border-[#E2E8F0] p-5 shadow-xs space-y-5">
@@ -492,7 +465,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search resources..."
+                    placeholder="Search whitepapers..."
                     className="w-full pl-3.5 pr-9 py-2 bg-white border border-[#E2E8F0] rounded-xl text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] transition-colors"
                   />
                   <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
@@ -547,11 +520,10 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     onChange={(e) => setSelectedYear(e.target.value)}
                     className="w-full appearance-none bg-white border border-[#E2E8F0] rounded-xl px-3.5 py-2 text-xs sm:text-[13px] font-medium text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
                   >
-                    <option value="all">All Years</option>
+                    <option value="all">All Publication Years</option>
                     <option value="2026">2026</option>
                     <option value="2025">2025</option>
                     <option value="2024">2024</option>
-                    <option value="2023">2023</option>
                   </select>
                   <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                 </div>
@@ -560,7 +532,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
               {/* Document Type Checkboxes */}
               <div className="space-y-2 pt-1 border-t border-slate-100">
                 <label className="block text-xs font-bold text-[#0B2D6E] pt-2">
-                  Document Type
+                  Document Format
                 </label>
                 <div className="space-y-1.5">
                   {docTypeOptions.map((dt) => {
@@ -610,57 +582,68 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
           </aside>
 
-          {/* ════════ RIGHT MAIN CONTENT AREA (Width ~75-78%) ════════ */}
+          {/* ════════ RIGHT MAIN CONTENT AREA ════════ */}
           <div className="flex-1 min-w-0 space-y-9 sm:space-y-10">
             
             {/* ──────────────── SECTION A: Featured Resources ──────────────── */}
-            <section className="space-y-4">
-              
-              {/* Section Header */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-1 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
-                  <div className="space-y-0.5">
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#0B2D6E] tracking-tight leading-snug">
-                      Featured Resources
-                    </h2>
-                    <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
-                      Key reports and publications highlighting our impact, progress and strategic direction.
-                    </p>
+            {activeCategory === 'all' && (
+              <section className="space-y-4">
+                
+                {/* Section Header */}
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-1 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                    <div className="space-y-0.5">
+                      <h2 className="text-xl sm:text-2xl font-bold text-[#0B2D6E] tracking-tight leading-snug">
+                        Featured Publications & Reports
+                      </h2>
+                      <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
+                        Flagship institutional disclosures, audited financials, and strategic roadmap releases.
+                      </p>
+                    </div>
                   </div>
+
+                  <button
+                    onClick={() => setActiveCategory('annual-reports')}
+                    className="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#06402B] hover:text-[#042D1E] transition-colors shrink-0 group cursor-pointer"
+                  >
+                    <span>View All Reports</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                  </button>
                 </div>
 
-                <button
-                  onClick={() => setActiveCategory('all')}
-                  className="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#06402B] hover:text-[#042D1E] transition-colors shrink-0 group cursor-pointer"
-                >
-                  <span>View All Featured</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-                </button>
-              </div>
-
-              {/* 4-Column Grid of Large Featured Cards */}
-              <div className="relative">
+                {/* 4-Column Grid of Large Featured Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-4.5">
-                  {featuredResources.map((item, idx) => (
+                  {featuredResources.map((item) => (
                     <div
                       key={item.id}
                       className="bg-white rounded-2xl border border-[#E2E8F0] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1"
                     >
                       {/* Top Cover Image Area */}
-                      <div className="relative aspect-square w-full overflow-hidden bg-slate-100">
+                      <div 
+                        onClick={() => setActiveDossierResource(item)}
+                        className="relative aspect-square w-full overflow-hidden bg-slate-100 cursor-pointer"
+                      >
                         <img
                           src={item.coverImage}
                           alt={item.title}
-                          className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                          className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                          <span className="text-[11px] font-bold text-white flex items-center gap-1 drop-shadow-md">
+                            <Eye size={13} />
+                            <span>Inspect Dossier</span>
+                          </span>
+                        </div>
                       </div>
 
                       {/* Card Content & Metadata */}
                       <div className="p-4 sm:p-4.5 flex-1 flex flex-col justify-between space-y-3.5">
                         <div className="space-y-1">
-                          <h3 className="font-bold text-[14.5px] sm:text-[15px] text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors">
+                          <h3 
+                            onClick={() => setActiveDossierResource(item)}
+                            className="font-bold text-[14.5px] sm:text-[15px] text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors cursor-pointer line-clamp-2"
+                          >
                             {item.title}
                           </h3>
                           <p className="text-[#5A6E85] text-xs sm:text-[12.5px] font-normal leading-relaxed line-clamp-2">
@@ -670,19 +653,23 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
                         {/* Format & Download Button */}
                         <div className="space-y-3 pt-1">
-                          {/* Format Tag with Red PDF Icon */}
-                          <div className="flex items-center gap-1.5 text-xs text-[#5A6E85] font-medium">
-                            <FileText size={15} className="text-[#DC2626] shrink-0" strokeWidth={2.4} />
-                            <span>{item.format} • {item.size}</span>
+                          <div className="flex items-center justify-between text-xs text-[#5A6E85] font-medium">
+                            <div className="flex items-center gap-1.5">
+                              <FileText size={15} className="text-[#DC2626] shrink-0" strokeWidth={2.4} />
+                              <span>{item.format} • {item.size}</span>
+                            </div>
+                            <span className="text-[11px] text-[#06402B] font-bold">
+                              {item.downloads?.toLocaleString()} downloads
+                            </span>
                           </div>
 
                           {/* Full-width dark green download button */}
                           <button
                             type="button"
-                            onClick={() => handleDownload(item.title)}
-                            className="w-full bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2.5 px-3 rounded-lg font-medium text-xs sm:text-[13px] flex items-center justify-center gap-2 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
+                            onClick={() => handleDownload(item)}
+                            className="w-full bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2.5 px-3 rounded-xl font-medium text-xs sm:text-[13px] flex items-center justify-center gap-2 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
                           >
-                            <span>Download</span>
+                            <span>Download {item.format}</span>
                             <Download size={14} strokeWidth={2.3} />
                           </button>
                         </div>
@@ -692,18 +679,8 @@ const ResourcesPage = ({ onOpenDonate }) => {
                   ))}
                 </div>
 
-                {/* Carousel Right Arrow Button matching Card 4 in reference screenshot */}
-                <button
-                  type="button"
-                  onClick={() => toast('Viewing next featured publications page', { icon: '📄' })}
-                  className="hidden xl:flex absolute -right-3.5 top-[28%] -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-[#E2E8F0] shadow-md items-center justify-center text-slate-700 hover:text-slate-900 hover:scale-105 active:scale-95 transition-all z-10 cursor-pointer"
-                  title="Next featured publication"
-                >
-                  <ChevronRight size={17} strokeWidth={2.5} />
-                </button>
-              </div>
-
-            </section>
+              </section>
+            )}
 
             {/* ──────────────── SECTION B: All Resources ──────────────── */}
             <section className="space-y-4 pt-2">
@@ -716,10 +693,10 @@ const ResourcesPage = ({ onOpenDonate }) => {
                   <div className="w-1 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
                   <div className="space-y-0.5">
                     <h2 className="text-xl sm:text-2xl font-bold text-[#0B2D6E] tracking-tight leading-snug">
-                      All Resources
+                      Institutional Repository
                     </h2>
                     <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
-                      Showing 1 – {filteredAllResources.length} of {allResources.length} resources
+                      Showing 1 – {filteredAllResources.length} of {resources.length} verified publications
                     </p>
                   </div>
                 </div>
@@ -738,9 +715,9 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         onChange={(e) => setSortBy(e.target.value)}
                         className="appearance-none bg-white border border-[#E2E8F0] rounded-xl pl-3 pr-7 py-1.5 text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
                       >
-                        <option value="latest">Latest</option>
-                        <option value="oldest">Oldest</option>
-                        <option value="title">Alphabetical</option>
+                        <option value="latest">Latest Releases</option>
+                        <option value="downloads">Most Downloaded</option>
+                        <option value="title">Alphabetical (A-Z)</option>
                       </select>
                       <ChevronDown size={13} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                     </div>
@@ -778,7 +755,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
               </div>
 
-              {/* 4-Column Grid of Compact Document Cards (Exact Match to Image 2) */}
+              {/* Grid View */}
               {viewMode === 'grid' ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                   {filteredAllResources.map((doc) => (
@@ -790,9 +767,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       <div className="flex items-start gap-3">
                         
                         {/* Vertical Book Thumbnail */}
-                        <div className="w-[66px] h-[90px] rounded-lg overflow-hidden shrink-0 relative bg-slate-100 border border-slate-200/80 shadow-2xs group-hover:scale-102 transition-transform duration-300">
+                        <div 
+                          onClick={() => setActiveDossierResource(doc)}
+                          className="w-[66px] h-[90px] rounded-lg overflow-hidden shrink-0 relative bg-slate-100 border border-slate-200/80 shadow-2xs group-hover:scale-102 transition-transform duration-300 cursor-pointer"
+                        >
                           <img
-                            src={doc.thumbnail}
+                            src={doc.thumbnail || doc.coverImage}
                             alt={doc.title}
                             className="w-full h-full object-cover"
                           />
@@ -804,14 +784,17 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
                         {/* Title, Category, Date, Format */}
                         <div className="space-y-1 min-w-0 flex-1">
-                          <h4 className="font-bold text-[13.5px] text-[#0B2D6E] leading-snug line-clamp-2 group-hover:text-[#06402B] transition-colors">
+                          <h4 
+                            onClick={() => setActiveDossierResource(doc)}
+                            className="font-bold text-[13.5px] text-[#0B2D6E] leading-snug line-clamp-2 group-hover:text-[#06402B] transition-colors cursor-pointer"
+                          >
                             {doc.title}
                           </h4>
-                          <span className="text-[11px] font-semibold text-[#06402B] block">
+                          <span className="text-[11px] font-semibold text-[#06402B] block truncate">
                             {doc.categoryName}
                           </span>
-                          <span className="text-[10.5px] font-normal text-[#5A6E85] block">
-                            {doc.date}
+                          <span className="text-[10.5px] font-normal text-[#5A6E85] block truncate">
+                            {doc.pillar || doc.publishedDate}
                           </span>
                           <div className="flex items-center gap-1.5 text-[11px] font-medium text-[#5A6E85] pt-0.5">
                             <FileText size={13} className="text-[#DC2626]" strokeWidth={2.3} />
@@ -822,14 +805,22 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       </div>
 
                       {/* Lower Section: Full-Width Dark Green Download Button */}
-                      <div className="pt-3.5 mt-2 border-t border-slate-100/80">
+                      <div className="pt-3.5 mt-2 border-t border-slate-100/80 flex items-center gap-2">
                         <button
                           type="button"
-                          onClick={() => handleDownload(doc.title)}
-                          className="w-full bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2 px-3 rounded-lg font-medium text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
+                          onClick={() => handleDownload(doc)}
+                          className="flex-1 bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2 px-3 rounded-xl font-medium text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
                         >
                           <span>Download</span>
                           <Download size={13} strokeWidth={2.3} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setActiveDossierResource(doc)}
+                          className="p-2 rounded-xl text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 border border-slate-200 transition-colors cursor-pointer"
+                          title="Read Abstract & Specifications"
+                        >
+                          <Eye size={14} />
                         </button>
                       </div>
 
@@ -845,31 +836,49 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-colors group"
                     >
                       <div className="flex items-center gap-3.5">
-                        <div className="w-12 h-16 rounded-md overflow-hidden shrink-0 bg-slate-100 border border-slate-200 relative">
-                          <img src={doc.thumbnail} alt={doc.title} className="w-full h-full object-cover" />
+                        <div 
+                          onClick={() => setActiveDossierResource(doc)}
+                          className="w-12 h-16 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200 relative cursor-pointer"
+                        >
+                          <img src={doc.thumbnail || doc.coverImage} alt={doc.title} className="w-full h-full object-cover" />
                         </div>
                         <div className="space-y-1">
-                          <h4 className="font-bold text-sm sm:text-[15px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors">
+                          <h4 
+                            onClick={() => setActiveDossierResource(doc)}
+                            className="font-bold text-sm sm:text-[15px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors cursor-pointer"
+                          >
                             {doc.title}
                           </h4>
                           <div className="flex flex-wrap items-center gap-2 text-xs text-[#5A6E85] font-normal">
                             <span className="font-semibold text-[#06402B]">{doc.categoryName}</span>
                             <span>•</span>
-                            <span>{doc.date}</span>
+                            <span>{doc.publishedDate}</span>
                             <span>•</span>
-                            <span>{doc.format} • {doc.size}</span>
+                            <span className="font-mono font-bold text-slate-700">{doc.format} ({doc.size})</span>
+                            <span>•</span>
+                            <span>{doc.downloads?.toLocaleString() || 0} downloads</span>
                           </div>
                         </div>
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => handleDownload(doc.title)}
-                        className="self-start sm:self-auto bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2 px-4 rounded-lg font-medium text-xs flex items-center gap-2 shrink-0 transition-colors shadow-xs cursor-pointer"
-                      >
-                        <span>Download</span>
-                        <Download size={13} strokeWidth={2.3} />
-                      </button>
+                      <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => setActiveDossierResource(doc)}
+                          className="p-2 rounded-xl text-slate-500 hover:text-[#06402B] hover:bg-emerald-50 border border-slate-200 transition-colors cursor-pointer"
+                          title="View Dossier"
+                        >
+                          <Eye size={15} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleDownload(doc)}
+                          className="bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2 px-4 rounded-xl font-medium text-xs flex items-center gap-2 transition-colors shadow-xs cursor-pointer"
+                        >
+                          <span>Download</span>
+                          <Download size={13} strokeWidth={2.3} />
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -899,14 +908,13 @@ const ResourcesPage = ({ onOpenDonate }) => {
         </div>
       </main>
 
-      {/* ── 4. Resource Categories & Utility Support Cards (Exact match to reference screenshot) ── */}
+      {/* ── 4. Resource Categories & Utility Support Cards ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
           
-          {/* ── Card 1: Resource Categories (lg:col-span-6) ── */}
+          {/* Card 1: Resource Categories */}
           <div className="lg:col-span-6 bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-7 shadow-xs flex flex-col justify-between">
             <div>
-              {/* Header */}
               <div className="flex items-center gap-2.5 mb-5">
                 <div className="w-1 h-5 bg-[#EA580C] rounded-full shrink-0" />
                 <h3 className="text-lg sm:text-xl font-bold text-[#0B2D6E] tracking-tight">
@@ -914,13 +922,8 @@ const ResourcesPage = ({ onOpenDonate }) => {
                 </h3>
               </div>
 
-              {/* 2-Column Categories Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                
-                {/* Column 1 */}
                 <div className="space-y-4">
-                  
-                  {/* Annual Reports */}
                   <button
                     type="button"
                     onClick={() => {
@@ -935,12 +938,11 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         Annual Reports
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Financial & impact reports
+                        Financial & audited disclosures
                       </p>
                     </div>
                   </button>
 
-                  {/* Impact Reports */}
                   <button
                     type="button"
                     onClick={() => {
@@ -955,12 +957,11 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         Impact Reports
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Our results and key outcomes
+                        Empirical findings & key outcomes
                       </p>
                     </div>
                   </button>
 
-                  {/* Programme Reports */}
                   <button
                     type="button"
                     onClick={() => {
@@ -975,12 +976,11 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         Programme Reports
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Reports by pillar and initiative
+                        Interventions by pillar & state
                       </p>
                     </div>
                   </button>
 
-                  {/* Publications */}
                   <button
                     type="button"
                     onClick={() => {
@@ -995,17 +995,13 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         Publications
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Research, guides and insights
+                        Research papers & technical guides
                       </p>
                     </div>
                   </button>
-
                 </div>
 
-                {/* Column 2 */}
                 <div className="space-y-4">
-                  
-                  {/* Policies */}
                   <button
                     type="button"
                     onClick={() => {
@@ -1017,15 +1013,14 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     <Shield size={20} className="text-[#DC2626] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
                       <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
-                        Policies
+                        Policies & Charters
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Governance & compliance
+                        Governance, PSEA & ethical codes
                       </p>
                     </div>
                   </button>
 
-                  {/* Newsletters */}
                   <button
                     type="button"
                     onClick={() => {
@@ -1040,12 +1035,11 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         Newsletters
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Updates and stories
+                        Quarterly updates and news
                       </p>
                     </div>
                   </button>
 
-                  {/* Media Kit */}
                   <button
                     type="button"
                     onClick={() => {
@@ -1060,21 +1054,18 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         Media Kit
                       </h4>
                       <p className="text-[#5A6E85] text-xs font-normal leading-tight">
-                        Logos, photos and brand assets
+                        Official logos, photos & brand assets
                       </p>
                     </div>
                   </button>
-
                 </div>
-
               </div>
             </div>
           </div>
 
-          {/* ── Card 2: Stay Updated (lg:col-span-3) ── */}
+          {/* Card 2: Stay Updated */}
           <div className="lg:col-span-3 bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
-              {/* Header with Green Envelope */}
               <div className="flex items-center gap-2.5">
                 <div className="text-[#06402B]">
                   <Mail size={22} strokeWidth={2.4} />
@@ -1084,13 +1075,11 @@ const ResourcesPage = ({ onOpenDonate }) => {
                 </h3>
               </div>
 
-              {/* Description */}
               <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
-                Subscribe to our newsletter for latest reports, stories and opportunities.
+                Subscribe to our policy briefing alerts and annual research reports.
               </p>
             </div>
 
-            {/* Newsletter Input + Orange Subscribe Button */}
             <form onSubmit={handleNewsletterSubmit} className="space-y-3 pt-1">
               <input
                 type="email"
@@ -1110,32 +1099,29 @@ const ResourcesPage = ({ onOpenDonate }) => {
             </form>
           </div>
 
-          {/* ── Card 3: Need a Specific Document? (lg:col-span-3) ── */}
+          {/* Card 3: Need a Specific Document? */}
           <div className="lg:col-span-3 bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
-              {/* Header with Green Headset */}
               <div className="flex items-center gap-2.5">
                 <div className="text-[#06402B]">
                   <Headphones size={22} strokeWidth={2.4} />
                 </div>
                 <h3 className="text-lg font-bold text-[#0B2D6E] tracking-tight">
-                  Need a Specific Document?
+                  Institutional Inquiries?
                 </h3>
               </div>
 
-              {/* Description */}
               <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
-                Can't find what you're looking for? Contact us and we'll be happy to assist you.
+                Looking for historical audits, research collaborations, or academic citations?
               </p>
             </div>
 
-            {/* Outlined Contact Us Button */}
             <div className="pt-1">
               <Link
                 to="/contact"
                 className="w-full bg-white hover:bg-emerald-50/70 border border-[#06402B] text-[#06402B] font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-2xs active:scale-98 cursor-pointer"
               >
-                <span>Contact Us</span>
+                <span>Contact Directorate</span>
                 <ArrowRight size={15} strokeWidth={2.5} />
               </Link>
             </div>
@@ -1144,11 +1130,10 @@ const ResourcesPage = ({ onOpenDonate }) => {
         </div>
       </section>
 
-      {/* ── 5. Full-Width CTA Banner: Knowledge Today. Stronger Communities Tomorrow. ── */}
+      {/* ── 5. Full-Width CTA Banner ── */}
       <section className="w-full mt-10 sm:mt-14">
         <div className="relative w-full overflow-hidden min-h-[145px] sm:min-h-[165px] flex items-center">
           
-          {/* Background Image: Smiling Boy & Natural Outdoor Setting */}
           <div 
             className="absolute inset-0 bg-cover bg-no-repeat"
             style={{ 
@@ -1158,7 +1143,6 @@ const ResourcesPage = ({ onOpenDonate }) => {
             aria-hidden="true"
           />
 
-          {/* Exact Seamless Gradient Overlay matching reference screenshot */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -1167,7 +1151,6 @@ const ResourcesPage = ({ onOpenDonate }) => {
             aria-hidden="true"
           />
 
-          {/* Mobile Fallback Overlay */}
           <div 
             className="absolute inset-0 md:hidden pointer-events-none"
             style={{
@@ -1176,12 +1159,9 @@ const ResourcesPage = ({ onOpenDonate }) => {
             aria-hidden="true"
           />
 
-          {/* Banner Content Wrapper (Constrained to max-w-7xl to align with footer content) */}
           <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-7 sm:py-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             
-            {/* Text Block (offset on desktop to preserve smiling boy) */}
             <div className="flex items-start gap-4 lg:pl-[24%] xl:pl-[26%] max-w-4xl">
-              {/* Brand Orange Vertical Accent Bar */}
               <div className="w-1.5 self-stretch min-h-[64px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
               
               <div className="space-y-1">
@@ -1197,7 +1177,6 @@ const ResourcesPage = ({ onOpenDonate }) => {
               </div>
             </div>
 
-            {/* Right Action: Vibrant Orange Donate Now Button */}
             <div className="shrink-0 self-start lg:self-center pl-5 sm:pl-0">
               <button
                 type="button"
@@ -1214,6 +1193,13 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
         </div>
       </section>
+
+      {/* ── 6. Public Institutional Resource Dossier Modal ── */}
+      <PublicResourceDossierModal
+        resource={activeDossierResource}
+        onClose={() => setActiveDossierResource(null)}
+        onDownload={handleDownload}
+      />
 
     </div>
   );

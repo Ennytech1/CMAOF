@@ -15,82 +15,10 @@ import {
   Share2 
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { INITIAL_EVENTS } from '../../data/eventsData';
 
-// ── Events Data matching reference design exactly ──
-const eventsData = [
-  {
-    id: 'summit-2026',
-    dateDay: '15 - 17',
-    dateMonthYear: 'APR 2026',
-    image: '/images/event_summit_stage.jpg',
-    title: 'CMAOF Foundation Summit 2026',
-    description: 'A flagship event bringing together partners, leaders and changemakers to advance education, health and community resilience in Nigeria.',
-    location: 'Eko Hotels, Lagos',
-    time: '9:00 AM – 4:30 PM Daily WAT',
-    tags: [
-      { label: 'Flagship Event', bg: 'bg-[#FEE2E2]', text: 'text-[#991B1B]' },
-      { label: 'Stakeholder Engagement', bg: 'bg-[#FEF3C7]', text: 'text-[#92400E]' },
-    ],
-    buttonText: 'Register Now',
-    buttonType: 'register',
-    category: 'foundation',
-    stakeholder: true,
-  },
-  {
-    id: 'medical-ibadan',
-    dateDay: '12',
-    dateMonthYear: 'NOV 2025',
-    image: '/images/event_medical_doctor.jpg',
-    title: 'Free Medical Outreach – Ibadan',
-    description: 'Providing free medical consultations, screenings and essential medicines for children, women and older persons in underserved communities.',
-    location: 'Ibadan, Oyo State',
-    time: '8:00 AM – 5:00 PM WAT',
-    tags: [
-      { label: 'Medical Outreach', bg: 'bg-[#FEE2E2]', text: 'text-[#991B1B]' },
-      { label: 'Community Health', bg: 'bg-[#E0F2FE]', text: 'text-[#0369A1]' },
-    ],
-    buttonText: 'Learn More',
-    buttonType: 'learn_more',
-    category: 'medical',
-    stakeholder: false,
-  },
-  {
-    id: 'education-initiative',
-    dateDay: '05',
-    dateMonthYear: 'DEC 2025',
-    image: '/images/event_education_girl.jpg',
-    title: 'Education Support Initiative',
-    description: 'Distribution of learning materials and school support for underserved schools across selected communities.',
-    location: 'Kaduna State',
-    time: '10:00 AM – 2:00 PM WAT',
-    tags: [
-      { label: 'Education', bg: 'bg-[#E0F2FE]', text: 'text-[#0369A1]' },
-      { label: 'Children & Youth', bg: 'bg-[#FEF3C7]', text: 'text-[#B45309]' },
-    ],
-    buttonText: 'Register Now',
-    buttonType: 'register',
-    category: 'education',
-    stakeholder: false,
-  },
-  {
-    id: 'community-leaders-forum',
-    dateDay: '20',
-    dateMonthYear: 'JAN 2026',
-    image: '/images/event_community_leaders.jpg',
-    title: 'Community Leaders Forum',
-    description: 'A collaborative dialogue with traditional rulers, community leaders and partners to strengthen community resilience and social well-being.',
-    location: 'Abuja',
-    time: '10:00 AM – 3:30 PM WAT',
-    tags: [
-      { label: 'Community Resilience', bg: 'bg-[#FEE2E2]', text: 'text-[#991B1B]' },
-      { label: 'Partnerships', bg: 'bg-[#FEF3C7]', text: 'text-[#B45309]' },
-    ],
-    buttonText: 'Learn More',
-    buttonType: 'learn_more',
-    category: 'community',
-    stakeholder: true,
-  },
-];
+// ── Events Data from unified dataset ──
+const eventsData = INITIAL_EVENTS;
 
 // ── Filter Tabs matching top row icons & labels ──
 const filterTabs = [

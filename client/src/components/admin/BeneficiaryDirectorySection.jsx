@@ -259,6 +259,32 @@ const BeneficiaryDirectorySection = ({
         </div>
       </div>
 
+      {/* Quick Beneficiary Hub Navigation Pills */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <button
+          type="button"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#06402B] text-white shadow-xs cursor-default"
+        >
+          Directory Register
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate('/admin/beneficiaries/assessments')}
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-amber-50/70 text-slate-700 hover:text-amber-800 border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+        >
+          <FileCheck2 size={13} className="text-amber-600" />
+          <span>Needs Assessment Hub</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate('/admin/beneficiaries/cases')}
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-sky-50/70 text-slate-700 hover:text-[#0B2D6E] border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+        >
+          <GitBranch size={13} className="text-[#0B2D6E]" />
+          <span>Case Management & Timelines</span>
+        </button>
+      </div>
+
       {/* ─────────────────────────────────────────────────────────────
           2. MULTI-TIER FILTER BAR matching Image 2
       ───────────────────────────────────────────────────────────── */}
@@ -598,34 +624,36 @@ const BeneficiaryDirectorySection = ({
                       </td>
 
                       {/* Sticky, Always-Visible Action Toolbar */}
-                      <td className={`py-2.5 px-4 text-right sticky right-0 backdrop-blur-xs group-hover:bg-slate-50 transition-colors shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.06)] z-10 min-w-[190px] ${isChecked ? 'bg-emerald-50/90' : 'bg-white'}`}>
+                      <td className={`py-2.5 px-3 text-right sticky right-0 backdrop-blur-xs group-hover:bg-slate-50 transition-colors shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.06)] z-10 min-w-[285px] ${isChecked ? 'bg-emerald-50/90' : 'bg-white'}`}>
                         <div className="flex items-center justify-end gap-1.5">
-                          {/* 1. Primary Action: View Profile */}
+                          {/* 1. Primary Action: View Full Profile */}
                           <Link
                             to={`/admin/beneficiaries/${b.code}`}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-50 text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold text-xs transition-all shadow-2xs border border-emerald-200/70"
-                            title="View Full Profile"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-50 text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold text-xs transition-all shadow-2xs border border-emerald-200/80"
+                            title="View Full Profile Dossier"
                           >
-                            <Eye size={13} />
-                            <span>View</span>
+                            <Eye size={12} />
+                            <span>Profile</span>
                           </Link>
 
-                          {/* 2. Needs Assessment Quick Action */}
+                          {/* 2. Needs Assessment Quick Action (Clear Labeled Pill) */}
                           <Link
                             to={`/admin/beneficiaries/${b.code}/assessment`}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-amber-700 hover:bg-amber-50 transition-colors"
-                            title="Needs Assessment"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-50 text-amber-800 hover:bg-amber-600 hover:text-white font-bold text-xs transition-all shadow-2xs border border-amber-200/80"
+                            title="Conduct or Review Needs Assessment"
                           >
-                            <FileCheck2 size={15} />
+                            <FileCheck2 size={12} />
+                            <span>Assessment</span>
                           </Link>
 
-                          {/* 3. Case Timeline Quick Action */}
+                          {/* 3. Case Timeline Quick Action (Clear Labeled Pill) */}
                           <Link
                             to={`/admin/beneficiaries/${b.code}/cases`}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B2D6E] hover:bg-blue-50 transition-colors"
-                            title="Case Timeline"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 hover:bg-[#0B2D6E] hover:text-white font-bold text-xs transition-all shadow-2xs border border-sky-200/80"
+                            title="View 8-Stage Case Timeline"
                           >
-                            <GitBranch size={15} />
+                            <GitBranch size={12} />
+                            <span>Cases</span>
                           </Link>
 
                           {/* 4. Remove / Delete Beneficiary */}
@@ -637,7 +665,7 @@ const BeneficiaryDirectorySection = ({
                             className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
                             title="Remove Beneficiary"
                           >
-                            <Trash2 size={15} />
+                            <Trash2 size={14} />
                           </button>
                         </div>
                       </td>

@@ -340,6 +340,39 @@ const LeftPanel = ({ step, finalAmount, frequency, programmeArea }) => {
           </div>
         ))}
       </div>
+
+      {/* ── Active Live Campaign Progress Meter ── */}
+      <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm space-y-3">
+        <div className="flex items-center justify-between text-xs">
+          <span className="font-bold text-slate-800 flex items-center gap-1.5">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+            </span>
+            Active 2026 Target Velocity
+          </span>
+          <span className="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full">
+            85.4% Funded
+          </span>
+        </div>
+        <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+          <div className="h-full rounded-full bg-gradient-to-r from-[#06402B] to-[#14a37f]" style={{ width: '85.4%' }} />
+        </div>
+        <div className="flex justify-between text-[11px] text-slate-500 font-medium">
+          <span className="font-mono font-bold text-slate-800">₦85.4M Raised</span>
+          <span>Target: ₦100.0M</span>
+        </div>
+
+        {/* Real-time Donor Activity Ticker */}
+        <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600">
+          <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#06402B] flex items-center justify-center text-[10px] font-bold shrink-0">
+            ✓
+          </div>
+          <span className="truncate text-[11px]">
+            <strong className="text-slate-800">Amina K.</strong> gave <strong>₦25,000</strong> to Education • <span className="text-emerald-700 font-semibold">Just now</span>
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

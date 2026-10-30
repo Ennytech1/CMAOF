@@ -83,7 +83,9 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminDashboard initialTab="dashboard" />} />
             <Route path="/admin/beneficiaries" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-overview" />} />
             <Route path="/admin/beneficiaries/directory" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-directory" />} />
-            <Route path="/admin/beneficiaries/cases" element={<Navigate to="/admin/beneficiaries/directory" replace />} />
+            <Route path="/admin/beneficiaries/assessment" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-assessments" />} />
+            <Route path="/admin/beneficiaries/assessments" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-assessments" />} />
+            <Route path="/admin/beneficiaries/cases" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-cases" />} />
             <Route path="/admin/beneficiaries/register" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-register" />} />
             <Route path="/admin/beneficiaries/:id/assessment" element={<NeedsAssessmentPage />} />
             <Route path="/admin/beneficiaries/:id/cases" element={<CaseTimelinePage />} />
@@ -97,7 +99,8 @@ function App() {
             <Route path="/admin/resources" element={<AdminDashboard initialTab="resources" />} />
             <Route path="/admin/media" element={<AdminDashboard initialTab="media" />} />
             <Route path="/admin/reports" element={<AdminDashboard initialTab="reports" />} />
-            <Route path="/admin/users" element={<AdminDashboard initialTab="users" />} />
+            <Route path="/admin/users" element={<AdminDashboard initialTab="team" />} />
+            <Route path="/admin/team" element={<AdminDashboard initialTab="team" />} />
             <Route path="/admin/approvals" element={<AdminDashboard initialTab="approvals" />} />
             <Route path="/admin/audit" element={<AdminDashboard initialTab="audit" />} />
             <Route path="/admin/settings" element={<AdminDashboard initialTab="settings" />} />

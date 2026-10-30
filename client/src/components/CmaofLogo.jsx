@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 /**
  * CmaofLogo Component
- * Features the official CMAOF tree emblem and color palette:
- * - Forest Green (#06402B) for "CMAOF" and "CHIEF MICHAEL ADE.OJO FOUNDATION"
- * - Deep Royal Navy Blue (#0B2D6E) for "Stronger People. Brighter Communities."
- * - Vibrant Orange (#EA580C) and Green (#06402B) for community tree figures
+ * Real official CMAOF logo assets:
+ * - 'light' (on white/light backgrounds): uses '/images/CMAO Foundation hhhh.png'
+ *   featuring the CMAOF tree emblem with green leaves, orange figures, dark green CMAOF
+ *   typography, and the blue motto "Stronger People. Brighter Communities."
+ * - 'dark' (on dark backgrounds, e.g. Navy/Forest Green footer, dark hero banners):
+ *   uses '/images/CMAO Foundation Logo.png' featuring the orange emblem & crisp white typography.
  */
 const CmaofLogo = ({ 
   variant = 'light', // 'light' (on white/light backgrounds) | 'dark' (on dark backgrounds)
@@ -15,8 +17,8 @@ const CmaofLogo = ({
   asLink = true 
 }) => {
   const logoSrc = variant === 'dark' 
-    ? '/images/cmaof_logo_dark.svg' 
-    : '/images/cmaof_logo.svg';
+    ? '/images/CMAO Foundation Logo.png' 
+    : '/images/CMAO Foundation hhhh.png';
 
   const content = (
     <div className={`inline-flex items-center group select-none ${className}`}>

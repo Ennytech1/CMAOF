@@ -135,6 +135,8 @@ const CaseTimelinePage = () => {
     setMobileSidebarOpen(false);
     if (tabId === 'beneficiaries') {
       if (subItem === 'beneficiaries-directory') navigate('/admin/beneficiaries/directory');
+      else if (subItem === 'beneficiaries-assessments') navigate('/admin/beneficiaries/assessments');
+      else if (subItem === 'beneficiaries-cases') navigate('/admin/beneficiaries/cases');
       else if (subItem === 'beneficiaries-register') navigate('/admin/beneficiaries/register');
       else navigate('/admin/beneficiaries');
     } else if (tabId === 'dashboard') {
@@ -151,7 +153,7 @@ const CaseTimelinePage = () => {
       ───────────────────────────────────────────────────────────── */}
       <AdminSidebar
         activeTab="beneficiaries"
-        activeSubItem="beneficiaries-directory"
+        activeSubItem="beneficiaries-cases"
         onTabChange={handleTabSwitch}
         mobileOpen={mobileSidebarOpen}
         onMobileClose={() => setMobileSidebarOpen(false)}

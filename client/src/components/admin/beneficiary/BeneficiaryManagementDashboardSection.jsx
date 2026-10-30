@@ -17,6 +17,9 @@ import {
   TrendingUp,
   MapPin,
   ClipboardList,
+  FileCheck2,
+  GitBranch,
+  Eye,
 } from 'lucide-react';
 
 const RECENT_REGISTRATIONS = [
@@ -126,6 +129,40 @@ const BeneficiaryManagementDashboardSection = () => {
             <option value="Last 12 Months">Last 12 Months</option>
           </select>
         </div>
+      </div>
+
+      {/* Quick Beneficiary Hub Navigation Pills */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <button
+          type="button"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#06402B] text-white shadow-xs cursor-default"
+        >
+          Overview Dashboard
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate('/admin/beneficiaries/directory')}
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+        >
+          <Users size={13} className="text-emerald-700" />
+          <span>Beneficiary Directory</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate('/admin/beneficiaries/assessments')}
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-amber-50/70 text-slate-700 hover:text-amber-800 border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+        >
+          <FileCheck2 size={13} className="text-amber-600" />
+          <span>Needs Assessment Hub</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate('/admin/beneficiaries/cases')}
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-sky-50/70 text-slate-700 hover:text-[#0B2D6E] border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+        >
+          <GitBranch size={13} className="text-[#0B2D6E]" />
+          <span>Case Management & Timelines</span>
+        </button>
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
@@ -472,20 +509,24 @@ const BeneficiaryManagementDashboardSection = () => {
                     <th className="pb-2">Type</th>
                     <th className="pb-2">Date</th>
                     <th className="pb-2">Status</th>
+                    <th className="pb-2 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {RECENT_REGISTRATIONS.map((r) => (
                     <tr
                       key={r.id}
-                      onClick={() => navigate(`/admin/beneficiaries/${r.id}`)}
-                      className="hover:bg-slate-50 transition-colors cursor-pointer group"
+                      className="hover:bg-slate-50 transition-colors group"
                     >
                       <td className="py-2.5 font-mono font-bold text-slate-600 group-hover:text-[#06402B]">
-                        {r.id}
+                        <Link to={`/admin/beneficiaries/${r.id}`} className="hover:underline">
+                          {r.id}
+                        </Link>
                       </td>
                       <td className="py-2.5 font-bold text-slate-900">
-                        {r.name}
+                        <Link to={`/admin/beneficiaries/${r.id}`} className="hover:text-[#06402B]">
+                          {r.name}
+                        </Link>
                       </td>
                       <td className="py-2.5">
                         <span className={`px-2 py-0.5 rounded-full text-[11px] ${r.pillarClass}`}>
@@ -499,6 +540,24 @@ const BeneficiaryManagementDashboardSection = () => {
                         <span className={`px-2.5 py-0.5 rounded-full text-[10px] ${r.statusClass}`}>
                           {r.status}
                         </span>
+                      </td>
+                      <td className="py-2.5 text-right">
+                        <div className="flex items-center justify-end gap-1">
+                          <Link
+                            to={`/admin/beneficiaries/${r.id}/assessment`}
+                            className="px-2 py-1 rounded-md bg-amber-50 text-amber-800 hover:bg-amber-600 hover:text-white text-[10px] font-bold border border-amber-200/80 transition-colors"
+                            title="Needs Assessment"
+                          >
+                            Assessment
+                          </Link>
+                          <Link
+                            to={`/admin/beneficiaries/${r.id}/cases`}
+                            className="px-2 py-1 rounded-md bg-sky-50 text-sky-800 hover:bg-[#0B2D6E] hover:text-white text-[10px] font-bold border border-sky-200/80 transition-colors"
+                            title="Case Timeline"
+                          >
+                            Cases
+                          </Link>
+                        </div>
                       </td>
                     </tr>
                   ))}

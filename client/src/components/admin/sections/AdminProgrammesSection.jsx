@@ -29,7 +29,7 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { PROGRAMMES_DATA } from '../../../data/programmesData';
+import { PROGRAMMES_DATA, enrichProgrammeData } from '../../../data/programmesData';
 import ProgrammeRegistrationSection from './ProgrammeRegistrationSection';
 
 const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
@@ -189,28 +189,37 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
       setProgrammes((prev) =>
         prev.map((p) => {
           if (p.id === selectedProgrammeForEdit.id) {
-            return {
+            const updated = enrichProgrammeData({
               ...p,
               name: formData.name,
               pillar: formData.pillar,
               budgetFormatted: formData.budgetFormatted,
               locations: formData.locations,
-              locationsCount: Number(formData.locationsCount),
-              schoolsCount: Number(formData.schoolsCount),
+              locationsCount: Number(formData.locationsCount) || p.locationsCount,
+              schoolsCount: Number(formData.schoolsCount) || p.schoolsCount,
               programmeManager: formData.programmeManager,
               targetBeneficiaries: formData.targetBeneficiaries,
               status: formData.status,
               objective: formData.objective,
               startDate: formData.startDate,
               endDate: formData.endDate,
+              objectivesList: formData.objectivesList || p.objectivesList,
+              activities: formData.activities || p.activities,
+              beneficiariesList: formData.beneficiariesList || p.beneficiariesList,
+              locationsList: formData.locationsList || p.locationsList,
+              partners: formData.partners || p.partners,
+              kpis: formData.kpis || p.kpis,
+              mediaList: formData.mediaList || p.mediaList,
+              documentsList: formData.documentsList || p.documentsList,
               stats: {
                 ...p.stats,
-                beneficiaries: formData.beneficiariesCount,
-                communities: Number(formData.locationsCount),
-                schools: Number(formData.schoolsCount),
-                completionRate: formData.completionRate,
+                beneficiaries: formData.beneficiariesCount || p.stats?.beneficiaries,
+                communities: Number(formData.locationsCount) || p.stats?.communities,
+                schools: Number(formData.schoolsCount) || p.stats?.schools,
+                completionRate: formData.completionRate || p.stats?.completionRate,
               },
-            };
+            });
+            return updated;
           }
           return p;
         })
@@ -219,36 +228,47 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
     } else {
       // Create new programme
       const slug = formData.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-      const created = {
+      const rawCreated = {
         id: `prog-${Date.now()}`,
         slug: slug || `programme-${Date.now()}`,
         name: formData.name,
         pillar: formData.pillar,
         status: formData.status,
         thumbnail:
-          formData.pillar.includes('Education')
+          formData.thumbnail ||
+          (formData.pillar.includes('Education')
             ? '/images/past_event_school_support.jpg'
             : formData.pillar.includes('Health')
             ? '/images/past_event_health_screening.jpg'
-            : '/images/past_event_community_hall.jpg',
-        featuredImage: '/images/past_event_clean_water.jpg',
+            : '/images/past_event_community_hall.jpg'),
+        featuredImage: formData.featuredImage || '/images/past_event_clean_water.jpg',
         objective:
           formData.objective || 'Empower individuals and communities through targeted foundation initiatives.',
         targetBeneficiaries: formData.targetBeneficiaries,
         locations: formData.locations,
-        locationsCount: Number(formData.locationsCount),
-        schoolsCount: Number(formData.schoolsCount),
+        locationsCount: Number(formData.locationsCount) || 18,
+        schoolsCount: Number(formData.schoolsCount) || 12,
         programmeManager: formData.programmeManager,
         budgetFormatted: formData.budgetFormatted,
         startDate: formData.startDate,
         endDate: formData.endDate,
+        objectivesList: formData.objectivesList || [],
+        activities: formData.activities || [],
+        beneficiariesList: formData.beneficiariesList || [],
+        locationsList: formData.locationsList || [],
+        partners: formData.partners || [],
+        kpis: formData.kpis || [],
+        mediaList: formData.mediaList || [],
+        documentsList: formData.documentsList || [],
         stats: {
-          beneficiaries: formData.beneficiariesCount,
-          communities: Number(formData.locationsCount),
-          schools: Number(formData.schoolsCount),
-          completionRate: formData.completionRate,
+          beneficiaries: formData.beneficiariesCount || '4,500',
+          communities: Number(formData.locationsCount) || 18,
+          schools: Number(formData.schoolsCount) || 12,
+          completionRate: formData.completionRate || '85%',
         },
       };
+
+      const created = enrichProgrammeData(rawCreated);
 
       // Backend API sync attempt
       try {
@@ -267,6 +287,9 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
             locations: created.locations,
             programmeManager: created.programmeManager,
             budgetFormatted: created.budgetFormatted,
+            objectivesList: created.objectivesList,
+            activities: created.activities,
+            partners: created.partners,
           }),
         });
       } catch (err) {

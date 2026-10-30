@@ -82,6 +82,12 @@ const programmeSchema = new mongoose.Schema(
         lead: String,
       },
     ],
+    beneficiariesList: [mongoose.Schema.Types.Mixed],
+    locationsList: [mongoose.Schema.Types.Mixed],
+    partners: [mongoose.Schema.Types.Mixed],
+    kpis: [mongoose.Schema.Types.Mixed],
+    mediaList: [mongoose.Schema.Types.Mixed],
+    documentsList: [mongoose.Schema.Types.Mixed],
   },
   {
     timestamps: true,

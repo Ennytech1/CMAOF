@@ -9,6 +9,8 @@ import AdminOverviewSection from '../components/admin/AdminOverviewSection';
 import BeneficiaryDirectorySection from '../components/admin/BeneficiaryDirectorySection';
 import BeneficiaryManagementDashboardSection from '../components/admin/beneficiary/BeneficiaryManagementDashboardSection';
 import BeneficiaryRegistrationSection from '../components/admin/sections/BeneficiaryRegistrationSection';
+import BeneficiaryAssessmentsSection from '../components/admin/sections/BeneficiaryAssessmentsSection';
+import BeneficiaryCasesSection from '../components/admin/sections/BeneficiaryCasesSection';
 import BeneficiaryDossierModal from '../components/admin/BeneficiaryDossierModal';
 
 // Modular Feature Sections
@@ -56,16 +58,23 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
     const knownTabs = [
       'dashboard', 'beneficiaries', 'programmes', 'impact', 'donations',
       'communications', 'events', 'resources', 'media', 'reports',
-      'users', 'approvals', 'audit', 'settings'
+      'users', 'team', 'approvals', 'audit', 'settings'
     ];
-    if (knownTabs.includes(mainSegment)) return mainSegment;
+    if (knownTabs.includes(mainSegment)) return mainSegment === 'team' ? 'team' : mainSegment;
     return 'dashboard';
   };
 
   const [activeTab, setActiveTab] = useState(getInitialTab);
-  const [activeSubItem, setActiveSubItem] = useState(
-    initialSubItem || (location.pathname.includes('/directory') ? 'beneficiaries-directory' : 'beneficiaries-overview')
-  );
+  const [activeSubItem, setActiveSubItem] = useState(() => {
+    if (initialSubItem) return initialSubItem;
+    const path = location.pathname;
+    if (path.includes('/beneficiaries/directory')) return 'beneficiaries-directory';
+    if (path.includes('/beneficiaries/assessment')) return 'beneficiaries-assessments';
+    if (path.includes('/beneficiaries/cases')) return 'beneficiaries-cases';
+    if (path.includes('/beneficiaries/register')) return 'beneficiaries-register';
+    if (path.includes('/beneficiaries')) return 'beneficiaries-overview';
+    return null;
+  });
 
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState('');
@@ -142,6 +151,12 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
     if (path === '/admin/beneficiaries/directory') {
       setActiveTab('beneficiaries');
       setActiveSubItem('beneficiaries-directory');
+    } else if (path === '/admin/beneficiaries/assessment' || path === '/admin/beneficiaries/assessments') {
+      setActiveTab('beneficiaries');
+      setActiveSubItem('beneficiaries-assessments');
+    } else if (path === '/admin/beneficiaries/cases') {
+      setActiveTab('beneficiaries');
+      setActiveSubItem('beneficiaries-cases');
     } else if (path === '/admin/beneficiaries/register') {
       setActiveTab('beneficiaries');
       setActiveSubItem('beneficiaries-register');
@@ -175,6 +190,12 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
       if (subItemId === 'beneficiaries-directory') {
         setActiveSubItem('beneficiaries-directory');
         window.history.replaceState(null, '', '/admin/beneficiaries/directory');
+      } else if (subItemId === 'beneficiaries-assessments') {
+        setActiveSubItem('beneficiaries-assessments');
+        window.history.replaceState(null, '', '/admin/beneficiaries/assessments');
+      } else if (subItemId === 'beneficiaries-cases') {
+        setActiveSubItem('beneficiaries-cases');
+        window.history.replaceState(null, '', '/admin/beneficiaries/cases');
       } else if (subItemId === 'beneficiaries-register') {
         setActiveSubItem('beneficiaries-register');
         window.history.replaceState(null, '', '/admin/beneficiaries/register');
@@ -331,6 +352,22 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
             />
           )}
 
+          {/* 2d. Beneficiary Needs Assessment Hub */}
+          {activeTab === 'beneficiaries' && activeSubItem === 'beneficiaries-assessments' && (
+            <BeneficiaryAssessmentsSection
+              onNavigateToDirectory={() => handleTabSwitch('beneficiaries', 'beneficiaries-directory')}
+              onNavigateToCases={() => handleTabSwitch('beneficiaries', 'beneficiaries-cases')}
+            />
+          )}
+
+          {/* 2e. Beneficiary Case Management & Timelines Hub */}
+          {activeTab === 'beneficiaries' && activeSubItem === 'beneficiaries-cases' && (
+            <BeneficiaryCasesSection
+              onNavigateToDirectory={() => handleTabSwitch('beneficiaries', 'beneficiaries-directory')}
+              onNavigateToAssessments={() => handleTabSwitch('beneficiaries', 'beneficiaries-assessments')}
+            />
+          )}
+
           {/* 3a. Launch Strategic Programme (Dedicated 5-Step Multi-Phase Form) */}
           {activeTab === 'programmes' && activeSubItem === 'programmes-register' && (
             <ProgrammeRegistrationSection
@@ -385,8 +422,8 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
             <AdminReportsSection />
           )}
 
-          {/* 11. Staff Users & Role Clearance */}
-          {activeTab === 'users' && (
+          {/* 11. Staff Users & Team Governance */}
+          {(activeTab === 'users' || activeTab === 'team') && (
             <AdminUsersSection />
           )}
 

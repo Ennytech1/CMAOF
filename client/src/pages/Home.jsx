@@ -5,6 +5,7 @@ import OurPartners from '../components/OurPartners';
 import StrategicPillars from '../components/StrategicPillars';
 import ImpactStats from '../components/ImpactStats';
 import BeneficiaryStories from '../components/BeneficiaryStories';
+import HomeEventsPreview from '../components/events/HomeEventsPreview';
 import CallToActionBanner from '../components/CallToActionBanner';
 
 const Home = ({ onOpenDonate }) => {
@@ -25,10 +26,13 @@ const Home = ({ onOpenDonate }) => {
       {/* 5. Stories of Change & Latest News */}
       <BeneficiaryStories />
 
-      {/* 6. Our Institutional Partners (Stronger Together) */}
+      {/* 6. Upcoming Field Missions & Assemblies */}
+      <HomeEventsPreview />
+
+      {/* 7. Our Institutional Partners (Stronger Together) */}
       <OurPartners />
 
-      {/* 7. Be Part of a Brighter Tomorrow CTA Banner */}
+      {/* 8. Be Part of a Brighter Tomorrow CTA Banner */}
       <CallToActionBanner onOpenDonate={onOpenDonate} />
     </main>
   );
