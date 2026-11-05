@@ -38,31 +38,31 @@ const GroupPeopleIcon = ({ colorClass }) => (
 const statCards = [
   {
     id: 1,
-    icon: <GroupPeopleIcon colorClass="text-[#064E3B]" />,
+    icon: <GroupPeopleIcon colorClass="text-[#338C26]" />,
     stat: '500+',
-    statColor: 'text-[#064E3B]',
+    statColor: 'text-[#338C26]',
     label: 'People reached through 2026 medical outreach',
   },
   {
     id: 2,
-    icon: <GraduationCap className="w-8 h-8 text-[#1D4ED8]" strokeWidth={2.2} />,
+    icon: <GraduationCap className="w-8 h-8 text-[#0047BA]" strokeWidth={2.2} />,
     stat: '1,200+',
-    statColor: 'text-[#1D4ED8]',
-    label: 'Students supported (placeholder)',
+    statColor: 'text-[#0047BA]',
+    label: 'Students supported with academic bursaries',
   },
   {
     id: 3,
     icon: <HeartbeatIcon />,
     stat: '5,000+',
     statColor: 'text-[#DC2626]',
-    label: 'Medical consultations and screenings (placeholder)',
+    label: 'Medical consultations and screenings',
   },
   {
     id: 4,
-    icon: <GroupPeopleIcon colorClass="text-[#EA580C]" />,
+    icon: <GroupPeopleIcon colorClass="text-[#5B2E19]" />,
     stat: '30+',
-    statColor: 'text-[#EA580C]',
-    label: 'Communities served across key locations (placeholder)',
+    statColor: 'text-[#5B2E19]',
+    label: 'Communities served across key locations',
   },
 ];
 
@@ -75,18 +75,18 @@ const commitments = [
 
 const ImpactStatsStrip = () => {
   return (
-    <section className="w-full bg-white border-t border-b border-slate-100 py-5 sm:py-6">
+    <section className="w-full bg-[#FAF6EE]/40 border-t border-b border-slate-100 py-5 sm:py-6">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-4 lg:gap-3.5 xl:gap-4 items-stretch">
           
           {/* ── Block 1: Left Header (Col 1-2) ── */}
           <div className="lg:col-span-2 flex items-start gap-3 justify-center lg:justify-start py-2 lg:py-0">
-            <div className="w-[3.5px] h-12 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+            <div className="w-[3.5px] h-12 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
             <div className="space-y-1 text-left">
-              <span className="block text-xs font-bold text-[#064E3B] uppercase tracking-wider">
+              <span className="block text-xs font-bold text-[#8C4A26] uppercase tracking-wider">
                 OUR IMPACT
               </span>
-              <h2 className="text-xl sm:text-2xl font-black text-[#0F2B5B] tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight leading-tight">
                 AT A GLANCE
               </h2>
               <p className="text-slate-600 text-xs sm:text-[12.5px] leading-relaxed pt-0.5">
@@ -99,7 +99,7 @@ const ImpactStatsStrip = () => {
           {statCards.map((card) => (
             <div
               key={card.id}
-              className="lg:col-span-2 bg-white rounded-2xl border border-slate-100 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow duration-200 p-4 sm:p-5 flex flex-col items-center justify-center text-center space-y-2"
+              className="lg:col-span-2 bg-white rounded-2xl border border-slate-100 shadow-[0_2px_10px_rgba(0,0,0,0.03)] hover:shadow-md transition-shadow duration-200 p-4 sm:p-5 flex flex-col items-center justify-center text-center space-y-2 hover:border-[#FCCD37]/50"
             >
               <div className="h-9 flex items-center justify-center">
                 {card.icon}
@@ -115,14 +115,14 @@ const ImpactStatsStrip = () => {
 
           {/* ── Block 6: Right Commitment Checklist (Col 11-12) ── */}
           <div className="lg:col-span-2 flex flex-col justify-center space-y-2.5 py-2 lg:py-0 pl-1 lg:pl-2">
-            <span className="block text-xs font-bold text-[#064E3B] uppercase tracking-wider">
+            <span className="block text-xs font-bold text-[#5B2E19] uppercase tracking-wider">
               OUR COMMITMENT
             </span>
             <ul className="space-y-2">
               {commitments.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-left">
-                  <div className="w-4 h-4 rounded-full bg-[#064E3B] text-white flex items-center justify-center shrink-0 mt-0.5">
-                    <svg className="w-2.5 h-2.5 fill-none stroke-white stroke-[2.5]" viewBox="0 0 24 24">
+                  <div className="w-4 h-4 rounded-full bg-[#5B2E19] text-[#FCCD37] flex items-center justify-center shrink-0 mt-0.5">
+                    <svg className="w-2.5 h-2.5 fill-none stroke-current stroke-[3]" viewBox="0 0 24 24">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>

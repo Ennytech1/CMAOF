@@ -41,25 +41,25 @@ const ImpactHero = () => {
           <div className="lg:col-span-7 xl:col-span-7 space-y-5 max-w-2xl">
 
             {/* Breadcrumb Navigation */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0F2B5B]">
-              <div className="w-1 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-              <Link to="/" className="hover:text-[#0F4C3A] transition-colors">Home</Link>
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5B2E19]">
+              <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0" />
+              <Link to="/" className="hover:text-[#8C4A26] transition-colors">Home</Link>
               <ChevronRight size={14} className="text-slate-400" />
-              <span className="text-[#0F2B5B]">Impact</span>
+              <span className="text-[#5B2E19] font-bold">Impact</span>
             </div>
 
-            {/* Category Eyebrow Header with Orange Indicator */}
+            {/* Category Eyebrow Header with Yellow Indicator */}
             <div className="flex items-center gap-2.5 pt-0.5">
-              <div className="w-[3px] h-4 bg-[#EA580C] rounded-full shrink-0" />
-              <span className="text-xs sm:text-[13px] font-extrabold text-[#0F2B5B] tracking-wider uppercase">
+              <div className="w-[3px] h-4 bg-[#FCCD37] rounded-full shrink-0" />
+              <span className="text-xs sm:text-[13px] font-extrabold text-[#5B2E19] tracking-wider uppercase">
                 IMPACT & ACCOUNTABILITY
               </span>
             </div>
 
-            {/* Main Headline on One Line */}
+            {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-tight">
-              <span className="text-[#064E3B]">Real People. </span>
-              <span className="text-[#0F2B5B]">Real Change.</span>
+              <span className="text-[#5B2E19]">Real People. </span>
+              <span className="bg-gradient-to-r from-[#5B2E19] to-[#8C4A26] bg-clip-text text-transparent">Real Change.</span>
             </h1>
 
             {/* Descriptive Subtitle (Clean 2 lines) */}
@@ -70,19 +70,19 @@ const ImpactHero = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-1.5">
-              {/* Primary CTA: Solid Brand Orange */}
+              {/* Primary CTA: Solid Brand Sun Yellow */}
               <a
                 href="#verified-impact"
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-[#EA580C] hover:bg-[#d94e07] text-white text-xs sm:text-[13.5px] font-bold shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+                className="btn-cmao-primary inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-[13.5px] font-black shadow-md cursor-pointer"
               >
                 <span>View Our Impact</span>
                 <ArrowRight size={15} strokeWidth={2.5} />
               </a>
 
-              {/* Secondary CTA: Dark Teal Outlined */}
+              {/* Secondary CTA: Earth Brown Outlined */}
               <a
                 href="#download-reports"
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl border-2 border-[#064E3B] bg-white/70 hover:bg-[#064E3B]/5 text-[#064E3B] text-xs sm:text-[13.5px] font-bold transition-all duration-200 cursor-pointer"
+                className="btn-cmao-outline inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-[13.5px] font-bold transition-all duration-200 cursor-pointer"
               >
                 <span>Download Reports</span>
                 <Download size={15} strokeWidth={2.5} />
@@ -101,8 +101,8 @@ const ImpactHero = () => {
                 WebkitBackdropFilter: 'blur(12px)',
               }}
             >
-              {/* Dark Green Quotation Mark */}
-              <div className="text-[#064E3B] leading-none mb-2.5">
+              {/* Golden Sun Quotation Mark */}
+              <div className="text-[#FCCD37] leading-none mb-2.5">
                 <span className="text-4xl sm:text-5xl font-serif font-black block leading-none select-none">“</span>
               </div>
 
@@ -111,17 +111,17 @@ const ImpactHero = () => {
                 Investing in people creates ripple effects that strengthen families, communities and nations."
               </p>
 
-              {/* Attribution & Orange Underline Bar */}
+              {/* Attribution & Yellow Underline Bar */}
               <div className="pt-3 flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#064E3B] shrink-0 shadow-xs bg-white">
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#5B2E19] shrink-0 shadow-xs bg-white">
                   <img src={founderImages.founder5} alt="Chief Michael Ade.Ojo" className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
-                  <span className="block text-[11px] font-bold text-[#0F2B5B] uppercase tracking-wider">
+                  <span className="block text-[11px] font-bold text-[#5B2E19] uppercase tracking-wider">
                     CHIEF MICHAEL ADE.OJO
                   </span>
-                  <span className="text-[10px] text-[#064E3B] font-semibold block">Founding Visionary</span>
-                  <div className="w-8 h-0.5 bg-[#EA580C] rounded-full mt-1" />
+                  <span className="text-[10px] text-[#8C4A26] font-semibold block">Founding Visionary</span>
+                  <div className="w-8 h-0.5 bg-[#FCCD37] rounded-full mt-1" />
                 </div>
               </div>
             </div>

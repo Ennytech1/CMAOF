@@ -1,25 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Heart, Menu, X } from 'lucide-react';
+import { 
+  Search, 
+  Heart, 
+  Menu, 
+  X
+} from 'lucide-react';
 
 import CmaofLogo from './CmaofLogo';
 
 const Navbar = ({ onOpenDonate, onOpenSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
 
-  if (location.pathname.startsWith('/admin')) {
-    return null;
-  }
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
 
   useEffect(() => {
+    if (isAdmin) return;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isAdmin]);
+
+  // Route change listener: close mobile menu
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  if (isAdmin) {
+    return null;
+  }
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -40,80 +53,88 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
     return false;
   };
 
+  const handleNavLinkClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-md py-2.5' 
-          : 'py-3.5'
+          ? 'bg-[#FFFAE8]/95 backdrop-blur-md shadow-md py-2.5 border-b border-[#E8DEC2]' 
+          : 'bg-[#FFFAE8]/90 backdrop-blur-sm py-3.5 border-b border-[#E8DEC2]/60'
       }`}
-      style={
-        !isScrolled
-          ? {
-              background:
-                'linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.96) 55%, rgba(255,255,255,0.88) 75%, rgba(255,255,255,0.6) 88%, rgba(255,255,255,0.2) 100%)',
-            }
-          : {}
-      }
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
           {/* CMAOF Institutional Logo (Left) with Official Brand Colors */}
-          <CmaofLogo imgClassName="h-11 sm:h-12 md:h-13 w-auto object-contain" />
+          <CmaofLogo imgClassName="h-10 sm:h-11 md:h-12 w-auto object-contain" onClick={handleNavLinkClick} />
 
-          {/* Desktop Navigation Links (Center) */}
-          <nav className="hidden xl:flex items-center space-x-6 lg:space-x-7">
+          {/* Desktop Navigation Links (Center) - Responsive from lg: and above */}
+          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-5 2xl:gap-6" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const active = isActive(link.path);
+              const displayName = link.name === 'Multimedia Gallery' ? (
+                <>
+                  <span className="hidden xl:inline">Multimedia </span>Gallery
+                </>
+              ) : (
+                link.name
+              );
+
               return (
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`py-1 text-sm font-semibold transition-all relative ${
+                  onClick={handleNavLinkClick}
+                  className={`py-1 text-[13px] xl:text-sm font-semibold transition-all relative ${
                     active
-                      ? 'text-[#0F4C3A] font-bold'
-                      : 'text-slate-800 hover:text-[#0F4C3A]'
+                      ? 'text-[#5B2E19] font-bold'
+                      : 'text-[#5B2E19]/80 hover:text-[#5B2E19]'
                   }`}
                 >
-                  {link.name}
+                  {displayName}
                   {active && (
-                    <span className="absolute -bottom-2 left-0 right-0 h-[3px] bg-[#0F4C3A] rounded-full animate-fade-in" />
+                    <span className="absolute -bottom-2 left-0 right-0 h-[3px] bg-[#FCCD37] rounded-full animate-fade-in shadow-xs" />
                   )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right Controls: Search Icon & Gradient Donate Button */}
-          <div className="flex items-center gap-3">
+          {/* Right Controls: Search Icon & Active Sun Yellow Donate Button */}
+          <div className="flex items-center gap-2 sm:gap-3">
             
             {/* Search Trigger */}
             <button
               onClick={onOpenSearch}
-              className="w-10 h-10 rounded-full bg-white/90 border border-slate-200/80 shadow-sm hover:shadow flex items-center justify-center text-slate-700 hover:text-[#0F4C3A] hover:border-emerald-300 transition-all cursor-pointer backdrop-blur-sm"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 border border-[#E8DEC2] shadow-2xs hover:shadow-xs flex items-center justify-center text-[#5B2E19] hover:bg-[#FCCD37] transition-all cursor-pointer"
               title="Search foundation website"
               aria-label="Search"
             >
-              <Search size={18} strokeWidth={2.3} />
+              <Search size={17} strokeWidth={2.4} />
             </button>
 
-            {/* Gradient Orange Donate Pill Button */}
+            {/* Active Sun Yellow Donate Pill Button */}
             <Link
               to="/donate"
-              className="bg-gradient-to-r from-[#F59E0B] via-[#E67E22] to-[#EA580C] hover:opacity-95 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:shadow-lg flex items-center gap-2 transition-all hover:scale-[1.03] active:scale-95 cursor-pointer"
+              onClick={handleNavLinkClick}
+              className="btn-cmao-primary px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-black text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center gap-1.5 sm:gap-2 cursor-pointer"
             >
-              <Heart size={16} className="fill-white/20 stroke-[2.5]" />
+              <Heart size={15} className="fill-[#5B2E19]/30 stroke-[#5B2E19] stroke-[2.5]" />
               <span>Donate</span>
             </Link>
 
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 text-slate-800 hover:text-[#0F4C3A] rounded-lg focus:outline-none"
+              className="lg:hidden p-2 text-[#5B2E19] hover:bg-[#FAF0D4] rounded-lg transition-colors focus:outline-none"
               aria-label="Toggle Navigation Menu"
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
@@ -122,28 +143,33 @@ const Navbar = ({ onOpenDonate, onOpenSearch }) => {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 animate-fade-in">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
-                isActive(link.path)
-                  ? 'bg-emerald-50 text-[#0F4C3A] font-bold'
-                  : 'text-slate-800 hover:bg-slate-50'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
+        <div className="lg:hidden bg-[#FFFAE8] border-b border-[#E8DEC2] px-4 pt-3 pb-6 space-y-2 animate-fade-in shadow-xl">
+          {navLinks.map((link) => {
+            const active = isActive(link.path);
+
+            return (
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={handleNavLinkClick}
+                className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors min-h-[44px] flex items-center ${
+                  active
+                    ? 'bg-[#FAF0D4] text-[#5B2E19] font-bold border-l-4 border-[#5B2E19]'
+                    : 'text-[#5B2E19] hover:bg-[#FAF0D4]/60'
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+
+          <div className="pt-2 border-t border-[#E8DEC2] flex flex-col gap-2">
             <Link
               to="/donate"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full bg-gradient-to-r from-[#F59E0B] to-[#EA580C] text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2 shadow"
+              onClick={handleNavLinkClick}
+              className="w-full btn-cmao-primary py-3 rounded-xl font-black text-center flex items-center justify-center gap-2 shadow min-h-[48px]"
             >
-              <Heart size={18} className="fill-white/20 stroke-[2.5]" />
+              <Heart size={18} className="fill-[#5B2E19]/30 stroke-[#5B2E19] stroke-[2.5]" />
               <span>Donate to CMAOF</span>
             </Link>
           </div>

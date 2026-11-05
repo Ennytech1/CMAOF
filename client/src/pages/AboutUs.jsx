@@ -107,7 +107,7 @@ const AboutUs = () => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0F4C3A] hover:bg-[#14634C] text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer group"
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#5B2E19] hover:bg-[#3D1E10] text-[#FCCD37] flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer group border border-[#FCCD37]/30"
           title="Scroll back to top"
           aria-label="Scroll back to top"
         >
@@ -124,8 +124,8 @@ const AboutUs = () => {
           aria-label="Chief Michael Ade.Ojo Photographic Archive"
         >
           {/* Ambient subtle glow effects with brand colors */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FCCD37]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#5B2E19]/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
           <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
@@ -138,7 +138,7 @@ const AboutUs = () => {
                 <button
                   type="button"
                   onClick={() => setGalleryModalOpen(false)}
-                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#FAF6EE] hover:bg-[#5B2E19] text-[#5B2E19] hover:text-[#FCCD37] transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95 border border-[#EFE8DC]"
                   title="Back to About Us"
                 >
                   <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
@@ -150,11 +150,11 @@ const AboutUs = () => {
                 {/* Breadcrumbs matching Image 2 with vertical orange indicator bar */}
                 <div className="min-w-0 flex flex-col justify-center">
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0" />
                     <button
                       type="button"
                       onClick={() => setGalleryModalOpen(false)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Home
                     </button>
@@ -162,20 +162,20 @@ const AboutUs = () => {
                     <button
                       type="button"
                       onClick={() => setGalleryModalOpen(false)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       About Us
                     </button>
                     <ChevronRight size={13} className="text-slate-400 shrink-0" />
-                    <span className="text-[#0F2B5B] font-bold truncate">Founder Gallery</span>
+                    <span className="text-[#5B2E19] font-bold truncate">Founder Gallery</span>
                   </div>
 
                   {/* Title and Heritage Pill */}
                   <div className="flex items-center gap-2.5 mt-0.5">
-                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                    <h3 className="text-sm sm:text-base font-black text-[#5B2E19] truncate font-sans">
                       Chief Michael Ade.Ojo Photographic Archive
                     </h3>
-                    <span className="hidden md:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#0F4C3A]/10 text-[#0F4C3A] border border-[#0F4C3A]/20">
+                    <span className="hidden md:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/40">
                       Institutional Heritage
                     </span>
                   </div>
@@ -186,7 +186,7 @@ const AboutUs = () => {
               {/* Right: Slide Counter + Close Button */}
               <div className="flex items-center gap-3 shrink-0">
                 <div className="hidden md:flex flex-col items-end text-right">
-                  <span className="text-xs font-extrabold text-[#0F2B5B]">
+                  <span className="text-xs font-extrabold text-[#5B2E19]">
                     Slide {currentGalleryIdx + 1} of {founderGallery.length}
                   </span>
                   <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
@@ -195,7 +195,7 @@ const AboutUs = () => {
                 <button
                   type="button"
                   onClick={() => setGalleryModalOpen(false)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAF6EE] hover:bg-[#5B2E19] text-[#5B2E19] hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95 border border-[#EFE8DC]"
                   title="Close archive (Esc)"
                 >
                   <X size={18} strokeWidth={2.4} />
@@ -221,7 +221,7 @@ const AboutUs = () => {
                 <button
                   type="button"
                   onClick={handlePrevPhoto}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#5B2E19] text-slate-800 hover:text-[#FCCD37] border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
                   title="Previous photo (Left Arrow)"
                 >
                   <ChevronLeft size={24} />
@@ -229,30 +229,31 @@ const AboutUs = () => {
                 <button
                   type="button"
                   onClick={handleNextPhoto}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#5B2E19] text-slate-800 hover:text-[#FCCD37] border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
                   title="Next photo (Right Arrow)"
                 >
                   <ChevronRight size={24} />
                 </button>
 
                 {/* Floating Photo Counter Badge */}
-                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#0F2B5B] border border-slate-200 shadow-md">
+                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#5B2E19] border border-slate-200 shadow-md">
                   Photo {currentGalleryIdx + 1} of {founderGallery.length}
                 </div>
               </div>
             </div>
 
             {/* Right Photo Narrative */}
-            <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+            <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center font-sans">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E5] border border-[#FCCD37]/50 text-[#5B2E19] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FCCD37]" />
                 <span>{activePhoto.badge}</span>
               </div>
 
-              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-[#5B2E19]">
                 {activePhoto.title}
               </h4>
 
-              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+              <p className="text-sm sm:text-base font-bold text-[#8C4A26]">
                 {activePhoto.subtitle}
               </p>
 
@@ -261,8 +262,8 @@ const AboutUs = () => {
               </p>
 
               {/* Historical Context Callout */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
-                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Historical Context</span>
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF6EE] border-l-4 border-[#5B2E19] border-y border-r border-[#EFE8DC] text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#5B2E19] uppercase tracking-wider text-[11px] block">Historical Context</span>
                 <span className="leading-relaxed font-medium">Chief Michael Ade. Ojo’s enduring legacy in higher education, community empowerment, and national industrial leadership.</span>
               </div>
 
@@ -271,7 +272,7 @@ const AboutUs = () => {
                 <Link
                   to="/founder"
                   onClick={() => setGalleryModalOpen(false)}
-                  className="inline-flex items-center gap-2 bg-[#0F4C3A] hover:bg-[#14634C] text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full transition-all duration-200 shadow-xs hover:shadow hover:scale-105 active:scale-95 cursor-pointer"
+                  className="btn-cmao-primary inline-flex items-center gap-2 text-xs sm:text-sm px-6 py-3 rounded-full cursor-pointer shadow-md transition-all duration-200"
                 >
                   <span>Read Full Biographical Profile</span>
                   <ArrowRight size={15} strokeWidth={2.4} />
@@ -282,11 +283,11 @@ const AboutUs = () => {
           </div>
 
           {/* 3. Modal Bottom Thumbnail Strip Dock with Smooth Scroll & Nav Controls */}
-          <div className="shrink-0 py-3 sm:py-3.5 px-4 bg-white/95 border-t border-slate-200/80 backdrop-blur-md flex items-center justify-center gap-2 sm:gap-3 z-10 shadow-xs">
+          <div className="shrink-0 py-3 sm:py-3.5 px-4 bg-white/95 border-t border-[#EFE8DC] backdrop-blur-md flex items-center justify-center gap-2 sm:gap-3 z-10 shadow-xs">
             <button
               type="button"
               onClick={handlePrevPhoto}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              className="w-8 h-8 rounded-full bg-[#FAF6EE] hover:bg-[#5B2E19] text-[#5B2E19] hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0 border border-[#EFE8DC]"
               title="Previous slide"
             >
               <ChevronLeft size={16} strokeWidth={2.4} />
@@ -304,8 +305,8 @@ const AboutUs = () => {
                   onClick={() => setCurrentGalleryIdx(idx)}
                   className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
                     currentGalleryIdx === idx
-                      ? 'border-[#EA580C] ring-4 ring-[#EA580C]/30 scale-105 sm:scale-110 shadow-lg shadow-[#EA580C]/20'
-                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#0F4C3A] hover:scale-105'
+                      ? 'border-[#FCCD37] ring-4 ring-[#FCCD37]/30 scale-105 sm:scale-110 shadow-lg shadow-[#FCCD37]/25'
+                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#5B2E19] hover:scale-105'
                   }`}
                   title={`View ${item.title}`}
                 >
@@ -317,7 +318,7 @@ const AboutUs = () => {
             <button
               type="button"
               onClick={handleNextPhoto}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              className="w-8 h-8 rounded-full bg-[#FAF6EE] hover:bg-[#5B2E19] text-[#5B2E19] hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0 border border-[#EFE8DC]"
               title="Next slide"
             >
               <ChevronRight size={16} strokeWidth={2.4} />

@@ -1,23 +1,23 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { founderGallery, founderImages } from '../../assets/founderImages';
-import { 
-  Images, 
-  BookOpen, 
-  Heart, 
-  Users, 
-  Award, 
-  Smile, 
-  Building2, 
-  Handshake, 
-  ArrowRight, 
+import {
+  Images,
+  BookOpen,
+  Heart,
+  Users,
+  Award,
+  Smile,
+  Building2,
+  Handshake,
+  ArrowRight,
   ArrowLeft,
-  Maximize2, 
-  ChevronLeft, 
+  Maximize2,
+  ChevronLeft,
   ChevronRight,
-  X, 
-  Share2, 
-  Check, 
+  X,
+  Share2,
+  Check,
   Download,
   Calendar,
   School
@@ -48,64 +48,64 @@ const PhotoGalleryGrid = () => {
       id: 'all',
       label: 'All Photos',
       icon: <Images size={15} strokeWidth={2.4} />,
-      activeClass: 'bg-[#06402B] text-white shadow-xs border-[#06402B]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      activeClass: 'bg-[#5B2E19] text-[#FCCD37] shadow-xs border-[#5B2E19]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#FCCD37]/60',
     },
     {
       id: 'education',
       label: 'Education',
-      icon: <BookOpen size={15} strokeWidth={2.4} className="text-[#0B4891]" />,
-      activeClass: 'bg-[#0B4891] text-white shadow-xs border-[#0B4891]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <BookOpen size={15} strokeWidth={2.4} className="text-[#0047BA]" />,
+      activeClass: 'bg-[#0047BA] text-white shadow-xs border-[#0047BA]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#0047BA]/50',
     },
     {
       id: 'health',
       label: 'Health',
-      icon: <Heart size={15} strokeWidth={2.4} className="fill-[#DC2626] text-[#DC2626]" />,
-      activeClass: 'bg-[#DC2626] text-white shadow-xs border-[#DC2626]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Heart size={15} strokeWidth={2.4} className="fill-[#338C26] text-[#338C26]" />,
+      activeClass: 'bg-[#338C26] text-white shadow-xs border-[#338C26]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#338C26]/50',
     },
     {
       id: 'community',
       label: 'Community',
-      icon: <Users size={15} strokeWidth={2.4} className="text-[#EA580C]" />,
-      activeClass: 'bg-[#EA580C] text-white shadow-xs border-[#EA580C]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Users size={15} strokeWidth={2.4} className="text-[#8C4A26]" />,
+      activeClass: 'bg-[#8C4A26] text-white shadow-xs border-[#8C4A26]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#8C4A26]/50',
     },
     {
       id: 'events',
       label: 'Events',
-      icon: <Calendar size={15} strokeWidth={2.4} className="text-[#0B4891]" />,
-      activeClass: 'bg-[#0B4891] text-white shadow-xs border-[#0B4891]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Calendar size={15} strokeWidth={2.4} className="text-[#0047BA]" />,
+      activeClass: 'bg-[#0047BA] text-white shadow-xs border-[#0047BA]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#0047BA]/50',
     },
     {
       id: 'people-stories',
       label: 'People & Stories',
-      icon: <Smile size={15} strokeWidth={2.4} className="text-[#7C3AED]" />,
-      activeClass: 'bg-[#7C3AED] text-white shadow-xs border-[#7C3AED]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Smile size={15} strokeWidth={2.4} className="text-[#5B2E19]" />,
+      activeClass: 'bg-[#5B2E19] text-[#FCCD37] shadow-xs border-[#5B2E19]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#FCCD37]/60',
     },
     {
       id: 'infrastructure',
       label: 'Facilities & Infrastructure',
-      icon: <Building2 size={15} strokeWidth={2.4} className="text-[#059669]" />,
-      activeClass: 'bg-[#059669] text-white shadow-xs border-[#059669]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Building2 size={15} strokeWidth={2.4} className="text-[#338C26]" />,
+      activeClass: 'bg-[#338C26] text-white shadow-xs border-[#338C26]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#338C26]/50',
     },
     {
       id: 'partnerships',
       label: 'Partnerships',
-      icon: <Handshake size={15} strokeWidth={2.4} className="text-[#EA580C]" />,
-      activeClass: 'bg-[#EA580C] text-white shadow-xs border-[#EA580C]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Handshake size={15} strokeWidth={2.4} className="text-[#8C4A26]" />,
+      activeClass: 'bg-[#8C4A26] text-white shadow-xs border-[#8C4A26]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#8C4A26]/50',
     },
     {
       id: 'founder',
       label: 'Founder & Legacy',
-      icon: <Award size={15} strokeWidth={2.4} className="text-[#D4AF37]" />,
-      activeClass: 'bg-[#0D1B2A] text-white shadow-xs border-[#0D1B2A]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border-slate-200/90 hover:border-slate-300',
+      icon: <Award size={15} strokeWidth={2.4} className="text-[#FCCD37]" />,
+      activeClass: 'bg-[#5B2E19] text-[#FCCD37] shadow-xs border-[#5B2E19]',
+      inactiveClass: 'bg-white text-[#5B2E19] border-slate-200/90 hover:border-[#FCCD37]/60',
     },
   ];
 
@@ -400,15 +400,15 @@ const PhotoGalleryGrid = () => {
   return (
     <section className="w-full bg-white font-sans pt-4 sm:pt-6 pb-16 sm:pb-20 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7">
-        
+
         {/* ── 1. Section Header: Title on Left & "View All Photos ->" on Far Right ── */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-start gap-3">
-            {/* Orange Vertical Accent Bar */}
-            <div className="w-1.5 h-10 sm:h-11 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
-            
+            {/* Yellow Vertical Accent Bar */}
+            <div className="w-1.5 h-10 sm:h-11 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
+
             <div className="space-y-0.5">
-              <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#0F2B5B] tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#5B2E19] tracking-tight leading-tight">
                 Photo Gallery
               </h2>
               <p className="text-slate-500 text-xs sm:text-[13px] font-normal leading-relaxed">
@@ -421,7 +421,7 @@ const PhotoGalleryGrid = () => {
           <button
             type="button"
             onClick={() => setActiveCategory('all')}
-            className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-[#0F4C3A] hover:text-[#064E3B] transition-colors self-start sm:self-auto cursor-pointer group"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-[#5B2E19] hover:text-[#3D1E10] transition-colors self-start sm:self-auto cursor-pointer group"
           >
             <span className="underline decoration-2 underline-offset-4">View All Photos</span>
             <ArrowRight size={14} className="stroke-[2.5] transition-transform group-hover:translate-x-1" />
@@ -436,9 +436,8 @@ const PhotoGalleryGrid = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-bold border transition-all duration-200 whitespace-nowrap cursor-pointer shadow-2xs ${
-                  isActive ? cat.activeClass : cat.inactiveClass
-                }`}
+                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-[12.5px] font-bold border transition-all duration-200 whitespace-nowrap cursor-pointer shadow-2xs ${isActive ? cat.activeClass : cat.inactiveClass
+                  }`}
               >
                 <span className="shrink-0">{cat.icon}</span>
                 <span>{cat.label}</span>
@@ -498,26 +497,26 @@ const PhotoGalleryGrid = () => {
       {/* ── 4. Full-Featured Interactive Photo Lightbox Modal ── */}
       {/* ── 4. Full-Featured Interactive Photo Lightbox Modal rendered via Portal (Full 100vh / Full Page) ── */}
       {currentPhoto && typeof document !== 'undefined' && createPortal(
-        <div 
+        <div
           className="fixed inset-0 z-[9999] h-screen h-[100dvh] w-screen bg-slate-50 text-slate-900 flex flex-col overflow-hidden animate-fade-in font-sans"
           role="dialog"
           aria-modal="true"
           aria-label={currentPhoto.title}
         >
           {/* Subtle ambient glow effects */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FCCD37]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#5B2E19]/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
           <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
             <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-              
+
               {/* Left: Back Button + Breadcrumbs + Photo Title */}
               <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-700 hover:text-[#FCCD37] transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
                   title="Back to Photo Gallery"
                 >
                   <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
@@ -526,14 +525,14 @@ const PhotoGalleryGrid = () => {
 
                 <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
 
-                {/* Breadcrumbs with vertical orange indicator bar */}
+                {/* Breadcrumbs with vertical yellow indicator bar */}
                 <div className="min-w-0 flex flex-col justify-center">
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0" />
                     <button
                       type="button"
                       onClick={() => setActiveLightboxIndex(null)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Home
                     </button>
@@ -541,20 +540,20 @@ const PhotoGalleryGrid = () => {
                     <button
                       type="button"
                       onClick={() => setActiveLightboxIndex(null)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Resources
                     </button>
                     <ChevronRight size={13} className="text-slate-400 shrink-0" />
-                    <span className="text-[#0F2B5B] font-bold truncate">Photo Archive</span>
+                    <span className="text-[#5B2E19] font-bold truncate">Photo Archive</span>
                   </div>
 
                   {/* Title and Category Badge */}
                   <div className="flex items-center gap-2.5 mt-0.5">
-                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                    <h3 className="text-sm sm:text-base font-black text-[#5B2E19] truncate">
                       {currentPhoto.title}
                     </h3>
-                    <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#06402B]/10 text-[#06402B] border border-[#06402B]/20">
+                    <span className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/40">
                       {currentPhoto.badgeIcon}
                       <span>{currentPhoto.category}</span>
                     </span>
@@ -566,7 +565,7 @@ const PhotoGalleryGrid = () => {
               {/* Right: Slide Counter + Close Button */}
               <div className="flex items-center gap-3 shrink-0">
                 <div className="hidden md:flex flex-col items-end text-right">
-                  <span className="text-xs font-extrabold text-[#0F2B5B]">
+                  <span className="text-xs font-extrabold text-[#5B2E19]">
                     Photo {activeLightboxIndex + 1} of {filteredPhotos.length}
                   </span>
                   <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
@@ -575,7 +574,7 @@ const PhotoGalleryGrid = () => {
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
                   title="Close gallery (Esc)"
                 >
                   <X size={18} strokeWidth={2.4} />
@@ -587,7 +586,7 @@ const PhotoGalleryGrid = () => {
 
           {/* 2. Modal Center Showcase - Takes 100% remaining vertical space */}
           <div className="flex-1 min-h-0 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-4 sm:py-6 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center overflow-y-auto z-10">
-            
+
             {/* Left Photo Display Stage */}
             <div className="md:col-span-7 h-full max-h-[56vh] sm:max-h-[62vh] lg:max-h-[66vh] flex items-center justify-center relative">
               <div className="relative w-full h-full max-w-xl rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-slate-200/90 shadow-2xl group flex items-center justify-center">
@@ -603,7 +602,7 @@ const PhotoGalleryGrid = () => {
                     <button
                       type="button"
                       onClick={handlePrev}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#5B2E19] text-slate-800 hover:text-[#FCCD37] border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
                       title="Previous photo (Left Arrow)"
                     >
                       <ChevronLeft size={24} />
@@ -611,7 +610,7 @@ const PhotoGalleryGrid = () => {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#5B2E19] text-slate-800 hover:text-[#FCCD37] border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
                       title="Next photo (Right Arrow)"
                     >
                       <ChevronRight size={24} />
@@ -620,7 +619,7 @@ const PhotoGalleryGrid = () => {
                 )}
 
                 {/* Floating Photo Counter Badge */}
-                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#0F2B5B] border border-slate-200 shadow-md">
+                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#5B2E19] border border-slate-200 shadow-md">
                   Photo {activeLightboxIndex + 1} of {filteredPhotos.length}
                 </div>
               </div>
@@ -628,15 +627,15 @@ const PhotoGalleryGrid = () => {
 
             {/* Right Photo Narrative */}
             <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E5] border border-[#FCCD37]/40 text-[#5B2E19] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
                 <span>{currentPhoto.category}</span>
               </div>
 
-              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight text-[#5B2E19]">
                 {currentPhoto.title}
               </h4>
 
-              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+              <p className="text-sm sm:text-base font-bold text-[#8C4A26]">
                 {currentPhoto.location} • {currentPhoto.year}
               </p>
 
@@ -645,8 +644,8 @@ const PhotoGalleryGrid = () => {
               </p>
 
               {/* Archival Callout */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
-                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Field Provenance</span>
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF6EE] border-l-4 border-[#5B2E19] border-y border-r border-[#FCCD37]/30 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#5B2E19] uppercase tracking-wider text-[11px] block">Field Provenance</span>
                 <span className="leading-relaxed font-medium">Chief Michael Ade.Ojo Foundation official photographic archive documenting our strategic interventions across Nigerian communities.</span>
               </div>
 
@@ -655,15 +654,15 @@ const PhotoGalleryGrid = () => {
                 <button
                   type="button"
                   onClick={handleShare}
-                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-[#FAF6EE] text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  {copiedLink ? <Check size={15} className="text-emerald-600" /> : <Share2 size={15} />}
+                  {copiedLink ? <Check size={15} className="text-[#338C26]" /> : <Share2 size={15} />}
                   <span>{copiedLink ? 'Link Copied!' : 'Share Photo'}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveLightboxIndex(null)}
-                  className="px-5 py-2 bg-[#06402B] hover:bg-[#042A1D] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="px-6 py-2 btn-cmao-primary rounded-xl text-xs font-black transition-all cursor-pointer shadow-xs active:scale-95"
                 >
                   Done
                 </button>
@@ -677,13 +676,13 @@ const PhotoGalleryGrid = () => {
             <button
               type="button"
               onClick={handlePrev}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
               title="Previous photo"
             >
               <ChevronLeft size={16} strokeWidth={2.4} />
             </button>
 
-            <div 
+            <div
               ref={galleryThumbnailContainerRef}
               className="flex items-center gap-2.5 sm:gap-3.5 overflow-x-auto no-scrollbar scroll-smooth py-1 px-1"
             >
@@ -693,11 +692,10 @@ const PhotoGalleryGrid = () => {
                   ref={(el) => (galleryThumbnailRefs.current[idx] = el)}
                   type="button"
                   onClick={() => setActiveLightboxIndex(idx)}
-                  className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
-                    activeLightboxIndex === idx
-                      ? 'border-[#EA580C] ring-4 ring-[#EA580C]/30 scale-105 sm:scale-110 shadow-lg shadow-[#EA580C]/20'
-                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#0F4C3A] hover:scale-105'
-                  }`}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${activeLightboxIndex === idx
+                    ? 'border-[#FCCD37] ring-4 ring-[#FCCD37]/30 scale-105 sm:scale-110 shadow-lg shadow-[#FCCD37]/20'
+                    : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#5B2E19] hover:scale-105'
+                    }`}
                   title={`View ${photo.title}`}
                 >
                   <img src={photo.image} alt={photo.title} className="w-full h-full object-cover object-center" />
@@ -708,7 +706,7 @@ const PhotoGalleryGrid = () => {
             <button
               type="button"
               onClick={handleNext}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
               title="Next photo"
             >
               <ChevronRight size={16} strokeWidth={2.4} />

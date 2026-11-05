@@ -21,34 +21,35 @@ const FounderIntro = () => {
           </div>
 
           {/* ── Middle Column: Story & CTA ── */}
-          <div className="lg:col-span-4 space-y-2.5">
-            <span className="text-[#EA580C] font-extrabold text-xs tracking-widest uppercase block">
+          <div className="lg:col-span-4 space-y-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF6EE] border border-[#FCCD37]/80 text-[#5B2E19] font-black text-xs tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FCCD37]" />
               OUR FOUNDER
             </span>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-black text-[#0F2B5B] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-black text-[#5B2E19] tracking-tight leading-tight">
               Chief Michael Ade. Ojo, OON
             </h2>
 
-            <p className="text-sm font-bold text-[#EA580C] leading-snug">
+            <p className="text-sm font-bold text-[#8C4A26] leading-snug">
               Entrepreneurship, Education and a Legacy of Community Development
             </p>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
               Chief Michael Ade. Ojo, OON, is a Nigerian entrepreneur whose career spans business development, education, investment and community advancement. From Elizade's inception in 1971 to sustained investments in national infrastructure and Elizade University, his story reflects a lifetime commitment to creating opportunity.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
                 to="/founder"
-                className="inline-flex items-center gap-2 bg-[#0F4C3A] hover:bg-[#14634C] text-white px-5 py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-sm transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
+                className="btn-cmao-secondary px-5 py-2.5 text-xs sm:text-sm shadow-md"
               >
                 <span>Founder's Profile</span>
                 <ArrowRight size={15} strokeWidth={2.5} />
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-1.5 border border-slate-300 hover:border-[#0F4C3A] text-slate-700 hover:text-[#0F4C3A] px-4 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all cursor-pointer"
+                className="btn-cmao-outline px-4 py-2.5 text-xs sm:text-sm"
               >
                 <span>About CMAOF</span>
               </Link>
@@ -56,15 +57,15 @@ const FounderIntro = () => {
           </div>
 
           {/* ── Right Column: Purpose, Vision & Mission ── */}
-          <div className="lg:col-span-4 lg:border-l lg:border-slate-200/90 lg:pl-6 space-y-3.5 pt-3 lg:pt-0">
+          <div className="lg:col-span-4 lg:border-l lg:border-slate-200/90 lg:pl-6 space-y-4 pt-3 lg:pt-0">
 
-            {/* Our Purpose */}
+            {/* Our Purpose (Earth Brown) */}
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(234, 88, 12, 0.10)' }}>
-                <Target size={18} className="text-[#EA580C]" strokeWidth={2.3} />
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border border-[#5B2E19]/20" style={{ background: '#FAF6EE' }}>
+                <Target size={18} className="text-[#5B2E19]" strokeWidth={2.4} />
               </div>
               <div className="space-y-0.5">
-                <h3 className="font-extrabold text-[11px] uppercase tracking-wider text-[#EA580C]">
+                <h3 className="font-extrabold text-[11px] uppercase tracking-wider text-[#5B2E19]">
                   OUR PURPOSE
                 </h3>
                 <p className="text-slate-600 text-xs leading-relaxed">
@@ -73,13 +74,13 @@ const FounderIntro = () => {
               </div>
             </div>
 
-            {/* Our Vision */}
+            {/* Our Vision (Sun Yellow) */}
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(15, 76, 58, 0.10)' }}>
-                <Eye size={18} className="text-[#0F4C3A]" strokeWidth={2.3} />
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border border-[#FCCD37]/50" style={{ background: '#FFF8E5' }}>
+                <Eye size={18} className="text-[#B8860B]" strokeWidth={2.4} />
               </div>
               <div className="space-y-0.5">
-                <h3 className="font-extrabold text-[11px] uppercase tracking-wider text-[#0F4C3A]">
+                <h3 className="font-extrabold text-[11px] uppercase tracking-wider text-[#B8860B]">
                   OUR VISION
                 </h3>
                 <p className="text-slate-600 text-xs leading-relaxed">
@@ -88,13 +89,13 @@ const FounderIntro = () => {
               </div>
             </div>
 
-            {/* Our Mission */}
+            {/* Our Mission (CMAO Green) */}
             <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(15, 76, 58, 0.10)' }}>
-                <Users size={18} className="text-[#0F4C3A]" strokeWidth={2.3} />
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border border-[#338C26]/30" style={{ background: '#EDF7EB' }}>
+                <Users size={18} className="text-[#338C26]" strokeWidth={2.4} />
               </div>
               <div className="space-y-0.5">
-                <h3 className="font-extrabold text-[11px] uppercase tracking-wider text-[#0F4C3A]">
+                <h3 className="font-extrabold text-[11px] uppercase tracking-wider text-[#338C26]">
                   OUR MISSION
                 </h3>
                 <p className="text-slate-600 text-xs leading-relaxed">

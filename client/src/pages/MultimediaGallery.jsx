@@ -43,18 +43,18 @@ const MultimediaGallery = ({ onOpenDonate }) => {
             {/* Left Column: Eyebrow, Main Title, Subtitle, Stat Cards (col-span-8) */}
             <div className="lg:col-span-8 space-y-5 sm:space-y-6">
               
-              {/* Eyebrow with Orange Vertical Accent Bar */}
+              {/* Eyebrow with Brand Vertical Accent Bar */}
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
-                <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F4C3A]">
+                <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#5B2E19]">
                   MULTIMEDIA GALLERY
                 </span>
               </div>
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.12]">
-                <span className="block text-[#0F4C3A]">Stories in Pictures.</span>
-                <span className="block text-[#0F2B5B]">Change in Motion.</span>
+                <span className="block text-[#5B2E19]">Stories in Pictures.</span>
+                <span className="block bg-gradient-to-r from-[#8C4A26] to-[#5B2E19] bg-clip-text text-transparent">Change in Motion.</span>
               </h1>
 
               {/* Subtitle */}
@@ -66,35 +66,35 @@ const MultimediaGallery = ({ onOpenDonate }) => {
               <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 pt-1">
                 
                 {/* Photos Card */}
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 border border-slate-100 shadow-md shadow-slate-200/50 flex items-center gap-3.5 min-w-[130px] sm:min-w-[145px]">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0F4C3A] flex items-center justify-center shrink-0">
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 border border-[#5B2E19]/10 shadow-sm flex items-center gap-3.5 min-w-[130px] sm:min-w-[145px]">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center justify-center shrink-0">
                     <ImageIcon size={22} className="stroke-[2.2]" />
                   </div>
                   <div>
                     <span className="block text-xs font-semibold text-slate-500">Photos</span>
-                    <span className="block text-base sm:text-lg font-black text-[#0F2B5B] leading-tight">1,200+</span>
+                    <span className="block text-base sm:text-lg font-black text-[#5B2E19] leading-tight">1,200+</span>
                   </div>
                 </div>
 
                 {/* Videos Card */}
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 border border-slate-100 shadow-md shadow-slate-200/50 flex items-center gap-3.5 min-w-[130px] sm:min-w-[145px]">
-                  <div className="w-10 h-10 rounded-full bg-[#0F4C3A] text-white flex items-center justify-center shrink-0 shadow-sm">
-                    <Play size={17} className="fill-white translate-x-0.5" />
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 border border-[#5B2E19]/10 shadow-sm flex items-center gap-3.5 min-w-[130px] sm:min-w-[145px]">
+                  <div className="w-10 h-10 rounded-full bg-[#5B2E19] text-[#FCCD37] flex items-center justify-center shrink-0 shadow-sm">
+                    <Play size={17} className="fill-[#FCCD37] translate-x-0.5" />
                   </div>
                   <div>
                     <span className="block text-xs font-semibold text-slate-500">Videos</span>
-                    <span className="block text-base sm:text-lg font-black text-[#0F2B5B] leading-tight">150+</span>
+                    <span className="block text-base sm:text-lg font-black text-[#5B2E19] leading-tight">150+</span>
                   </div>
                 </div>
 
                 {/* Albums Card */}
-                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 border border-slate-100 shadow-md shadow-slate-200/50 flex items-center gap-3.5 min-w-[130px] sm:min-w-[145px]">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0F4C3A] flex items-center justify-center shrink-0">
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 border border-[#5B2E19]/10 shadow-sm flex items-center gap-3.5 min-w-[130px] sm:min-w-[145px]">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center justify-center shrink-0">
                     <Images size={22} className="stroke-[2.2]" />
                   </div>
                   <div>
                     <span className="block text-xs font-semibold text-slate-500">Albums</span>
-                    <span className="block text-base sm:text-lg font-black text-[#0F2B5B] leading-tight">50+</span>
+                    <span className="block text-base sm:text-lg font-black text-[#5B2E19] leading-tight">50+</span>
                   </div>
                 </div>
 
@@ -102,7 +102,7 @@ const MultimediaGallery = ({ onOpenDonate }) => {
 
             </div>
 
-            {/* Right Column: Floating Handwritten Script with Orange Swoosh (col-span-4) */}
+            {/* Right Column: Floating Handwritten Script with Gold Swoosh (col-span-4) */}
             <div className="hidden lg:flex lg:col-span-4 justify-end items-center pr-2 xl:pr-6">
               <div className="space-y-1 select-none transform rotate-[-2deg] drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]">
                 <div className="font-handwriting text-white text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.12] tracking-wide">
@@ -110,9 +110,9 @@ const MultimediaGallery = ({ onOpenDonate }) => {
                   <span className="block">Real Stories.</span>
                   <span className="block">Lasting Change.</span>
                 </div>
-                {/* Curved orange brush underline matching screenshot */}
+                {/* Curved brush underline */}
                 <svg
-                  className="w-36 sm:w-44 h-4 text-[#EA580C] mt-1"
+                  className="w-36 sm:w-44 h-4 text-[#FCCD37] mt-1"
                   viewBox="0 0 160 18"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

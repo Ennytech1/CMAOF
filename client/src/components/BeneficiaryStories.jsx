@@ -78,14 +78,14 @@ const BeneficiaryStories = () => {
             {/* Left Header Column (~32% width) */}
             <div className="lg:col-span-4 space-y-3">
               <div className="flex items-start gap-3">
-                {/* Orange Vertical Line Accent */}
-                <div className="w-1.5 h-12 sm:h-14 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                {/* Sun Yellow Vertical Line Accent */}
+                <div className="w-1.5 h-12 sm:h-14 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
 
                 <div className="space-y-0.5">
-                  <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F2B5B] block font-sans">
+                  <span className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-[#5B2E19] block font-sans">
                     STORIES OF CHANGE
                   </span>
-                  <h2 className="text-2xl sm:text-3xl lg:text-[1.85rem] font-extrabold text-[#0F2B5B] tracking-tight leading-tight">
+                  <h2 className="text-2xl sm:text-3xl lg:text-[1.85rem] font-black text-[#5B2E19] tracking-tight leading-tight">
                     Real Stories. Brighter Futures.
                   </h2>
                 </div>
@@ -98,7 +98,7 @@ const BeneficiaryStories = () => {
               <div className="pt-1 pl-4">
                 <Link
                   to="/news"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-full border-2 border-[#0F4C3A] text-[#0F4C3A] hover:bg-[#0F4C3A] hover:text-white font-extrabold text-xs transition-all cursor-pointer shadow-xs"
+                  className="btn-cmao-outline text-xs px-5 py-2 font-bold cursor-pointer"
                 >
                   <span>View More Stories</span>
                   <ArrowRight size={14} strokeWidth={2.4} />
@@ -113,7 +113,7 @@ const BeneficiaryStories = () => {
                 {/* Left Navigation Circular Arrow */}
                 <button
                   onClick={handlePrev}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-slate-200/90 shadow-sm flex items-center justify-center text-slate-500 hover:text-slate-900 transition-all shrink-0 cursor-pointer hover:scale-105 active:scale-95"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-slate-200/90 shadow-sm flex items-center justify-center text-slate-600 hover:text-[#5B2E19] hover:border-[#FCCD37] transition-all shrink-0 cursor-pointer hover:scale-105 active:scale-95"
                   aria-label="Previous story"
                 >
                   <ChevronLeft size={18} strokeWidth={2.2} />
@@ -124,7 +124,7 @@ const BeneficiaryStories = () => {
                   {stories.map((story) => (
                     <div
                       key={story.id}
-                      className="bg-white rounded-2xl p-3 sm:p-3.5 border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3"
+                      className="bg-white rounded-2xl p-3 sm:p-3.5 border border-[#EFE8DC] shadow-xs hover:shadow-md hover:border-[#FCCD37]/80 transition-all flex items-center gap-3"
                     >
                       {/* Left Portrait Image */}
                       <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 bg-slate-100">
@@ -141,10 +141,10 @@ const BeneficiaryStories = () => {
                           {story.quote}
                         </p>
                         <div className="pt-0.5">
-                          <div className="font-extrabold text-[#0F2B5B] text-xs leading-tight">
+                          <div className="font-black text-[#5B2E19] text-xs leading-tight">
                             {story.name}
                           </div>
-                          <div className="text-slate-500 text-[10px] leading-tight mt-0.5">
+                          <div className="text-slate-500 text-[10px] leading-tight mt-0.5 font-medium">
                             {story.role}
                           </div>
                         </div>
@@ -156,7 +156,7 @@ const BeneficiaryStories = () => {
                 {/* Right Navigation Circular Arrow */}
                 <button
                   onClick={handleNext}
-                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-slate-200/90 shadow-sm flex items-center justify-center text-slate-500 hover:text-slate-900 transition-all shrink-0 cursor-pointer hover:scale-105 active:scale-95"
+                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-slate-200/90 shadow-sm flex items-center justify-center text-slate-600 hover:text-[#5B2E19] hover:border-[#FCCD37] transition-all shrink-0 cursor-pointer hover:scale-105 active:scale-95"
                   aria-label="Next story"
                 >
                   <ChevronRight size={18} strokeWidth={2.2} />
@@ -166,7 +166,7 @@ const BeneficiaryStories = () => {
 
               {/* Centered Pagination Dots */}
               <div className="flex items-center justify-center gap-1.5 pt-4">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0F4C3A]" />
+                <span className="w-6 h-2 rounded-full bg-[#FCCD37] transition-all" />
                 <span className="w-2 h-2 rounded-full bg-slate-300" />
                 <span className="w-2 h-2 rounded-full bg-slate-300" />
               </div>
@@ -186,14 +186,14 @@ const BeneficiaryStories = () => {
             
             {/* Left Title Block */}
             <div className="flex items-start gap-3">
-              {/* Orange Vertical Line Accent */}
-              <div className="w-1.5 h-12 sm:h-14 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+              {/* Sun Yellow Vertical Line Accent */}
+              <div className="w-1.5 h-12 sm:h-14 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
 
               <div className="space-y-0.5">
-                <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F2B5B] block font-sans">
+                <span className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-[#5B2E19] block font-sans">
                   LATEST NEWS & STORIES
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-[1.85rem] font-extrabold text-[#0F2B5B] tracking-tight leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-[1.85rem] font-black text-[#5B2E19] tracking-tight leading-tight">
                   Updates, Voices and Perspectives
                 </h2>
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-xl">
@@ -205,7 +205,7 @@ const BeneficiaryStories = () => {
             {/* Right Link: View All News -> */}
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-[#0F4C3A] hover:underline cursor-pointer shrink-0 group self-start sm:self-end pb-1"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-black text-[#5B2E19] hover:text-[#996F00] transition-colors cursor-pointer shrink-0 group self-start sm:self-end pb-1"
             >
               <span>View Multimedia Gallery</span>
               <ArrowRight size={15} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />
@@ -218,7 +218,7 @@ const BeneficiaryStories = () => {
             {newsItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between min-h-[320px]"
+                className="bg-white rounded-2xl overflow-hidden border border-[#EFE8DC] shadow-xs hover:shadow-lg hover:border-[#FCCD37]/80 transition-all duration-300 group flex flex-col justify-between min-h-[320px] hover:-translate-y-1"
               >
                 <div>
                   {/* Card Banner Image */}
@@ -232,10 +232,10 @@ const BeneficiaryStories = () => {
 
                   {/* Card Content */}
                   <div className="p-4 sm:p-5 space-y-2">
-                    <span className="text-slate-400 text-[11px] sm:text-xs font-medium block">
+                    <span className="text-[#8C4A26] text-[11px] sm:text-xs font-bold block">
                       {item.date}
                     </span>
-                    <h3 className="font-extrabold text-[#0F2B5B] text-sm sm:text-base leading-snug group-hover:text-[#0F4C3A] transition-colors">
+                    <h3 className="font-extrabold text-[#5B2E19] text-sm sm:text-base leading-snug group-hover:text-[#8C4A26] transition-colors">
                       {item.title}
                     </h3>
                   </div>
@@ -245,7 +245,7 @@ const BeneficiaryStories = () => {
                 <div className="p-4 sm:p-5 pt-0">
                   <Link
                     to={item.link}
-                    className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#0F4C3A] hover:underline cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-black text-[#5B2E19] hover:text-[#996F00] transition-colors cursor-pointer"
                   >
                     <span>Read More</span>
                     <ArrowRight size={13} strokeWidth={2.4} />

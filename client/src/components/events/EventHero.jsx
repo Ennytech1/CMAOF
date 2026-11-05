@@ -17,7 +17,6 @@ import { ArrowRight, Calendar } from 'lucide-react';
  * - Floating white cursive typography ("People / Ideas / Action / Stronger / Communities.") with orange brush stroke underline
  */
 const EventHero = ({
-  onOpenDonate,
   onViewEvents,
   onViewCalendar,
   upcomingEventsHref = '#upcoming-events',
@@ -60,18 +59,18 @@ const EventHero = ({
           {/* ════ LEFT COLUMN: Brand Eyebrow, Main Headline, Subtitle, & CTAs (Span 7) ════ */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-5 max-w-2xl">
             
-            {/* Orange Vertical Accent Bar + Category Tag */}
+            {/* Brand Accent Bar + Category Tag */}
             <div className="flex items-center gap-2">
-              <div className="w-[3.5px] h-4.5 bg-[#EA580C] rounded-xs shrink-0" />
-              <span className="text-xs sm:text-[13px] font-black uppercase tracking-[0.2em] text-[#06402B]">
+              <div className="w-[4px] h-4.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+              <span className="text-xs sm:text-[13px] font-black uppercase tracking-[0.2em] text-[#5B2E19]">
                 EVENTS
               </span>
             </div>
 
             {/* High-Contrast Stacked Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[50px] font-extrabold tracking-tight leading-[1.08] text-left">
-              <span className="block text-[#06402B]">People. Partnerships.</span>
-              <span className="block text-[#0B2D6E] mt-0.5">Lasting Change.</span>
+              <span className="block text-[#5B2E19]">People. Partnerships.</span>
+              <span className="block bg-gradient-to-r from-[#8C4A26] to-[#5B2E19] bg-clip-text text-transparent mt-0.5">Lasting Change.</span>
             </h1>
 
             {/* Body Description */}
@@ -86,8 +85,7 @@ const EventHero = ({
               <a
                 href={upcomingEventsHref}
                 onClick={onViewEvents}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-white text-xs sm:text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-sm hover:shadow-md cursor-pointer"
-                style={{ backgroundColor: '#06402B' }}
+                className="btn-cmao-primary inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm shadow-md shadow-[#FCCD37]/25 hover:shadow-lg transition-all duration-200 cursor-pointer"
               >
                 <span>View Upcoming Events</span>
                 <ArrowRight size={16} strokeWidth={2.4} />
@@ -97,10 +95,9 @@ const EventHero = ({
               <a
                 href={calendarHref}
                 onClick={onViewCalendar}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-xs cursor-pointer bg-white border-2"
-                style={{ borderColor: '#06402B', color: '#06402B' }}
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-xs cursor-pointer bg-white border-2 border-[#5B2E19] text-[#5B2E19] hover:bg-[#FAF6EE]"
               >
-                <Calendar size={17} strokeWidth={2.2} style={{ color: '#06402B' }} />
+                <Calendar size={17} strokeWidth={2.2} className="text-[#5B2E19]" />
                 <span>Our Event Calendar</span>
               </a>
 
@@ -112,11 +109,10 @@ const EventHero = ({
           <div className="lg:col-span-5 flex justify-end items-center pointer-events-none pr-2 sm:pr-4 lg:pr-8">
             <div className="select-none text-left pointer-events-auto">
               
-              {/* Stacked Handwritten Script Words */}
+              {/* Stacked Script Words */}
               <div
-                className="font-handwriting font-bold text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] leading-[1.04] tracking-tight italic"
+                className="font-primary font-bold text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] leading-[1.04] tracking-tight italic"
                 style={{
-                  fontFamily: "'Caveat', cursive, sans-serif",
                   color: '#FFFFFF',
                   textShadow:
                     '0 3px 12px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 0, 0, 0.6)',
@@ -129,7 +125,7 @@ const EventHero = ({
                 <span className="block !text-white translate-x-2 sm:translate-x-3.5" style={{ color: '#FFFFFF' }}>Communities.</span>
               </div>
 
-              {/* Orange Brush Stroke Underline */}
+              {/* Brand Brush Stroke Underline */}
               <div className="mt-1 translate-x-2 sm:translate-x-3">
                 <svg
                   className="w-32 sm:w-38 xl:w-44 h-4 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.35)]"
@@ -139,7 +135,7 @@ const EventHero = ({
                 >
                   <path
                     d="M3 11 C 45 4, 105 15, 157 7"
-                    stroke="#EA580C"
+                    stroke="#FCCD37"
                     strokeWidth="5"
                     strokeLinecap="round"
                   />

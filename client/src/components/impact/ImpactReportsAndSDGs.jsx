@@ -234,12 +234,12 @@ const ImpactReportsAndSDGs = () => {
     toast.success(`Downloading ${reportTitle} (PDF)...`, {
       style: {
         borderRadius: '12px',
-        background: '#0F2B5B',
-        color: '#fff',
+        background: '#5B2E19',
+        color: '#FCCD37',
       },
       iconTheme: {
-        primary: '#10B981',
-        secondary: '#fff',
+        primary: '#FCCD37',
+        secondary: '#5B2E19',
       },
     });
   };
@@ -259,9 +259,9 @@ const ImpactReportsAndSDGs = () => {
             {/* ── Section Header ── */}
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-start gap-2.5">
-                <div className="w-[3.5px] h-6 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                <div className="w-[3.5px] h-6 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="text-lg sm:text-xl font-black text-[#0F2B5B] uppercase tracking-tight leading-tight">
+                  <h2 className="text-lg sm:text-xl font-black text-[#5B2E19] uppercase tracking-tight leading-tight">
                     REPORTS & PUBLICATIONS
                   </h2>
                   <p className="text-slate-600 text-xs sm:text-[13px] font-normal leading-relaxed mt-0.5">
@@ -272,7 +272,7 @@ const ImpactReportsAndSDGs = () => {
 
               <Link
                 to="/resources"
-                className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#0F4C3A] hover:text-[#14634C] shrink-0 transition-colors cursor-pointer group pt-0.5"
+                className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#5B2E19] hover:text-[#0047BA] shrink-0 transition-colors cursor-pointer group pt-0.5"
               >
                 <span className="underline underline-offset-2">View All Resources</span>
                 <ArrowRight size={14} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />
@@ -280,47 +280,50 @@ const ImpactReportsAndSDGs = () => {
             </div>
 
             {/* ── 4 Reports Cards: 4 across on sm and lg ── */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-1 items-stretch">
               {reports.map((report) => (
                 <div
                   key={report.id}
-                  className="bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow flex items-center gap-2 group min-h-[92px]"
+                  className="bg-white rounded-2xl p-2.5 sm:p-3 border border-slate-200/90 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group overflow-hidden"
                 >
-                  {/* Miniature Report Cover Preview */}
-                  <div className="w-11 sm:w-12 h-16 sm:h-[68px] rounded-md overflow-hidden shrink-0 shadow-xs relative border border-slate-200/70 bg-slate-100 flex flex-col justify-between">
-                    <img
-                      src={report.coverImage}
-                      alt={report.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
-                    <div className="absolute top-0.5 left-0.5 right-0.5">
-                      <div className="w-2.5 h-0.5 bg-[#EA580C] rounded-full" />
+                  {/* Top Row: Cover Thumbnail + Title & Size */}
+                  <div className="flex items-start gap-2">
+                    {/* Miniature Report Cover Preview */}
+                    <div className="w-10 sm:w-11 h-14 sm:h-15 rounded-md overflow-hidden shrink-0 shadow-xs relative border border-slate-200/70 bg-slate-100 flex flex-col justify-between">
+                      <img
+                        src={report.coverImage}
+                        alt={report.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+                      <div className="absolute top-0.5 left-0.5 right-0.5">
+                        <div className="w-2.5 h-0.5 bg-[#FCCD37] rounded-full" />
+                      </div>
+                      <div className="absolute bottom-0.5 left-1 right-0.5 text-[6px] font-extrabold text-white uppercase leading-none drop-shadow-xs truncate">
+                        CMAOF
+                      </div>
                     </div>
-                    <div className="absolute bottom-0.5 left-1 right-0.5 text-[6px] font-extrabold text-white uppercase leading-none drop-shadow-xs truncate">
-                      CMAOF
-                    </div>
-                  </div>
 
-                  {/* Report Details & Download Button */}
-                  <div className="flex-1 min-w-0 h-full flex flex-col justify-between py-0.5">
-                    <div>
-                      <h3 className="font-extrabold text-[#0F2B5B] text-[10.5px] sm:text-[11px] leading-tight line-clamp-2">
+                    {/* Report Details */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-extrabold text-[#5B2E19] text-[10.5px] sm:text-[11px] leading-snug line-clamp-2">
                         {report.title}
                       </h3>
                       <div className="text-slate-400 text-[9.5px] leading-tight font-medium pt-0.5">
                         {report.size}
                       </div>
                     </div>
-
-                    <button
-                      onClick={() => handleDownload(report.title)}
-                      className="inline-flex items-center gap-1 bg-[#0F4C3A] hover:bg-[#14634C] text-white px-2 py-0.5 rounded-full text-[9.5px] font-bold shadow-xs transition-colors cursor-pointer self-start active:scale-95 mt-1"
-                    >
-                      <span>Download</span>
-                      <Download size={10} strokeWidth={2.4} />
-                    </button>
                   </div>
+
+                  {/* Bottom: Fully Contained Download Button (Spans card width cleanly) */}
+                  <button
+                    type="button"
+                    onClick={() => handleDownload(report.title)}
+                    className="w-full mt-2.5 py-1.5 px-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-[#FCCD37] text-[10px] sm:text-[10.5px] font-extrabold flex items-center justify-center gap-1.5 shadow-2xs transition-all cursor-pointer active:scale-95"
+                  >
+                    <span>Download</span>
+                    <Download size={11} strokeWidth={2.4} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -335,9 +338,9 @@ const ImpactReportsAndSDGs = () => {
             {/* ── Section Header ── */}
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-start gap-2.5">
-                <div className="w-[3.5px] h-6 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                <div className="w-[3.5px] h-6 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="text-lg sm:text-xl font-black text-[#0F2B5B] uppercase tracking-tight leading-tight">
+                  <h2 className="text-lg sm:text-xl font-black text-[#5B2E19] uppercase tracking-tight leading-tight">
                     ALIGNMENT WITH GLOBAL GOALS
                   </h2>
                   <p className="text-slate-600 text-xs sm:text-[13px] font-normal leading-relaxed mt-0.5">
@@ -348,7 +351,7 @@ const ImpactReportsAndSDGs = () => {
 
               <Link
                 to="/about"
-                className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#0F4C3A] hover:text-[#14634C] shrink-0 transition-colors cursor-pointer group pt-0.5"
+                className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#5B2E19] hover:text-[#0047BA] shrink-0 transition-colors cursor-pointer group pt-0.5"
               >
                 <span className="underline underline-offset-2">View SDGs</span>
                 <ArrowRight size={14} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />

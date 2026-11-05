@@ -277,10 +277,12 @@ const AdminLoginPage = () => {
         {activeStep === 1 && (
           <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-7 md:p-8 border border-slate-100/90 w-full max-w-[410px] animate-[fadeIn_0.25s_ease] my-auto">
             {/* Top CMAOF Official Logo */}
-            <div className="mb-4">
+            <div className="mb-4 flex justify-center">
               <CmaofLogo
+                type="logo"
+                layout="vertical"
                 asLink={false}
-                imgClassName="h-10 sm:h-11 w-auto object-contain"
+                imgClassName="h-16 sm:h-20 w-auto object-contain rounded-xl"
               />
             </div>
 

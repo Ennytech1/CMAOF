@@ -3,16 +3,10 @@ import { createPortal } from 'react-dom';
 import { 
   ArrowRight, 
   MapPin, 
-  Calendar, 
-  Mail, 
   Image as ImageIcon, 
-  X, 
-  CheckCircle2, 
-  Sparkles,
-  ExternalLink
+  X 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import toast from 'react-hot-toast';
 
 // ── Past Events Data matching reference image exactly ──
 const pastEventsData = [
@@ -58,23 +52,8 @@ const pastEventsData = [
   },
 ];
 
-const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
+const PastEventsSection = () => {
   const [selectedGalleryEvent, setSelectedGalleryEvent] = useState(null);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!newsletterEmail.trim() || !newsletterEmail.includes('@')) {
-      toast.error('Please enter a valid email address.');
-      return;
-    }
-    setSubscribed(true);
-    toast.success('Thank you for subscribing to CMAOF event updates!', {
-      icon: '📬',
-    });
-    setNewsletterEmail('');
-  };
 
   // Body scroll lock and Escape key listener
   useEffect(() => {
@@ -99,15 +78,15 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
         {/* ═══════════════════════════════════════════════════════════
-            1. SECTION HEADER ROW (Orange Accent Bar, Title & Subtitle + View All Link)
+            1. SECTION HEADER ROW (Accent Bar, Title & Subtitle + View All Link)
             ═══════════════════════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           
           {/* Left: Accent Bar + Title & Subtitle */}
           <div className="space-y-1">
             <div className="flex items-center gap-2.5">
-              <div className="w-[3.5px] h-6 bg-[#EA580C] rounded-xs shrink-0" />
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2D6E] tracking-tight">
+              <div className="w-[4px] h-6 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#5B2E19] tracking-tight">
                 Past Events
               </h2>
             </div>
@@ -119,7 +98,7 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
           {/* Right: View All Past Events Link */}
           <Link
             to="/gallery"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#06402B] hover:text-[#042D1E] transition-colors group cursor-pointer self-start sm:self-auto"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#5B2E19] hover:text-[#8C4A26] transition-colors group cursor-pointer self-start sm:self-auto"
           >
             <span>View All Past Events</span>
             <ArrowRight size={15} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
@@ -152,14 +131,14 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
                   
                   {/* Title & Circular Arrow Icon */}
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-base font-extrabold text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors line-clamp-1">
+                    <h3 className="text-base font-extrabold text-[#5B2E19] leading-snug group-hover:text-[#8C4A26] transition-colors line-clamp-1">
                       {event.title}
                     </h3>
                     
-                    {/* Teal Circular Arrow Button */}
+                    {/* Brand Circular Arrow Button */}
                     <button
                       onClick={() => setSelectedGalleryEvent(event)}
-                      className="w-7 h-7 rounded-full bg-[#E6F4EA] text-[#06402B] hover:bg-[#06402B] hover:text-white flex items-center justify-center shrink-0 transition-all cursor-pointer shadow-2xs group-hover:scale-105"
+                      className="w-7 h-7 rounded-full bg-[#FFF8E5] text-[#5B2E19] hover:bg-[#5B2E19] hover:text-[#FCCD37] flex items-center justify-center shrink-0 transition-all cursor-pointer shadow-2xs group-hover:scale-105"
                       title="View Event Details"
                     >
                       <ArrowRight size={13} strokeWidth={2.4} />
@@ -183,7 +162,7 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
               <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1">
                 <button
                   onClick={() => setSelectedGalleryEvent(event)}
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#06402B] hover:text-[#0B2D6E] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#5B2E19] hover:text-[#8C4A26] transition-colors cursor-pointer"
                 >
                   <span>View Gallery</span>
                   <ArrowRight size={13} strokeWidth={2.4} className="group-hover:translate-x-0.5 transition-transform" />
@@ -212,27 +191,27 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Tricolor top brand bar */}
-            <div className="h-1.5 bg-gradient-to-r from-[#06402B] via-[#0B2D6E] to-[#EA580C]" />
+            <div className="h-1.5 bg-gradient-to-r from-[#5B2E19] via-[#8C4A26] to-[#FCCD37]" />
             
             {/* Modal Image Header */}
-            <div className="relative h-48 bg-slate-900 overflow-hidden shrink-0">
+            <div className="relative h-48 bg-[#2B1309] overflow-hidden shrink-0">
               <img
                 src={selectedGalleryEvent.image}
                 alt={selectedGalleryEvent.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2B1309] via-[#2B1309]/60 to-transparent" />
               
               <button
                 onClick={() => setSelectedGalleryEvent(null)}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-[#EA580C] text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-[#5B2E19] text-white flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close (Esc)"
               >
                 <X size={18} />
               </button>
 
               <div className="absolute bottom-4 left-5 right-5 text-white">
-                <span className="text-[11px] font-black uppercase tracking-wider text-[#D4AF37]">
+                <span className="text-[11px] font-black uppercase tracking-wider text-[#FCCD37]">
                   {selectedGalleryEvent.date}
                 </span>
                 <h3 className="text-xl font-black leading-tight text-white mt-0.5">
@@ -243,15 +222,15 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
 
             {/* Modal Body */}
             <div className="p-6 space-y-4 overflow-y-auto flex-1 min-h-0">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                <MapPin size={15} className="text-[#EA580C] shrink-0" />
+              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 bg-[#FAF6EE]/70 p-3 rounded-xl border border-slate-200">
+                <MapPin size={15} className="text-[#8C4A26] shrink-0" />
                 <span>{selectedGalleryEvent.location}</span>
                 <span className="mx-2 text-slate-300">•</span>
-                <span className="text-[#06402B] font-bold">{selectedGalleryEvent.attendees}</span>
+                <span className="text-[#338C26] font-bold">{selectedGalleryEvent.attendees}</span>
               </div>
 
               <div>
-                <h4 className="text-xs font-black uppercase tracking-wider text-[#0B2D6E] mb-1">
+                <h4 className="text-xs font-black uppercase tracking-wider text-[#5B2E19] mb-1">
                   Community Impact Summary
                 </h4>
                 <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -262,14 +241,14 @@ const PastEventsSection = ({ onOpenDonate, onViewCalendar }) => {
               <div className="pt-2 flex items-center gap-3">
                 <Link
                   to="/gallery"
-                  className="flex-1 py-3 rounded-xl bg-[#06402B] hover:bg-[#042D1E] text-white font-bold text-xs text-center flex items-center justify-center gap-2 cursor-pointer transition-all shadow-xs"
+                  className="flex-1 py-3 rounded-xl btn-cmao-primary font-bold text-xs text-center flex items-center justify-center gap-2 cursor-pointer transition-all shadow-md shadow-[#FCCD37]/20"
                 >
                   <ImageIcon size={14} />
                   <span>Explore Full Photo Album</span>
                 </Link>
                 <button
                   onClick={() => setSelectedGalleryEvent(null)}
-                  className="px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 text-xs font-bold cursor-pointer transition-colors"
+                  className="px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-[#FAF6EE] text-xs font-bold cursor-pointer transition-colors"
                 >
                   Close
                 </button>

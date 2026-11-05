@@ -105,25 +105,25 @@ const FounderProfilePage = ({ onOpenDonate }) => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans selection:bg-[#0F4C3A] selection:text-white pt-[72px]">
+    <div className="min-h-screen bg-[#FAF6EE]/30 text-slate-800 font-sans selection:bg-[#5B2E19] selection:text-[#FCCD37] pt-[72px]">
       
       {/* ── 1. Clean, Prestigious Executive Hero Banner ── */}
-      <section className="relative bg-gradient-to-b from-white via-slate-50/80 to-slate-100/60 overflow-hidden py-5 sm:py-6 lg:py-8 border-b border-slate-200/80">
+      <section className="relative bg-gradient-to-b from-white via-[#FAF6EE]/50 to-[#FAF6EE]/30 overflow-hidden py-5 sm:py-6 lg:py-8 border-b border-slate-200/80">
         
         {/* Subtle executive background accents */}
-        <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#0F4C3A]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 right-10 w-64 h-64 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#0F4C3A_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#5B2E19]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-10 w-64 h-64 bg-[#FCCD37]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#5B2E19_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumbs Navigation */}
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-2.5">
-            <Link to="/" className="hover:text-[#0F4C3A] transition-colors">Home</Link>
+            <Link to="/" className="hover:text-[#5B2E19] transition-colors">Home</Link>
             <ChevronRight size={13} className="text-slate-400" />
-            <Link to="/about" className="hover:text-[#0F4C3A] transition-colors">About Us</Link>
+            <Link to="/about" className="hover:text-[#5B2E19] transition-colors">About Us</Link>
             <ChevronRight size={13} className="text-slate-400" />
-            <span className="text-[#0F2B5B] font-bold">Founder's Profile</span>
+            <span className="text-[#5B2E19] font-bold">Founder's Profile</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
@@ -147,11 +147,11 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 {/* Birthplace & Heritage Metadata */}
                 <div className="mt-2 flex items-center justify-between px-1 text-[11px] font-semibold text-slate-600">
                   <span className="inline-flex items-center gap-1">
-                    <MapPin size={13} className="text-[#EA580C]" />
+                    <MapPin size={13} className="text-[#8C4A26]" />
                     Ilara-Mokin, Ondo State
                   </span>
                   <span className="inline-flex items-center gap-1">
-                    <Calendar size={13} className="text-[#0F4C3A]" />
+                    <Calendar size={13} className="text-[#5B2E19]" />
                     Born 14 June 1938
                   </span>
                 </div>
@@ -164,13 +164,13 @@ const FounderProfilePage = ({ onOpenDonate }) => {
 
               {/* Main Name & Title */}
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0F2B5B] tracking-tight leading-tight">
-                  CHIEF MICHAEL ADE. OJO, <span className="text-[#EA580C]">OON</span>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#5B2E19] tracking-tight leading-tight">
+                  CHIEF MICHAEL ADE. OJO, <span className="text-[#8C4A26]">OON</span>
                 </h1>
-                <p className="text-base sm:text-lg font-bold text-[#0F4C3A] tracking-tight leading-snug">
+                <p className="text-base sm:text-lg font-bold text-[#8C4A26] tracking-tight leading-snug">
                   Entrepreneurship, Education and a Legacy of Community Development
                 </p>
-                <p className="text-xs font-extrabold uppercase tracking-wider text-[#EA580C]">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-[#5B2E19]">
                   A Life of Enterprise and Service
                 </p>
               </div>
@@ -183,19 +183,19 @@ const FounderProfilePage = ({ onOpenDonate }) => {
               {/* Quick Metrics Bar in Clean Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-0.5">
                 <div className="bg-white rounded-xl p-2.5 sm:p-3 border border-slate-200/90 shadow-xs hover:shadow-sm transition-shadow">
-                  <div className="text-lg sm:text-xl font-black text-[#0F2B5B]">1971</div>
+                  <div className="text-lg sm:text-xl font-black text-[#5B2E19]">1971</div>
                   <div className="text-[10px] font-bold text-slate-600 mt-0.5 leading-tight">Co-founded Elizade</div>
                 </div>
                 <div className="bg-white rounded-xl p-2.5 sm:p-3 border border-slate-200/90 shadow-xs hover:shadow-sm transition-shadow">
-                  <div className="text-lg sm:text-xl font-black text-[#0F4C3A]">US$50M+</div>
+                  <div className="text-lg sm:text-xl font-black text-[#0047BA]">US$50M+</div>
                   <div className="text-[10px] font-bold text-slate-600 mt-0.5 leading-tight">Assembly Plant</div>
                 </div>
                 <div className="bg-white rounded-xl p-2.5 sm:p-3 border border-slate-200/90 shadow-xs hover:shadow-sm transition-shadow">
-                  <div className="text-lg sm:text-xl font-black text-[#0F2B5B]">31 Progs</div>
+                  <div className="text-lg sm:text-xl font-black text-[#338C26]">31 Progs</div>
                   <div className="text-[10px] font-bold text-slate-600 mt-0.5 leading-tight">Elizade University</div>
                 </div>
                 <div className="bg-white rounded-xl p-2.5 sm:p-3 border border-slate-200/90 shadow-xs hover:shadow-sm transition-shadow">
-                  <div className="text-lg sm:text-xl font-black text-[#EA580C]">2021</div>
+                  <div className="text-lg sm:text-xl font-black text-[#8C4A26]">2021</div>
                   <div className="text-[10px] font-bold text-slate-600 mt-0.5 leading-tight">CMAO Foundation</div>
                 </div>
               </div>
@@ -205,7 +205,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 <button
                   type="button"
                   onClick={() => scrollToChapter('early-life')}
-                  className="bg-[#0F4C3A] hover:bg-[#14634C] text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full inline-flex items-center gap-1.5 shadow-sm hover:shadow transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+                  className="btn-cmao-primary text-xs sm:text-sm px-5 py-2.5 rounded-full inline-flex items-center gap-1.5 shadow-md shadow-[#FCCD37]/25 hover:shadow-lg transition-all duration-200 cursor-pointer"
                 >
                   <span>Read Full Life Journey</span>
                   <ArrowRight size={15} strokeWidth={2.5} />
@@ -213,9 +213,9 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 <button
                   type="button"
                   onClick={() => setSelectedPhotoIdx(0)}
-                  className="bg-white hover:bg-slate-50 text-[#0F2B5B] border border-slate-300 hover:border-[#0F4C3A] font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-full inline-flex items-center gap-1.5 shadow-xs transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+                  className="bg-white hover:bg-[#FAF6EE] text-[#5B2E19] border border-[#5B2E19]/30 hover:border-[#5B2E19] font-extrabold text-xs sm:text-sm px-4 py-2.5 rounded-full inline-flex items-center gap-1.5 shadow-xs transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
                 >
-                  <Users size={15} className="text-[#0F4C3A]" />
+                  <Users size={15} className="text-[#5B2E19]" />
                   <span>View Archival Photos</span>
                 </button>
               </div>
@@ -243,11 +243,11 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                   onClick={() => scrollToChapter(ch.id)}
                   className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer shrink-0 ${
                     isActive
-                      ? 'bg-[#0F4C3A] text-white shadow-xs'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                      ? 'bg-[#5B2E19] text-[#FCCD37] shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-[#FAF6EE] hover:text-[#5B2E19]'
                   }`}
                 >
-                  <Icon size={12} className={isActive ? 'text-amber-300' : 'text-slate-500'} />
+                  <Icon size={12} className={isActive ? 'text-[#FCCD37]' : 'text-slate-500'} />
                   <span>{ch.title}</span>
                 </button>
               );
@@ -267,14 +267,14 @@ const FounderProfilePage = ({ onOpenDonate }) => {
               {/* Profile Card Summary */}
               <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
                 <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0F4C3A] flex items-center justify-center shrink-0 font-black text-xs">
+                  <div className="w-10 h-10 rounded-xl bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center justify-center shrink-0 font-black text-xs">
                     CMA
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-slate-900 text-sm leading-tight">
+                    <h3 className="font-extrabold text-[#5B2E19] text-sm leading-tight">
                       Chief Michael Ade. Ojo
                     </h3>
-                    <p className="text-[11px] font-bold text-[#EA580C]">
+                    <p className="text-[11px] font-bold text-[#8C4A26]">
                       OON, FCIB, FNIM
                     </p>
                   </div>
@@ -307,7 +307,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                   </div>
                   <div>
                     <span className="font-bold text-slate-400 block uppercase tracking-wider text-[9.5px]">Philanthropic Institution</span>
-                    <span className="font-semibold text-[#0F4C3A]">Chief Michael Ade. Ojo Foundation (CMAOF)</span>
+                    <span className="font-semibold text-[#5B2E19]">Chief Michael Ade. Ojo Foundation (CMAOF)</span>
                   </div>
                 </div>
 
@@ -317,7 +317,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                     Traditional & Chieftaincy Honours
                   </span>
                   <div className="flex flex-wrap gap-1">
-                    <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-[#0F4C3A] font-bold text-[10.5px] border border-emerald-100">
+                    <span className="px-2 py-0.5 rounded-md bg-[#FFF8E5] text-[#5B2E19] font-bold text-[10.5px] border border-[#FCCD37]/40">
                       Aare Ataiyese of Ilara-Mokin
                     </span>
                     <span className="px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 font-bold text-[10.5px] border border-amber-200">
@@ -326,31 +326,30 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                     <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 font-bold text-[10.5px] border border-blue-200">
                       Baaloro of the Source in Ile-Ife
                     </span>
-                    <span className="px-2 py-0.5 rounded-md bg-purple-50 text-purple-800 font-bold text-[10.5px] border border-purple-200">
+                    <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-[#338C26] font-bold text-[10.5px] border border-emerald-200">
                       Fiwagboye of Alade-Idanre
                     </span>
                   </div>
                 </div>
 
                 <div className="pt-1">
-                  <button
-                    type="button"
-                    onClick={onOpenDonate}
-                    className="w-full bg-[#0F4C3A] hover:bg-[#14634C] text-white text-xs font-bold py-2 px-3 rounded-lg shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  <Link
+                    to="/donate"
+                    className="w-full btn-cmao-primary text-xs font-bold py-2.5 px-3 rounded-xl shadow-md shadow-[#FCCD37]/20 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <Heart size={13} className="fill-white" />
+                    <Heart size={13} className="fill-[#5B2E19] text-[#5B2E19]" />
                     <span>Support the Founder's Mission</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
 
               {/* Founder Direct Quote Card */}
-              <div className="bg-white border border-emerald-100 rounded-2xl p-4 sm:p-5 shadow-xs relative overflow-hidden">
-                <div className="text-3xl text-[#0F4C3A] font-serif leading-none opacity-20">“</div>
+              <div className="bg-white border border-[#FCCD37]/40 rounded-2xl p-4 sm:p-5 shadow-xs relative overflow-hidden">
+                <div className="text-3xl text-[#5B2E19] font-serif leading-none opacity-20">“</div>
                 <p className="text-xs sm:text-[13px] font-semibold leading-relaxed italic text-slate-700 relative z-10 -mt-1.5">
                   Enterprise is not merely about commercial reward; its highest virtue lies in creating sustainable opportunities, educating minds, building infrastructure, and improving the lot of the vulnerable.
                 </p>
-                <div className="mt-3 pt-2.5 border-t border-slate-100 text-[11px] font-extrabold text-[#0F4C3A]">
+                <div className="mt-3 pt-2.5 border-t border-slate-100 text-[11px] font-extrabold text-[#5B2E19]">
                   Guiding Philosophy of CMAOF
                 </div>
               </div>
@@ -364,12 +363,12 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             {/* ── CHAPTER 0: Executive Overview ── */}
             <section id="overview" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-2.5">
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                   EXECUTIVE SUMMARY
                 </span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 A Life of Enterprise and Service
               </h2>
               <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-2 text-xs sm:text-sm font-normal">
@@ -389,15 +388,15 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="early-life" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER I
                   </span>
                 </div>
                 <span className="text-xs font-bold text-slate-400">1938 — 1965</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 Early Life and Educational Formation
               </h2>
 
@@ -421,18 +420,18 @@ const FounderProfilePage = ({ onOpenDonate }) => {
 
               {/* Highlight milestones grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-black text-[#0F4C3A] text-xs uppercase tracking-wide">1938</div>
+                <div className="p-3.5 rounded-xl bg-[#FAF6EE]/60 border border-slate-200">
+                  <div className="font-black text-[#5B2E19] text-xs uppercase tracking-wide">1938</div>
                   <div className="font-bold text-slate-800 text-xs mt-1">Birth in Ilara-Mokin</div>
                   <div className="text-[11px] text-slate-500 mt-0.5">Lamilohun Lisa Chieftaincy House</div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-black text-[#0F4C3A] text-xs uppercase tracking-wide">1958</div>
+                <div className="p-3.5 rounded-xl bg-[#FAF6EE]/60 border border-slate-200">
+                  <div className="font-black text-[#5B2E19] text-xs uppercase tracking-wide">1958</div>
                   <div className="font-bold text-slate-800 text-xs mt-1">Imade College, Owo</div>
                   <div className="text-[11px] text-slate-500 mt-0.5">Mentored by Pa Adekunle Ajasin</div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-black text-[#0F4C3A] text-xs uppercase tracking-wide">1965</div>
+                <div className="p-3.5 rounded-xl bg-[#FAF6EE]/60 border border-slate-200">
+                  <div className="font-black text-[#5B2E19] text-xs uppercase tracking-wide">1965</div>
                   <div className="font-bold text-slate-800 text-xs mt-1">UNN Business Admin</div>
                   <div className="text-[11px] text-slate-500 mt-0.5">Second-Class Upper Honors</div>
                 </div>
@@ -443,15 +442,15 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="business-enterprise" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER II
                   </span>
                 </div>
                 <span className="text-xs font-bold text-slate-400">1971 — Present</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 Building an Enduring Business Enterprise
               </h2>
 
@@ -471,33 +470,33 @@ const FounderProfilePage = ({ onOpenDonate }) => {
               </div>
 
               {/* Commercial Footprint Ledger */}
-              <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-100 space-y-2.5">
-                <div className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+              <div className="p-3.5 rounded-xl bg-[#FAF6EE]/70 border border-[#FCCD37]/30 space-y-2.5">
+                <div className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                   Corporate Leadership & Conglomerate Footprint
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-semibold text-slate-800">
                   <span className="inline-flex items-center gap-1.5 bg-white p-2 rounded-lg border border-slate-200/80">
-                    <CheckCircle2 size={13} className="text-[#0F4C3A] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     Toyota Nigeria Limited
                   </span>
                   <span className="inline-flex items-center gap-1.5 bg-white p-2 rounded-lg border border-slate-200/80">
-                    <CheckCircle2 size={13} className="text-[#0F4C3A] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     Elizade JAC Autoland
                   </span>
                   <span className="inline-flex items-center gap-1.5 bg-white p-2 rounded-lg border border-slate-200/80">
-                    <CheckCircle2 size={13} className="text-[#0F4C3A] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     Mikeade Properties
                   </span>
                   <span className="inline-flex items-center gap-1.5 bg-white p-2 rounded-lg border border-slate-200/80">
-                    <CheckCircle2 size={13} className="text-[#0F4C3A] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     SMT Nigeria Limited
                   </span>
                   <span className="inline-flex items-center gap-1.5 bg-white p-2 rounded-lg border border-slate-200/80">
-                    <CheckCircle2 size={13} className="text-[#0F4C3A] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     FCMB Group & Ecobank
                   </span>
                   <span className="inline-flex items-center gap-1.5 bg-white p-2 rounded-lg border border-slate-200/80">
-                    <CheckCircle2 size={13} className="text-[#0F4C3A] shrink-0" />
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     Custodian & Meristem
                   </span>
                 </div>
@@ -508,15 +507,15 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="national-capacity" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER III
                   </span>
                 </div>
                 <span className="text-xs font-bold text-slate-400">Industrial Manufacturing</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 Investing in National Capacity and Economic Development
               </h2>
 
@@ -534,16 +533,16 @@ const FounderProfilePage = ({ onOpenDonate }) => {
 
               {/* Manufacturing Stats Callout in Clean Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="bg-slate-50/90 rounded-xl p-5 border border-slate-200/90 space-y-1 shadow-xs">
-                  <div className="text-2xl font-black text-[#0F2B5B]">US$50,000,000+</div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#EA580C]">Capital Commitment</div>
+                <div className="bg-[#FAF6EE]/60 rounded-xl p-5 border border-slate-200/90 space-y-1 shadow-xs">
+                  <div className="text-2xl font-black text-[#0047BA]">US$50,000,000+</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#8C4A26]">Capital Commitment</div>
                   <p className="text-xs text-slate-600 leading-snug pt-1">
                     Direct local investment in modern automotive assembly and industrial technology transfer.
                   </p>
                 </div>
-                <div className="bg-slate-50/90 rounded-xl p-5 border border-slate-200/90 space-y-1 shadow-xs">
-                  <div className="text-2xl font-black text-[#0F4C3A]">40,000 Vehicles</div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-[#0F4C3A]">Annual Stated Capacity</div>
+                <div className="bg-[#FAF6EE]/60 rounded-xl p-5 border border-slate-200/90 space-y-1 shadow-xs">
+                  <div className="text-2xl font-black text-[#5B2E19]">40,000 Vehicles</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#338C26]">Annual Stated Capacity</div>
                   <p className="text-xs text-slate-600 leading-snug pt-1">
                     Commissioned in November 2015, assembling commercial and passenger vehicles for Nigerian roads.
                   </p>
@@ -555,8 +554,8 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="education" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER IV
                   </span>
                 </div>
@@ -580,30 +579,30 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 
                 {/* 5 Faculties Pill List */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 py-0.5">
-                  <div className="flex items-center gap-2 bg-emerald-50 text-emerald-950 px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-100">
-                    <GraduationCap size={15} className="text-[#0F4C3A]" />
+                  <div className="flex items-center gap-2 bg-[#FFF8E5] text-[#5B2E19] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#FCCD37]/30">
+                    <GraduationCap size={15} className="text-[#0047BA]" />
                     <span>Basic and Applied Sciences</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-emerald-50 text-emerald-950 px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-100">
-                    <GraduationCap size={15} className="text-[#0F4C3A]" />
+                  <div className="flex items-center gap-2 bg-[#FFF8E5] text-[#5B2E19] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#FCCD37]/30">
+                    <GraduationCap size={15} className="text-[#0047BA]" />
                     <span>Engineering</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-emerald-50 text-emerald-950 px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-100">
-                    <GraduationCap size={15} className="text-[#0F4C3A]" />
+                  <div className="flex items-center gap-2 bg-[#FFF8E5] text-[#5B2E19] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#FCCD37]/30">
+                    <GraduationCap size={15} className="text-[#0047BA]" />
                     <span>Law</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-emerald-50 text-emerald-950 px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-100">
-                    <GraduationCap size={15} className="text-[#0F4C3A]" />
+                  <div className="flex items-center gap-2 bg-[#FFF8E5] text-[#5B2E19] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#FCCD37]/30">
+                    <GraduationCap size={15} className="text-[#0047BA]" />
                     <span>Humanities</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-emerald-50 text-emerald-950 px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-100 sm:col-span-2">
-                    <GraduationCap size={15} className="text-[#0F4C3A]" />
+                  <div className="flex items-center gap-2 bg-[#FFF8E5] text-[#5B2E19] px-3 py-1.5 rounded-lg text-xs font-bold border border-[#FCCD37]/30 sm:col-span-2">
+                    <GraduationCap size={15} className="text-[#0047BA]" />
                     <span>Social and Management Sciences</span>
                   </div>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 flex items-start gap-2.5">
-                  <CheckCircle2 size={18} className="text-amber-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 size={18} className="text-[#338C26] shrink-0 mt-0.5" />
                   <div>
                     <div className="font-extrabold text-amber-900 text-xs sm:text-sm">
                       100% NUC Accreditation Status
@@ -620,15 +619,15 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="community" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER V
                   </span>
                 </div>
                 <span className="text-xs font-bold text-slate-400">Ilara-Mokin Model</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 Transforming Communities Through Practical Investment
               </h2>
 
@@ -639,7 +638,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 
                 <ul className="space-y-2.5 pl-1">
                   <li className="flex items-start gap-2.5">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#0F4C3A] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
+                    <div className="w-5 h-5 rounded-full bg-[#FFF8E5] text-[#5B2E19] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
                       1
                     </div>
                     <div>
@@ -651,7 +650,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                   </li>
 
                   <li className="flex items-start gap-2.5">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#0F4C3A] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
+                    <div className="w-5 h-5 rounded-full bg-[#FFF8E5] text-[#5B2E19] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
                       2
                     </div>
                     <div>
@@ -663,7 +662,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                   </li>
 
                   <li className="flex items-start gap-2.5">
-                    <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#0F4C3A] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
+                    <div className="w-5 h-5 rounded-full bg-[#FFF8E5] text-[#5B2E19] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[11px]">
                       3
                     </div>
                     <div>
@@ -685,15 +684,15 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="culture-honours" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER VI
                   </span>
                 </div>
                 <span className="text-xs font-bold text-slate-400">Heritage & Civic Honors</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 Preserving Culture and Supporting Social Institutions
               </h2>
 
@@ -709,20 +708,20 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                  <div className="p-3 rounded-xl border border-slate-200 bg-slate-50">
-                    <div className="font-extrabold text-slate-900 text-xs sm:text-sm">Aare Ataiyese</div>
+                  <div className="p-3 rounded-xl border border-slate-200 bg-[#FAF6EE]/50">
+                    <div className="font-extrabold text-[#5B2E19] text-xs sm:text-sm">Aare Ataiyese</div>
                     <div className="text-xs text-slate-500 font-medium">Ilara-Mokin Kingdom</div>
                   </div>
-                  <div className="p-3 rounded-xl border border-slate-200 bg-slate-50">
-                    <div className="font-extrabold text-slate-900 text-xs sm:text-sm">Asiwaju</div>
+                  <div className="p-3 rounded-xl border border-slate-200 bg-[#FAF6EE]/50">
+                    <div className="font-extrabold text-[#5B2E19] text-xs sm:text-sm">Asiwaju</div>
                     <div className="text-xs text-slate-500 font-medium">Imesi-Ile Kingdom</div>
                   </div>
-                  <div className="p-3 rounded-xl border border-slate-200 bg-slate-50">
-                    <div className="font-extrabold text-slate-900 text-xs sm:text-sm">Baaloro of the Source</div>
+                  <div className="p-3 rounded-xl border border-slate-200 bg-[#FAF6EE]/50">
+                    <div className="font-extrabold text-[#5B2E19] text-xs sm:text-sm">Baaloro of the Source</div>
                     <div className="text-xs text-slate-500 font-medium">Cradle of the Yoruba, Ile-Ife</div>
                   </div>
-                  <div className="p-3 rounded-xl border border-slate-200 bg-slate-50">
-                    <div className="font-extrabold text-slate-900 text-xs sm:text-sm">Fiwagboye</div>
+                  <div className="p-3 rounded-xl border border-slate-200 bg-[#FAF6EE]/50">
+                    <div className="font-extrabold text-[#5B2E19] text-xs sm:text-sm">Fiwagboye</div>
                     <div className="text-xs text-slate-500 font-medium">Alade-Idanre Kingdom</div>
                   </div>
                 </div>
@@ -730,20 +729,20 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             </section>
 
             {/* ── CHAPTER 7: A Personal Legacy of Partnership and Commitment ── */}
-            <section id="personal-legacy" className="bg-gradient-to-br from-rose-50/60 via-white to-amber-50/40 border border-rose-100 text-slate-800 rounded-2xl p-6 sm:p-8 shadow-xs space-y-5">
+            <section id="personal-legacy" className="bg-gradient-to-br from-[#FAF6EE]/60 via-white to-[#FFF8E5]/50 border border-[#FCCD37]/30 text-slate-800 rounded-2xl p-6 sm:p-8 shadow-xs space-y-5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-xs font-black uppercase tracking-wider text-[#EA580C]">
+                  <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-xs font-black uppercase tracking-wider text-[#8C4A26]">
                     CHAPTER VII
                   </span>
                 </div>
-                <span className="text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-100">
+                <span className="text-xs font-bold text-[#8C4A26] bg-[#FAF6EE] px-2.5 py-1 rounded-full border border-[#FCCD37]/30">
                   Tribute to Chief (Mrs.) Elizabeth Wuraola Ojo
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19] tracking-tight">
                 A Personal Legacy of Partnership and Commitment
               </h2>
 
@@ -762,7 +761,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                   <Heart size={20} className="fill-rose-500 text-rose-500" />
                 </div>
                 <div className="space-y-1">
-                  <div className="font-extrabold text-sm text-[#0F2B5B]">The Name Behind Elizade</div>
+                  <div className="font-extrabold text-sm text-[#5B2E19]">The Name Behind Elizade</div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     The name <em>"Elizade"</em> was derived from the union of <strong>Elizabeth</strong> and <strong>Ade</strong>, symbolizing a shared lifetime covenant of partnership, dedication, and mutual service that continues to anchor the family's philanthropic institutions.
                   </p>
@@ -771,20 +770,20 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             </section>
 
             {/* ── CHAPTER 8: The Philanthropic Legacy and CMAO Foundation ── */}
-            <section id="foundation-evolution" className="bg-white rounded-xl border-2 border-[#0F4C3A]/20 p-4 sm:p-5 shadow-xs space-y-3.5">
+            <section id="foundation-evolution" className="bg-white rounded-xl border-2 border-[#5B2E19]/20 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     CHAPTER VIII
                   </span>
                 </div>
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">
+                <span className="text-xs font-bold text-[#338C26] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">
                   Institutional Transition
                 </span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 The Philanthropic Legacy and the Chief Michael Ade. Ojo Foundation
               </h2>
 
@@ -794,9 +793,9 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                 </p>
                 
                 {/* Evolution Badge Timeline */}
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                <div className="p-3.5 rounded-xl bg-[#FAF6EE]/60 border border-slate-200 space-y-2.5">
                   <div className="flex items-start gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-[#0F4C3A] text-white flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                    <div className="w-6 h-6 rounded-lg bg-[#5B2E19] text-[#FCCD37] flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
                       2007
                     </div>
                     <div>
@@ -809,10 +808,10 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                     </div>
                   </div>
 
-                  <div className="h-3 border-l-2 border-dashed border-slate-300 ml-3" />
+                  <div className="h-3 border-l-2 border-dashed border-[#FCCD37] ml-3" />
 
                   <div className="flex items-start gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-[#EA580C] text-white flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">
+                    <div className="w-6 h-6 rounded-lg bg-[#FCCD37] text-[#5B2E19] flex items-center justify-center shrink-0 font-bold text-xs mt-0.5 shadow-xs">
                       2021
                     </div>
                     <div>
@@ -832,39 +831,39 @@ const FounderProfilePage = ({ onOpenDonate }) => {
 
                 {/* Mandate Pills */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-xs font-bold text-slate-800">
-                  <div className="p-2 rounded-lg bg-emerald-50 text-[#0F4C3A] border border-emerald-100 flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="shrink-0" />
+                  <div className="p-2 rounded-lg bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="shrink-0 text-[#338C26]" />
                     <span>Food Support</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-emerald-50 text-[#0F4C3A] border border-emerald-100 flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="shrink-0" />
+                  <div className="p-2 rounded-lg bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="shrink-0 text-[#0047BA]" />
                     <span>Higher Scholarships</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-emerald-50 text-[#0F4C3A] border border-emerald-100 flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="shrink-0" />
+                  <div className="p-2 rounded-lg bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="shrink-0 text-[#338C26]" />
                     <span>Health Assistance</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-emerald-50 text-[#0F4C3A] border border-emerald-100 flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="shrink-0" />
+                  <div className="p-2 rounded-lg bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="shrink-0 text-[#8C4A26]" />
                     <span>Youth & Women Empowerment</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-emerald-50 text-[#0F4C3A] border border-emerald-100 flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="shrink-0" />
+                  <div className="p-2 rounded-lg bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="shrink-0 text-[#8C4A26]" />
                     <span>Economic Empowerment</span>
                   </div>
-                  <div className="p-2 rounded-lg bg-emerald-50 text-[#0F4C3A] border border-emerald-100 flex items-center gap-1.5">
-                    <CheckCircle2 size={13} className="shrink-0" />
+                  <div className="p-2 rounded-lg bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center gap-1.5">
+                    <CheckCircle2 size={13} className="shrink-0 text-[#0047BA]" />
                     <span>Humanitarian Interventions</span>
                   </div>
                 </div>
 
                 {/* Free Medical Outreaches Highlight */}
-                <div className="p-3.5 rounded-xl bg-teal-50 border border-teal-200 space-y-1.5">
-                  <div className="flex items-center gap-2 text-teal-900 font-extrabold text-xs">
-                    <Heart size={14} className="text-teal-700 fill-teal-700" />
+                <div className="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200 space-y-1.5">
+                  <div className="flex items-center gap-2 text-emerald-900 font-extrabold text-xs">
+                    <Heart size={14} className="text-[#338C26] fill-[#338C26]" />
                     <span>Community Health Outreaches (2025 & 2026)</span>
                   </div>
-                  <p className="text-xs text-teal-800 leading-relaxed">
+                  <p className="text-xs text-emerald-800 leading-relaxed">
                     More recently, he has continued to demonstrate community-oriented interventions. In <strong>2025 and 2026</strong>, Elizade University conducted free medical outreaches in Ilara-Mokin, including consultations, screening, medication and health education; the <strong>2026 outreach reportedly served more than 500 residents</strong>.
                   </p>
                 </div>
@@ -878,14 +877,14 @@ const FounderProfilePage = ({ onOpenDonate }) => {
               <div className="pt-1 flex flex-wrap items-center gap-2.5">
                 <Link
                   to="/our-work"
-                  className="bg-[#0F4C3A] hover:bg-[#14634C] text-white text-xs font-bold px-4 py-2 rounded-lg shadow-xs transition-all inline-flex items-center gap-1.5"
+                  className="btn-cmao-primary text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition-all inline-flex items-center gap-1.5"
                 >
                   <span>Explore Foundation Pillars</span>
                   <ArrowRight size={13} />
                 </Link>
                 <Link
                   to="/impact"
-                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold px-4 py-2 rounded-lg transition-all inline-flex items-center gap-1.5"
+                  className="bg-[#FAF6EE] hover:bg-[#FFF8E5] text-[#5B2E19] border border-slate-200 text-xs font-bold px-4 py-2 rounded-lg transition-all inline-flex items-center gap-1.5"
                 >
                   <span>View Verified Impact Data</span>
                   <ExternalLink size={13} />
@@ -897,15 +896,15 @@ const FounderProfilePage = ({ onOpenDonate }) => {
             <section id="photo-archive" className="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-3.5">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                  <span className="text-[11px] font-black uppercase tracking-wider text-[#0F4C3A]">
+                  <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                  <span className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]">
                     ARCHIVAL PHOTOGRAPHS
                   </span>
                 </div>
                 <span className="text-xs font-bold text-slate-400">7 Official Portraits & Milestones</span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight">
                 Historical Photographic Archive
               </h2>
               <p className="text-slate-600 text-xs">
@@ -926,13 +925,13 @@ const FounderProfilePage = ({ onOpenDonate }) => {
                       className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2.5 text-white">
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-400">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-[#FCCD37]">
                         {photo.badge}
                       </span>
                       <p className="text-xs font-bold leading-tight truncate">
                         {photo.title}
                       </p>
-                      <span className="text-[10px] text-emerald-200 flex items-center gap-1 mt-0.5">
+                      <span className="text-[10px] text-amber-200 flex items-center gap-1 mt-0.5">
                         <Maximize2 size={10} /> Click to expand
                       </span>
                     </div>
@@ -951,7 +950,7 @@ const FounderProfilePage = ({ onOpenDonate }) => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0F4C3A] hover:bg-[#14634C] text-white flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer group"
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#5B2E19] hover:bg-[#3D1E10] text-[#FCCD37] flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer group"
           title="Scroll back to top"
           aria-label="Scroll back to top"
         >

@@ -3,7 +3,7 @@ import React from 'react';
 // Green Circular Checkmark Icon
 const GreenCheckIcon = () => (
   <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none">
-    <circle cx="10" cy="10" r="10" fill="#047857" />
+    <circle cx="10" cy="10" r="10" fill="#338C26" />
     <path
       d="M6 10l2.5 2.5L14 7"
       stroke="#FFFFFF"
@@ -16,7 +16,7 @@ const GreenCheckIcon = () => (
 
 // Exact Target / Bullseye with Arrow Icon
 const TargetArrowIcon = () => (
-  <svg className="w-8 h-8 text-[#0F2B5B]" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+  <svg className="w-8 h-8 text-[#5B2E19]" viewBox="0 0 32 32" fill="none" stroke="currentColor">
     {/* Outer target circle */}
     <circle cx="15" cy="17" r="11" strokeWidth="2.4" />
     {/* Inner ring */}
@@ -31,7 +31,7 @@ const TargetArrowIcon = () => (
 
 // Exact Database / Cylindrical Stack Icon
 const DatabaseCylinderIcon = () => (
-  <svg className="w-8 h-8 text-[#0F2B5B]" viewBox="0 0 32 32" fill="currentColor">
+  <svg className="w-8 h-8 text-[#5B2E19]" viewBox="0 0 32 32" fill="currentColor">
     {/* Top disk */}
     <ellipse cx="16" cy="7.5" rx="9.5" ry="3.2" />
     {/* Middle disk */}
@@ -43,7 +43,7 @@ const DatabaseCylinderIcon = () => (
 
 // Exact 3-Bar Ascending Chart Icon
 const BarChartColumnsIcon = () => (
-  <svg className="w-8 h-8 text-[#0F2B5B]" viewBox="0 0 32 32" fill="currentColor">
+  <svg className="w-8 h-8 text-[#5B2E19]" viewBox="0 0 32 32" fill="currentColor">
     {/* Short bar */}
     <rect x="7" y="18" width="4.5" height="10" rx="1.2" />
     {/* Medium bar */}
@@ -55,7 +55,7 @@ const BarChartColumnsIcon = () => (
 
 // Exact Document / Report with Dog-ear Fold Icon
 const DocumentSheetIcon = () => (
-  <svg className="w-8 h-8 text-[#0F2B5B]" viewBox="0 0 32 32" fill="currentColor">
+  <svg className="w-8 h-8 text-[#5B2E19]" viewBox="0 0 32 32" fill="currentColor">
     {/* Main document sheet */}
     <path d="M8 4h10l6 6v17a1.5 1.5 0 0 1-1.5 1.5H8A1.5 1.5 0 0 1 6.5 27V5.5A1.5 1.5 0 0 1 8 4z" />
     {/* Dog-ear corner flap */}
@@ -69,7 +69,7 @@ const DocumentSheetIcon = () => (
 
 // Exact Gear / Cogwheel Icon
 const GearInsightIcon = () => (
-  <svg className="w-8 h-8 text-[#0F2B5B]" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-8 h-8 text-[#5B2E19]" viewBox="0 0 24 24" fill="currentColor">
     <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54A.484.484 0 0 0 14 2h-4c-.25 0-.46.18-.49.42l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.63 8.48c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.49.41h4c.25 0 .46-.18.49-.42l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
   </svg>
 );
@@ -117,11 +117,11 @@ const ImpactMeasurementApproach = () => {
         {/* ── 3-Part Continuous Row: Left Title + Center 5 Steps with Dividers + Right Principles Speech Bubble ── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-4 items-center">
           
-          {/* Part 1 (Left): Title & Subtitle with Orange Accent Bar (lg:col-span-3) */}
+          {/* Part 1 (Left): Title & Subtitle with Yellow Accent Bar (lg:col-span-3) */}
           <div className="lg:col-span-3 flex items-start gap-2.5">
-            <div className="w-[3.5px] h-11 bg-[#EA580C] shrink-0 mt-0.5" />
+            <div className="w-[3.5px] h-11 bg-[#FCCD37] shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <h2 className="text-base sm:text-lg lg:text-[18px] font-black text-[#0F2B5B] uppercase tracking-tight leading-tight">
+              <h2 className="text-base sm:text-lg lg:text-[18px] font-black text-[#5B2E19] uppercase tracking-tight leading-tight">
                 OUR APPROACH TO MEASUREMENT
               </h2>
               <p className="text-slate-600 text-xs sm:text-[12px] font-normal leading-relaxed">
@@ -156,12 +156,12 @@ const ImpactMeasurementApproach = () => {
           <div className="lg:col-span-3 relative pl-0 lg:pl-1">
             {/* Left-pointing speech bubble triangle on desktop */}
             <div
-              className="hidden lg:block absolute left-[-6px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-[7px] border-y-transparent border-r-[8px] border-r-[#EDF5F2] z-10"
+              className="hidden lg:block absolute left-[-6px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-[7px] border-y-transparent border-r-[8px] border-r-[#FAF6EE] z-10"
               aria-hidden="true"
             />
 
-            <div className="bg-[#EDF5F2] rounded-2xl p-3.5 sm:p-4 border border-[#DAE8E1] shadow-xs space-y-2">
-              <h3 className="text-xs sm:text-[12px] font-black text-[#064E3B] uppercase tracking-wider leading-tight">
+            <div className="bg-[#FAF6EE] rounded-2xl p-3.5 sm:p-4 border border-[#EFE8DC] shadow-xs space-y-2">
+              <h3 className="text-xs sm:text-[12px] font-black text-[#5B2E19] uppercase tracking-wider leading-tight">
                 OUR PRINCIPLES
               </h3>
 

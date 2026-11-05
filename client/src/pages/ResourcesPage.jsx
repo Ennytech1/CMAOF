@@ -1,19 +1,19 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Download, 
-  FileText, 
-  Search, 
-  BookOpen, 
-  Shield, 
-  Mail, 
+import {
+  Download,
+  FileText,
+  Search,
+  BookOpen,
+  Shield,
+  Mail,
   Image as ImageIcon,
-  Filter, 
-  RefreshCw, 
-  LayoutGrid, 
-  List, 
-  ChevronDown, 
-  ChevronRight, 
+  Filter,
+  RefreshCw,
+  LayoutGrid,
+  List,
+  ChevronDown,
+  ChevronRight,
   ArrowRight,
   Check,
   Video,
@@ -71,17 +71,17 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease]">
-      <div 
+      <div
         className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col max-h-[90vh] animate-[scaleUp_0.2s_ease]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div className="p-5 sm:p-6 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between sticky top-0 z-10">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-white border border-slate-200 text-[#0B2D6E]">
+            <span className="px-2.5 py-1 rounded-md text-xs font-mono font-bold bg-white border border-slate-200 text-[#5B2E19]">
               {resource.format}
             </span>
-            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#06402B] border border-emerald-200">
+            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/40">
               {resource.categoryName || resource.category}
             </span>
             <span className="text-xs text-slate-400 font-medium hidden sm:inline">
@@ -108,7 +108,7 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 text-white">
-              <span className="text-[10px] font-extrabold uppercase text-emerald-300 tracking-wider block mb-1">
+              <span className="text-[10px] font-black uppercase text-[#FCCD37] tracking-wider block mb-1">
                 {resource.pillar || 'CMAOF Strategic Publication'}
               </span>
               <h2 className="text-base sm:text-xl font-black leading-snug">
@@ -118,7 +118,7 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
           </div>
 
           {/* Key Specs Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-2xl bg-[#FAF6EE]/50 border border-slate-200/80 text-center">
             <div>
               <span className="text-[10px] font-bold uppercase text-slate-400 block">Format</span>
               <span className="font-extrabold text-slate-800 text-sm">{resource.format}</span>
@@ -129,11 +129,11 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
             </div>
             <div>
               <span className="text-[10px] font-bold uppercase text-slate-400 block">Published</span>
-              <span className="font-extrabold text-[#0B2D6E] text-sm">{resource.publishedDate}</span>
+              <span className="font-extrabold text-[#5B2E19] text-sm">{resource.publishedDate}</span>
             </div>
             <div>
               <span className="text-[10px] font-bold uppercase text-slate-400 block">Downloads</span>
-              <span className="font-extrabold text-[#06402B] text-sm">
+              <span className="font-extrabold text-[#5B2E19] text-sm">
                 {resource.downloads?.toLocaleString() || 0}
               </span>
             </div>
@@ -150,10 +150,10 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
           </div>
 
           {/* Issuing Authority & Pillar */}
-          <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div className="p-4 rounded-2xl bg-[#FFF8E5] border border-[#FCCD37]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
             <div>
               <span className="text-[10px] font-bold text-slate-400 uppercase block">Issuing Authority</span>
-              <span className="font-bold text-[#06402B] text-sm">{resource.author || 'Chief Michael Ade.Ojo Foundation Policy Directorate'}</span>
+              <span className="font-bold text-[#5B2E19] text-sm">{resource.author || 'Chief Michael Ade.Ojo Foundation Policy Directorate'}</span>
             </div>
             <div className="sm:text-right">
               <span className="text-[10px] font-bold text-slate-400 uppercase block">Version & Status</span>
@@ -166,7 +166,7 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
             <button
               type="button"
               onClick={copyPublicLink}
-              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition-colors cursor-pointer shadow-2xs"
+              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-[#FAF6EE] text-[#5B2E19] font-bold text-xs transition-colors cursor-pointer shadow-2xs"
             >
               <Copy size={13} />
               <span>Copy Public Link</span>
@@ -174,7 +174,7 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
             <button
               type="button"
               onClick={copyCitation}
-              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[#0B2D6E] font-bold text-xs transition-colors cursor-pointer shadow-2xs"
+              className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-[#FAF6EE] text-[#5B2E19] font-bold text-xs transition-colors cursor-pointer shadow-2xs"
             >
               <Share2 size={13} />
               <span>Copy APA Citation</span>
@@ -194,7 +194,7 @@ const PublicResourceDossierModal = ({ resource, onClose, onDownload }) => {
           <button
             type="button"
             onClick={() => onDownload(resource)}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl btn-cmao-primary text-xs sm:text-sm font-black shadow-md cursor-pointer"
           >
             <span>Download {resource.format} File ({resource.size})</span>
             <Download size={15} />
@@ -234,56 +234,56 @@ const ResourcesPage = ({ onOpenDonate }) => {
       title: 'All Resources',
       subtitle: 'View all publications',
       icon: <FileText size={20} strokeWidth={2.2} />,
-      iconColor: 'text-white',
+      iconColor: 'text-[#5B2E19]',
     },
     {
       id: 'annual-reports',
       title: 'Annual Reports',
       subtitle: 'Financial & impact',
       icon: <BookOpen size={20} strokeWidth={2.4} />,
-      iconColor: 'text-[#0B3B82]',
+      iconColor: 'text-[#0047BA]',
     },
     {
       id: 'impact-reports',
       title: 'Impact Reports',
       subtitle: 'Our results',
-      icon: <FourBarChartIcon className="w-5 h-5 text-[#06402B]" />,
-      iconColor: 'text-[#06402B]',
+      icon: <FourBarChartIcon className="w-5 h-5 text-[#338C26]" />,
+      iconColor: 'text-[#338C26]',
     },
     {
       id: 'programme-reports',
       title: 'Programme Reports',
       subtitle: 'By pillar & initiative',
       icon: <FileText size={20} strokeWidth={2.2} />,
-      iconColor: 'text-[#EA580C]',
+      iconColor: 'text-[#8C4A26]',
     },
     {
       id: 'publications',
       title: 'Publications',
       subtitle: 'Guides & research',
       icon: <BookOpen size={20} strokeWidth={2.4} />,
-      iconColor: 'text-[#0B3B82]',
+      iconColor: 'text-[#0047BA]',
     },
     {
       id: 'policies',
       title: 'Policies',
       subtitle: 'Governance & compliance',
       icon: <Shield size={20} strokeWidth={2.2} />,
-      iconColor: 'text-[#DC2626]',
+      iconColor: 'text-[#5B2E19]',
     },
     {
       id: 'newsletters',
       title: 'Newsletters',
       subtitle: 'Updates & insights',
       icon: <Mail size={20} strokeWidth={2.2} />,
-      iconColor: 'text-[#06402B]',
+      iconColor: 'text-[#338C26]',
     },
     {
       id: 'media-kit',
       title: 'Media Kit',
       subtitle: 'Logos, photos & brand',
       icon: <ImageIcon size={20} strokeWidth={2.2} />,
-      iconColor: 'text-[#EA580C]',
+      iconColor: 'text-[#FCCD37]',
     },
   ];
 
@@ -322,9 +322,9 @@ const ResourcesPage = ({ onOpenDonate }) => {
       .filter((item) => {
         // Category Filter
         const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
-        
+
         // Search Filter
-        const matchesSearch = 
+        const matchesSearch =
           item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           (item.categoryName && item.categoryName.toLowerCase().includes(searchQuery.toLowerCase())) ||
           (item.summary && item.summary.toLowerCase().includes(searchQuery.toLowerCase())) ||
@@ -334,7 +334,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
         const matchesYear = selectedYear === 'all' || item.year === selectedYear;
 
         // Doc Type Filter
-        const matchesDocType = 
+        const matchesDocType =
           selectedDocTypes.length === 0 || selectedDocTypes.includes(item.type);
 
         return matchesCategory && matchesSearch && matchesYear && matchesDocType;
@@ -354,7 +354,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
   // Handle Doc Type Checkbox
   const handleDocTypeToggle = (typeId) => {
-    setSelectedDocTypes((prev) => 
+    setSelectedDocTypes((prev) =>
       prev.includes(typeId) ? prev.filter((t) => t !== typeId) : [...prev, typeId]
     );
   };
@@ -380,8 +380,8 @@ const ResourcesPage = ({ onOpenDonate }) => {
       icon: '📥',
       style: {
         borderRadius: '14px',
-        background: '#06402B',
-        color: '#fff',
+        background: '#5B2E19',
+        color: '#FCCD37',
         fontSize: '13px',
         fontWeight: 'bold',
       },
@@ -389,8 +389,8 @@ const ResourcesPage = ({ onOpenDonate }) => {
   };
 
   return (
-    <div className="w-full bg-[#F8FAFC] font-sans animate-fade-in pb-0">
-      
+    <div className="w-full bg-[#FAF6EE]/30 font-sans animate-fade-in pb-0">
+
       {/* ── 1. Resources Hero Banner ── */}
       <ResourcesHero />
 
@@ -405,29 +405,25 @@ const ResourcesPage = ({ onOpenDonate }) => {
                   key={tab.id}
                   type="button"
                   onClick={() => handleCategorySelect(tab.id)}
-                  className={`group flex items-center gap-3 px-4 py-2.5 sm:px-4.5 sm:py-3 rounded-2xl shrink-0 text-left transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-[#06402B] text-white shadow-md border border-[#06402B]'
-                      : 'bg-white text-slate-800 border border-[#E2E8F0] shadow-xs hover:border-slate-300 hover:shadow-sm hover:-translate-y-0.5'
-                  }`}
+                  className={`group flex items-center gap-3 px-4 py-2.5 sm:px-4.5 sm:py-3 rounded-2xl shrink-0 text-left transition-all duration-200 cursor-pointer ${isActive
+                      ? 'bg-[#5B2E19] text-[#FCCD37] shadow-md border border-[#5B2E19]'
+                      : 'bg-white text-slate-800 border border-[#E2E8F0] shadow-xs hover:border-[#FCCD37]/60 hover:shadow-sm hover:-translate-y-0.5'
+                    }`}
                 >
                   {/* Category Icon */}
-                  <div className={`shrink-0 transition-transform duration-200 group-hover:scale-105 ${
-                    isActive ? 'text-white' : tab.iconColor
-                  }`}>
+                  <div className={`shrink-0 transition-transform duration-200 group-hover:scale-105 ${isActive ? 'text-[#FCCD37]' : tab.iconColor
+                    }`}>
                     {tab.icon}
                   </div>
 
                   {/* Two-Line Text Block */}
                   <div className="flex flex-col whitespace-nowrap pr-1.5">
-                    <span className={`text-[13px] sm:text-[13.5px] font-bold leading-tight ${
-                      isActive ? 'text-white' : 'text-[#0B2D6E]'
-                    }`}>
+                    <span className={`text-[13px] sm:text-[13.5px] font-bold leading-tight ${isActive ? 'text-[#FCCD37]' : 'text-[#5B2E19]'
+                      }`}>
                       {tab.title}
                     </span>
-                    <span className={`text-[10.5px] sm:text-[11px] font-medium leading-tight mt-0.5 ${
-                      isActive ? 'text-emerald-100/90' : 'text-[#5A6E85]'
-                    }`}>
+                    <span className={`text-[10.5px] sm:text-[11px] font-medium leading-tight mt-0.5 ${isActive ? 'text-amber-100/90' : 'text-[#848688]'
+                      }`}>
                       {tab.subtitle}
                     </span>
                   </div>
@@ -441,23 +437,23 @@ const ResourcesPage = ({ onOpenDonate }) => {
       {/* ── 3. Two-Column Main Layout: Left Filter Sidebar + Right Main Content ── */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
-          
+
           {/* ════════ LEFT SIDEBAR: Sticky Filter Control Panel ════════ */}
           <aside className="w-full lg:w-[260px] xl:w-[280px] shrink-0 sticky top-24 z-20 space-y-6 bg-transparent">
-            
+
             <div className="bg-white rounded-2xl border border-[#E2E8F0] p-5 shadow-xs space-y-5">
-              
+
               {/* Filter Resources Header */}
-              <div className="flex items-center gap-2.5 text-[#06402B] pb-1">
+              <div className="flex items-center gap-2.5 text-[#5B2E19] pb-1">
                 <Filter size={19} strokeWidth={2.4} />
-                <h3 className="font-bold text-base text-[#06402B]">
+                <h3 className="font-bold text-base text-[#5B2E19]">
                   Filter Resources
                 </h3>
               </div>
 
               {/* Search Field */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#0B2D6E]">
+                <label className="block text-xs font-bold text-[#5B2E19]">
                   Search
                 </label>
                 <div className="relative">
@@ -466,7 +462,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search whitepapers..."
-                    className="w-full pl-3.5 pr-9 py-2 bg-white border border-[#E2E8F0] rounded-xl text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] transition-colors"
+                    className="w-full pl-3.5 pr-9 py-2 bg-white border border-[#E2E8F0] rounded-xl text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19] transition-colors"
                   />
                   <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                 </div>
@@ -474,7 +470,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
               {/* Category Filter Checkbox List */}
               <div className="space-y-2 pt-1 border-t border-slate-100">
-                <label className="block text-xs font-bold text-[#0B2D6E] pt-2">
+                <label className="block text-xs font-bold text-[#5B2E19] pt-2">
                   Category
                 </label>
                 <div className="space-y-1.5">
@@ -484,23 +480,21 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       <label
                         key={cat.id}
                         onClick={() => handleCategorySelect(cat.id)}
-                        className="flex items-center justify-between text-xs py-1 px-1 rounded-lg hover:bg-slate-50 cursor-pointer group select-none transition-colors"
+                        className="flex items-center justify-between text-xs py-1 px-1 rounded-lg hover:bg-[#FAF6EE] cursor-pointer group select-none transition-colors"
                       >
                         <div className="flex items-center gap-2.5">
-                          <div className={`w-4 h-4 rounded flex items-center justify-center transition-colors ${
-                            isChecked 
-                              ? 'bg-[#06402B] text-white' 
-                              : 'border border-slate-300 group-hover:border-slate-400 bg-white'
-                          }`}>
+                          <div className={`w-4 h-4 rounded flex items-center justify-center transition-colors ${isChecked
+                              ? 'bg-[#5B2E19] text-[#FCCD37]'
+                              : 'border border-slate-300 group-hover:border-[#5B2E19] bg-white'
+                            }`}>
                             {isChecked && <Check size={12} strokeWidth={3} />}
                           </div>
-                          <span className={`text-[12.5px] transition-colors ${
-                            isChecked ? 'font-bold text-[#06402B]' : 'font-medium text-[#5A6E85] group-hover:text-[#0B2D6E]'
-                          }`}>
+                          <span className={`text-[12.5px] transition-colors ${isChecked ? 'font-bold text-[#5B2E19]' : 'font-medium text-[#5A6E85] group-hover:text-[#5B2E19]'
+                            }`}>
                             {cat.label}
                           </span>
                         </div>
-                        <span className="text-[11px] font-semibold text-[#5A6E85]">
+                        <span className="text-[11px] font-semibold text-[#848688]">
                           ({cat.count})
                         </span>
                       </label>
@@ -511,14 +505,14 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
               {/* Year Select Dropdown */}
               <div className="space-y-1.5 pt-1 border-t border-slate-100">
-                <label className="block text-xs font-bold text-[#0B2D6E] pt-2">
+                <label className="block text-xs font-bold text-[#5B2E19] pt-2">
                   Year
                 </label>
                 <div className="relative">
                   <select
                     value={selectedYear}
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="w-full appearance-none bg-white border border-[#E2E8F0] rounded-xl px-3.5 py-2 text-xs sm:text-[13px] font-medium text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full appearance-none bg-white border border-[#E2E8F0] rounded-xl px-3.5 py-2 text-xs sm:text-[13px] font-medium text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     <option value="all">All Publication Years</option>
                     <option value="2026">2026</option>
@@ -531,7 +525,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
               {/* Document Type Checkboxes */}
               <div className="space-y-2 pt-1 border-t border-slate-100">
-                <label className="block text-xs font-bold text-[#0B2D6E] pt-2">
+                <label className="block text-xs font-bold text-[#5B2E19] pt-2">
                   Document Format
                 </label>
                 <div className="space-y-1.5">
@@ -541,23 +535,21 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       <label
                         key={dt.id}
                         onClick={() => handleDocTypeToggle(dt.id)}
-                        className="flex items-center justify-between text-xs py-1 px-1 rounded-lg hover:bg-slate-50 cursor-pointer group select-none transition-colors"
+                        className="flex items-center justify-between text-xs py-1 px-1 rounded-lg hover:bg-[#FAF6EE] cursor-pointer group select-none transition-colors"
                       >
                         <div className="flex items-center gap-2.5">
-                          <div className={`w-4 h-4 rounded flex items-center justify-center transition-colors ${
-                            isChecked 
-                              ? 'bg-[#06402B] text-white' 
-                              : 'border border-slate-300 group-hover:border-slate-400 bg-white'
-                          }`}>
+                          <div className={`w-4 h-4 rounded flex items-center justify-center transition-colors ${isChecked
+                              ? 'bg-[#5B2E19] text-[#FCCD37]'
+                              : 'border border-slate-300 group-hover:border-[#5B2E19] bg-white'
+                            }`}>
                             {isChecked && <Check size={12} strokeWidth={3} />}
                           </div>
-                          <span className={`text-[12.5px] transition-colors ${
-                            isChecked ? 'font-bold text-[#06402B]' : 'font-medium text-[#5A6E85] group-hover:text-[#0B2D6E]'
-                          }`}>
+                          <span className={`text-[12.5px] transition-colors ${isChecked ? 'font-bold text-[#5B2E19]' : 'font-medium text-[#5A6E85] group-hover:text-[#5B2E19]'
+                            }`}>
                             {dt.label}
                           </span>
                         </div>
-                        <span className="text-[11px] font-semibold text-[#5A6E85]">
+                        <span className="text-[11px] font-semibold text-[#848688]">
                           ({dt.count})
                         </span>
                       </label>
@@ -571,7 +563,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                 <button
                   type="button"
                   onClick={handleClearFilters}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-[#06402B] text-[#06402B] hover:bg-[#06402B]/5 font-bold text-xs transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-[#5B2E19] text-[#5B2E19] hover:bg-[#FAF6EE] font-bold text-xs transition-colors cursor-pointer"
                 >
                   <RefreshCw size={13} strokeWidth={2.3} />
                   <span>Clear Filters</span>
@@ -584,20 +576,20 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
           {/* ════════ RIGHT MAIN CONTENT AREA ════════ */}
           <div className="flex-1 min-w-0 space-y-9 sm:space-y-10">
-            
+
             {/* ──────────────── SECTION A: Featured Resources ──────────────── */}
             {activeCategory === 'all' && (
               <section className="space-y-4">
-                
+
                 {/* Section Header */}
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-1 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                    <div className="w-1.5 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                     <div className="space-y-0.5">
-                      <h2 className="text-xl sm:text-2xl font-bold text-[#0B2D6E] tracking-tight leading-snug">
+                      <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight leading-snug">
                         Featured Publications & Reports
                       </h2>
-                      <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
+                      <p className="text-[#848688] text-xs sm:text-[13px] font-normal leading-relaxed">
                         Flagship institutional disclosures, audited financials, and strategic roadmap releases.
                       </p>
                     </div>
@@ -605,7 +597,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
                   <button
                     onClick={() => setActiveCategory('annual-reports')}
-                    className="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#06402B] hover:text-[#042D1E] transition-colors shrink-0 group cursor-pointer"
+                    className="hidden sm:flex items-center gap-1.5 text-xs sm:text-[13px] font-bold text-[#5B2E19] hover:text-[#3D1E10] transition-colors shrink-0 group cursor-pointer"
                   >
                     <span>View All Reports</span>
                     <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
@@ -617,10 +609,10 @@ const ResourcesPage = ({ onOpenDonate }) => {
                   {featuredResources.map((item) => (
                     <div
                       key={item.id}
-                      className="bg-white rounded-2xl border border-[#E2E8F0] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1"
+                      className="bg-white rounded-2xl border border-[#E2E8F0] shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1 hover:border-[#FCCD37]/60"
                     >
                       {/* Top Cover Image Area */}
-                      <div 
+                      <div
                         onClick={() => setActiveDossierResource(item)}
                         className="relative aspect-square w-full overflow-hidden bg-slate-100 cursor-pointer"
                       >
@@ -640,13 +632,13 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       {/* Card Content & Metadata */}
                       <div className="p-4 sm:p-4.5 flex-1 flex flex-col justify-between space-y-3.5">
                         <div className="space-y-1">
-                          <h3 
+                          <h3
                             onClick={() => setActiveDossierResource(item)}
-                            className="font-bold text-[14.5px] sm:text-[15px] text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors cursor-pointer line-clamp-2"
+                            className="font-bold text-[14.5px] sm:text-[15px] text-[#5B2E19] leading-snug group-hover:text-[#8C4A26] transition-colors cursor-pointer line-clamp-2"
                           >
                             {item.title}
                           </h3>
-                          <p className="text-[#5A6E85] text-xs sm:text-[12.5px] font-normal leading-relaxed line-clamp-2">
+                          <p className="text-[#848688] text-xs sm:text-[12.5px] font-normal leading-relaxed line-clamp-2">
                             {item.subtitle}
                           </p>
                         </div>
@@ -658,16 +650,16 @@ const ResourcesPage = ({ onOpenDonate }) => {
                               <FileText size={15} className="text-[#DC2626] shrink-0" strokeWidth={2.4} />
                               <span>{item.format} • {item.size}</span>
                             </div>
-                            <span className="text-[11px] text-[#06402B] font-bold">
+                            <span className="text-[11px] text-[#5B2E19] font-bold">
                               {item.downloads?.toLocaleString()} downloads
                             </span>
                           </div>
 
-                          {/* Full-width dark green download button */}
+                          {/* Full-width dark earth brown download button */}
                           <button
                             type="button"
                             onClick={() => handleDownload(item)}
-                            className="w-full bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2.5 px-3 rounded-xl font-medium text-xs sm:text-[13px] flex items-center justify-center gap-2 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
+                            className="w-full btn-cmao-secondary py-2.5 px-3 rounded-xl font-bold text-xs sm:text-[13px] flex items-center justify-center gap-2 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
                           >
                             <span>Download {item.format}</span>
                             <Download size={14} strokeWidth={2.3} />
@@ -684,18 +676,18 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
             {/* ──────────────── SECTION B: All Resources ──────────────── */}
             <section className="space-y-4 pt-2">
-              
+
               {/* Section Header & Toolbar Controls */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
-                
+
                 {/* Left Heading & Counter */}
                 <div className="flex items-start gap-3">
-                  <div className="w-1 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                  <div className="w-1.5 self-stretch min-h-[32px] sm:min-h-[36px] bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                   <div className="space-y-0.5">
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#0B2D6E] tracking-tight leading-snug">
+                    <h2 className="text-xl sm:text-2xl font-black text-[#5B2E19] tracking-tight leading-snug">
                       Institutional Repository
                     </h2>
-                    <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
+                    <p className="text-[#848688] text-xs sm:text-[13px] font-normal leading-relaxed">
                       Showing 1 – {filteredAllResources.length} of {resources.length} verified publications
                     </p>
                   </div>
@@ -703,7 +695,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
                 {/* Right Controls: Sort By + Grid/List View Toggles */}
                 <div className="flex items-center gap-3 shrink-0 self-start sm:self-auto">
-                  
+
                   {/* Sort By Dropdown */}
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-medium text-[#5A6E85] hidden sm:inline">
@@ -713,7 +705,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                       <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="appearance-none bg-white border border-[#E2E8F0] rounded-xl pl-3 pr-7 py-1.5 text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                        className="appearance-none bg-white border border-[#E2E8F0] rounded-xl pl-3 pr-7 py-1.5 text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                       >
                         <option value="latest">Latest Releases</option>
                         <option value="downloads">Most Downloaded</option>
@@ -728,11 +720,10 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     <button
                       type="button"
                       onClick={() => setViewMode('grid')}
-                      className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
-                        viewMode === 'grid' 
-                          ? 'bg-white text-[#06402B] shadow-xs font-bold' 
+                      className={`p-1.5 rounded-lg transition-colors cursor-pointer ${viewMode === 'grid'
+                          ? 'bg-[#5B2E19] text-[#FCCD37] shadow-xs font-bold'
                           : 'text-[#5A6E85] hover:text-slate-800'
-                      }`}
+                        }`}
                       title="Grid View"
                     >
                       <LayoutGrid size={15} />
@@ -740,11 +731,10 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     <button
                       type="button"
                       onClick={() => setViewMode('list')}
-                      className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
-                        viewMode === 'list' 
-                          ? 'bg-white text-[#06402B] shadow-xs font-bold' 
+                      className={`p-1.5 rounded-lg transition-colors cursor-pointer ${viewMode === 'list'
+                          ? 'bg-[#5B2E19] text-[#FCCD37] shadow-xs font-bold'
                           : 'text-[#5A6E85] hover:text-slate-800'
-                      }`}
+                        }`}
                       title="List View"
                     >
                       <List size={15} />
@@ -765,9 +755,9 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     >
                       {/* Upper Section: Thumbnail on Left, Metadata Stack on Right */}
                       <div className="flex items-start gap-3">
-                        
+
                         {/* Vertical Book Thumbnail */}
-                        <div 
+                        <div
                           onClick={() => setActiveDossierResource(doc)}
                           className="w-[66px] h-[90px] rounded-lg overflow-hidden shrink-0 relative bg-slate-100 border border-slate-200/80 shadow-2xs group-hover:scale-102 transition-transform duration-300 cursor-pointer"
                         >
@@ -784,16 +774,16 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
                         {/* Title, Category, Date, Format */}
                         <div className="space-y-1 min-w-0 flex-1">
-                          <h4 
+                          <h4
                             onClick={() => setActiveDossierResource(doc)}
-                            className="font-bold text-[13.5px] text-[#0B2D6E] leading-snug line-clamp-2 group-hover:text-[#06402B] transition-colors cursor-pointer"
+                            className="font-bold text-[13.5px] text-[#5B2E19] leading-snug line-clamp-2 group-hover:text-[#8C4A26] transition-colors cursor-pointer"
                           >
                             {doc.title}
                           </h4>
-                          <span className="text-[11px] font-semibold text-[#06402B] block truncate">
+                          <span className="text-[11px] font-bold text-[#8C4A26] block truncate">
                             {doc.categoryName}
                           </span>
-                          <span className="text-[10.5px] font-normal text-[#5A6E85] block truncate">
+                          <span className="text-[10.5px] font-normal text-[#848688] block truncate">
                             {doc.pillar || doc.publishedDate}
                           </span>
                           <div className="flex items-center gap-1.5 text-[11px] font-medium text-[#5A6E85] pt-0.5">
@@ -804,12 +794,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
                       </div>
 
-                      {/* Lower Section: Full-Width Dark Green Download Button */}
+                      {/* Lower Section: Full-Width Earth Brown Download Button */}
                       <div className="pt-3.5 mt-2 border-t border-slate-100/80 flex items-center gap-2">
                         <button
                           type="button"
                           onClick={() => handleDownload(doc)}
-                          className="flex-1 bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2 px-3 rounded-xl font-medium text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
+                          className="flex-1 btn-cmao-secondary py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs active:scale-[0.99] cursor-pointer"
                         >
                           <span>Download</span>
                           <Download size={13} strokeWidth={2.3} />
@@ -817,7 +807,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         <button
                           type="button"
                           onClick={() => setActiveDossierResource(doc)}
-                          className="p-2 rounded-xl text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 border border-slate-200 transition-colors cursor-pointer"
+                          className="p-2 rounded-xl text-slate-400 hover:text-[#5B2E19] hover:bg-[#FFF8E5] border border-slate-200 transition-colors cursor-pointer"
                           title="Read Abstract & Specifications"
                         >
                           <Eye size={14} />
@@ -833,30 +823,30 @@ const ResourcesPage = ({ onOpenDonate }) => {
                   {filteredAllResources.map((doc) => (
                     <div
                       key={doc.id}
-                      className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-colors group"
+                      className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#FAF6EE]/50 transition-colors group"
                     >
                       <div className="flex items-center gap-3.5">
-                        <div 
+                        <div
                           onClick={() => setActiveDossierResource(doc)}
                           className="w-12 h-16 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200 relative cursor-pointer"
                         >
                           <img src={doc.thumbnail || doc.coverImage} alt={doc.title} className="w-full h-full object-cover" />
                         </div>
                         <div className="space-y-1">
-                          <h4 
+                          <h4
                             onClick={() => setActiveDossierResource(doc)}
-                            className="font-bold text-sm sm:text-[15px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors cursor-pointer"
+                            className="font-bold text-sm sm:text-[15px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors cursor-pointer"
                           >
                             {doc.title}
                           </h4>
                           <div className="flex flex-wrap items-center gap-2 text-xs text-[#5A6E85] font-normal">
-                            <span className="font-semibold text-[#06402B]">{doc.categoryName}</span>
+                            <span className="font-bold text-[#8C4A26]">{doc.categoryName}</span>
                             <span>•</span>
                             <span>{doc.publishedDate}</span>
                             <span>•</span>
                             <span className="font-mono font-bold text-slate-700">{doc.format} ({doc.size})</span>
                             <span>•</span>
-                            <span>{doc.downloads?.toLocaleString() || 0} downloads</span>
+                            <span className="text-[#5B2E19] font-bold">{doc.downloads?.toLocaleString() || 0} downloads</span>
                           </div>
                         </div>
                       </div>
@@ -865,7 +855,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         <button
                           type="button"
                           onClick={() => setActiveDossierResource(doc)}
-                          className="p-2 rounded-xl text-slate-500 hover:text-[#06402B] hover:bg-emerald-50 border border-slate-200 transition-colors cursor-pointer"
+                          className="p-2 rounded-xl text-slate-500 hover:text-[#5B2E19] hover:bg-[#FFF8E5] border border-slate-200 transition-colors cursor-pointer"
                           title="View Dossier"
                         >
                           <Eye size={15} />
@@ -873,7 +863,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                         <button
                           type="button"
                           onClick={() => handleDownload(doc)}
-                          className="bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white py-2 px-4 rounded-xl font-medium text-xs flex items-center gap-2 transition-colors shadow-xs cursor-pointer"
+                          className="btn-cmao-secondary py-2 px-4 rounded-xl font-bold text-xs flex items-center gap-2 transition-colors shadow-xs cursor-pointer"
                         >
                           <span>Download</span>
                           <Download size={13} strokeWidth={2.3} />
@@ -894,7 +884,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
                   </p>
                   <button
                     onClick={handleClearFilters}
-                    className="text-xs font-bold text-[#06402B] hover:underline cursor-pointer"
+                    className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer"
                   >
                     Reset all filters
                   </button>
@@ -911,13 +901,13 @@ const ResourcesPage = ({ onOpenDonate }) => {
       {/* ── 4. Resource Categories & Utility Support Cards ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
-          
+
           {/* Card 1: Resource Categories */}
           <div className="lg:col-span-6 bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-7 shadow-xs flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-5">
-                <div className="w-1 h-5 bg-[#EA580C] rounded-full shrink-0" />
-                <h3 className="text-lg sm:text-xl font-bold text-[#0B2D6E] tracking-tight">
+                <div className="w-1 h-5 bg-[#FCCD37] rounded-full shrink-0" />
+                <h3 className="text-lg sm:text-xl font-black text-[#5B2E19] tracking-tight">
                   Resource Categories
                 </h3>
               </div>
@@ -932,12 +922,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <BookOpen size={20} className="text-[#0B3B82] shrink-0 mt-0.5" strokeWidth={2.4} />
+                    <BookOpen size={20} className="text-[#0047BA] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Annual Reports
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Financial & audited disclosures
                       </p>
                     </div>
@@ -951,12 +941,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <FourBarChartIcon className="w-5 h-5 text-[#06402B] shrink-0 mt-0.5" />
+                    <FourBarChartIcon className="w-5 h-5 text-[#338C26] shrink-0 mt-0.5" />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Impact Reports
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Empirical findings & key outcomes
                       </p>
                     </div>
@@ -970,12 +960,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <FileText size={20} className="text-[#EA580C] shrink-0 mt-0.5" strokeWidth={2.4} />
+                    <FileText size={20} className="text-[#8C4A26] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Programme Reports
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Interventions by pillar & state
                       </p>
                     </div>
@@ -989,12 +979,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <BookOpen size={20} className="text-[#0B3B82] shrink-0 mt-0.5" strokeWidth={2.4} />
+                    <BookOpen size={20} className="text-[#0047BA] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Publications
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Research papers & technical guides
                       </p>
                     </div>
@@ -1010,12 +1000,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <Shield size={20} className="text-[#DC2626] shrink-0 mt-0.5" strokeWidth={2.4} />
+                    <Shield size={20} className="text-[#5B2E19] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Policies & Charters
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Governance, PSEA & ethical codes
                       </p>
                     </div>
@@ -1029,12 +1019,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <Mail size={20} className="text-[#06402B] shrink-0 mt-0.5" strokeWidth={2.4} />
+                    <Mail size={20} className="text-[#338C26] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Newsletters
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Quarterly updates and news
                       </p>
                     </div>
@@ -1048,12 +1038,12 @@ const ResourcesPage = ({ onOpenDonate }) => {
                     }}
                     className="flex items-start gap-3 text-left group w-full cursor-pointer"
                   >
-                    <ImageIcon size={20} className="text-[#EA580C] shrink-0 mt-0.5" strokeWidth={2.4} />
+                    <ImageIcon size={20} className="text-[#FCCD37] shrink-0 mt-0.5" strokeWidth={2.4} />
                     <div className="space-y-0.5">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h4 className="font-bold text-[13.5px] text-[#5B2E19] group-hover:text-[#8C4A26] transition-colors leading-snug">
                         Media Kit
                       </h4>
-                      <p className="text-[#5A6E85] text-xs font-normal leading-tight">
+                      <p className="text-[#848688] text-xs font-normal leading-tight">
                         Official logos, photos & brand assets
                       </p>
                     </div>
@@ -1067,15 +1057,15 @@ const ResourcesPage = ({ onOpenDonate }) => {
           <div className="lg:col-span-3 bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex items-center gap-2.5">
-                <div className="text-[#06402B]">
+                <div className="text-[#5B2E19]">
                   <Mail size={22} strokeWidth={2.4} />
                 </div>
-                <h3 className="text-lg font-bold text-[#0B2D6E] tracking-tight">
+                <h3 className="text-lg font-bold text-[#5B2E19] tracking-tight">
                   Stay Updated
                 </h3>
               </div>
 
-              <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
+              <p className="text-[#848688] text-xs sm:text-[13px] font-normal leading-relaxed">
                 Subscribe to our policy briefing alerts and annual research reports.
               </p>
             </div>
@@ -1087,11 +1077,11 @@ const ResourcesPage = ({ onOpenDonate }) => {
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Your email address"
-                className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] transition-colors"
+                className="w-full bg-white border border-[#E2E8F0] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] transition-colors"
               />
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#EA580C] to-[#F97316] hover:opacity-95 text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer"
+                className="w-full btn-cmao-primary font-black text-xs sm:text-sm py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-sm active:scale-98 cursor-pointer"
               >
                 <span>Subscribe</span>
                 <ArrowRight size={15} strokeWidth={2.5} />
@@ -1103,15 +1093,15 @@ const ResourcesPage = ({ onOpenDonate }) => {
           <div className="lg:col-span-3 bg-white rounded-2xl border border-[#E2E8F0] p-6 sm:p-7 shadow-xs flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               <div className="flex items-center gap-2.5">
-                <div className="text-[#06402B]">
+                <div className="text-[#5B2E19]">
                   <Headphones size={22} strokeWidth={2.4} />
                 </div>
-                <h3 className="text-lg font-bold text-[#0B2D6E] tracking-tight">
+                <h3 className="text-lg font-bold text-[#5B2E19] tracking-tight">
                   Institutional Inquiries?
                 </h3>
               </div>
 
-              <p className="text-[#5A6E85] text-xs sm:text-[13px] font-normal leading-relaxed">
+              <p className="text-[#848688] text-xs sm:text-[13px] font-normal leading-relaxed">
                 Looking for historical audits, research collaborations, or academic citations?
               </p>
             </div>
@@ -1119,7 +1109,7 @@ const ResourcesPage = ({ onOpenDonate }) => {
             <div className="pt-1">
               <Link
                 to="/contact"
-                className="w-full bg-white hover:bg-emerald-50/70 border border-[#06402B] text-[#06402B] font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-2xs active:scale-98 cursor-pointer"
+                className="w-full bg-white hover:bg-[#FAF6EE] border border-[#5B2E19] text-[#5B2E19] font-bold text-xs sm:text-sm py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-2xs active:scale-98 cursor-pointer"
               >
                 <span>Contact Directorate</span>
                 <ArrowRight size={15} strokeWidth={2.5} />
@@ -1132,40 +1122,40 @@ const ResourcesPage = ({ onOpenDonate }) => {
 
       {/* ── 5. Full-Width CTA Banner ── */}
       <section className="w-full mt-10 sm:mt-14">
-        <div className="relative w-full overflow-hidden min-h-[145px] sm:min-h-[165px] flex items-center">
-          
-          <div 
+        <div className="relative w-full overflow-hidden min-h-[145px] sm:min-h-[165px] flex items-center border-t-4 border-[#FCCD37]">
+
+          <div
             className="absolute inset-0 bg-cover bg-no-repeat"
-            style={{ 
+            style={{
               backgroundImage: `url('/images/our_work_cta_boy.jpg')`,
               backgroundPosition: 'left 28%',
             }}
             aria-hidden="true"
           />
 
-          <div 
+          <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(4,30,20,0.3) 18%, rgba(4,30,20,0.88) 32%, rgba(4,30,20,0.96) 55%, rgba(4,30,20,0.97) 100%)',
+              background: 'linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(36,16,7,0.3) 18%, rgba(36,16,7,0.88) 32%, rgba(36,16,7,0.96) 55%, rgba(91,46,25,0.98) 100%)',
             }}
             aria-hidden="true"
           />
 
-          <div 
+          <div
             className="absolute inset-0 md:hidden pointer-events-none"
             style={{
-              background: 'linear-gradient(to bottom, rgba(4,30,20,0.65) 0%, rgba(4,30,20,0.95) 45%, rgba(4,30,20,0.98) 100%)',
+              background: 'linear-gradient(to bottom, rgba(36,16,7,0.65) 0%, rgba(36,16,7,0.95) 45%, rgba(91,46,25,0.98) 100%)',
             }}
             aria-hidden="true"
           />
 
           <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-7 sm:py-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            
+
             <div className="flex items-start gap-4 lg:pl-[24%] xl:pl-[26%] max-w-4xl">
-              <div className="w-1.5 self-stretch min-h-[64px] bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
-              
+              <div className="w-1.5 self-stretch min-h-[64px] bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
+
               <div className="space-y-1">
-                <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.16em] text-emerald-300 font-sans block drop-shadow-xs">
+                <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.16em] text-[#FCCD37] font-sans block drop-shadow-xs">
                   BE PART OF THE CHANGE
                 </span>
                 <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-black text-white tracking-tight leading-snug font-sans drop-shadow-xs">
@@ -1178,15 +1168,14 @@ const ResourcesPage = ({ onOpenDonate }) => {
             </div>
 
             <div className="shrink-0 self-start lg:self-center pl-5 sm:pl-0">
-              <button
-                type="button"
-                onClick={onOpenDonate}
-                className="bg-gradient-to-r from-[#EA580C] to-[#F97316] hover:opacity-95 text-white font-bold text-xs sm:text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl flex items-center gap-2.5 shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+              <Link
+                to="/donate"
+                className="btn-cmao-primary font-black text-xs sm:text-sm px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl flex items-center gap-2.5 shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer inline-flex"
               >
-                <Heart size={18} className="fill-white stroke-white" />
+                <Heart size={18} className="fill-[#5B2E19] stroke-[#5B2E19]" />
                 <span>Donate Now</span>
                 <ArrowRight size={16} strokeWidth={2.5} />
-              </button>
+              </Link>
             </div>
 
           </div>

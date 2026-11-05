@@ -4,25 +4,34 @@ import { Heart, ArrowRight, HeartPulse, Users, Handshake, Gift } from 'lucide-re
 
 const CallToActionBanner = ({ onOpenDonate }) => {
   return (
-    <section className="relative w-full py-5 sm:py-6 lg:py-7 bg-[#093A2C] text-white overflow-hidden border-b border-emerald-900/80">
-      {/* Background Image with Crisp Soft Overlay */}
+    <section className="relative w-full py-8 sm:py-9 lg:py-10 bg-[#241007] text-white overflow-hidden border-b border-[#5B2E19]/60">
+      {/* Background Image with Crisp Warm Gradient Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center opacity-45 mix-blend-overlay"
+        className="absolute inset-0 bg-cover bg-[position:center_32%] bg-no-repeat opacity-60 pointer-events-none"
         style={{ backgroundImage: `url('/images/hero_community.jpg')` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#093A2C] via-[#093A2C]/90 to-[#072E23]/85" />
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(to right, rgba(36, 16, 7, 0.94) 0%, rgba(44, 20, 10, 0.85) 38%, rgba(69, 34, 18, 0.58) 72%, rgba(36, 16, 7, 0.75) 100%)',
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-6">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
           
           {/* Left Title Block */}
-          <div className="flex items-start gap-3 max-w-lg shrink-0">
-            <div className="w-1.5 h-11 sm:h-12 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
-            <div className="space-y-0.5 text-left">
-              <h2 className="text-xl sm:text-2xl lg:text-[1.6rem] font-extrabold text-white tracking-tight leading-tight drop-shadow-xs">
+          <div className="flex items-start gap-3.5 max-w-lg shrink-0">
+            <div className="w-1.5 h-12 sm:h-14 bg-[#FCCD37] rounded-full shrink-0 mt-0.5 shadow-sm" />
+            <div className="space-y-1 text-left">
+              <span className="text-xs font-black uppercase tracking-widest text-[#FCCD37] block">
+                GET INVOLVED TODAY
+              </span>
+              <h2 className="text-xl sm:text-2xl lg:text-[1.75rem] font-black text-white tracking-tight leading-tight">
                 Be Part of a Brighter Tomorrow
               </h2>
-              <p className="text-white text-xs sm:text-[13.5px] leading-snug font-medium drop-shadow-xs">
+              <p className="text-[#FAF6EE] text-xs sm:text-[13.5px] leading-relaxed font-medium">
                 Your support helps us expand opportunities, improve lives and build stronger communities across Nigeria.
               </p>
             </div>
@@ -30,18 +39,18 @@ const CallToActionBanner = ({ onOpenDonate }) => {
 
           {/* Middle Action Buttons */}
           <div className="flex items-center gap-3 shrink-0 flex-wrap justify-center">
-            <button
-              onClick={onOpenDonate}
-              className="bg-[#EA580C] hover:bg-[#d97706] text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full flex items-center gap-2 shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            <Link
+              to="/donate"
+              className="btn-cmao-primary px-6 py-2.5 text-xs sm:text-sm font-black shadow-lg shadow-black/30 inline-flex items-center gap-2 cursor-pointer"
             >
-              <Heart size={16} className="fill-white stroke-none" />
+              <Heart size={16} className="fill-[#5B2E19]/30 stroke-[#5B2E19]" strokeWidth={2.5} />
               <span>Donate Now</span>
               <ArrowRight size={15} strokeWidth={2.5} />
-            </button>
+            </Link>
 
             <Link
               to="/get-involved"
-              className="border border-white/80 hover:border-white hover:bg-white/10 text-white font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="border-2 border-[#FCCD37] text-[#FCCD37] hover:bg-[#FCCD37] hover:text-[#3D1E10] font-black text-xs sm:text-sm px-5 py-2.5 rounded-full flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
               <span>Partner With Us</span>
               <ArrowRight size={15} strokeWidth={2.5} />
@@ -52,53 +61,53 @@ const CallToActionBanner = ({ onOpenDonate }) => {
           <div className="flex items-center gap-3 sm:gap-4 text-center shrink-0 border-t lg:border-t-0 lg:border-l border-white/20 pt-3 lg:pt-0 lg:pl-6">
             
             {/* Donate Icon */}
-            <button 
-              onClick={onOpenDonate}
-              className="flex flex-col items-center gap-1 group cursor-pointer hover:opacity-90 transition-opacity"
+            <Link 
+              to="/donate"
+              className="flex flex-col items-center gap-1.5 group cursor-pointer hover:opacity-95 transition-opacity"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center text-white group-hover:bg-white/25 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:bg-[#FCCD37] group-hover:text-[#3D1E10] group-hover:border-[#FCCD37] transition-all">
                 <HeartPulse size={19} strokeWidth={2.2} />
               </div>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-100 tracking-tight">Donate</span>
-            </button>
+              <span className="text-[11px] font-bold text-slate-200 group-hover:text-[#FCCD37] transition-colors tracking-tight">Donate</span>
+            </Link>
 
-            <div className="w-[1px] h-7 bg-white/25 shrink-0" />
+            <div className="w-[1px] h-7 bg-white/20 shrink-0" />
 
             {/* Volunteer Icon */}
             <Link 
               to="/get-involved"
-              className="flex flex-col items-center gap-1 group cursor-pointer hover:opacity-90 transition-opacity"
+              className="flex flex-col items-center gap-1.5 group cursor-pointer hover:opacity-95 transition-opacity"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center text-white group-hover:bg-white/25 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:bg-[#FCCD37] group-hover:text-[#3D1E10] group-hover:border-[#FCCD37] transition-all">
                 <Users size={19} strokeWidth={2.2} />
               </div>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-100 tracking-tight">Volunteer</span>
+              <span className="text-[11px] font-bold text-slate-200 group-hover:text-[#FCCD37] transition-colors tracking-tight">Volunteer</span>
             </Link>
 
-            <div className="w-[1px] h-7 bg-white/25 shrink-0" />
+            <div className="w-[1px] h-7 bg-white/20 shrink-0" />
 
             {/* Partner Icon */}
             <Link 
               to="/get-involved"
-              className="flex flex-col items-center gap-1 group cursor-pointer hover:opacity-90 transition-opacity"
+              className="flex flex-col items-center gap-1.5 group cursor-pointer hover:opacity-95 transition-opacity"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center text-white group-hover:bg-white/25 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:bg-[#FCCD37] group-hover:text-[#3D1E10] group-hover:border-[#FCCD37] transition-all">
                 <Handshake size={19} strokeWidth={2.2} />
               </div>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-100 tracking-tight">Partner</span>
+              <span className="text-[11px] font-bold text-slate-200 group-hover:text-[#FCCD37] transition-colors tracking-tight">Partner</span>
             </Link>
 
-            <div className="w-[1px] h-7 bg-white/25 shrink-0" />
+            <div className="w-[1px] h-7 bg-white/20 shrink-0" />
 
             {/* Support a Programme Icon */}
             <Link 
               to="/our-work"
-              className="flex flex-col items-center gap-1 group cursor-pointer hover:opacity-90 transition-opacity"
+              className="flex flex-col items-center gap-1.5 group cursor-pointer hover:opacity-95 transition-opacity"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/15 border border-white/20 flex items-center justify-center text-white group-hover:bg-white/25 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white group-hover:bg-[#FCCD37] group-hover:text-[#3D1E10] group-hover:border-[#FCCD37] transition-all">
                 <Gift size={19} strokeWidth={2.2} />
               </div>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-slate-100 tracking-tight">Support a Programme</span>
+              <span className="text-[11px] font-bold text-slate-200 group-hover:text-[#FCCD37] transition-colors tracking-tight">Support</span>
             </Link>
 
           </div>

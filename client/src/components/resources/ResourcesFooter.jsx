@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
+import CmaofLogo from '../CmaofLogo';
 
 // Inline SVG components for Social Media Icons
 const LinkedinIcon = () => (
@@ -36,14 +37,12 @@ const YoutubeIcon = () => (
   </svg>
 );
 
-import CmaofLogo from '../CmaofLogo';
-
 /**
  * ResourcesFooter Component
- * Replicated with 100% pixel fidelity to the reference image.
- * Dedicated specifically to the Resources Page.
+ * Global section footer aligned with official CMAOF corporate brand tokens.
+ * Matches logo background (#FFFAE8) for a 100% seamless appearance.
  */
-const ResourcesFooter = ({ onOpenDonate }) => {
+const ResourcesFooter = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
 
   const handleNewsletterSubmit = async (e) => {
@@ -66,159 +65,179 @@ const ResourcesFooter = ({ onOpenDonate }) => {
   };
 
   return (
-    <footer className="w-full font-sans bg-white border-t border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 sm:pt-8 pb-6">
+    <footer className="w-full font-sans bg-[#FFFAE8] border-t border-[#E8DEC2] text-[#3D1E10]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-6">
         
-        {/* Main Content Row: Logo, Quick Links, Connect With Us, Divider, Subscribe */}
-        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8 lg:gap-6">
+        {/* Responsive Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
           
-          {/* 1. Official CMAOF Logo with Brand Colors */}
-          <div className="shrink-0 flex items-start pt-0.5">
-            <CmaofLogo imgClassName="h-13 sm:h-14 lg:h-15 w-auto object-contain" />
-          </div>
+          {/* 1. Official CMAOF Logo & About Snippet & Social (Cols 1-4) */}
+          <div className="lg:col-span-4 space-y-4">
+            <div className="inline-flex items-center">
+              <CmaofLogo imgClassName="h-14 sm:h-16 w-auto object-contain" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+            </div>
+            
+            <p className="text-xs sm:text-[13px] leading-relaxed text-[#5B2E19]/80 font-normal max-w-sm">
+              Empowering communities, expanding educational opportunity, advancing healthcare access, and fostering economic prosperity across Nigeria.
+            </p>
 
-          {/* 2. Quick Links (3 Columns of Navigation Links) */}
-          <div className="space-y-3">
-            <h4 className="text-[#0B2D6E] font-bold text-sm tracking-tight">
-              Quick Links
-            </h4>
-            <div className="grid grid-cols-3 gap-6 sm:gap-8 lg:gap-10 text-xs sm:text-[13px] font-medium text-[#5A6E85]">
-              {/* Sub-column 1 */}
-              <ul className="space-y-2 sm:space-y-2.5">
-                <li>
-                  <Link to="/" className="hover:text-[#06402B] transition-colors">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about" className="hover:text-[#06402B] transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/founder" className="hover:text-[#06402B] transition-colors font-medium">
-                    Founder's Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/our-work" className="hover:text-[#06402B] transition-colors">
-                    Our Work
-                  </Link>
-                </li>
-              </ul>
+            {/* Social Media Links */}
+            <div className="pt-1">
+              <span className="block text-[11px] font-bold text-[#5B2E19] uppercase tracking-wider mb-2.5">
+                Connect With Us
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-8 h-8 rounded-full bg-[#5B2E19] hover:bg-[#FCCD37] text-[#FAF6EE] hover:text-[#5B2E19] flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                >
+                  <LinkedinIcon />
+                </a>
 
-              {/* Sub-column 2 */}
-              <ul className="space-y-2 sm:space-y-2.5">
-                <li>
-                  <Link to="/impact" className="hover:text-[#06402B] transition-colors">
-                    Impact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/gallery" className="hover:text-[#06402B] transition-colors">
-                    Multimedia Gallery
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/event" className="hover:text-[#06402B] transition-colors">
-                    Event
-                  </Link>
-                </li>
-              </ul>
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  className="w-8 h-8 rounded-full bg-[#5B2E19] hover:bg-[#FCCD37] text-[#FAF6EE] hover:text-[#5B2E19] flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                >
+                  <TwitterIcon />
+                </a>
 
-              {/* Sub-column 3 */}
-              <ul className="space-y-2 sm:space-y-2.5">
-                <li>
-                  <Link to="/resources" className="hover:text-[#06402B] transition-colors">
-                    Resources
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-[#06402B] transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link 
-                    to="/donate" 
-                    className="hover:text-[#06402B] transition-colors text-left"
-                  >
-                    Donate
-                  </Link>
-                </li>
-              </ul>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-8 h-8 rounded-full bg-[#5B2E19] hover:bg-[#FCCD37] text-[#FAF6EE] hover:text-[#5B2E19] flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                >
+                  <FacebookIcon />
+                </a>
+
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-8 h-8 rounded-full bg-[#5B2E19] hover:bg-[#FCCD37] text-[#FAF6EE] hover:text-[#5B2E19] flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                >
+                  <InstagramIcon />
+                </a>
+
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="w-8 h-8 rounded-full bg-[#5B2E19] hover:bg-[#FCCD37] text-[#FAF6EE] hover:text-[#5B2E19] flex items-center justify-center transition-all shadow-xs cursor-pointer"
+                >
+                  <YoutubeIcon />
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* 3. Connect With Us (Circular Social Buttons) */}
-          <div className="space-y-3">
-            <h4 className="text-[#0B2D6E] font-bold text-sm tracking-tight">
-              Connect With Us
+          {/* 2. Strategic Pillars (Cols 5-7) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-[#5B2E19] font-bold text-xs uppercase tracking-wider">
+              Strategic Pillars
             </h4>
-            <div className="flex items-center gap-2 sm:gap-2.5">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0B2D6E] hover:bg-[#06402B] text-white flex items-center justify-center transition-colors shadow-2xs"
-              >
-                <LinkedinIcon />
-              </a>
-
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0B2D6E] hover:bg-[#06402B] text-white flex items-center justify-center transition-colors shadow-2xs"
-              >
-                <TwitterIcon />
-              </a>
-
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0B2D6E] hover:bg-[#06402B] text-white flex items-center justify-center transition-colors shadow-2xs"
-              >
-                <FacebookIcon />
-              </a>
-
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0B2D6E] hover:bg-[#06402B] text-white flex items-center justify-center transition-colors shadow-2xs"
-              >
-                <InstagramIcon />
-              </a>
-
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0B2D6E] hover:bg-[#06402B] text-white flex items-center justify-center transition-colors shadow-2xs"
-              >
-                <YoutubeIcon />
-              </a>
-            </div>
+            <ul className="space-y-2 text-xs sm:text-[13px] font-medium text-[#5B2E19]/85">
+              <li>
+                <Link to="/our-work/education" className="hover:text-[#0047BA] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0047BA] shrink-0" />
+                  <span>Education & Opportunity</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/our-work/health" className="hover:text-[#338C26] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#338C26] shrink-0" />
+                  <span>Health & Wellbeing</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/our-work/humanitarian-support" className="hover:text-[#5B2E19] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5B2E19] shrink-0" />
+                  <span>Humanitarian Support</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/our-work/economic-empowerment" className="hover:text-[#5B2E19] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FCCD37] shrink-0" />
+                  <span>Economic Empowerment</span>
+                </Link>
+              </li>
+              <li className="pt-1">
+                <Link to="/our-work" className="text-[#5B2E19] hover:underline font-bold transition-colors inline-flex items-center gap-1">
+                  <span>Framework Overview</span>
+                  <ArrowRight size={12} strokeWidth={2.5} />
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* 4. Vertical Divider on Desktop */}
-          <div className="hidden xl:block w-px h-11 bg-slate-200 self-center shrink-0" aria-hidden="true" />
-
-          {/* 5. Subscribe Form with Forest Green Button */}
-          <div className="space-y-3">
-            <h4 className="text-[#0B2D6E] font-bold text-sm tracking-tight">
-              Subscribe
+          {/* 3. Institutional Links (Cols 8-9) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-[#5B2E19] font-bold text-xs uppercase tracking-wider">
+              Institutional
             </h4>
+            <ul className="space-y-2 text-xs sm:text-[13px] font-medium text-[#5B2E19]/85">
+              <li>
+                <Link to="/" className="hover:text-[#5B2E19] transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-[#5B2E19] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/founder" className="hover:text-[#5B2E19] transition-colors">
+                  Founder's Profile
+                </Link>
+              </li>
+              <li>
+                <Link to="/impact" className="hover:text-[#5B2E19] transition-colors">
+                  Impact & Results
+                </Link>
+              </li>
+              <li>
+                <Link to="/gallery" className="hover:text-[#5B2E19] transition-colors">
+                  Multimedia Gallery
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-[#5B2E19] transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/donate" 
+                  className="text-[#5B2E19] font-extrabold hover:text-[#338C26] transition-colors inline-flex items-center gap-1"
+                >
+                  <span>Donate to CMAOF</span>
+                  <ArrowRight size={12} strokeWidth={2.5} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* 4. Newsletter Subscription (Cols 10-12) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="text-[#5B2E19] font-bold text-xs uppercase tracking-wider">
+              Stay Connected
+            </h4>
+            <p className="text-xs text-[#5B2E19]/80 leading-relaxed">
+              Subscribe to receive the latest impact updates, field reports, and opportunities from CMAOF.
+            </p>
             <form 
               onSubmit={handleNewsletterSubmit} 
-              className="flex items-center rounded-lg border border-[#CBD5E1] overflow-hidden bg-white shadow-2xs w-full sm:w-[260px] md:w-[280px]"
+              className="flex items-center rounded-lg border border-[#D8C7A3] overflow-hidden bg-white shadow-xs w-full max-w-sm focus-within:border-[#5B2E19] focus-within:ring-1 focus-within:ring-[#5B2E19]"
             >
               <input
                 type="email"
@@ -226,14 +245,14 @@ const ResourcesFooter = ({ onOpenDonate }) => {
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Your email address"
-                className="w-full px-3 py-2 text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none bg-transparent"
+                className="w-full px-3 py-2.5 text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none bg-transparent"
               />
               <button
                 type="submit"
-                className="bg-[#06402B] hover:bg-[#042D1E] active:bg-[#032418] text-white px-3.5 py-2.5 flex items-center justify-center transition-colors shrink-0 cursor-pointer"
+                className="bg-[#5B2E19] hover:bg-[#3D1E10] text-[#FCCD37] px-3.5 py-2.5 flex items-center justify-center transition-colors shrink-0 cursor-pointer"
                 aria-label="Subscribe"
               >
-                <ArrowRight size={15} strokeWidth={2.4} />
+                <ArrowRight size={16} strokeWidth={2.5} />
               </button>
             </form>
           </div>
@@ -241,29 +260,29 @@ const ResourcesFooter = ({ onOpenDonate }) => {
         </div>
 
         {/* Bottom Legal Copyright Bar */}
-        <div className="border-t border-[#E2E8F0] mt-8 pt-4 pb-2 flex flex-col md:flex-row items-center justify-between text-xs text-[#5A6E85] gap-3">
-          <p className="text-[#5A6E85] text-xs font-normal">
-            © {new Date().getFullYear()} Chief Michael Ade.Ojo Foundation. All rights reserved.
+        <div className="border-t border-[#E8DEC2] mt-8 pt-4 pb-2 flex flex-col md:flex-row items-center justify-between text-xs text-[#5B2E19]/75 gap-3">
+          <p className="text-xs font-normal text-center md:text-left">
+            © {new Date().getFullYear()} Chief Michael Ade.Ojo Foundation (CMAOF). All rights reserved.
           </p>
 
-          <div className="flex items-center flex-wrap gap-2 text-xs text-[#5A6E85]">
-            <Link to="/policies" className="hover:text-[#06402B] transition-colors">
+          <div className="flex items-center flex-wrap justify-center gap-3 text-xs">
+            <Link to="/policies" className="hover:text-[#5B2E19] transition-colors">
               Privacy Policy
             </Link>
-            <span className="text-slate-300">|</span>
-            <Link to="/policies" className="hover:text-[#06402B] transition-colors">
+            <span className="text-[#D8C7A3]">|</span>
+            <Link to="/policies" className="hover:text-[#5B2E19] transition-colors">
               Terms of Use
             </Link>
-            <span className="text-slate-300">|</span>
-            <Link to="/policies" className="hover:text-[#06402B] transition-colors">
+            <span className="text-[#D8C7A3]">|</span>
+            <Link to="/policies" className="hover:text-[#5B2E19] transition-colors">
               Cookie Policy
             </Link>
-            <span className="text-slate-300">|</span>
-            <Link to="/policies" className="hover:text-[#06402B] transition-colors">
+            <span className="text-[#D8C7A3]">|</span>
+            <Link to="/policies" className="hover:text-[#5B2E19] transition-colors">
               Safeguarding
             </Link>
-            <span className="text-slate-300">|</span>
-            <Link to="/contact" className="hover:text-[#06402B] transition-colors">
+            <span className="text-[#D8C7A3]">|</span>
+            <Link to="/contact" className="hover:text-[#5B2E19] transition-colors">
               Contact
             </Link>
           </div>

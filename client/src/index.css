@@ -1,72 +1,349 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200..900;1,200..900&family=Open+Sans:ital,wght@0,300..700;1,300..700&display=swap');
 @import "tailwindcss";
 
+/* ═════════════════════════════════════════════════════════════════
+   TAILWIND CSS v4 THEME CONFIGURATION
+   Registers official CMAOF tokens and utility classes
+   ═════════════════════════════════════════════════════════════════ */
+@theme {
+  /* Official Primary Brand Colors (Brand Manual Page 25) */
+  --color-cmao-earth-brown: #5B2E19;
+  --color-cmao-earth-brown-dark: #3D1E10;
+  --color-cmao-earth-brown-light: #7A3E22;
+  --color-cmao-earth-brown-soft: #4D2614;
+
+  --color-cmao-sun-yellow: #FCCD37;
+  --color-cmao-sun-yellow-light: #FFF8E5;
+  --color-cmao-sun-yellow-hover: #EBB823;
+  --color-cmao-sun-yellow-dark: #D4A017;
+  --color-cmao-sun-yellow-amber: #F59E0B;
+
+  /* Official Secondary Brand Colors (Brand Manual Page 26) */
+  --color-cmao-light-grey: #848688;
+  --color-cmao-light-grey-light: #E5E7EB;
+  --color-cmao-green: #338C26;
+  --color-cmao-green-hover: #28721E;
+  --color-cmao-green-light: #EDF7EB;
+  --color-cmao-blue: #0047BA;
+  --color-cmao-blue-hover: #00368F;
+  --color-cmao-blue-light: #EBF3FC;
+
+  /* Warm Brand Canvas & Backgrounds (Brand Manual Pages 6, 7, 9, 16) */
+  --color-cmao-cream: #FAF6EE;
+  --color-cmao-cream-light: #FDFBF7;
+  --color-cmao-cream-card: #FFFDF9;
+
+  /* Compatibility Aliases */
+  --color-cmaof-brown: #5B2E19;
+  --color-cmaof-yellow: #FCCD37;
+  --color-cmaof-gold: #FCCD37;
+  --color-cmaof-green: #338C26;
+  --color-cmaof-navy: #0047BA;
+  --color-cmaof-slate: #848688;
+
+  /* Official Typography (Brand Manual Pages 21-23) */
+  --font-sans: 'Montserrat', 'Open Sans', Arial, sans-serif;
+  --font-primary: 'Montserrat', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+  --font-fallback: Arial, sans-serif;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   BASE LAYER & CSS CUSTOM PROPERTIES
+   ═════════════════════════════════════════════════════════════════ */
 @layer base {
   :root {
-    --cmaof-green: #06402B;
-    --cmaof-green-medium: #14634C;
-    --cmaof-green-hover: #042D1E;
-    --cmaof-navy: #0B2D6E;
-    --cmaof-slate: #5A6E85;
-    --cmaof-orange: #EA580C;
-    --cmaof-orange-hover: #C2410C;
-    --cmaof-gold: #D4AF37;
+    /* ── Official CMAOF Brand Primary Colors (Page 25) ── */
+    --cmao-earth-brown: #5B2E19;
+    --cmao-earth-brown-dark: #3D1E10;
+    --cmao-earth-brown-light: #7A3E22;
+    --cmao-sun-yellow: #FCCD37;
+    --cmao-sun-yellow-light: #FFF8E5;
+    --cmao-sun-yellow-hover: #EBB823;
+    --cmao-sun-yellow-dark: #D4A017;
+
+    /* ── Official CMAOF Brand Secondary Colors (Page 26) ── */
+    --cmao-light-grey: #848688;
+    --cmao-green: #338C26;
+    --cmao-green-hover: #28721E;
+    --cmao-green-light: #EDF7EB;
+    --cmao-blue: #0047BA;
+    --cmao-blue-hover: #00368F;
+    --cmao-blue-light: #EBF3FC;
+
+    /* ── Warm Brand Canvas ── */
+    --cmao-cream: #FAF6EE;
+    --cmao-cream-light: #FDFBF7;
+    --cmao-cream-card: #FFFDF9;
+
+    /* ── Official CMAOF Typography ── */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-secondary: 'Open Sans', sans-serif;
+    --font-fallback: Arial, sans-serif;
+
+    /* ── Identity Constraints ── */
+    --logo-clear-space: 0.5;
+    --watermark-opacity: 0.08;
+
+    /* ── Backward Compatibility ── */
+    --cmaof-green: var(--cmao-green);
+    --cmaof-navy: var(--cmao-blue);
+    --cmaof-slate: var(--cmao-light-grey);
+    --cmaof-orange: var(--cmao-sun-yellow);
+    --cmaof-gold: var(--cmao-sun-yellow);
   }
 
   html {
-    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-primary), var(--font-secondary), var(--font-fallback);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #0f172a;
-    background-color: #f8fafc;
+    font-family: var(--font-primary), var(--font-secondary), var(--font-fallback);
+    color: #1E293B;
+    background-color: #FDFBF7;
     overflow-x: hidden;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Universal element typography defaults enforcing Montserrat (>= 90%) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary), var(--font-fallback);
+    letter-spacing: -0.02em;
+    color: var(--cmao-earth-brown-dark);
+  }
+
+  h1 {
+    font-weight: 800;
+    line-height: 1.12;
+  }
+
+  h2 {
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-primary), var(--font-fallback);
+  }
+
   p {
-    color: #1e293b;
+    font-family: var(--font-primary), var(--font-secondary), var(--font-fallback);
+    color: #334155;
     font-weight: 450;
     line-height: 1.68;
     letter-spacing: -0.01em;
   }
 }
 
-/* Universal high-contrast readability for p tags across all pages */
-p:not([class*="text-white"]):not([class*="text-emerald"]):not([class*="text-slate-100"]):not([class*="text-slate-200"]):not([class*="text-slate-300"]) {
-  color: #1e293b;
-  font-weight: 450;
-}
-
-/* Ensure paragraph text with slate utilities never looks faint or washed out */
-p.text-slate-600,
-p.text-slate-500,
-p.text-slate-400 {
-  color: #334155 !important;
-  font-weight: 450;
-}
-
+/* ═════════════════════════════════════════════════════════════════
+   UNIVERSAL TYPOGRAPHY & UTILITY CLASSES
+   ═════════════════════════════════════════════════════════════════ */
 .font-sans {
-  font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: var(--font-primary), var(--font-secondary), var(--font-fallback) !important;
 }
 
-.font-serif-cmaof {
-  font-family: 'Playfair Display', serif;
+.font-primary {
+  font-family: var(--font-primary), var(--font-fallback) !important;
 }
 
+.font-secondary {
+  font-family: var(--font-secondary), var(--font-fallback) !important;
+}
+
+.font-serif-cmaof,
 .font-handwriting {
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-primary), var(--font-fallback) !important;
 }
 
-/* Custom shadow & glass styles */
+/* ═════════════════════════════════════════════════════════════════
+   ACTIVE BRAND BUTTONS & INTERACTIVE ELEMENTS
+   High-energy, radiant Sun Yellow and prestigious Earth Brown
+   ═════════════════════════════════════════════════════════════════ */
+.btn-cmao-primary {
+  background: linear-gradient(135deg, #FCCD37 0%, #FDC220 50%, #F5B800 100%);
+  color: #3D1E10 !important;
+  font-weight: 800;
+  font-family: var(--font-primary);
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px -2px rgba(252, 205, 55, 0.45);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: 1px solid rgba(252, 205, 55, 0.6);
+}
+
+.btn-cmao-primary:hover {
+  background: linear-gradient(135deg, #FDC220 0%, #F5B800 50%, #E5A800 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px -4px rgba(252, 205, 55, 0.65);
+  color: #261108 !important;
+}
+
+.btn-cmao-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-cmao-secondary {
+  background-color: #5B2E19;
+  color: #FFFFFF !important;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px -2px rgba(91, 46, 25, 0.3);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-cmao-secondary:hover {
+  background-color: #3D1E10;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 22px -4px rgba(91, 46, 25, 0.45);
+  color: #FFFFFF !important;
+}
+
+.btn-cmao-secondary:active {
+  transform: scale(0.97);
+}
+
+.btn-cmao-outline {
+  border: 2px solid #5B2E19;
+  color: #5B2E19 !important;
+  background-color: transparent;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-cmao-outline:hover {
+  background-color: #5B2E19;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px -3px rgba(91, 46, 25, 0.25);
+}
+
+.btn-cmao-outline:active {
+  transform: scale(0.97);
+}
+
+/* Outline on Dark Canvas */
+.btn-cmao-outline-light {
+  border: 2px solid #FCCD37;
+  color: #FCCD37 !important;
+  background-color: transparent;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-cmao-outline-light:hover {
+  background-color: #FCCD37;
+  color: #3D1E10 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px -3px rgba(252, 205, 55, 0.4);
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   ACTIVE BRAND BADGES & ACCENTS
+   ═════════════════════════════════════════════════════════════════ */
+.badge-cmao-yellow {
+  background-color: #FFF8E5;
+  color: #5B2E19;
+  border: 1px solid rgba(252, 205, 55, 0.75);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.badge-cmao-brown {
+  background-color: #5B2E19;
+  color: #FCCD37;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.badge-cmao-green {
+  background-color: #EDF7EB;
+  color: #28721E;
+  border: 1px solid rgba(51, 140, 38, 0.35);
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+.badge-cmao-blue {
+  background-color: #EBF3FC;
+  color: #0047BA;
+  border: 1px solid rgba(0, 71, 186, 0.35);
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+/* Active vertical bar accents */
+.cmao-accent-bar {
+  width: 0.375rem;
+  background-color: #FCCD37;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.cmao-accent-bar-brown {
+  width: 0.375rem;
+  background-color: #5B2E19;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   BRAND SHADOWS, CARDS & MOTIFS
+   ═════════════════════════════════════════════════════════════════ */
 .shadow-cmaof-soft {
-  box-shadow: 0 10px 30px -10px rgba(15, 76, 58, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 30px -10px rgba(91, 46, 25, 0.09), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .shadow-cmaof-hover {
@@ -74,13 +351,31 @@ p.text-slate-400 {
 }
 .shadow-cmaof-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 35px -12px rgba(15, 76, 58, 0.15);
+  box-shadow: 0 20px 35px -12px rgba(91, 46, 25, 0.16);
+}
+
+.card-cmao-active {
+  background-color: #FFFFFF;
+  border: 1px solid #EFE8DC;
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-cmao-active:hover {
+  border-color: #FCCD37;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px -8px rgba(91, 46, 25, 0.12), 0 0 0 1px rgba(252, 205, 55, 0.3);
 }
 
 .glass-cmaof {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(132, 134, 136, 0.25);
+}
+
+/* Brand motif watermark (Brand Manual Pages 16-19) */
+.cmao-watermark-bg {
+  background-image: radial-gradient(rgba(252, 205, 55, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
 
 /* Custom scrollbar */
@@ -88,27 +383,36 @@ p.text-slate-400 {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #FAF6EE;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0F4C3A;
+  background: #5B2E19;
 }
 
-/* Fade-in animation for step transitions */
+/* Keyframes & Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseWarm {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
 }
 
 .animate-fade-in {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Hide scrollbar for clean tab carousels */
+.animate-pulse-warm {
+  animation: pulseWarm 2.5s ease-in-out infinite;
+}
+
+/* Hide scrollbar */
 .no-scrollbar::-webkit-scrollbar,
 .scrollbar-none::-webkit-scrollbar {
   display: none;
@@ -117,4 +421,33 @@ p.text-slate-400 {
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   GLOBAL BRAND COMPATIBILITY & ACTIVE RETARGETING
+   Harmonizes legacy classes without deadening the design
+   ═════════════════════════════════════════════════════════════════ */
+@layer utilities {
+  /* Green shades (#06402B, #0F4C3A, #14634C, #093A2C, #0A5C36) -> CMAO Green #338C26 / CMAO Earth Brown */
+  [class*="border-[#06402B]"],
+  [class*="border-[#0F4C3A]"],
+  [class*="border-[#14634C]"],
+  [class*="border-[#093A2C]"] {
+    border-color: #5B2E19 !important;
+  }
+
+  /* Navy headings and dark texts (#0B2D6E, #0F2B5B) -> Rich Earth Brown #5B2E19 */
+  h1[class*="text-[#0B2D6E]"],
+  h1[class*="text-[#0F2B5B]"],
+  h2[class*="text-[#0B2D6E]"],
+  h2[class*="text-[#0F2B5B]"],
+  h3[class*="text-[#0B2D6E]"],
+  h3[class*="text-[#0F2B5B]"] {
+    color: #5B2E19 !important;
+  }
+
+  /* Secondary slate text (#5A6E85) -> CMAO Light Grey #848688 */
+  [class*="text-[#5A6E85]"] {
+    color: #64748B !important;
+  }
 }

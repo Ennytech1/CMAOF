@@ -66,11 +66,11 @@ const ContactFaqSection = ({ onScrollToForm }) => {
         
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700">
-            <HelpCircle size={14} className="text-[#06402B]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF6EE] border border-[#FCCD37]/40 text-xs font-bold text-[#5B2E19]">
+            <HelpCircle size={14} className="text-[#5B2E19]" />
             <span>QUICK ANSWERS & GUIDANCE</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2D6E]">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19]">
             Frequently Asked Questions
           </h2>
           <p className="text-slate-600 text-sm max-w-xl mx-auto">
@@ -92,7 +92,7 @@ const ContactFaqSection = ({ onScrollToForm }) => {
                 onClick={() => setFilterCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   filterCategory === cat.id
-                    ? 'bg-[#06402B] text-white shadow-xs'
+                    ? 'bg-[#5B2E19] text-[#FCCD37] shadow-xs'
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
@@ -111,7 +111,7 @@ const ContactFaqSection = ({ onScrollToForm }) => {
                 key={faq.id}
                 className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen 
-                    ? 'border-[#06402B]/60 shadow-md ring-1 ring-[#06402B]/10' 
+                    ? 'border-[#5B2E19] shadow-md ring-1 ring-[#FCCD37]/40' 
                     : 'border-slate-200/90 hover:border-slate-300 shadow-2xs'
                 }`}
               >
@@ -120,11 +120,11 @@ const ContactFaqSection = ({ onScrollToForm }) => {
                   onClick={() => toggleFaq(faq.id)}
                   className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer"
                 >
-                  <span className={`text-sm sm:text-base font-bold ${isOpen ? 'text-[#06402B]' : 'text-[#0B2D6E]'}`}>
+                  <span className={`text-sm sm:text-base font-bold ${isOpen ? 'text-[#5B2E19]' : 'text-slate-800'}`}>
                     {faq.question}
                   </span>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform ${
-                    isOpen ? 'bg-[#06402B]/10 text-[#06402B] rotate-180' : 'bg-slate-100 text-slate-500'
+                    isOpen ? 'bg-[#FFF8E5] text-[#5B2E19] rotate-180' : 'bg-slate-100 text-slate-500'
                   }`}>
                     <ChevronDown size={16} />
                   </div>
@@ -141,16 +141,16 @@ const ContactFaqSection = ({ onScrollToForm }) => {
         </div>
 
         {/* Still Have Questions CTA */}
-        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="bg-[#FAF6EE]/80 border border-[#FCCD37]/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#06402B]/10 text-[#06402B] flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/40 flex items-center justify-center shrink-0">
               <MessageSquare size={20} />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-[#0B2D6E]">
+              <h4 className="text-sm font-bold text-[#5B2E19]">
                 Have a question not addressed here?
               </h4>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-600">
                 Our secretariat team is prepared to assist you with tailored guidance.
               </p>
             </div>
@@ -159,7 +159,7 @@ const ContactFaqSection = ({ onScrollToForm }) => {
           <button
             type="button"
             onClick={onScrollToForm}
-            className="px-5 py-2.5 rounded-full bg-[#0B2D6E] hover:bg-[#06402B] text-white text-xs font-bold transition-colors cursor-pointer shrink-0 shadow-2xs inline-flex items-center gap-2"
+            className="px-5 py-2.5 rounded-full btn-cmao-primary text-xs font-black transition-colors cursor-pointer shrink-0 shadow-xs inline-flex items-center gap-2"
           >
             <span>Write to Secretariat</span>
             <ArrowRight size={13} />

@@ -28,9 +28,9 @@ const StateCardPin = () => (
   >
     <path
       d="M12 0C5.373 0 0 5.373 0 12c0 8.8 12 16 12 16s12-7.2 12-16c0-6.627-5.373-12-12-12z"
-      fill="#065F46"
+      fill="#5B2E19"
     />
-    <circle cx="12" cy="11" r="3.8" fill="#FFFFFF" />
+    <circle cx="12" cy="11" r="3.8" fill="#FCCD37" />
   </svg>
 );
 
@@ -80,16 +80,16 @@ const ImpactWhereWeWorkAndStories = () => {
           ════════════════════════════════════════════════════════════════ */}
           <div className="lg:col-span-7 flex flex-col justify-between h-full space-y-4">
             
-            {/* ── Top Header with Tall Orange Bar ── */}
+            {/* ── Top Header with Tall Yellow Bar ── */}
             <div className="flex items-start gap-3">
-              {/* Tall Orange Bar spanning both title lines */}
-              <div className="w-[4px] h-11 sm:h-12 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+              {/* Tall Yellow Bar spanning both title lines */}
+              <div className="w-[4px] h-11 sm:h-12 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
               
               <div className="space-y-0.5">
-                <h2 className="text-xl sm:text-[22px] font-black text-[#0F2B5B] uppercase tracking-tight leading-tight">
+                <h2 className="text-xl sm:text-[22px] font-black text-[#5B2E19] uppercase tracking-tight leading-tight">
                   WHERE WE WORK
                 </h2>
-                <div className="text-xl sm:text-[22px] font-black text-[#064E3B] tracking-tight leading-tight">
+                <div className="text-xl sm:text-[22px] font-black text-[#8C4A26] tracking-tight leading-tight">
                   Communities across Nigeria
                 </div>
               </div>
@@ -107,23 +107,23 @@ const ImpactWhereWeWorkAndStories = () => {
                 {/* 3 Authentic Teardrop Programme Pins */}
                 <div className="space-y-2.5 pt-0.5">
                   <div className="flex items-center gap-2.5">
-                    <TeardropPin color="#065F46" />
+                    <TeardropPin color="#0047BA" />
                     <span className="text-slate-800 text-xs sm:text-[12.5px] font-semibold leading-tight">
                       Education programmes
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <TeardropPin color="#DC2626" />
+                    <TeardropPin color="#338C26" />
                     <span className="text-slate-800 text-xs sm:text-[12.5px] font-semibold leading-tight">
                       Health programmes
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <TeardropPin color="#EA580C" />
+                    <TeardropPin color="#5B2E19" />
                     <span className="text-slate-800 text-xs sm:text-[12.5px] font-semibold leading-tight">
-                      Community programmes
+                      Humanitarian & Community
                     </span>
                   </div>
                 </div>
@@ -142,20 +142,20 @@ const ImpactWhereWeWorkAndStories = () => {
               <div className="sm:col-span-3 relative">
                 {/* Pointer Arrow on Left for Desktop pointing towards Map */}
                 <div
-                  className="hidden sm:block absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#F0F4F8] border-l border-b border-slate-200/90 rotate-45 z-10"
+                  className="hidden sm:block absolute -left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#FAF6EE] border-l border-b border-[#EFE8DC] rotate-45 z-10"
                   aria-hidden="true"
                 />
 
-                <div className="bg-[#F0F4F8] rounded-2xl p-3 sm:p-3.5 border border-slate-200/90 shadow-xs space-y-2.5">
+                <div className="bg-[#FAF6EE] rounded-2xl p-3 sm:p-3.5 border border-[#EFE8DC] shadow-xs space-y-2.5">
                   <div className="leading-tight">
-                    <span className="block text-[11px] font-black text-[#0F2B5B] uppercase tracking-wider">
+                    <span className="block text-[11px] font-black text-[#5B2E19] uppercase tracking-wider">
                       STATES WITH
                     </span>
-                    <span className="block text-[11px] font-black text-[#0F2B5B] uppercase tracking-wider">
+                    <span className="block text-[11px] font-black text-[#5B2E19] uppercase tracking-wider">
                       CMAOF PRESENCE
                     </span>
                     <span className="block text-[10px] font-normal text-slate-500 pt-0.5">
-                      (placeholder)
+                      (Strategic Footprint)
                     </span>
                   </div>
 
@@ -184,20 +184,20 @@ const ImpactWhereWeWorkAndStories = () => {
             {/* ── Top Header with "View All Stories ->" on Far Right ── */}
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-start gap-2.5">
-                <div className="w-[3.5px] h-6 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                <div className="w-[3.5px] h-6 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                 <div>
-                  <h2 className="text-lg sm:text-xl font-black text-[#0F2B5B] uppercase tracking-tight leading-tight">
+                  <h2 className="text-lg sm:text-xl font-black text-[#5B2E19] uppercase tracking-tight leading-tight">
                     STORIES OF IMPACT
                   </h2>
-                  <div className="text-base sm:text-lg font-bold text-[#0F2B5B] tracking-tight leading-snug mt-0.5">
+                  <div className="text-base sm:text-lg font-bold text-[#8C4A26] tracking-tight leading-snug mt-0.5">
                     Real people. Brighter futures.
                   </div>
                 </div>
               </div>
 
               <Link
-                to="/news"
-                className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#0F4C3A] hover:text-[#14634C] shrink-0 transition-colors cursor-pointer group pt-0.5"
+                to="/gallery"
+                className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#5B2E19] hover:text-[#0047BA] shrink-0 transition-colors cursor-pointer group pt-0.5"
               >
                 <span className="underline underline-offset-2">View All Stories</span>
                 <ArrowRight size={14} strokeWidth={2.4} className="transition-transform group-hover:translate-x-0.5" />
@@ -223,7 +223,7 @@ const ImpactWhereWeWorkAndStories = () => {
 
                     {/* Quotation & Quote Text */}
                     <div className="space-y-0.5">
-                      <span className="text-[#065F46] font-serif font-black text-lg sm:text-xl leading-none select-none block">
+                      <span className="text-[#FCCD37] font-serif font-black text-2xl leading-none select-none block">
                         “
                       </span>
                       <p className="text-slate-700 text-[10.5px] sm:text-[11px] italic leading-snug font-normal">
@@ -234,7 +234,7 @@ const ImpactWhereWeWorkAndStories = () => {
 
                   {/* Beneficiary Name & Role */}
                   <div className="pt-1 border-t border-slate-100">
-                    <div className="font-extrabold text-[#0F2B5B] text-[11.5px] sm:text-xs leading-tight">
+                    <div className="font-extrabold text-[#5B2E19] text-[11.5px] sm:text-xs leading-tight">
                       {story.name}
                     </div>
                     <div className="text-slate-500 text-[9.5px] sm:text-[10px] leading-tight mt-0.5 font-normal">

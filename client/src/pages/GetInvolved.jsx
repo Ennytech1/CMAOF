@@ -3,7 +3,6 @@ import {
   Heart,
   Handshake,
   Users,
-  Award,
   ChevronRight,
   ArrowRight,
   CheckCircle2,
@@ -81,7 +80,7 @@ const GetInvolved = ({ onOpenDonate }) => {
         setSubmitted(true);
         toast.success('Application recorded! Our field coordinator will reach out to you.');
       }
-    } catch (err) {
+    } catch {
       // Offline fallback grace
       setSubmitted(true);
       toast.success('Application recorded locally! Our coordination desk will reach out.');
@@ -133,48 +132,47 @@ const GetInvolved = ({ onOpenDonate }) => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5">
               {/* Breadcrumb Navigation */}
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#0F2B5B]">
-                <div className="w-1 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-                <Link to="/" className="hover:text-[#0F4C3A] transition-colors">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#5B2E19]">
+                <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                <Link to="/" className="hover:text-[#8C4A26] transition-colors">
                   Home
                 </Link>
                 <ChevronRight size={14} className="text-slate-400" />
-                <span className="text-[#0F2B5B]">Get Involved</span>
+                <span className="text-[#5B2E19] font-bold">Get Involved</span>
               </div>
 
               {/* Eyebrow */}
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
-                <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F4C3A]">
+                <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+                <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#5B2E19]">
                   PARTNER WITH CMAOF
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[3.2rem] font-extrabold tracking-tight leading-[1.12] text-[#0F2B5B]">
+              <h1 className="text-3xl sm:text-4xl lg:text-[3.2rem] font-extrabold tracking-tight leading-[1.12] text-[#5B2E19]">
                 Join Us in Building Brighter Communities
               </h1>
 
               {/* Subtitle */}
-              <p className="text-[#1E355E] text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-medium">
+              <p className="text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-medium">
                 Whether as an individual donor, corporate CSR partner, technical volunteer, or institutional benefactor, your participation multiplies our reach across Nigeria.
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={onOpenDonate}
-                  className="flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-bold text-white text-xs sm:text-sm transition-all duration-200 hover:scale-[1.03] active:scale-95 cursor-pointer bg-gradient-to-r from-[#EA580C] to-[#F97316] shadow-md"
+                <Link
+                  to="/donate"
+                  className="btn-cmao-primary flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm shadow-md shadow-[#FCCD37]/30 hover:shadow-lg transition-all duration-200 cursor-pointer"
                 >
-                  <Heart size={16} className="fill-white/25 stroke-white" strokeWidth={2.5} />
+                  <Heart size={16} className="fill-[#5B2E19]/30 stroke-[#5B2E19]" strokeWidth={2.5} />
                   <span>Donate Now</span>
                   <ArrowRight size={15} strokeWidth={2.5} />
-                </button>
+                </Link>
                 <button
                   type="button"
                   onClick={() => scrollToForm('education')}
-                  className="flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-bold text-[#0F2B5B] hover:text-white hover:bg-[#0F2B5B] border-2 border-[#0F2B5B] text-xs sm:text-sm transition-all duration-200 cursor-pointer"
+                  className="btn-cmao-outline flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 rounded-full font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer"
                 >
                   <Users size={16} />
                   <span>Apply as Volunteer</span>
@@ -188,52 +186,51 @@ const GetInvolved = ({ onOpenDonate }) => {
       {/* ── 2. Three Pathways Cards ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md space-y-4 text-center hover:shadow-lg transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-amber-100 text-[#EA580C] flex items-center justify-center mx-auto">
-              <Heart size={28} className="fill-amber-500" />
+          <div className="p-8 rounded-3xl bg-white border border-[#5B2E19]/10 shadow-sm space-y-4 text-center hover:shadow-md transition-all">
+            <div className="w-14 h-14 rounded-2xl bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center justify-center mx-auto">
+              <Heart size={28} className="fill-[#FCCD37] text-[#5B2E19]" />
             </div>
-            <h3 className="text-xl font-bold text-[#0B2D6E]">Make a Donation</h3>
+            <h3 className="text-xl font-bold text-[#5B2E19]">Make a Donation</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Directly support tertiary scholarships, primary healthcare mobile clinics, or clean water installations.
             </p>
-            <button
-              type="button"
-              onClick={onOpenDonate}
-              className="w-full bg-[#EA580C] hover:bg-[#C2410C] text-white py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow cursor-pointer transition-colors"
+            <Link
+              to="/donate"
+              className="w-full btn-cmao-primary py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow-sm cursor-pointer transition-colors block text-center"
             >
               Donate Now
-            </button>
+            </Link>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md space-y-4 text-center hover:shadow-lg transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-[#06402B] flex items-center justify-center mx-auto">
+          <div className="p-8 rounded-3xl bg-white border border-[#5B2E19]/10 shadow-sm space-y-4 text-center hover:shadow-md transition-all">
+            <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-[#338C26] border border-emerald-100 flex items-center justify-center mx-auto">
               <Handshake size={28} />
             </div>
-            <h3 className="text-xl font-bold text-[#0B2D6E]">Corporate CSR Partnerships</h3>
+            <h3 className="text-xl font-bold text-[#5B2E19]">Corporate CSR Partnerships</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Co-fund strategic development cohorts with verified ESG, audit certification, and impact transparency.
             </p>
             <button
               type="button"
               onClick={() => scrollToForm('csr_partner')}
-              className="w-full bg-[#06402B] hover:bg-[#042C1D] text-white py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow cursor-pointer transition-colors"
+              className="w-full btn-cmao-secondary py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow-sm cursor-pointer transition-colors"
             >
               Partner With Us
             </button>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-md space-y-4 text-center hover:shadow-lg transition-all">
-            <div className="w-14 h-14 rounded-2xl bg-blue-100 text-[#0B2D6E] flex items-center justify-center mx-auto">
+          <div className="p-8 rounded-3xl bg-white border border-[#5B2E19]/10 shadow-sm space-y-4 text-center hover:shadow-md transition-all">
+            <div className="w-14 h-14 rounded-2xl bg-blue-50 text-[#0047BA] border border-blue-100 flex items-center justify-center mx-auto">
               <Users size={28} />
             </div>
-            <h3 className="text-xl font-bold text-[#0B2D6E]">Volunteer Action Corps</h3>
+            <h3 className="text-xl font-bold text-[#5B2E19]">Volunteer Action Corps</h3>
             <p className="text-slate-600 text-sm leading-relaxed">
               Lend your medical skills, engineering expertise, STEM tutoring, or mentorship to active programmes.
             </p>
             <button
               type="button"
               onClick={() => scrollToForm('education')}
-              className="w-full bg-[#0B2D6E] hover:bg-[#08204D] text-white py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow cursor-pointer transition-colors"
+              className="w-full bg-[#0047BA] hover:bg-[#003794] text-white py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow-sm cursor-pointer transition-colors"
             >
               Join Volunteer Corps
             </button>
@@ -243,13 +240,13 @@ const GetInvolved = ({ onOpenDonate }) => {
 
       {/* ── 3. Interactive Volunteer & Partner Application Form ── */}
       <section id="volunteer-form-section" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="rounded-3xl bg-gradient-to-br from-slate-50 via-white to-emerald-50/40 border border-slate-200/90 shadow-xl p-6 sm:p-10 lg:p-12">
+        <div className="rounded-3xl bg-gradient-to-br from-[#FAF6EE]/80 via-white to-[#FFF8E5]/50 border border-[#5B2E19]/10 shadow-xl p-6 sm:p-10 lg:p-12">
           {submitted ? (
             <div className="text-center py-10 space-y-4 max-w-lg mx-auto">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-[#06402B] flex items-center justify-center mx-auto shadow-inner">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 text-[#338C26] flex items-center justify-center mx-auto shadow-inner">
                 <CheckCircle2 size={36} />
               </div>
-              <h2 className="text-2xl font-black text-[#0B2D6E]">Application Submitted!</h2>
+              <h2 className="text-2xl font-black text-[#5B2E19]">Application Submitted!</h2>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Thank you for applying to get involved with the Chief Michael Ade.Ojo Foundation. Our coordinator has received your details and will contact you via email or phone ahead of upcoming field cohorts.
               </p>
@@ -266,7 +263,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                     message: '',
                   });
                 }}
-                className="mt-4 px-6 py-2.5 rounded-full bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs cursor-pointer shadow"
+                className="mt-4 px-6 py-2.5 rounded-full btn-cmao-primary font-bold text-xs cursor-pointer shadow"
               >
                 Submit Another Application
               </button>
@@ -275,10 +272,10 @@ const GetInvolved = ({ onOpenDonate }) => {
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Form Title */}
               <div className="space-y-2 text-center max-w-2xl mx-auto">
-                <span className="px-3 py-1 rounded-full bg-emerald-100 text-[#06402B] text-xs font-black uppercase tracking-wider">
+                <span className="px-3 py-1 rounded-full bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 text-xs font-black uppercase tracking-wider">
                   Volunteer & Partnership Intake
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-[#0B2D6E]">
+                <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19]">
                   Register Your Interest
                 </h2>
                 <p className="text-slate-600 text-xs sm:text-sm">
@@ -304,14 +301,14 @@ const GetInvolved = ({ onOpenDonate }) => {
                           p-3.5 rounded-2xl border text-left flex items-center gap-3 transition-all cursor-pointer
                           ${
                             isSelected
-                              ? 'bg-[#06402B] text-white border-[#06402B] shadow-md font-bold'
-                              : 'bg-white border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50'
+                              ? 'bg-[#5B2E19] text-[#FCCD37] border-[#5B2E19] shadow-md font-bold'
+                              : 'bg-white border-slate-200 text-slate-700 hover:border-[#FCCD37]/60 hover:bg-[#FAF6EE]/50'
                           }
                         `}
                       >
                         <div
                           className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                            isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-[#06402B]'
+                            isSelected ? 'bg-white/20 text-[#FCCD37]' : 'bg-slate-100 text-[#5B2E19]'
                           }`}
                         >
                           <Icon size={18} />
@@ -337,7 +334,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                       placeholder="e.g. Dr. Kelechi Okafor"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:bg-white bg-slate-50 text-slate-800 text-xs"
+                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19] focus:bg-white bg-slate-50 text-slate-800 text-xs"
                     />
                   </div>
                 </div>
@@ -354,7 +351,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                       placeholder="e.g. kelechi@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:bg-white bg-slate-50 text-slate-800 text-xs"
+                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19] focus:bg-white bg-slate-50 text-slate-800 text-xs"
                     />
                   </div>
                 </div>
@@ -368,7 +365,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                       placeholder="+234 800 000 0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:bg-white bg-slate-50 text-slate-800 text-xs"
+                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19] focus:bg-white bg-slate-50 text-slate-800 text-xs"
                     />
                   </div>
                 </div>
@@ -382,7 +379,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                     placeholder="e.g. Nursing, STEM Tutor, Borehole Engineer, Logistics"
                     value={formData.skills}
                     onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
-                    className="w-full px-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:bg-white bg-slate-50 text-slate-800 text-xs"
+                    className="w-full px-3.5 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19] focus:bg-white bg-slate-50 text-slate-800 text-xs"
                   />
                 </div>
 
@@ -395,7 +392,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                     placeholder="Share any past experience, state availability, or how your organization wishes to collaborate..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full p-3.5 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:bg-white bg-slate-50 text-slate-800 text-xs resize-none"
+                    className="w-full p-3.5 rounded-2xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19] focus:bg-white bg-slate-50 text-slate-800 text-xs resize-none"
                   />
                 </div>
               </div>
@@ -405,7 +402,7 @@ const GetInvolved = ({ onOpenDonate }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl cursor-pointer transition-all disabled:opacity-50"
+                  className="flex items-center gap-2 px-8 py-3.5 rounded-full btn-cmao-primary font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#FCCD37]/25 hover:shadow-xl cursor-pointer transition-all disabled:opacity-50"
                 >
                   {loading ? (
                     <span>Submitting Application...</span>

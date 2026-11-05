@@ -41,11 +41,11 @@ const ContactMapSection = () => {
       {/* Section Title */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700 mb-2">
-            <Compass size={13} className="text-[#06402B]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF6EE] border border-[#FCCD37]/40 text-xs font-bold text-[#5B2E19] mb-2">
+            <Compass size={13} className="text-[#5B2E19]" />
             <span>CAMPUS & LIAISON NAVIGATION</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2D6E]">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19]">
             Interactive Secretariat Locations
           </h2>
           <p className="text-slate-600 text-sm mt-1">
@@ -64,7 +64,7 @@ const ContactMapSection = () => {
                 onClick={() => setSelectedMapId(loc.id)}
                 className={`py-2 px-4 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
                   isSelected
-                    ? 'bg-[#06402B] text-white shadow-xs'
+                    ? 'bg-[#5B2E19] text-[#FCCD37] shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
@@ -84,7 +84,7 @@ const ContactMapSection = () => {
           {/* Map Top Bar */}
           <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between gap-4 bg-slate-50/50">
             <div>
-              <h4 className="text-sm font-bold text-[#0B2D6E]">
+              <h4 className="text-sm font-bold text-[#5B2E19]">
                 {activeLocation.name}
               </h4>
               <p className="text-xs text-slate-500">
@@ -96,7 +96,7 @@ const ContactMapSection = () => {
               href={activeLocation.externalMapUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:text-[#06402B] hover:border-[#06402B] shadow-2xs transition-colors shrink-0"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-bold text-[#5B2E19] hover:border-[#FCCD37] hover:bg-[#FFF8E5] shadow-2xs transition-colors shrink-0"
             >
               <Navigation size={13} />
               <span>Open in Google Maps</span>
@@ -122,10 +122,10 @@ const ContactMapSection = () => {
           {/* Map Bottom Metadata Footer */}
           <div className="px-5 py-3 bg-slate-50 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
             <div className="flex items-center gap-2">
-              <MapPin size={14} className="text-[#06402B]" />
+              <MapPin size={14} className="text-[#5B2E19]" />
               <span>GPS Coordinates: <strong className="text-slate-700 font-mono">{activeLocation.gps}</strong></span>
             </div>
-            <span className="text-[#06402B] font-semibold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60">
+            <span className="text-[#338C26] font-semibold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200/60">
               Visitor Gate Clearance Active
             </span>
           </div>
@@ -137,10 +137,10 @@ const ContactMapSection = () => {
           
           <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-7 shadow-xs space-y-5">
             <div className="space-y-1">
-              <span className="text-xs uppercase font-extrabold tracking-wider text-[#EA580C]">
+              <span className="text-xs uppercase font-extrabold tracking-wider text-[#8C4A26]">
                 VISITATION CLEARANCE
               </span>
-              <h3 className="text-lg sm:text-xl font-bold text-[#0B2D6E]">
+              <h3 className="text-lg sm:text-xl font-bold text-[#5B2E19]">
                 Visitor Protocols & Guidelines
               </h3>
               <p className="text-xs text-slate-500">
@@ -151,8 +151,8 @@ const ContactMapSection = () => {
             <div className="space-y-4">
               
               {/* Protocol 1 */}
-              <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="w-9 h-9 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-[#FAF6EE]/50 border border-slate-100">
+                <div className="w-9 h-9 rounded-xl bg-blue-100 text-[#0047BA] flex items-center justify-center shrink-0">
                   <CalendarCheck size={18} />
                 </div>
                 <div>
@@ -166,8 +166,8 @@ const ContactMapSection = () => {
               </div>
 
               {/* Protocol 2 */}
-              <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-[#06402B] flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-[#FAF6EE]/50 border border-slate-100">
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-[#338C26] flex items-center justify-center shrink-0">
                   <ShieldCheck size={18} />
                 </div>
                 <div>
@@ -181,8 +181,8 @@ const ContactMapSection = () => {
               </div>
 
               {/* Protocol 3 */}
-              <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3.5 p-3 rounded-2xl bg-[#FAF6EE]/50 border border-slate-100">
+                <div className="w-9 h-9 rounded-xl bg-[#FFF8E5] text-[#5B2E19] flex items-center justify-center shrink-0">
                   <Car size={18} />
                 </div>
                 <div>
@@ -199,21 +199,21 @@ const ContactMapSection = () => {
           </div>
 
           {/* Quick Help Card */}
-          <div className="bg-gradient-to-br from-[#0B2D6E] to-[#06402B] text-white p-6 rounded-3xl shadow-sm flex items-center justify-between gap-4">
+          <div className="bg-gradient-to-br from-[#241007] via-[#3D1E10] to-[#5B2E19] text-white p-6 rounded-3xl shadow-sm flex items-center justify-between gap-4 border-t-2 border-[#FCCD37]">
             <div className="space-y-1">
-              <span className="text-[11px] uppercase font-bold text-[#D4AF37] tracking-wider">
+              <span className="text-[11px] uppercase font-bold text-[#FCCD37] tracking-wider">
                 NEED ACCESS GUIDANCE?
               </span>
               <h4 className="text-sm font-bold">
                 Secretariat Reception Desk
               </h4>
-              <p className="text-xs text-slate-200">
+              <p className="text-xs text-stone-300">
                 Call our gate reception for arrival directions:
               </p>
             </div>
             <a
               href="tel:+2348002626363"
-              className="px-4 py-2.5 rounded-xl bg-white text-[#0B2D6E] font-bold text-xs hover:bg-emerald-50 transition-colors shrink-0 shadow-xs"
+              className="px-4 py-2.5 rounded-xl btn-cmao-primary font-black text-xs shrink-0 shadow-xs"
             >
               Call Reception
             </a>

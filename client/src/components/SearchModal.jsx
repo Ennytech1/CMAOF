@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, ArrowRight, FileText, Globe, BookOpen, HeartPulse } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { Search, X, ArrowRight, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CmaofLogo from './CmaofLogo';
 
 const CATEGORY_COLORS = {
-  Education: { bg: 'bg-[#EA580C]/10', text: 'text-[#EA580C]', border: 'border-[#EA580C]/30' },
-  Health: { bg: 'bg-[#06402B]/10', text: 'text-[#06402B]', border: 'border-[#06402B]/30' },
-  Community: { bg: 'bg-[#0B2D6E]/10', text: 'text-[#0B2D6E]', border: 'border-[#0B2D6E]/30' },
-  Gallery: { bg: 'bg-amber-500/10', text: 'text-amber-700', border: 'border-amber-400/30' },
-  Resources: { bg: 'bg-emerald-600/10', text: 'text-emerald-700', border: 'border-emerald-500/30' },
-  About: { bg: 'bg-[#06402B]/10', text: 'text-[#06402B]', border: 'border-[#06402B]/30' },
+  Education: { bg: 'bg-[#EBF3FC]', text: 'text-[#0047BA]', border: 'border-[#0047BA]/30' },
+  Health: { bg: 'bg-[#EDF7EB]', text: 'text-[#338C26]', border: 'border-[#338C26]/30' },
+  Community: { bg: 'bg-[#FFF8E5]', text: 'text-[#996F00]', border: 'border-[#FCCD37]/50' },
+  Gallery: { bg: 'bg-[#FAF6EE]', text: 'text-[#5B2E19]', border: 'border-[#5B2E19]/30' },
+  Resources: { bg: 'bg-[#EBF3FC]', text: 'text-[#0047BA]', border: 'border-[#0047BA]/30' },
+  About: { bg: 'bg-[#FAF6EE]', text: 'text-[#5B2E19]', border: 'border-[#5B2E19]/30' },
 };
 
 const SearchModal = ({ isOpen, onClose }) => {
@@ -68,8 +69,8 @@ const SearchModal = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         
-        {/* Tricolor Brand Accent Top Bar */}
-        <div className="h-1.5 bg-gradient-to-r from-[#06402B] via-[#0B2D6E] to-[#EA580C]" />
+        {/* Official Brand Accent Top Bar */}
+        <div className="h-2 bg-gradient-to-r from-[#5B2E19] via-[#FCCD37] to-[#5B2E19]" />
 
         <div className="p-5 sm:p-6 flex flex-col flex-1 min-h-0">
           {/* Modal Brand Header */}
@@ -83,22 +84,22 @@ const SearchModal = ({ isOpen, onClose }) => {
             </div>
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
               title="Close search (Esc)"
             >
               <X size={18} />
             </button>
           </div>
 
-          {/* Search Input Bar with CMAOF Brand Green Focus Ring */}
+          {/* Search Input Bar with CMAOF Brand Focus Ring */}
           <div className="relative flex items-center mb-5 shrink-0">
-            <Search className="absolute left-4 w-5 h-5 text-emerald-800/60" />
+            <Search className="absolute left-4 w-5 h-5 text-[#5B2E19]/60" />
             <input
               type="text"
               placeholder="Search initiatives, scholarships, annual reports, founder legacy..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 placeholder:text-slate-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#06402B] focus:border-[#06402B] transition-all shadow-inner"
+              className="w-full bg-[#FAF6EE]/50 border border-slate-200 rounded-2xl pl-12 pr-4 py-3.5 text-slate-900 placeholder:text-slate-400 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#FCCD37] focus:border-[#5B2E19] transition-all shadow-inner"
               autoFocus
             />
           </div>
@@ -109,7 +110,7 @@ const SearchModal = ({ isOpen, onClose }) => {
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                 {query.trim() ? `Search Results (${filtered.length})` : 'Recommended Foundation Direct Links'}
               </span>
-              <span className="text-[11px] font-semibold text-[#06402B]">
+              <span className="text-[11px] font-bold text-[#5B2E19]">
                 CMAOF Archive
               </span>
             </div>
@@ -123,14 +124,14 @@ const SearchModal = ({ isOpen, onClose }) => {
                       key={idx}
                       to={item.link}
                       onClick={onClose}
-                      className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50/80 hover:bg-emerald-50/60 text-slate-800 hover:text-[#06402B] border border-slate-100 hover:border-emerald-300 transition-all group shadow-2xs"
+                      className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50/80 hover:bg-[#FAF6EE] text-slate-800 hover:text-[#5B2E19] border border-slate-100 hover:border-[#FCCD37] transition-all group shadow-2xs"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#06402B] group-hover:border-emerald-400 group-hover:bg-[#06402B] group-hover:text-white transition-all shrink-0 shadow-xs">
+                        <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#5B2E19] group-hover:border-[#FCCD37] group-hover:bg-[#5B2E19] group-hover:text-[#FCCD37] transition-all shrink-0 shadow-xs">
                           <FileText size={16} />
                         </div>
                         <div className="min-w-0">
-                          <h4 className="text-sm font-bold leading-tight truncate group-hover:text-[#06402B] transition-colors">
+                          <h4 className="text-sm font-bold leading-tight truncate group-hover:text-[#5B2E19] transition-colors">
                             {item.title}
                           </h4>
                           <span className={`inline-block mt-1 text-[10px] font-bold px-2 py-0.5 rounded-md border ${tagStyle.bg} ${tagStyle.text} ${tagStyle.border}`}>
@@ -138,7 +139,7 @@ const SearchModal = ({ isOpen, onClose }) => {
                           </span>
                         </div>
                       </div>
-                      <ArrowRight size={16} className="text-slate-400 group-hover:text-[#06402B] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                      <ArrowRight size={16} className="text-slate-400 group-hover:text-[#5B2E19] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
                     </Link>
                   );
                 })

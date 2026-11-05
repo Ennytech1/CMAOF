@@ -88,29 +88,29 @@ const ResourcesMediaAlbums = () => {
       id: 'all',
       label: 'All Media',
       icon: <LayoutGrid size={17} strokeWidth={2.4} />,
-      activeClass: 'bg-[#06402B] text-white shadow-sm border border-[#06402B]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border border-slate-200/90 hover:border-slate-300 hover:shadow-xs',
+      activeClass: 'bg-[#5B2E19] text-[#FCCD37] shadow-sm border border-[#5B2E19]',
+      inactiveClass: 'bg-white text-[#5B2E19] border border-slate-200/90 hover:border-[#FCCD37]/60 hover:shadow-xs',
     },
     {
       id: 'education',
       label: 'Education & Human Capital',
-      icon: <BookOpen size={17} strokeWidth={2.4} className="text-[#0B4891]" />,
-      activeClass: 'bg-[#0B4891] text-white shadow-sm border border-[#0B4891]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border border-slate-200/90 hover:border-slate-300 hover:shadow-xs',
+      icon: <BookOpen size={17} strokeWidth={2.4} className="text-[#0047BA]" />,
+      activeClass: 'bg-[#0047BA] text-white shadow-sm border border-[#0047BA]',
+      inactiveClass: 'bg-white text-[#5B2E19] border border-slate-200/90 hover:border-[#0047BA]/50 hover:shadow-xs',
     },
     {
       id: 'health',
       label: 'Health & Well-being',
-      icon: <Heart size={17} strokeWidth={2.4} className="fill-[#DC2626] text-[#DC2626]" />,
-      activeClass: 'bg-[#DC2626] text-white shadow-sm border border-[#DC2626]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border border-slate-200/90 hover:border-slate-300 hover:shadow-xs',
+      icon: <Heart size={17} strokeWidth={2.4} className="fill-[#338C26] text-[#338C26]" />,
+      activeClass: 'bg-[#338C26] text-white shadow-sm border border-[#338C26]',
+      inactiveClass: 'bg-white text-[#5B2E19] border border-slate-200/90 hover:border-[#338C26]/50 hover:shadow-xs',
     },
     {
       id: 'community',
       label: 'Community Resilience & Social Well-being',
-      icon: <Users size={17} strokeWidth={2.4} className="text-[#EA580C]" />,
-      activeClass: 'bg-[#EA580C] text-white shadow-sm border border-[#EA580C]',
-      inactiveClass: 'bg-white text-[#0F2B5B] border border-slate-200/90 hover:border-slate-300 hover:shadow-xs',
+      icon: <Users size={17} strokeWidth={2.4} className="text-[#8C4A26]" />,
+      activeClass: 'bg-[#8C4A26] text-white shadow-sm border border-[#8C4A26]',
+      inactiveClass: 'bg-white text-[#5B2E19] border border-slate-200/90 hover:border-[#8C4A26]/50 hover:shadow-xs',
     },
   ];
 
@@ -350,7 +350,7 @@ const ResourcesMediaAlbums = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search photos and videos..."
-                className="w-full pl-9 pr-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#0F4C3A] transition-colors shadow-2xs"
+                className="w-full pl-9 pr-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-[13px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] transition-colors shadow-2xs"
               />
               {searchQuery && (
                 <button 
@@ -371,7 +371,7 @@ const ResourcesMediaAlbums = () => {
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#0F4C3A] cursor-pointer shadow-2xs"
+                  className="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer shadow-2xs"
                 >
                   <option value="all">All Types</option>
                   <option value="photos">Photos Only</option>
@@ -390,7 +390,7 @@ const ResourcesMediaAlbums = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#0F4C3A] cursor-pointer shadow-2xs"
+                  className="appearance-none bg-white border border-slate-200 rounded-xl pl-3 pr-8 py-2 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer shadow-2xs"
                 >
                   <option value="latest">Latest</option>
                   <option value="views">Most Viewed</option>
@@ -414,11 +414,11 @@ const ResourcesMediaAlbums = () => {
             {/* Header: Title on Left & "View All Albums ->" on Right */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
               <div className="flex items-start gap-3">
-                {/* Orange Vertical Accent Bar */}
-                <div className="w-1.5 h-10 sm:h-11 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                {/* Yellow Vertical Accent Bar */}
+                <div className="w-1.5 h-10 sm:h-11 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                 
                 <div className="space-y-0.5">
-                  <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#0F2B5B] tracking-tight leading-tight">
+                  <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#5B2E19] tracking-tight leading-tight">
                     Featured Albums
                   </h2>
                   <p className="text-slate-500 text-xs sm:text-[13px] font-normal leading-relaxed">
@@ -435,7 +435,7 @@ const ResourcesMediaAlbums = () => {
                   setSearchQuery('');
                   setFilterType('photos');
                 }}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-[#0F4C3A] hover:text-[#064E3B] transition-colors self-start sm:self-auto cursor-pointer group"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-[#5B2E19] hover:text-[#3D1E10] transition-colors self-start sm:self-auto cursor-pointer group"
               >
                 <span className="underline decoration-2 underline-offset-4">View All Albums</span>
                 <ArrowRight size={14} className="stroke-[2.5] transition-transform group-hover:translate-x-1" />
@@ -451,7 +451,7 @@ const ResourcesMediaAlbums = () => {
                     setActiveModalAlbum(album);
                     setActivePhotoIndex(0);
                   }}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-slate-300"
+                  className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-[#FCCD37]/60"
                 >
                   <div>
                     {/* Album Cover Photo */}
@@ -463,7 +463,7 @@ const ResourcesMediaAlbums = () => {
                       />
                       {/* Hover Overlay with Preview Icon */}
                       <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="bg-white/95 backdrop-blur-xs text-[#0F2B5B] text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                        <span className="bg-white/95 backdrop-blur-xs text-[#5B2E19] text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                           <Maximize2 size={13} /> View Album
                         </span>
                       </div>
@@ -472,7 +472,7 @@ const ResourcesMediaAlbums = () => {
                     {/* Content Details */}
                     <div className="p-4 sm:p-5 flex items-start justify-between gap-3">
                       <div className="space-y-0.5">
-                        <h3 className="text-sm sm:text-[15px] font-extrabold text-[#0F2B5B] leading-snug group-hover:text-[#0F4C3A] transition-colors">
+                        <h3 className="text-sm sm:text-[15px] font-extrabold text-[#5B2E19] leading-snug group-hover:text-[#8C4A26] transition-colors">
                           {album.title}
                         </h3>
                         <p className="text-slate-500 text-[11px] sm:text-xs leading-tight">
@@ -480,8 +480,8 @@ const ResourcesMediaAlbums = () => {
                         </p>
                       </div>
 
-                      {/* Soft green circle button with arrow */}
-                      <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 group-hover:bg-[#0F4C3A] group-hover:text-white transition-colors duration-200 mt-0.5 shadow-2xs">
+                      {/* Brand Yellow Circle button with arrow */}
+                      <div className="w-8 h-8 rounded-full bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/30 flex items-center justify-center shrink-0 group-hover:bg-[#5B2E19] group-hover:text-[#FCCD37] transition-colors duration-200 mt-0.5 shadow-2xs">
                         <ArrowRight size={14} className="stroke-[2.4]" />
                       </div>
                     </div>
@@ -506,7 +506,7 @@ const ResourcesMediaAlbums = () => {
                     setSelectedPillar('all');
                     setSearchQuery('');
                   }}
-                  className="text-xs font-bold text-[#0F4C3A] hover:underline cursor-pointer"
+                  className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer"
                 >
                   Reset filters
                 </button>
@@ -526,11 +526,11 @@ const ResourcesMediaAlbums = () => {
             {/* Header: Title on Left & "View All Videos ->" on Right */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-start gap-3">
-                {/* Orange Vertical Accent Bar */}
-                <div className="w-1.5 h-10 sm:h-11 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                {/* Yellow Vertical Accent Bar */}
+                <div className="w-1.5 h-10 sm:h-11 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                 
                 <div className="space-y-0.5">
-                  <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#0F2B5B] tracking-tight leading-tight">
+                  <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#5B2E19] tracking-tight leading-tight">
                     Featured Videos
                   </h2>
                   <p className="text-slate-500 text-xs sm:text-[13px] font-normal leading-relaxed">
@@ -547,7 +547,7 @@ const ResourcesMediaAlbums = () => {
                   setSearchQuery('');
                   setFilterType('videos');
                 }}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-[#0F4C3A] hover:text-[#064E3B] transition-colors self-start sm:self-auto cursor-pointer group"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-extrabold text-[#5B2E19] hover:text-[#3D1E10] transition-colors self-start sm:self-auto cursor-pointer group"
               >
                 <span className="underline decoration-2 underline-offset-4">View All Videos</span>
                 <ArrowRight size={14} className="stroke-[2.5] transition-transform group-hover:translate-x-1" />
@@ -560,7 +560,7 @@ const ResourcesMediaAlbums = () => {
                 <div
                   key={video.id}
                   onClick={() => setActiveModalVideo(video)}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-slate-300"
+                  className="bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer hover:border-[#FCCD37]/60"
                 >
                   <div>
                     {/* Video Thumbnail with Play Button Overlay & Duration Badge */}
@@ -576,8 +576,8 @@ const ResourcesMediaAlbums = () => {
 
                       {/* Translucent Play Button Overlay in Center */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-black/60 backdrop-blur-xs flex items-center justify-center text-white shadow-xl group-hover:scale-115 group-hover:bg-[#0F4C3A] transition-all duration-300 border border-white/20">
-                          <Play size={20} className="fill-white translate-x-0.5" />
+                        <div className="w-12 h-12 rounded-full bg-black/60 backdrop-blur-xs flex items-center justify-center text-white shadow-xl group-hover:scale-115 group-hover:bg-[#5B2E19] group-hover:text-[#FCCD37] transition-all duration-300 border border-white/20">
+                          <Play size={20} className="fill-current translate-x-0.5" />
                         </div>
                       </div>
 
@@ -590,7 +590,7 @@ const ResourcesMediaAlbums = () => {
 
                     {/* Content Details: Title & Description */}
                     <div className="p-4 sm:p-5 space-y-1.5">
-                      <h3 className="text-sm sm:text-[15px] font-extrabold text-[#0F2B5B] leading-snug group-hover:text-[#0F4C3A] transition-colors">
+                      <h3 className="text-sm sm:text-[15px] font-extrabold text-[#5B2E19] leading-snug group-hover:text-[#8C4A26] transition-colors">
                         {video.title}
                       </h3>
                       <p className="text-slate-600 text-xs sm:text-[12.5px] leading-relaxed line-clamp-2">
@@ -619,7 +619,7 @@ const ResourcesMediaAlbums = () => {
                     setSelectedPillar('all');
                     setSearchQuery('');
                   }}
-                  className="text-xs font-bold text-[#0F4C3A] hover:underline cursor-pointer"
+                  className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer"
                 >
                   Reset filters
                 </button>
@@ -643,8 +643,8 @@ const ResourcesMediaAlbums = () => {
           aria-label={activeModalAlbum.title}
         >
           {/* Subtle ambient glow effects */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FCCD37]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#5B2E19]/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
           <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
@@ -655,7 +655,7 @@ const ResourcesMediaAlbums = () => {
                 <button
                   type="button"
                   onClick={() => setActiveModalAlbum(null)}
-                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-700 hover:text-[#FCCD37] transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
                   title="Back to Media Gallery"
                 >
                   <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
@@ -664,14 +664,14 @@ const ResourcesMediaAlbums = () => {
 
                 <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
 
-                {/* Breadcrumbs with vertical orange indicator bar */}
+                {/* Breadcrumbs with vertical yellow indicator bar */}
                 <div className="min-w-0 flex flex-col justify-center">
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0" />
                     <button
                       type="button"
                       onClick={() => setActiveModalAlbum(null)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Home
                     </button>
@@ -679,20 +679,20 @@ const ResourcesMediaAlbums = () => {
                     <button
                       type="button"
                       onClick={() => setActiveModalAlbum(null)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Resources
                     </button>
                     <ChevronRight size={13} className="text-slate-400 shrink-0" />
-                    <span className="text-[#0F2B5B] font-bold truncate">Media Album</span>
+                    <span className="text-[#5B2E19] font-bold truncate">Media Album</span>
                   </div>
 
                   {/* Title and Category Badge */}
                   <div className="flex items-center gap-2.5 mt-0.5">
-                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                    <h3 className="text-sm sm:base font-black text-[#5B2E19] truncate">
                       {activeModalAlbum.title}
                     </h3>
-                    <span className="hidden md:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#0F4C3A]/10 text-[#0F4C3A] border border-[#0F4C3A]/20">
+                    <span className="hidden md:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-[#FFF8E5] text-[#5B2E19] border border-[#FCCD37]/40">
                       {activeModalAlbum.photos} Photos • {activeModalAlbum.videos} Videos
                     </span>
                   </div>
@@ -703,7 +703,7 @@ const ResourcesMediaAlbums = () => {
               {/* Right: Slide Counter + Close Button */}
               <div className="flex items-center gap-3 shrink-0">
                 <div className="hidden md:flex flex-col items-end text-right">
-                  <span className="text-xs font-extrabold text-[#0F2B5B]">
+                  <span className="text-xs font-extrabold text-[#5B2E19]">
                     Photo {activePhotoIndex + 1} of {activeModalAlbum.gallery.length}
                   </span>
                   <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
@@ -712,7 +712,7 @@ const ResourcesMediaAlbums = () => {
                 <button
                   type="button"
                   onClick={() => setActiveModalAlbum(null)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
                   title="Close album (Esc)"
                 >
                   <X size={18} strokeWidth={2.4} />
@@ -740,7 +740,7 @@ const ResourcesMediaAlbums = () => {
                     <button
                       type="button"
                       onClick={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : activeModalAlbum.gallery.length - 1))}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#5B2E19] text-slate-800 hover:text-[#FCCD37] border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
                       title="Previous photo (Left Arrow)"
                     >
                       <ChevronLeft size={24} />
@@ -748,7 +748,7 @@ const ResourcesMediaAlbums = () => {
                     <button
                       type="button"
                       onClick={() => setActivePhotoIndex((prev) => (prev < activeModalAlbum.gallery.length - 1 ? prev + 1 : 0))}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#06402B] text-slate-800 hover:text-white border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-[#5B2E19] text-slate-800 hover:text-[#FCCD37] border border-slate-200 flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs shadow-lg group-hover:scale-105"
                       title="Next photo (Right Arrow)"
                     >
                       <ChevronRight size={24} />
@@ -757,7 +757,7 @@ const ResourcesMediaAlbums = () => {
                 )}
 
                 {/* Floating Photo Counter Badge */}
-                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#0F2B5B] border border-slate-200 shadow-md">
+                <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 backdrop-blur-sm text-xs font-bold text-[#5B2E19] border border-slate-200 shadow-md">
                   Photo {activePhotoIndex + 1} of {activeModalAlbum.gallery.length}
                 </div>
               </div>
@@ -765,15 +765,15 @@ const ResourcesMediaAlbums = () => {
 
             {/* Right Photo Narrative */}
             <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E5] border border-[#FCCD37]/40 text-[#5B2E19] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
                 <span>{activeModalAlbum.photos} photos • {activeModalAlbum.videos} videos</span>
               </div>
 
-              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight text-[#5B2E19]">
                 {activeModalAlbum.title}
               </h4>
 
-              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+              <p className="text-sm sm:text-base font-bold text-[#8C4A26]">
                 {activeModalAlbum.subtitle}
               </p>
 
@@ -782,8 +782,8 @@ const ResourcesMediaAlbums = () => {
               </p>
 
               {/* Archival Callout */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
-                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Strategic Initiative Record</span>
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF6EE] border-l-4 border-[#5B2E19] border-y border-r border-[#FCCD37]/30 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#5B2E19] uppercase tracking-wider text-[11px] block">Strategic Initiative Record</span>
                 <span className="leading-relaxed font-medium">Chief Michael Ade.Ojo Foundation official archival record documenting grassroots impact, community empowerment, and institutional progress.</span>
               </div>
 
@@ -792,15 +792,15 @@ const ResourcesMediaAlbums = () => {
                 <button
                   type="button"
                   onClick={() => handleShare(activeModalAlbum.title)}
-                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-[#FAF6EE] text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  {copiedLink ? <Check size={15} className="text-emerald-600" /> : <Share2 size={15} />}
+                  {copiedLink ? <Check size={15} className="text-[#338C26]" /> : <Share2 size={15} />}
                   <span>{copiedLink ? 'Link Copied!' : 'Share Album'}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveModalAlbum(null)}
-                  className="px-5 py-2 bg-[#06402B] hover:bg-[#042A1D] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="px-6 py-2 btn-cmao-primary rounded-xl text-xs font-black transition-all cursor-pointer shadow-xs active:scale-95"
                 >
                   Done
                 </button>
@@ -814,7 +814,7 @@ const ResourcesMediaAlbums = () => {
             <button
               type="button"
               onClick={() => setActivePhotoIndex((prev) => (prev > 0 ? prev - 1 : activeModalAlbum.gallery.length - 1))}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
               title="Previous slide"
             >
               <ChevronLeft size={16} strokeWidth={2.4} />
@@ -832,8 +832,8 @@ const ResourcesMediaAlbums = () => {
                   onClick={() => setActivePhotoIndex(idx)}
                   className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl overflow-hidden shrink-0 border-2 transition-all cursor-pointer ${
                     activePhotoIndex === idx
-                      ? 'border-[#EA580C] ring-4 ring-[#EA580C]/30 scale-105 sm:scale-110 shadow-lg shadow-[#EA580C]/20'
-                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#0F4C3A] hover:scale-105'
+                      ? 'border-[#FCCD37] ring-4 ring-[#FCCD37]/30 scale-105 sm:scale-110 shadow-lg shadow-[#FCCD37]/20'
+                      : 'border-slate-200 opacity-60 hover:opacity-100 hover:border-[#5B2E19] hover:scale-105'
                   }`}
                   title={`View photo ${idx + 1}`}
                 >
@@ -845,7 +845,7 @@ const ResourcesMediaAlbums = () => {
             <button
               type="button"
               onClick={() => setActivePhotoIndex((prev) => (prev < activeModalAlbum.gallery.length - 1 ? prev + 1 : 0))}
-              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
+              className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs shrink-0"
               title="Next slide"
             >
               <ChevronRight size={16} strokeWidth={2.4} />
@@ -868,8 +868,8 @@ const ResourcesMediaAlbums = () => {
           aria-label={activeModalVideo.title}
         >
           {/* Subtle ambient glow effects */}
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#06402B]/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#EA580C]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FCCD37]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#5B2E19]/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* 1. Modal Top Brand Header / Navbar with Back Button & Breadcrumbs */}
           <div className="shrink-0 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 border-b border-slate-200/80 bg-white/95 backdrop-blur-md z-10 shadow-xs">
@@ -880,7 +880,7 @@ const ResourcesMediaAlbums = () => {
                 <button
                   type="button"
                   onClick={() => setActiveModalVideo(null)}
-                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#0F4C3A] text-slate-700 hover:text-white transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
+                  className="group inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-700 hover:text-[#FCCD37] transition-all duration-200 cursor-pointer text-xs font-bold shrink-0 shadow-xs hover:shadow-md active:scale-95"
                   title="Back to Documentaries"
                 >
                   <ArrowLeft size={16} strokeWidth={2.4} className="transition-transform group-hover:-translate-x-0.5" />
@@ -889,14 +889,14 @@ const ResourcesMediaAlbums = () => {
 
                 <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
 
-                {/* Breadcrumbs with vertical orange indicator bar */}
+                {/* Breadcrumbs with vertical yellow indicator bar */}
                 <div className="min-w-0 flex flex-col justify-center">
                   <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                    <div className="w-1.5 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
+                    <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0" />
                     <button
                       type="button"
                       onClick={() => setActiveModalVideo(null)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Home
                     </button>
@@ -904,17 +904,17 @@ const ResourcesMediaAlbums = () => {
                     <button
                       type="button"
                       onClick={() => setActiveModalVideo(null)}
-                      className="hover:text-[#0F4C3A] transition-colors cursor-pointer"
+                      className="hover:text-[#5B2E19] transition-colors cursor-pointer"
                     >
                       Resources
                     </button>
                     <ChevronRight size={13} className="text-slate-400 shrink-0" />
-                    <span className="text-[#0F2B5B] font-bold truncate">Documentary Showcase</span>
+                    <span className="text-[#5B2E19] font-bold truncate">Documentary Showcase</span>
                   </div>
 
                   {/* Title and Category Badge */}
                   <div className="flex items-center gap-2.5 mt-0.5">
-                    <h3 className="text-sm sm:text-base font-black font-serif-cmaof text-[#0F2B5B] truncate">
+                    <h3 className="text-sm sm:text-base font-black text-[#5B2E19] truncate">
                       {activeModalVideo.title}
                     </h3>
                     <span className={`hidden md:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border ${activeModalVideo.badgeClass}`}>
@@ -929,8 +929,8 @@ const ResourcesMediaAlbums = () => {
               {/* Right: Duration + Close Button */}
               <div className="flex items-center gap-3 shrink-0">
                 <div className="hidden md:flex flex-col items-end text-right">
-                  <span className="text-xs font-extrabold text-[#0F2B5B] flex items-center gap-1.5">
-                    <Clock size={13} className="text-[#EA580C]" /> {activeModalVideo.duration}
+                  <span className="text-xs font-extrabold text-[#5B2E19] flex items-center gap-1.5">
+                    <Clock size={13} className="text-[#8C4A26]" /> {activeModalVideo.duration}
                   </span>
                   <span className="text-[11px] text-slate-400 font-mono">Press ESC to exit</span>
                 </div>
@@ -938,7 +938,7 @@ const ResourcesMediaAlbums = () => {
                 <button
                   type="button"
                   onClick={() => setActiveModalVideo(null)}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#EA580C] text-slate-600 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 hover:bg-[#5B2E19] text-slate-600 hover:text-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:shadow-md active:scale-95"
                   title="Close video (Esc)"
                 >
                   <X size={18} strokeWidth={2.4} />
@@ -964,29 +964,29 @@ const ResourcesMediaAlbums = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50 flex flex-col justify-between p-4 sm:p-6">
                   <div className="flex items-center justify-between text-white text-xs font-semibold">
                     <span className="bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 border border-white/10">
-                      <Clock size={12} className="text-[#EA580C]" /> Duration: {activeModalVideo.duration}
+                      <Clock size={12} className="text-[#FCCD37]" /> Duration: {activeModalVideo.duration}
                     </span>
                     <span className="bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10 font-bold">
                       1080p HD
                     </span>
                   </div>
 
-                  {/* Big Play Button with CMAOF Orange */}
+                  {/* Big Play Button with CMAOF Yellow */}
                   <div className="self-center">
                     <button 
                       type="button"
                       onClick={() => alert('Streaming documentary presentation...')}
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#EA580C] hover:bg-[#c2410c] text-white flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer ring-4 ring-white/30"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FCCD37] hover:bg-[#e5b722] text-[#5B2E19] flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all cursor-pointer ring-4 ring-white/30"
                       title="Play Documentary"
                     >
-                      <Play size={30} className="fill-white translate-x-1" />
+                      <Play size={30} className="fill-current translate-x-1" />
                     </button>
                   </div>
 
                   {/* Bottom Player Bar */}
                   <div className="space-y-2">
                     <div className="w-full bg-white/30 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-gradient-to-r from-[#EA580C] to-[#F97316] h-full w-[42%]" />
+                      <div className="bg-[#FCCD37] h-full w-[42%]" />
                     </div>
                     <div className="flex items-center justify-between text-white text-[11px] font-medium">
                       <span>01:45 / {activeModalVideo.duration}</span>
@@ -999,15 +999,15 @@ const ResourcesMediaAlbums = () => {
 
             {/* Right Video Narrative (5 Cols) */}
             <div className="md:col-span-5 space-y-3.5 sm:space-y-4 lg:space-y-5 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/30 text-[#EA580C] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8E5] border border-[#FCCD37]/40 text-[#5B2E19] text-xs font-extrabold uppercase tracking-wider shadow-xs self-start">
                 <span>{activeModalVideo.category}</span>
               </div>
 
-              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black font-serif-cmaof leading-tight text-[#0F2B5B]">
+              <h4 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight text-[#5B2E19]">
                 {activeModalVideo.title}
               </h4>
 
-              <p className="text-sm sm:text-base font-bold text-[#06402B]">
+              <p className="text-sm sm:text-base font-bold text-[#8C4A26]">
                 Field Impact & Community Documentary
               </p>
 
@@ -1016,8 +1016,8 @@ const ResourcesMediaAlbums = () => {
               </p>
 
               {/* Strategic Callout */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#06402B]/[0.04] border-l-4 border-[#06402B] border-y border-r border-slate-200/80 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
-                <span className="font-extrabold text-[#06402B] uppercase tracking-wider text-[11px] block">Production Provenance</span>
+              <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF6EE] border-l-4 border-[#5B2E19] border-y border-r border-[#FCCD37]/30 text-xs sm:text-sm text-slate-700 space-y-1.5 shadow-xs">
+                <span className="font-extrabold text-[#5B2E19] uppercase tracking-wider text-[11px] block">Production Provenance</span>
                 <span className="leading-relaxed font-medium">Official Chief Michael Ade.Ojo Foundation field media production. Recorded in high-definition to preserve grassroots stories of lasting transformation.</span>
               </div>
 
@@ -1026,15 +1026,15 @@ const ResourcesMediaAlbums = () => {
                 <button
                   type="button"
                   onClick={() => handleShare(activeModalVideo.title)}
-                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-100 text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-[#FAF6EE] text-xs font-bold flex items-center gap-2 transition-all cursor-pointer shadow-xs active:scale-95"
                 >
-                  {copiedLink ? <Check size={15} className="text-emerald-600" /> : <Share2 size={15} />}
+                  {copiedLink ? <Check size={15} className="text-[#338C26]" /> : <Share2 size={15} />}
                   <span>{copiedLink ? 'Link Copied!' : 'Share Documentary'}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveModalVideo(null)}
-                  className="px-5 py-2 bg-[#06402B] hover:bg-[#042A1D] text-white rounded-xl text-xs font-bold transition-all cursor-pointer shadow-xs active:scale-95"
+                  className="px-6 py-2 btn-cmao-primary rounded-xl text-xs font-black transition-all cursor-pointer shadow-xs active:scale-95"
                 >
                   Done
                 </button>
@@ -1045,7 +1045,7 @@ const ResourcesMediaAlbums = () => {
 
           {/* 3. Modal Bottom Status Bar */}
           <div className="shrink-0 py-3 sm:py-3.5 px-6 sm:px-12 bg-white/95 border-t border-slate-200/80 backdrop-blur-md flex items-center justify-between z-10 shadow-xs">
-            <span className="text-xs text-[#06402B] font-bold">
+            <span className="text-xs text-[#5B2E19] font-bold">
               Chief Michael Ade.Ojo Foundation Documentary Archives
             </span>
             <div className="flex items-center gap-4 text-xs font-semibold text-slate-500">

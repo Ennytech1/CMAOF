@@ -47,44 +47,44 @@ const PRESET_AMOUNTS = [
 const PROGRAMME_AREAS = [
   {
     id: 'education',
-    name: 'Education & Human Capital',
+    name: 'Education & Opportunity',
     shortName: 'Education',
-    tagline: 'Learn → Develop → Excel',
+    tagline: 'Scholarships • Skills • Infrastructure',
     gradient: 'from-blue-50 to-blue-100',
     border: 'border-blue-200',
-    activeBorder: 'border-blue-500',
-    ring: 'ring-blue-300',
+    activeBorder: 'border-[#0047BA]',
+    ring: 'ring-[#0047BA]',
     iconBg: 'bg-blue-100',
-    iconColor: 'text-blue-600',
-    textColor: 'text-blue-700',
+    iconColor: 'text-[#0047BA]',
+    textColor: 'text-[#0047BA]',
     icon: <BookOpen size={20} />,
   },
   {
     id: 'health',
-    name: 'Health & Well-being',
+    name: 'Health & Wellbeing',
     shortName: 'Health',
-    tagline: 'Prevent → Treat → Restore',
-    gradient: 'from-rose-50 to-rose-100',
-    border: 'border-rose-200',
-    activeBorder: 'border-rose-500',
-    ring: 'ring-rose-300',
-    iconBg: 'bg-rose-100',
-    iconColor: 'text-rose-600',
-    textColor: 'text-rose-700',
+    tagline: 'Clinics • Mobile Care • Wellness',
+    gradient: 'from-emerald-50 to-green-100',
+    border: 'border-green-200',
+    activeBorder: 'border-[#338C26]',
+    ring: 'ring-[#338C26]',
+    iconBg: 'bg-green-100',
+    iconColor: 'text-[#338C26]',
+    textColor: 'text-[#338C26]',
     icon: <HeartPulse size={20} />,
   },
   {
     id: 'community',
-    name: 'Community Resilience & Social Well-being',
+    name: 'Community & Economic Empowerment',
     shortName: 'Community',
-    tagline: 'Support → Protect → Strengthen',
-    gradient: 'from-amber-50 to-orange-100',
-    border: 'border-amber-200',
-    activeBorder: 'border-orange-500',
-    ring: 'ring-orange-300',
-    iconBg: 'bg-amber-100',
-    iconColor: 'text-amber-600',
-    textColor: 'text-amber-700',
+    tagline: 'Enterprise • Relief • Infrastructure',
+    gradient: 'from-[#FAF6EE] to-[#FFF8E5]',
+    border: 'border-[#FCCD37]',
+    activeBorder: 'border-[#5B2E19]',
+    ring: 'ring-[#FCCD37]',
+    iconBg: 'bg-[#FFF8E5]',
+    iconColor: 'text-[#5B2E19]',
+    textColor: 'text-[#5B2E19]',
     icon: <Users size={20} />,
   },
 ];
@@ -107,10 +107,10 @@ const USSD_BANKS = [
 ];
 
 const TRUST_BADGES = [
-  { icon: <ShieldCheck size={18} />, label: 'Safe & Secure Donations',     color: 'text-green-700',  bg: 'bg-green-50' },
-  { icon: <BadgeCheck size={18} />,  label: 'Transparent Use of Funds',    color: 'text-blue-700',   bg: 'bg-blue-50' },
-  { icon: <Users size={18} />,       label: 'Real People. Real Impact.',   color: 'text-purple-700', bg: 'bg-purple-50' },
-  { icon: <CreditCard size={18} />,  label: 'Multiple Payment Options',    color: 'text-orange-700', bg: 'bg-orange-50' },
+  { icon: <ShieldCheck size={18} />, label: 'Safe & Secure Donations',     color: 'text-[#338C26]',  bg: 'bg-emerald-50' },
+  { icon: <BadgeCheck size={18} />,  label: 'Transparent Use of Funds',    color: 'text-[#0047BA]',   bg: 'bg-blue-50' },
+  { icon: <Users size={18} />,       label: 'Real People. Real Impact.',   color: 'text-[#5B2E19]', bg: 'bg-[#FAF6EE]' },
+  { icon: <CreditCard size={18} />,  label: 'Multiple Payment Options',    color: 'text-[#8C4A26]', bg: 'bg-amber-50' },
 ];
 
 /* ─────────────────────────────────────────────────────────────────
@@ -159,17 +159,17 @@ const StepBar = ({ current }) => {
               <div
                 className={`w-9 h-9 rounded-full flex items-center justify-center font-black text-sm
                   transition-all duration-300 select-none
-                  ${done   ? 'bg-[#06402B] text-white shadow-md shadow-green-900/20' : ''}
-                  ${active ? 'bg-[#06402B] text-white ring-4 ring-green-100 shadow-lg shadow-green-900/20' : ''}
+                  ${done   ? 'bg-[#5B2E19] text-[#FCCD37] shadow-md shadow-[#5B2E19]/25' : ''}
+                  ${active ? 'bg-[#5B2E19] text-white ring-4 ring-[#FCCD37]/40 shadow-lg shadow-[#5B2E19]/25' : ''}
                   ${!done && !active ? 'bg-slate-100 text-slate-400 border border-slate-200' : ''}
                 `}
               >
-                {done ? <Check size={16} strokeWidth={3} /> : s.n}
+                {done ? <Check size={16} strokeWidth={3} className="text-[#FCCD37]" /> : s.n}
               </div>
               {/* Label */}
               <span
                 className={`text-[10px] sm:text-[11px] font-bold text-center leading-tight max-w-[64px] sm:max-w-[80px] tracking-tight
-                  ${active ? 'text-[#06402B]' : done ? 'text-slate-600' : 'text-slate-400'}
+                  ${active ? 'text-[#5B2E19] font-black' : done ? 'text-[#5B2E19]/80 font-bold' : 'text-slate-400'}
                 `}
               >
                 {s.label}
@@ -179,7 +179,7 @@ const StepBar = ({ current }) => {
             {idx < steps.length - 1 && (
               <div className="flex-1 h-[2px] mt-[17px] mx-1 sm:mx-2 rounded-full overflow-hidden bg-slate-200">
                 <div
-                  className="h-full bg-[#06402B] transition-all duration-500 ease-out"
+                  className="h-full bg-gradient-to-r from-[#5B2E19] to-[#FCCD37] transition-all duration-500 ease-out"
                   style={{ width: current > s.n ? '100%' : '0%' }}
                 />
               </div>
@@ -191,11 +191,11 @@ const StepBar = ({ current }) => {
   );
 };
 
-/** Section label with orange left-bar accent */
+/** Section label with sun yellow left-bar accent */
 const SectionLabel = ({ children, light = false, className = '' }) => (
   <div className={`flex items-center gap-2 mb-1 ${className}`}>
-    <div className="w-1 h-4 bg-[#f97316] rounded-full shrink-0" />
-    <span className={`text-[11px] font-black uppercase tracking-[0.14em] ${light ? 'text-white drop-shadow-xs' : 'text-[#06402B]'}`}>
+    <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+    <span className={`text-[11px] font-black uppercase tracking-[0.14em] ${light ? 'text-[#FCCD37] drop-shadow-xs' : 'text-[#5B2E19]'}`}>
       {children}
     </span>
   </div>
@@ -225,7 +225,7 @@ const InputField = ({ icon: Icon, ...props }) => (
       className={`
         w-full ${Icon ? 'pl-9' : 'pl-4'} pr-4 py-3 rounded-xl border border-slate-200 bg-white
         text-sm text-slate-800 placeholder:text-slate-400
-        focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10
+        focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15
         transition-colors
         ${props.className || ''}
       `}
@@ -240,7 +240,7 @@ const SelectField = ({ children, ...props }) => (
     className={`
       w-full px-4 py-3 rounded-xl border border-slate-200 bg-white
       text-sm text-slate-800 appearance-none
-      focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10
+      focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15
       transition-colors cursor-pointer
       ${props.className || ''}
     `}
@@ -265,8 +265,8 @@ const LeftPanel = ({ step, finalAmount, frequency, programmeArea }) => {
           alt="Smiling student beneficiary of CMAOF programmes"
           className="w-full h-full object-cover object-[60%_20%] absolute inset-0"
         />
-        {/* Gradient overlay: rich dark emerald for maximum contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#022c1e]/98 via-[#022c1e]/85 to-[#022c1e]/30" />
+        {/* Gradient overlay: rich dark Earth Brown for maximum brand presence */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#2C140A]/98 via-[#452212]/85 to-black/30" />
 
         {/* Overlay content */}
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 z-10">
@@ -274,7 +274,7 @@ const LeftPanel = ({ step, finalAmount, frequency, programmeArea }) => {
           <h1 className="text-2xl sm:text-3xl font-black text-white leading-tight tracking-tight mt-1 drop-shadow-xs">
             Make a Brighter
             <br />
-            <span className="text-[#f97316]">Tomorrow</span> Possible.
+            <span className="text-[#FCCD37]">Tomorrow</span> Possible.
           </h1>
           <p className="text-white font-medium text-xs sm:text-[13px] leading-relaxed mt-2 max-w-xs drop-shadow-sm">
             Your support helps create pathways to better futures through education, health and stronger communities.
@@ -304,23 +304,23 @@ const LeftPanel = ({ step, finalAmount, frequency, programmeArea }) => {
 
       {/* ── Live Donation Summary preview (shown once amount is set) ── */}
       {step > 1 && finalAmount > 0 && (
-        <div className="bg-[#06402B] text-white rounded-2xl p-5 space-y-3 shadow-lg shadow-green-900/15">
-          <div className="flex items-center gap-2 text-green-200 text-[11px] font-black uppercase tracking-wider">
+        <div className="bg-[#5B2E19] text-white rounded-2xl p-5 space-y-3 shadow-lg shadow-[#5B2E19]/25 border-t-2 border-[#FCCD37]">
+          <div className="flex items-center gap-2 text-[#FCCD37] text-[11px] font-black uppercase tracking-wider">
             <Receipt size={13} />
             Donation Preview
           </div>
           <div className="flex items-baseline gap-1">
             <span className="text-3xl font-black">{fmt(finalAmount)}</span>
-            <span className="text-green-300 text-sm font-medium">
+            <span className="text-[#FAF6EE] text-sm font-medium">
               / {frequency === 'monthly' ? 'month' : 'once'}
             </span>
           </div>
           {pillar && (
             <div className="flex items-center gap-2 pt-1 border-t border-white/10">
-              <div className="w-6 h-6 rounded-lg bg-white/10 flex items-center justify-center text-green-200">
+              <div className="w-6 h-6 rounded-lg bg-white/15 flex items-center justify-center text-[#FCCD37]">
                 {React.cloneElement(pillar.icon, { size: 13 })}
               </div>
-              <span className="text-green-100 text-xs font-semibold">{pillar.shortName}</span>
+              <span className="text-[#FAF6EE] text-xs font-semibold">{pillar.shortName}</span>
             </div>
           )}
         </div>
@@ -334,8 +334,8 @@ const LeftPanel = ({ step, finalAmount, frequency, programmeArea }) => {
           { value: '97%',   label: 'Donor Satisfaction', icon: <Star size={14} /> },
         ].map(({ value, label, icon }) => (
           <div key={label} className="bg-white border border-slate-100 rounded-2xl p-3 text-center shadow-sm">
-            <div className="text-[#06402B] flex justify-center mb-1">{icon}</div>
-            <div className="text-sm font-black text-[#06402B]">{value}</div>
+            <div className="text-[#5B2E19] flex justify-center mb-1">{icon}</div>
+            <div className="text-sm font-black text-[#5B2E19]">{value}</div>
             <div className="text-[10px] text-slate-500 font-medium leading-tight mt-0.5">{label}</div>
           </div>
         ))}
@@ -346,30 +346,30 @@ const LeftPanel = ({ step, finalAmount, frequency, programmeArea }) => {
         <div className="flex items-center justify-between text-xs">
           <span className="font-bold text-slate-800 flex items-center gap-1.5">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FCCD37] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#5B2E19]" />
             </span>
             Active 2026 Target Velocity
           </span>
-          <span className="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full">
+          <span className="text-[11px] font-extrabold text-[#5B2E19] bg-[#FFF8E5] border border-[#FCCD37]/30 px-2 py-0.5 rounded-full">
             85.4% Funded
           </span>
         </div>
         <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
-          <div className="h-full rounded-full bg-gradient-to-r from-[#06402B] to-[#14a37f]" style={{ width: '85.4%' }} />
+          <div className="h-full rounded-full bg-gradient-to-r from-[#5B2E19] via-[#8C4A26] to-[#FCCD37]" style={{ width: '85.4%' }} />
         </div>
         <div className="flex justify-between text-[11px] text-slate-500 font-medium">
-          <span className="font-mono font-bold text-slate-800">₦85.4M Raised</span>
+          <span className="font-mono font-bold text-[#5B2E19]">₦85.4M Raised</span>
           <span>Target: ₦100.0M</span>
         </div>
 
         {/* Real-time Donor Activity Ticker */}
         <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-600">
-          <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#06402B] flex items-center justify-center text-[10px] font-bold shrink-0">
+          <div className="w-5 h-5 rounded-full bg-[#FFF8E5] text-[#5B2E19] flex items-center justify-center text-[10px] font-bold shrink-0">
             ✓
           </div>
           <span className="truncate text-[11px]">
-            <strong className="text-slate-800">Amina K.</strong> gave <strong>₦25,000</strong> to Education • <span className="text-emerald-700 font-semibold">Just now</span>
+            <strong className="text-slate-800">Amina K.</strong> gave <strong>₦25,000</strong> to Education • <span className="text-[#338C26] font-semibold">Just now</span>
           </span>
         </div>
       </div>
@@ -554,17 +554,17 @@ const DonatePage = () => {
 
   /* ── RENDER ── */
   return (
-    <div className="w-full min-h-screen bg-[#f0fdf4]/60 font-sans">
+    <div className="w-full min-h-screen bg-[#FAF6EE]/50 font-sans">
 
       {/* ── Page wrapper ─────────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-16">
 
         {/* ── Breadcrumb ── */}
-        <nav className="flex items-center gap-2 text-xs font-semibold text-[#06402B] mb-7">
-          <div className="w-1 h-4 bg-[#f97316] rounded-full shrink-0" />
-          <Link to="/" className="hover:text-[#06402B]/70 transition-colors">Home</Link>
+        <nav className="flex items-center gap-2 text-xs font-semibold text-[#5B2E19] mb-7">
+          <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0" />
+          <Link to="/" className="hover:text-[#5B2E19]/70 transition-colors">Home</Link>
           <ChevronRight size={13} className="text-slate-400" />
-          <span className="text-[#06402B] font-black">Donate</span>
+          <span className="text-[#5B2E19] font-black">Donate</span>
         </nav>
 
         {/* ── Two-column layout ── */}
@@ -582,10 +582,10 @@ const DonatePage = () => {
 
           {/* RIGHT COLUMN ─ form card */}
           <div className="w-full lg:w-[60%]">
-            <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="bg-white rounded-3xl shadow-sm border border-[#5B2E19]/10 overflow-hidden">
 
               {/* Card header gradient bar */}
-              <div className="h-1 w-full bg-gradient-to-r from-[#06402B] via-[#14a37f] to-[#f97316]" />
+              <div className="h-1.5 w-full bg-gradient-to-r from-[#5B2E19] via-[#8C4A26] to-[#FCCD37]" />
 
               <div className="p-5 sm:p-7 lg:p-8">
                 {/* Step bar */}
@@ -599,8 +599,8 @@ const DonatePage = () => {
 
                     {/* Heading */}
                     <div>
-                      <h2 className="text-2xl sm:text-3xl font-black text-[#1e293b] tracking-tight">Choose Your Donation</h2>
-                      <p className="text-slate-500 text-sm mt-1">Select how much you'd like to give and the area you want to support.</p>
+                      <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19] tracking-tight">Choose Your Donation</h2>
+                      <p className="text-slate-600 text-sm mt-1">Select how much you'd like to give and the area you want to support.</p>
                     </div>
 
                     {/* — Frequency toggle — */}
@@ -621,22 +621,22 @@ const DonatePage = () => {
                                 relative p-4 rounded-2xl border-2 flex items-center gap-3 text-left
                                 cursor-pointer transition-all duration-200 group
                                 ${active
-                                  ? 'bg-[#06402B] border-[#06402B] shadow-lg shadow-green-900/15'
-                                  : 'bg-white border-slate-200 hover:border-green-200 hover:bg-green-50/30'}
+                                  ? 'bg-[#5B2E19] border-[#5B2E19] shadow-lg shadow-[#5B2E19]/20'
+                                  : 'bg-white border-slate-200 hover:border-[#FCCD37] hover:bg-[#FAF6EE]/50'}
                               `}
                             >
                               <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors
-                                ${active ? 'bg-white/15 text-white' : 'bg-slate-100 text-[#06402B] group-hover:bg-green-100'}
+                                ${active ? 'bg-white/15 text-[#FCCD37]' : 'bg-slate-100 text-[#5B2E19] group-hover:bg-[#FFF8E5]'}
                               `}>
                                 {icon}
                               </div>
                               <div>
                                 <p className={`text-sm font-bold leading-tight ${active ? 'text-white' : 'text-slate-800'}`}>{title}</p>
-                                <p className={`text-xs mt-0.5 ${active ? 'text-green-200' : 'text-slate-500'}`}>{sub}</p>
+                                <p className={`text-xs mt-0.5 ${active ? 'text-[#FCCD37]' : 'text-slate-500'}`}>{sub}</p>
                               </div>
                               {active && (
-                                <div className="absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-                                  <Check size={11} strokeWidth={3} className="text-white" />
+                                <div className="absolute top-2.5 right-2.5 w-5 h-5 rounded-full bg-[#FCCD37] text-[#5B2E19] flex items-center justify-center">
+                                  <Check size={11} strokeWidth={3} />
                                 </div>
                               )}
                             </button>
@@ -649,7 +649,7 @@ const DonatePage = () => {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between gap-2">
                         <SectionLabel>Donation Amount</SectionLabel>
-                        <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
+                        <span className="text-[11px] font-bold text-[#5B2E19] bg-[#FFF8E5] px-2.5 py-0.5 rounded-full border border-[#FCCD37]/30">
                           Currency: ₦ NGN
                         </span>
                       </div>
@@ -667,19 +667,19 @@ const DonatePage = () => {
                                 relative p-4 rounded-2xl border-2 flex flex-col gap-1.5 text-left
                                 cursor-pointer transition-all duration-200 min-h-[110px]
                                 ${sel
-                                  ? 'border-[#06402B] bg-[#eefbf4] ring-2 ring-[#06402B]/15 shadow-sm'
-                                  : 'border-slate-200 bg-white hover:border-green-200 hover:bg-green-50/20'}
+                                  ? 'border-[#5B2E19] bg-[#FFF8E5] ring-2 ring-[#FCCD37] shadow-sm'
+                                  : 'border-slate-200 bg-white hover:border-[#FCCD37]/80 hover:bg-[#FAF6EE]/50'}
                               `}
                             >
                               {amt.popular && (
-                                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#06402B] text-white text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#5B2E19] text-[#FCCD37] border border-[#FCCD37]/30 text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
                                   Most Popular
                                 </span>
                               )}
-                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${sel ? 'bg-[#06402B] text-white' : 'bg-slate-100 text-slate-500'} transition-colors`}>
+                              <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${sel ? 'bg-[#5B2E19] text-[#FCCD37]' : 'bg-slate-100 text-slate-500'} transition-colors`}>
                                 {amt.icon}
                               </div>
-                              <span className={`text-lg sm:text-xl font-black leading-none ${sel ? 'text-[#06402B]' : 'text-[#1e293b]'}`}>
+                              <span className={`text-lg sm:text-xl font-black leading-none ${sel ? 'text-[#5B2E19]' : 'text-slate-800'}`}>
                                 {amt.label}
                               </span>
                               <span className="text-[11px] text-slate-500 leading-snug">{amt.impact}</span>
@@ -689,12 +689,12 @@ const DonatePage = () => {
                       </div>
 
                       {/* Integrated Custom Amount Input Card */}
-                      <div className={`p-3.5 sm:p-4 rounded-2xl border-2 transition-all ${customAmt ? 'border-[#06402B] bg-[#eefbf4] ring-2 ring-[#06402B]/10' : 'border-slate-200/90 bg-slate-50/70 hover:border-slate-300'}`}>
+                      <div className={`p-3.5 sm:p-4 rounded-2xl border-2 transition-all ${customAmt ? 'border-[#5B2E19] bg-[#FFF8E5] ring-2 ring-[#FCCD37]' : 'border-slate-200/90 bg-slate-50/70 hover:border-slate-300'}`}>
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 mb-2">
                           <label className="text-xs font-extrabold text-slate-700 flex items-center gap-1.5">
                             <span>Or enter a specific amount:</span>
                             {customAmt && (
-                              <span className="inline-flex items-center gap-1 text-[10px] bg-[#06402B] text-white px-2 py-0.5 rounded-full font-bold">
+                              <span className="inline-flex items-center gap-1 text-[10px] bg-[#5B2E19] text-[#FCCD37] px-2 py-0.5 rounded-full font-bold">
                                 <Check size={10} strokeWidth={3} /> Selected
                               </span>
                             )}
@@ -710,7 +710,7 @@ const DonatePage = () => {
                             value={customAmt}
                             onChange={(e) => { setCustomAmt(e.target.value); setSelAmt(null); }}
                             placeholder="Enter your custom amount (e.g. 100,000)"
-                            className="w-full pl-9 pr-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B] transition-all"
+                            className="w-full pl-9 pr-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15 transition-all"
                           />
                         </div>
                       </div>
@@ -784,7 +784,7 @@ const DonatePage = () => {
                     <button
                       type="button"
                       onClick={goStep2}
-                      className="w-full bg-[#06402B] hover:bg-[#042c1d] active:bg-[#031f15] text-white font-black text-sm sm:text-base py-4 rounded-2xl flex items-center justify-center gap-2.5 shadow-lg shadow-green-900/20 hover:shadow-xl hover:shadow-green-900/25 transition-all cursor-pointer group"
+                      className="w-full btn-cmao-primary text-base py-4 rounded-2xl flex items-center justify-center gap-2.5 shadow-lg shadow-[#FCCD37]/25 hover:shadow-xl transition-all cursor-pointer group"
                     >
                       <span>Continue to Your Information</span>
                       <ArrowRight size={18} strokeWidth={2.5} className="group-hover:translate-x-0.5 transition-transform" />
@@ -793,9 +793,9 @@ const DonatePage = () => {
                     {/* — Inline trust badges — */}
                     <div className="flex flex-wrap items-center justify-center gap-4 pt-1">
                       {[
-                        { icon: <Lock size={12} className="text-[#06402B]" />, label: '256-bit SSL Encrypted' },
-                        { icon: <ShieldCheck size={12} className="text-[#06402B]" />, label: 'Secure Payments' },
-                        { icon: <CheckCircle2 size={12} className="text-[#06402B]" />, label: 'Tax Deductible' },
+                        { icon: <Lock size={12} className="text-[#5B2E19]" />, label: '256-bit SSL Encrypted' },
+                        { icon: <ShieldCheck size={12} className="text-[#5B2E19]" />, label: 'Secure Payments' },
+                        { icon: <CheckCircle2 size={12} className="text-[#5B2E19]" />, label: 'Tax Deductible' },
                       ].map(({ icon, label }) => (
                         <div key={label} className="flex items-center gap-1.5 text-[11px] text-slate-500 font-semibold">
                           {icon}{label}
@@ -812,7 +812,7 @@ const DonatePage = () => {
                 {step === 2 && (
                   <form onSubmit={goStep3} className="space-y-6 animate-[fadeIn_0.3s_ease]">
                     <div>
-                      <h2 className="text-2xl sm:text-3xl font-black text-[#1e293b] tracking-tight">Your Information</h2>
+                      <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19] tracking-tight">Your Information</h2>
                       <p className="text-slate-500 text-sm mt-1">Help us acknowledge your donation and keep you updated on our impact.</p>
                     </div>
 
@@ -894,12 +894,12 @@ const DonatePage = () => {
                     </div>
 
                     {/* Anonymous toggle */}
-                    <label className="flex items-start gap-3 cursor-pointer p-3.5 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-slate-100/70 transition-colors group">
+                    <label className="flex items-start gap-3 cursor-pointer p-3.5 rounded-2xl border border-slate-100 bg-slate-50 hover:bg-[#FAF6EE]/50 transition-colors group">
                       <input
                         type="checkbox"
                         checked={anon}
                         onChange={e => setAnon(e.target.checked)}
-                        className="mt-0.5 w-4 h-4 rounded accent-[#06402B] cursor-pointer"
+                        className="mt-0.5 w-4 h-4 rounded accent-[#5B2E19] cursor-pointer"
                       />
                       <div>
                         <p className="text-sm font-semibold text-slate-800">Make this an anonymous donation</p>
@@ -908,16 +908,16 @@ const DonatePage = () => {
                     </label>
 
                     {/* Keep me updated */}
-                    <label className="flex items-start gap-3 cursor-pointer p-4 rounded-2xl border-2 border-green-100 bg-[#eefbf4] hover:bg-green-50 transition-colors">
+                    <label className="flex items-start gap-3 cursor-pointer p-4 rounded-2xl border-2 border-[#FCCD37]/40 bg-[#FFF8E5]/50 hover:bg-[#FFF8E5] transition-colors">
                       <input
                         type="checkbox"
                         id="keepUpdated"
                         checked={keepUpdated}
                         onChange={e => setKeepUpdated(e.target.checked)}
-                        className="mt-0.5 w-4 h-4 rounded accent-[#06402B] cursor-pointer"
+                        className="mt-0.5 w-4 h-4 rounded accent-[#5B2E19] cursor-pointer"
                       />
                       <div>
-                        <p className="text-sm font-bold text-[#06402B]">Keep me updated on impact</p>
+                        <p className="text-sm font-bold text-[#5B2E19]">Keep me updated on impact</p>
                         <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
                           Send me updates on how my donation is making a difference — stories, reports, and ways to get involved.
                         </p>
@@ -929,13 +929,13 @@ const DonatePage = () => {
                       <button
                         type="button"
                         onClick={() => goTo(1)}
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border-2 border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border-2 border-slate-200 text-slate-600 font-bold text-sm hover:bg-[#FAF6EE] hover:border-slate-300 transition-all cursor-pointer"
                       >
                         <ArrowLeft size={16} /> Back
                       </button>
                       <button
                         type="submit"
-                        className="flex-1 sm:flex-none bg-[#06402B] hover:bg-[#042c1d] text-white font-black text-sm px-7 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-900/15 transition-all cursor-pointer group"
+                        className="flex-1 sm:flex-none btn-cmao-primary text-sm px-7 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-[#FCCD37]/25 transition-all cursor-pointer group"
                       >
                         Continue to Payment
                         <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-0.5 transition-transform" />
@@ -951,21 +951,21 @@ const DonatePage = () => {
                 {step === 3 && (
                   <div className="space-y-6 animate-[fadeIn_0.3s_ease]">
                     <div>
-                      <h2 className="text-2xl sm:text-3xl font-black text-[#1e293b] tracking-tight">Payment Details</h2>
+                      <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19] tracking-tight">Payment Details</h2>
                       {/* Trust banner */}
-                      <div className="flex items-center gap-2 mt-3 px-3.5 py-2.5 bg-green-50 border border-green-100 rounded-xl w-fit">
-                        <Lock size={13} className="text-[#06402B] shrink-0" />
-                        <p className="text-xs font-semibold text-[#06402B]">
+                      <div className="flex items-center gap-2 mt-3 px-3.5 py-2.5 bg-[#FFF8E5] border border-[#FCCD37]/40 rounded-xl w-fit">
+                        <Lock size={13} className="text-[#5B2E19] shrink-0" />
+                        <p className="text-xs font-semibold text-[#5B2E19]">
                           Your donation is secure and 256-bit SSL encrypted.
                         </p>
                       </div>
                     </div>
 
                     {/* — Summary box — */}
-                    <div className="p-4 rounded-2xl border border-slate-100 bg-slate-50 space-y-3">
+                    <div className="p-4 rounded-2xl border border-slate-100 bg-[#FAF6EE]/60 space-y-3">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-black text-slate-500 uppercase tracking-wider">Donation Summary</span>
-                        <button type="button" onClick={() => goTo(1)} className="text-xs font-bold text-[#06402B] hover:underline cursor-pointer">
+                        <button type="button" onClick={() => goTo(1)} className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer">
                           Edit
                         </button>
                       </div>
@@ -976,7 +976,7 @@ const DonatePage = () => {
                         </div>
                         <div>
                           <span className="text-slate-400 block text-[10px] uppercase tracking-wide">Amount</span>
-                          <span className="font-black text-base text-[#06402B]">{fmt(finalAmt)}</span>
+                          <span className="font-black text-base text-[#5B2E19]">{fmt(finalAmt)}</span>
                         </div>
                         <div>
                           <span className="text-slate-400 block text-[10px] uppercase tracking-wide">Programme</span>
@@ -1011,18 +1011,18 @@ const DonatePage = () => {
                                 w-full flex items-center gap-3.5 p-4 rounded-2xl border-2 text-left
                                 cursor-pointer transition-all duration-200
                                 ${sel
-                                  ? 'border-[#06402B] bg-[#eefbf4] shadow-sm'
-                                  : 'border-slate-200 bg-white hover:border-green-200 hover:bg-green-50/20'}
+                                  ? 'border-[#5B2E19] bg-[#FFF8E5] shadow-sm'
+                                  : 'border-slate-200 bg-white hover:border-[#FCCD37]/80 hover:bg-[#FAF6EE]/40'}
                               `}
                             >
                               {/* Radio dot */}
                               <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors
-                                ${sel ? 'border-[#06402B] bg-[#06402B]' : 'border-slate-300'}`}>
+                                ${sel ? 'border-[#5B2E19] bg-[#5B2E19]' : 'border-slate-300'}`}>
                                 {sel && <div className="w-2 h-2 rounded-full bg-white" />}
                               </div>
                               {/* Method icon */}
                               <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors
-                                ${sel ? 'bg-[#06402B] text-white' : 'bg-slate-100 text-slate-500'}`}>
+                                ${sel ? 'bg-[#5B2E19] text-[#FCCD37]' : 'bg-slate-100 text-slate-500'}`}>
                                 {icon}
                               </div>
                               <div className="flex-1 min-w-0">
@@ -1050,7 +1050,7 @@ const DonatePage = () => {
                               value={cardNum}
                               onChange={onCardNum}
                               placeholder="1234  5678  9012  3456"
-                              className="w-full pl-4 pr-10 py-3 rounded-xl border border-slate-200 bg-white text-sm font-mono tracking-widest focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                              className="w-full pl-4 pr-10 py-3 rounded-xl border border-slate-200 bg-white text-sm font-mono tracking-widest focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15"
                             />
                             <CreditCard size={16} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                           </div>
@@ -1062,7 +1062,7 @@ const DonatePage = () => {
                               value={expiry}
                               onChange={onExpiry}
                               placeholder="MM / YY"
-                              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-mono text-center focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-mono text-center focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15"
                             />
                           </FieldWrap>
                           <FieldWrap label="CVV">
@@ -1072,7 +1072,7 @@ const DonatePage = () => {
                               value={cvv}
                               onChange={e => setCvv(e.target.value.replace(/\D/g, ''))}
                               placeholder="•••"
-                              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-mono text-center focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm font-mono text-center focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15"
                             />
                           </FieldWrap>
                         </div>
@@ -1082,10 +1082,10 @@ const DonatePage = () => {
                             value={nameCard}
                             onChange={e => setNameCard(e.target.value)}
                             placeholder="Name as it appears on card"
-                            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15"
                           />
                         </FieldWrap>
-                        <div className="flex items-center gap-2 text-[11px] font-semibold text-[#06402B] pt-1">
+                        <div className="flex items-center gap-2 text-[11px] font-semibold text-[#5B2E19] pt-1">
                           <Lock size={12} /> 256-bit SSL Encrypted Secure Transaction
                         </div>
                       </div>
@@ -1105,9 +1105,9 @@ const DonatePage = () => {
                           <div className="flex items-center justify-between px-4 py-3">
                             <span className="text-xs text-slate-500">Account Number</span>
                             <div className="flex items-center gap-2">
-                              <span className="font-mono font-black text-[#06402B]">1018392014</span>
+                              <span className="font-mono font-black text-[#5B2E19]">1018392014</span>
                               <button type="button" onClick={() => copyText('1018392014', 'Account number')}
-                                className="text-[11px] text-[#f97316] hover:underline flex items-center gap-1 font-bold cursor-pointer">
+                                className="text-[11px] text-[#8C4A26] hover:text-[#5B2E19] flex items-center gap-1 font-bold cursor-pointer">
                                 <Copy size={11} /> Copy
                               </button>
                             </div>
@@ -1125,18 +1125,18 @@ const DonatePage = () => {
                           {USSD_BANKS.map(b => (
                             <button key={b.bank} type="button" onClick={() => setUssdBank(b.bank)}
                               className={`p-2.5 rounded-xl border text-xs font-bold cursor-pointer transition-all text-center
-                                ${ussdBank === b.bank ? 'border-[#06402B] bg-[#eefbf4] text-[#06402B]' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>
+                                ${ussdBank === b.bank ? 'border-[#5B2E19] bg-[#FFF8E5] text-[#5B2E19]' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'}`}>
                               {b.bank}
                             </button>
                           ))}
                         </div>
                         <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 flex items-center justify-between gap-3">
-                          <span className="font-mono font-bold text-xs text-[#06402B] break-all flex-1">
+                          <span className="font-mono font-bold text-xs text-[#5B2E19] break-all flex-1">
                             {USSD_BANKS.find(b => b.bank === ussdBank)?.code.replace('AMOUNT', finalAmt)}
                           </span>
                           <button type="button"
                             onClick={() => copyText(USSD_BANKS.find(b => b.bank === ussdBank)?.code.replace('AMOUNT', finalAmt), 'USSD code')}
-                            className="text-[11px] text-[#f97316] hover:underline flex items-center gap-1 font-bold cursor-pointer shrink-0">
+                            className="text-[11px] text-[#8C4A26] hover:text-[#5B2E19] flex items-center gap-1 font-bold cursor-pointer shrink-0">
                             <Copy size={11} /> Copy
                           </button>
                         </div>
@@ -1159,17 +1159,17 @@ const DonatePage = () => {
                     {/* — Actions — */}
                     <div className="flex items-center justify-between gap-3 pt-1">
                       <button type="button" onClick={() => goTo(2)}
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border-2 border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer">
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border-2 border-slate-200 text-slate-600 font-bold text-sm hover:bg-[#FAF6EE] hover:border-slate-300 transition-all cursor-pointer">
                         <ArrowLeft size={16} /> Back
                       </button>
                       <button
                         type="button"
                         disabled={isProcessing}
                         onClick={completeDonation}
-                        className="flex-1 sm:flex-none bg-[#06402B] hover:bg-[#042c1d] disabled:opacity-60 text-white font-black text-sm px-7 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-900/15 transition-all cursor-pointer group"
+                        className="flex-1 sm:flex-none btn-cmao-primary disabled:opacity-60 text-sm px-7 py-3.5 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-[#FCCD37]/25 transition-all cursor-pointer group"
                       >
                         {isProcessing ? (
-                          <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /><span>Processing...</span></>
+                          <><div className="w-4 h-4 border-2 border-[#5B2E19] border-t-transparent rounded-full animate-spin" /><span>Processing...</span></>
                         ) : (
                           <>Complete Donation <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-0.5 transition-transform" /></>
                         )}
@@ -1203,15 +1203,15 @@ const DonatePage = () => {
                           <div key={i} className={`absolute rounded-sm animate-bounce ${cls}`}
                             style={{ animationDelay: `${i * 0.1}s`, animationDuration: `${1.5 + i * 0.2}s` }} />
                         ))}
-                        {/* Main green circle */}
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#06402B] to-[#14a37f] text-white flex items-center justify-center shadow-2xl shadow-green-900/30 ring-8 ring-green-100">
+                        {/* Main brand circle */}
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#5B2E19] to-[#8C4A26] text-[#FCCD37] flex items-center justify-center shadow-2xl shadow-[#5B2E19]/30 ring-8 ring-[#FFF8E5]">
                           <Check size={38} strokeWidth={3} />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <h2 className="text-2xl sm:text-3xl font-black text-[#1e293b]">Thank You! 🎉</h2>
-                        <p className="text-base font-bold text-[#06402B]">Your donation has been successfully completed.</p>
+                        <h2 className="text-2xl sm:text-3xl font-black text-[#5B2E19]">Thank You! 🎉</h2>
+                        <p className="text-base font-bold text-[#5B2E19]">Your donation has been successfully completed.</p>
                         <p className="text-slate-500 text-sm leading-relaxed max-w-md mx-auto">
                           Your generosity helps create pathways to better futures for individuals and communities across Nigeria.
                         </p>
@@ -1221,15 +1221,15 @@ const DonatePage = () => {
                     {/* — Receipt card — */}
                     <div className="bg-white border-2 border-slate-100 rounded-2xl overflow-hidden shadow-sm">
                       {/* Receipt header */}
-                      <div className="flex items-start justify-between p-5 border-b border-slate-100 bg-slate-50/50">
+                      <div className="flex items-start justify-between p-5 border-b border-slate-100 bg-[#FAF6EE]/50">
                         <div>
                           <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider">Transaction Reference</p>
-                          <p className="font-mono font-black text-[#06402B] text-sm mt-0.5">{txRef}</p>
+                          <p className="font-mono font-black text-[#5B2E19] text-sm mt-0.5">{txRef}</p>
                         </div>
                         <button
                           type="button"
                           onClick={() => toast.success('Donation receipt (PDF) downloaded!')}
-                          className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[#06402B] text-[#06402B] text-xs font-bold hover:bg-green-50 transition-colors cursor-pointer shrink-0"
+                          className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[#5B2E19] text-[#5B2E19] text-xs font-bold hover:bg-[#FAF6EE] transition-colors cursor-pointer shrink-0"
                         >
                           <Download size={13} strokeWidth={2.2} /> Download Receipt
                         </button>
@@ -1246,18 +1246,18 @@ const DonatePage = () => {
                         ].map(({ label, value, highlight }) => (
                           <div key={label} className="px-4 py-3">
                             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">{label}</p>
-                            <p className={`text-sm font-bold mt-0.5 ${highlight ? 'text-[#06402B] text-base font-black' : 'text-slate-800'}`}>{value}</p>
+                            <p className={`text-sm font-bold mt-0.5 ${highlight ? 'text-[#5B2E19] text-base font-black' : 'text-slate-800'}`}>{value}</p>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* — Email notification pill — */}
-                    <div className="flex items-center gap-3 p-4 rounded-2xl bg-[#eefbf4] border border-green-100">
-                      <div className="w-9 h-9 rounded-xl bg-[#06402B] text-white flex items-center justify-center shrink-0">
+                    <div className="flex items-center gap-3 p-4 rounded-2xl bg-[#FFF8E5] border border-[#FCCD37]/40">
+                      <div className="w-9 h-9 rounded-xl bg-[#5B2E19] text-[#FCCD37] flex items-center justify-center shrink-0">
                         <Mail size={16} />
                       </div>
-                      <p className="text-xs text-[#06402B] font-semibold leading-snug">
+                      <p className="text-xs text-[#5B2E19] font-semibold leading-snug">
                         An official receipt has been sent to{' '}
                         <strong>{email || 'your email address'}</strong>.
                         Please check your inbox (and spam folder).
@@ -1276,7 +1276,7 @@ const DonatePage = () => {
                           />
                         </div>
                         <div className="space-y-1">
-                          <p className="text-base font-black text-[#06402B]">{fmt(finalAmt)}</p>
+                          <p className="text-base font-black text-[#5B2E19]">{fmt(finalAmt)}</p>
                           <p className="text-xs text-slate-600 leading-relaxed">
                             Can provide learning materials for{' '}
                             <strong>{Math.max(1, Math.round(finalAmt / 5000))}</strong>{' '}
@@ -1292,25 +1292,25 @@ const DonatePage = () => {
                       <button
                         type="button"
                         onClick={reset}
-                        className="py-3.5 px-5 rounded-2xl border-2 border-[#06402B] text-[#06402B] font-black text-sm hover:bg-green-50 transition-all cursor-pointer"
+                        className="py-3.5 px-5 rounded-2xl border-2 border-[#5B2E19] text-[#5B2E19] font-black text-sm hover:bg-[#FAF6EE] transition-all cursor-pointer"
                       >
                         Make Another Donation
                       </button>
                       <Link
                         to="/our-work"
-                        className="py-3.5 px-5 rounded-2xl bg-[#f97316] hover:bg-[#ea6a10] text-white font-black text-sm flex items-center justify-center gap-2 shadow-lg shadow-orange-600/20 transition-all cursor-pointer group"
+                        className="py-3.5 px-5 rounded-2xl btn-cmao-primary font-black text-sm flex items-center justify-center gap-2 shadow-lg shadow-[#FCCD37]/25 transition-all cursor-pointer group"
                       >
                         Explore Our Work <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-0.5 transition-transform" />
                       </Link>
                     </div>
 
                     {/* — Newsletter strip — */}
-                    <div className="p-5 sm:p-6 rounded-2xl bg-[#06402B] text-white space-y-4">
+                    <div className="p-5 sm:p-6 rounded-2xl bg-[#2B1309] border-t-2 border-[#FCCD37] text-white space-y-4">
                       <div className="space-y-1">
                         <h4 className="font-black text-base flex items-center gap-2">
-                          <Send size={15} className="text-green-300" /> Stay Connected
+                          <Send size={15} className="text-[#FCCD37]" /> Stay Connected
                         </h4>
-                        <p className="text-green-200/80 text-xs leading-relaxed">
+                        <p className="text-[#FAF6EE]/80 text-xs leading-relaxed">
                           Get impact stories, quarterly reports, and volunteer opportunities — straight to your inbox.
                         </p>
                       </div>
@@ -1320,12 +1320,12 @@ const DonatePage = () => {
                           value={newsletter}
                           onChange={e => setNewsletter(e.target.value)}
                           placeholder="Enter your email address"
-                          className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-green-300/60 text-sm focus:outline-none focus:border-white/40 transition-colors"
+                          className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-300 text-sm focus:outline-none focus:border-[#FCCD37] transition-colors"
                         />
                         <button
                           type="button"
                           onClick={handleNewsletterSubscribe}
-                          className="px-4 py-2.5 rounded-xl bg-[#f97316] hover:bg-[#ea6a10] text-white font-black text-sm shrink-0 flex items-center gap-2 shadow-lg shadow-orange-900/30 transition-colors cursor-pointer"
+                          className="px-4 py-2.5 rounded-xl btn-cmao-primary font-black text-sm shrink-0 flex items-center gap-2 shadow-lg shadow-[#FCCD37]/20 transition-colors cursor-pointer"
                         >
                           Subscribe <ArrowRight size={15} strokeWidth={2.5} />
                         </button>

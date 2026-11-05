@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  Heart, 
-  ArrowRight, 
-  HeartPulse, 
-  Users, 
-  Handshake, 
-  Gift 
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 import ResourcesFooter from './resources/ResourcesFooter';
+import CmaofLogo from './CmaofLogo';
 
 // Inline SVG components for Social Media Icons
 const LinkedinIcon = () => (
@@ -44,10 +38,11 @@ const YoutubeIcon = () => (
   </svg>
 );
 
-import CmaofLogo from './CmaofLogo';
-
 const CmaofTreeLogo = () => (
-  <CmaofLogo variant="dark" imgClassName="h-14 sm:h-16 w-auto max-w-[280px] sm:max-w-[320px] object-contain" />
+  <CmaofLogo 
+    variant="dark" 
+    imgClassName="h-20 sm:h-24 md:h-28 w-auto max-w-[280px] sm:max-w-[320px] object-contain -ml-1" 
+  />
 );
 
 const Footer = ({ onOpenDonate }) => {
@@ -59,7 +54,7 @@ const Footer = ({ onOpenDonate }) => {
   }
 
   // Render the Multimedia Gallery / Section footer design on all section pages;
-  // Only the home page ('/') retains the dark navy institutional footer.
+  // Only the home page ('/') retains the dark institutional footer.
   const isHomePage = location.pathname === '/' || location.pathname === '';
   if (!isHomePage) {
     return <ResourcesFooter onOpenDonate={onOpenDonate} />;
@@ -88,25 +83,29 @@ const Footer = ({ onOpenDonate }) => {
     <footer className="w-full font-sans">
       
       {/* ────────────────────────────────────────────────────────── */}
-      {/* MAIN INSTITUTIONAL FOOTER (Deep Navy Background)           */}
+      {/* MAIN INSTITUTIONAL FOOTER: Official Earth Brown (#5B2E19)  */}
+      {/* Exactly matches logof.png background for a 100% seamless look */}
       {/* ────────────────────────────────────────────────────────── */}
-      <div className="bg-[#0B1829] text-slate-300 pt-10 sm:pt-12 pb-6">
+      <div className="bg-[#5B2E19] text-[#FAF6EE] pt-12 sm:pt-14 pb-8 border-t-4 border-[#FCCD37] shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 pb-10 border-b border-slate-800/90">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6 pb-10 border-b border-white/20">
             
-            {/* Column 1: Logo & Brand & Social Icons (Col 1-4) */}
-            <div className="lg:col-span-4 space-y-4">
+            {/* Column 1: Logo & Brand Description & Social Icons (Col 1-3) */}
+            <div className="lg:col-span-3 space-y-4">
               <CmaofTreeLogo />
+              <p className="text-[#FAF6EE] text-xs sm:text-[13px] leading-relaxed max-w-sm font-normal">
+                Empowering communities, expanding educational opportunity, advancing healthcare access, and fostering economic prosperity across Nigeria.
+              </p>
 
-              {/* Social Media Circular Buttons */}
+              {/* Social Media Circular Buttons with Sun Yellow Hover */}
               <div className="flex items-center gap-2.5 pt-2">
                 <a
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FCCD37] text-white hover:text-[#5B2E19] border border-white/20 hover:border-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:scale-105"
                 >
                   <LinkedinIcon />
                 </a>
@@ -116,7 +115,7 @@ const Footer = ({ onOpenDonate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FCCD37] text-white hover:text-[#5B2E19] border border-white/20 hover:border-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:scale-105"
                 >
                   <FacebookIcon />
                 </a>
@@ -126,7 +125,7 @@ const Footer = ({ onOpenDonate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Twitter X"
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FCCD37] text-white hover:text-[#5B2E19] border border-white/20 hover:border-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:scale-105"
                 >
                   <TwitterIcon />
                 </a>
@@ -136,7 +135,7 @@ const Footer = ({ onOpenDonate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FCCD37] text-white hover:text-[#5B2E19] border border-white/20 hover:border-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:scale-105"
                 >
                   <InstagramIcon />
                 </a>
@@ -146,77 +145,116 @@ const Footer = ({ onOpenDonate }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FCCD37] text-white hover:text-[#5B2E19] border border-white/20 hover:border-[#FCCD37] flex items-center justify-center transition-all cursor-pointer shadow-xs hover:scale-105"
                 >
                   <YoutubeIcon />
                 </a>
               </div>
             </div>
 
-            {/* Column 2: Quick Links (Col 5-6) */}
-            <div className="lg:col-span-2 space-y-2.5">
-              <h4 className="text-white font-bold text-xs tracking-wider uppercase font-sans">
+            {/* Column 2: Strategic Pillars (Col 4-6) - Four Official Foundation Pillars */}
+            <div className="lg:col-span-3 space-y-3">
+              <h4 className="text-[#FCCD37] font-black text-xs sm:text-[13px] tracking-wider uppercase font-sans drop-shadow-xs">
+                Strategic Pillars
+              </h4>
+              <ul className="space-y-2.5 text-xs sm:text-[13px] font-medium">
+                <li>
+                  <Link 
+                    to="/our-work/education" 
+                    className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#0047BA] shadow-xs shrink-0" />
+                    <span>Education & Opportunity</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/our-work/health" 
+                    className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#338C26] shadow-xs shrink-0" />
+                    <span>Health & Wellbeing</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/our-work/humanitarian-support" 
+                    className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#FAF6EE] border border-white/40 shadow-xs shrink-0" />
+                    <span>Humanitarian Support</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/our-work/economic-empowerment" 
+                    className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#FCCD37] shadow-xs shrink-0" />
+                    <span>Economic Empowerment</span>
+                  </Link>
+                </li>
+                <li className="pt-2 border-t border-white/15">
+                  <Link 
+                    to="/our-work" 
+                    className="text-[#FCCD37] hover:text-white font-extrabold transition-colors flex items-center gap-1"
+                  >
+                    <span>Strategic Framework Overview</span>
+                    <ArrowRight size={13} strokeWidth={2.6} />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Quick Links (Col 7-8) */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-[#FCCD37] font-black text-xs sm:text-[13px] tracking-wider uppercase font-sans drop-shadow-xs">
                 Quick Links
               </h4>
-              <ul className="space-y-2 text-xs font-medium">
-                <li><Link to="/" className="hover:text-emerald-400 transition-colors">Home</Link></li>
-                <li><Link to="/about" className="hover:text-emerald-400 transition-colors">About Us</Link></li>
-                <li><Link to="/founder" className="hover:text-amber-400 transition-colors font-semibold">Founder's Profile</Link></li>
-                <li><Link to="/our-work" className="hover:text-emerald-400 transition-colors">Our Work</Link></li>
-                <li><Link to="/impact" className="hover:text-emerald-400 transition-colors">Impact</Link></li>
-                <li><Link to="/gallery" className="hover:text-emerald-400 transition-colors">Multimedia Gallery</Link></li>
+              <ul className="space-y-2.5 text-xs sm:text-[13px] font-medium">
+                <li><Link to="/" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Home</Link></li>
+                <li><Link to="/about" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">About Us</Link></li>
+                <li><Link to="/founder" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block font-semibold">Founder's Profile</Link></li>
+                <li><Link to="/impact" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Impact & Numbers</Link></li>
+                <li><Link to="/gallery" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Multimedia Gallery</Link></li>
               </ul>
             </div>
 
-            {/* Column 3: Get Involved (Col 7-8) */}
-            <div className="lg:col-span-2 space-y-2.5">
-              <h4 className="text-white font-bold text-xs tracking-wider uppercase font-sans">
+            {/* Column 4: Get Involved & Resources (Col 9-10) */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-[#FCCD37] font-black text-xs sm:text-[13px] tracking-wider uppercase font-sans drop-shadow-xs">
                 Get Involved
               </h4>
-              <ul className="space-y-2 text-xs font-medium">
-                <li><Link to="/donate" className="hover:text-emerald-400 transition-colors text-left">Donate</Link></li>
-                <li><Link to="/get-involved" className="hover:text-emerald-400 transition-colors">Partner With Us</Link></li>
-                <li><Link to="/get-involved" className="hover:text-emerald-400 transition-colors">Volunteer</Link></li>
-                <li><Link to="/get-involved" className="hover:text-emerald-400 transition-colors">Support a Programme</Link></li>
-                <li><Link to="/contact" className="hover:text-emerald-400 transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-
-            {/* Column 4: Resources (Col 9-10) */}
-            <div className="lg:col-span-2 space-y-2.5">
-              <h4 className="text-white font-bold text-xs tracking-wider uppercase font-sans">
-                Resources
-              </h4>
-              <ul className="space-y-2 text-xs font-medium">
-                <li><Link to="/resources" className="hover:text-emerald-400 transition-colors">Reports</Link></li>
-                <li><Link to="/resources" className="hover:text-emerald-400 transition-colors">Publications</Link></li>
-                <li><Link to="/news" className="hover:text-emerald-400 transition-colors">Media</Link></li>
-                <li><Link to="/policies" className="hover:text-emerald-400 transition-colors">Policies</Link></li>
-                <li><Link to="/resources" className="hover:text-emerald-400 transition-colors">Downloads</Link></li>
+              <ul className="space-y-2.5 text-xs sm:text-[13px] font-medium">
+                <li><Link to="/donate" className="text-[#FCCD37] hover:text-white transition-colors block font-black">Donate to CMAOF</Link></li>
+                <li><Link to="/get-involved" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Partner With Us</Link></li>
+                <li><Link to="/resources" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Publications & Reports</Link></li>
+                <li><Link to="/events" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Events & Calendar</Link></li>
+                <li><Link to="/contact" className="text-[#FAF6EE] hover:text-[#FCCD37] transition-colors block">Contact CMAOF</Link></li>
               </ul>
             </div>
 
             {/* Column 5: Stay Connected (Col 11-12) */}
-            <div className="lg:col-span-2 space-y-2.5">
-              <h4 className="text-white font-bold text-xs tracking-wider uppercase font-sans">
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-[#FCCD37] font-black text-xs sm:text-[13px] tracking-wider uppercase font-sans drop-shadow-xs">
                 Stay Connected
               </h4>
-              <p className="text-slate-400 text-[11px] leading-relaxed">
-                Subscribe to our newsletter for the latest updates, stories and opportunities.
+              <p className="text-[#FAF6EE] text-xs leading-relaxed font-normal">
+                Subscribe to our newsletter for the latest updates, stories, and opportunities.
               </p>
 
-              <form onSubmit={handleNewsletterSubmit} className="space-y-2 pt-1">
+              <form onSubmit={handleNewsletterSubmit} className="space-y-2.5 pt-1">
                 <input
                   type="email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="bg-white text-slate-900 placeholder:text-slate-400 text-xs px-3.5 py-2.5 rounded-xl w-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#EA580C]"
+                  className="bg-white text-slate-900 placeholder:text-slate-500 text-xs px-3.5 py-2.5 rounded-xl w-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#FCCD37] font-medium shadow-xs"
                   required
                 />
                 <button
                   type="submit"
-                  className="w-full bg-[#EA580C] hover:bg-[#d97706] text-white font-extrabold text-xs px-4 py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 shadow cursor-pointer"
+                  className="w-full btn-cmao-primary py-2.5 rounded-xl font-black text-xs shadow-md cursor-pointer flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Subscribe</span>
                   <ArrowRight size={14} strokeWidth={2.5} />
@@ -227,20 +265,20 @@ const Footer = ({ onOpenDonate }) => {
           </div>
 
           {/* Bottom Legal Copyright Bar */}
-          <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-[11px] text-slate-400 gap-3">
-            <p>© {new Date().getFullYear()} Chief Michael Ade.Ojo Foundation (CMAOF). All rights reserved.</p>
+          <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs sm:text-[12px] text-[#FAF6EE]/90 gap-3">
+            <p className="font-normal">© {new Date().getFullYear()} Chief Michael Ade.Ojo Foundation (CMAOF). All rights reserved.</p>
 
-            <div className="flex items-center space-x-3 text-slate-400">
-              <Link to="/policies" className="hover:text-slate-200">Privacy Policy</Link>
-              <span>|</span>
-              <Link to="/policies" className="hover:text-slate-200">Terms of Use</Link>
-              <span>|</span>
-              <Link to="/policies" className="hover:text-slate-200">Safeguarding</Link>
-              <span>|</span>
-              <Link to="/contact" className="hover:text-slate-200">Contact</Link>
+            <div className="flex items-center space-x-3 text-[#FAF6EE]/80">
+              <Link to="/policies" className="hover:text-[#FCCD37] transition-colors">Privacy Policy</Link>
+              <span className="text-white/30">|</span>
+              <Link to="/policies" className="hover:text-[#FCCD37] transition-colors">Terms of Use</Link>
+              <span className="text-white/30">|</span>
+              <Link to="/policies" className="hover:text-[#FCCD37] transition-colors">Safeguarding</Link>
+              <span className="text-white/30">|</span>
+              <Link to="/contact" className="hover:text-[#FCCD37] transition-colors">Contact</Link>
             </div>
 
-            <p className="text-slate-400 font-medium">
+            <p className="text-[#FCCD37] font-bold tracking-tight">
               A Brighter Nigeria. For Generations.
             </p>
           </div>

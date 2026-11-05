@@ -104,32 +104,32 @@ const ContactSecretariatHub = () => {
     <div className="space-y-6">
       
       {/* ── Main Secretariat Card ── */}
-      <div className="bg-gradient-to-b from-[#06402B] via-[#053222] to-[#042418] text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-emerald-800/60 relative overflow-hidden">
+      <div className="bg-gradient-to-b from-[#241007] via-[#3D1E10] to-[#5B2E19] text-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#8C4A26]/50 relative overflow-hidden">
         
         {/* Subtle decorative background glow */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-60 h-60 bg-[#EA580C]/15 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[#FCCD37]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-[#5B2E19]/40 rounded-full blur-2xl pointer-events-none" />
 
         <div className="relative z-10 space-y-6">
           
           {/* Card Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-emerald-800/80">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-[#8C4A26]/50">
             <div>
-              <span className="text-xs uppercase tracking-widest font-extrabold text-[#D4AF37]">
+              <span className="text-xs uppercase tracking-widest font-extrabold text-[#FCCD37]">
                 FOUNDATION PRESENCE
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold font-serif-cmaof text-white mt-1">
+              <h3 className="text-xl sm:text-2xl font-black text-white mt-1">
                 Secretariat Locations
               </h3>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-400/40 text-emerald-200 text-xs font-semibold self-start sm:self-auto">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 border border-[#FCCD37]/30 text-[#FCCD37] text-xs font-semibold self-start sm:self-auto">
+              <span className="w-2 h-2 rounded-full bg-[#338C26] animate-pulse" />
               <span>All Desks Operational</span>
             </span>
           </div>
 
           {/* Interactive Office Switcher Tabs */}
-          <div className="flex flex-wrap gap-2 p-1.5 bg-black/30 rounded-2xl border border-emerald-900/60">
+          <div className="flex flex-wrap gap-2 p-1.5 bg-black/30 rounded-2xl border border-[#8C4A26]/50">
             {OFFICES.map((office) => {
               const isSelected = office.id === activeOfficeId;
               return (
@@ -139,8 +139,8 @@ const ContactSecretariatHub = () => {
                   onClick={() => setActiveOfficeId(office.id)}
                   className={`flex-1 min-w-[130px] py-2.5 px-3 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer text-center ${
                     isSelected
-                      ? 'bg-white text-[#06402B] shadow-md font-extrabold'
-                      : 'text-emerald-100/70 hover:text-white hover:bg-white/10'
+                      ? 'bg-[#FCCD37] text-[#5B2E19] shadow-md font-black'
+                      : 'text-amber-100/70 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {office.name.split(' ')[0]} Hub
@@ -153,23 +153,23 @@ const ContactSecretariatHub = () => {
           <div className="space-y-4 pt-2">
             
             {/* Office Image Banner */}
-            <div className="relative h-44 rounded-2xl overflow-hidden border border-emerald-800/70">
+            <div className="relative h-44 rounded-2xl overflow-hidden border border-[#8C4A26]/50">
               <img
                 src={activeOffice.image}
                 alt={activeOffice.name}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#042418] via-transparent to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#241007] via-transparent to-transparent opacity-90" />
               
               <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2">
                 <div>
-                  <span className="inline-block text-[10px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded bg-black/60 text-[#D4AF37] backdrop-blur-xs mb-1">
+                  <span className="inline-block text-[10px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded bg-black/60 text-[#FCCD37] backdrop-blur-xs mb-1">
                     {activeOffice.status}
                   </span>
                   <h4 className="text-sm font-bold text-white leading-tight">
                     {activeOffice.name}
                   </h4>
-                  <p className="text-[11px] text-emerald-100/80">
+                  <p className="text-[11px] text-amber-100/80">
                     {activeOffice.label}
                   </p>
                 </div>
@@ -178,7 +178,7 @@ const ContactSecretariatHub = () => {
                   href={activeOffice.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2.5 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 backdrop-blur-xs text-white text-[11px] font-bold flex items-center gap-1 transition-colors shrink-0"
+                  className="px-2.5 py-1.5 rounded-lg bg-[#FCCD37] hover:bg-[#e5b722] text-[#5B2E19] text-[11px] font-black flex items-center gap-1 transition-colors shrink-0 shadow-sm"
                 >
                   <Navigation size={12} />
                   <span>Directions</span>
@@ -188,31 +188,31 @@ const ContactSecretariatHub = () => {
 
             {/* Address & Contact Row */}
             <div className="space-y-3 text-xs sm:text-sm">
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-black/25 border border-emerald-800/60">
-                <MapPin className="text-emerald-400 shrink-0 mt-0.5" size={18} />
+              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-black/25 border border-[#8C4A26]/40">
+                <MapPin className="text-[#FCCD37] shrink-0 mt-0.5" size={18} />
                 <div className="space-y-0.5">
                   <strong className="block text-white font-semibold">Physical Address</strong>
-                  <span className="text-emerald-100/90 text-xs leading-relaxed block">{activeOffice.address}</span>
-                  <span className="text-[11px] text-amber-300 block font-medium">Landmark: {activeOffice.landmark}</span>
+                  <span className="text-stone-200 text-xs leading-relaxed block">{activeOffice.address}</span>
+                  <span className="text-[11px] text-[#FCCD37] block font-medium">Landmark: {activeOffice.landmark}</span>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-black/25 border border-emerald-800/60">
-                  <Phone className="text-emerald-400 shrink-0" size={16} />
+                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-black/25 border border-[#8C4A26]/40">
+                  <Phone className="text-[#FCCD37] shrink-0" size={16} />
                   <div className="min-w-0">
-                    <span className="block text-[10px] uppercase text-emerald-200/70 font-bold">Direct Desk</span>
-                    <a href={`tel:${activeOffice.phone.replace(/[^0-9+]/g, '')}`} className="text-white text-xs font-semibold hover:text-amber-300 transition-colors">
+                    <span className="block text-[10px] uppercase text-stone-300 font-bold">Direct Desk</span>
+                    <a href={`tel:${activeOffice.phone.replace(/[^0-9+]/g, '')}`} className="text-white text-xs font-semibold hover:text-[#FCCD37] transition-colors">
                       {activeOffice.phone}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-black/25 border border-emerald-800/60">
-                  <Mail className="text-emerald-400 shrink-0" size={16} />
+                <div className="flex items-center gap-2.5 p-3 rounded-xl bg-black/25 border border-[#8C4A26]/40">
+                  <Mail className="text-[#FCCD37] shrink-0" size={16} />
                   <div className="min-w-0 truncate">
-                    <span className="block text-[10px] uppercase text-emerald-200/70 font-bold">Secretariat Desk</span>
-                    <a href={`mailto:${activeOffice.email}`} className="text-white text-xs font-semibold hover:text-amber-300 transition-colors truncate block">
+                    <span className="block text-[10px] uppercase text-stone-300 font-bold">Secretariat Desk</span>
+                    <a href={`mailto:${activeOffice.email}`} className="text-white text-xs font-semibold hover:text-[#FCCD37] transition-colors truncate block">
                       {activeOffice.email}
                     </a>
                   </div>
@@ -222,13 +222,13 @@ const ContactSecretariatHub = () => {
 
             {/* On-Site Services Accordion / List */}
             <div className="pt-2">
-              <span className="block text-[11px] uppercase tracking-wider font-bold text-emerald-200/80 mb-2">
+              <span className="block text-[11px] uppercase tracking-wider font-bold text-[#FCCD37] mb-2">
                 Available On-Site Services:
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {activeOffice.services.map((service, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-[11px] text-emerald-100/90">
-                    <CheckCircle2 size={13} className="text-emerald-400 shrink-0" />
+                  <div key={idx} className="flex items-center gap-2 text-[11px] text-stone-200">
+                    <CheckCircle2 size={13} className="text-[#338C26] shrink-0" />
                     <span>{service}</span>
                   </div>
                 ))}
@@ -238,14 +238,14 @@ const ContactSecretariatHub = () => {
           </div>
 
           {/* Social Channels Strip */}
-          <div className="pt-4 border-t border-emerald-800/80 flex items-center justify-between gap-4">
-            <span className="text-xs text-emerald-200/80 font-medium">Follow Foundation Gazette:</span>
+          <div className="pt-4 border-t border-[#8C4A26]/50 flex items-center justify-between gap-4">
+            <span className="text-xs text-stone-300 font-medium">Follow Foundation Gazette:</span>
             <div className="flex items-center gap-2">
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-black/30 border border-emerald-800/60 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-lg bg-black/30 border border-[#8C4A26]/60 hover:bg-[#FCCD37] text-stone-300 hover:text-[#5B2E19] flex items-center justify-center transition-colors"
                 title="LinkedIn"
               >
                 <LinkedinIcon />
@@ -254,7 +254,7 @@ const ContactSecretariatHub = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-black/30 border border-emerald-800/60 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-lg bg-black/30 border border-[#8C4A26]/60 hover:bg-[#FCCD37] text-stone-300 hover:text-[#5B2E19] flex items-center justify-center transition-colors"
                 title="X (Twitter)"
               >
                 <TwitterIcon />
@@ -263,7 +263,7 @@ const ContactSecretariatHub = () => {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-black/30 border border-emerald-800/60 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-lg bg-black/30 border border-[#8C4A26]/60 hover:bg-[#FCCD37] text-stone-300 hover:text-[#5B2E19] flex items-center justify-center transition-colors"
                 title="Facebook"
               >
                 <FacebookIcon />
@@ -272,7 +272,7 @@ const ContactSecretariatHub = () => {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-black/30 border border-emerald-800/60 hover:bg-[#EA580C] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-lg bg-black/30 border border-[#8C4A26]/60 hover:bg-[#FCCD37] text-stone-300 hover:text-[#5B2E19] flex items-center justify-center transition-colors"
                 title="YouTube"
               >
                 <YoutubeIcon />
@@ -284,18 +284,18 @@ const ContactSecretariatHub = () => {
       </div>
 
       {/* ── Anti-Fraud & Ethics Callout Card ── */}
-      <div className="bg-amber-50/80 border border-amber-200/90 rounded-2xl p-5 flex items-start gap-4 shadow-xs">
-        <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+      <div className="bg-[#FFF8E5] border border-[#FCCD37]/60 rounded-2xl p-5 flex items-start gap-4 shadow-sm">
+        <div className="w-10 h-10 rounded-xl bg-[#5B2E19]/10 text-[#5B2E19] flex items-center justify-center shrink-0 mt-0.5">
           <ShieldAlert size={22} strokeWidth={2.2} />
         </div>
         <div className="space-y-1">
-          <h4 className="text-xs sm:text-sm font-extrabold text-amber-950 uppercase tracking-wide">
+          <h4 className="text-xs sm:text-sm font-extrabold text-[#5B2E19] uppercase tracking-wide">
             Official Anti-Fraud & Zero-Fee Notice
           </h4>
-          <p className="text-xs text-amber-900/90 leading-relaxed">
+          <p className="text-xs text-[#5B2E19]/80 leading-relaxed">
             All CMAOF scholarship opportunities, healthcare interventions, and community grants are <strong>100% free</strong>. 
             No official representative will ever request processing fees, application charges, or payments into personal accounts. 
-            Report any solicitation to <a href="mailto:safeguarding@cmaofoundation.org" className="underline font-bold hover:text-amber-950">safeguarding@cmaofoundation.org</a>.
+            Report any solicitation to <a href="mailto:safeguarding@cmaofoundation.org" className="underline font-bold hover:text-[#3D1E10]">safeguarding@cmaofoundation.org</a>.
           </p>
         </div>
       </div>

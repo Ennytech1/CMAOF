@@ -1,255 +1,241 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, HeartPulse, Users, BarChart3, Check, ArrowRight } from 'lucide-react';
+import { BookOpen, HeartPulse, Users, TrendingUp, Check, ArrowRight, ShieldCheck } from 'lucide-react';
 
 const OurWorkStrategicPillars = () => {
   const pillars = [
     {
       id: 'education',
-      title: 'Education & Human Capital',
+      number: '01',
+      title: 'Education & Opportunity',
       pathway: 'Learn → Develop → Excel',
       description:
-        'Expanding access to quality education, developing relevant skills and creating opportunities for people to learn, work and thrive.',
+        'Expanding access to quality schooling, modern STEM labs, academic scholarships, and technical skills that empower youth to thrive in the modern economy.',
       image: '/images/pillar_graduates.jpg',
       icon: <BookOpen size={22} strokeWidth={2.4} />,
-      badgeBg: 'bg-[#0B4891]',
-      badgeBorder: 'border-white',
-      accentColor: 'text-[#0B4891]',
-      boxBg: 'bg-[#F0F6FF]',
-      boxBorder: 'border-[#DBEAFE]',
-      dotColor: 'text-[#0B4891]',
-      checkColor: 'text-emerald-600',
-      buttonBg: 'bg-[#0B4891] hover:bg-[#083870]',
+      colorHex: '#0047BA',
+      badgeBg: 'bg-[#0047BA]',
+      lightBg: 'bg-[#F0F6FD]',
+      borderColor: 'border-[#CCE0F8]',
+      accentColor: 'text-[#0047BA]',
       link: '/our-work/education',
       buttonText: 'Explore Education',
+      buttonBg: 'bg-[#0047BA] hover:bg-[#00368F] text-white',
       programmeCount: 10,
-      programmes: [
-        'Academic Excellence',
-        'University Scholarships',
-        'Teacher Excellence',
-        'Graduate Finishing & Professional Readiness',
-        'Skills & Capacity Development',
+      keyProgrammes: [
+        'Academic Excellence & STEM Labs',
+        'University & Polytechnic Scholarships',
+        'Teacher Excellence & Pedagogy',
+        'Technical & Vocational Trades',
       ],
-      targetBeneficiaries:
-        'Children & young people, students, teachers & educators, young graduates and underserved communities.',
-      outcomes: [
-        'Improved learning outcomes',
-        'Increased access to education',
-        'Stronger skills and capabilities',
-        'More opportunities for a brighter future',
-      ],
+      targetBeneficiaries: 'Students, youth scholars, teachers & apprentice artisans',
+      primaryOutcome: '98% completion rate & full tuition endowments',
     },
     {
       id: 'health',
-      title: 'Health & Well-being',
+      number: '02',
+      title: 'Health & Wellbeing',
       pathway: 'Prevent → Treat → Restore',
       description:
-        'Improving access to essential healthcare, prevention, early diagnosis and targeted medical intervention for healthier and more resilient communities.',
+        'Improving frontline healthcare delivery, maternal & pediatric care, rural medical clinics, and vision restoration for healthier, resilient communities.',
       image: '/images/pillar_health.jpg',
       icon: <HeartPulse size={22} strokeWidth={2.4} />,
-      badgeBg: 'bg-[#DC2626]',
-      badgeBorder: 'border-white',
-      accentColor: 'text-[#DC2626]',
-      boxBg: 'bg-[#FEF2F2]',
-      boxBorder: 'border-[#FEE2E2]',
-      dotColor: 'text-[#DC2626]',
-      checkColor: 'text-[#DC2626]',
-      buttonBg: 'bg-[#DC2626] hover:bg-[#B91C1C]',
+      colorHex: '#338C26',
+      badgeBg: 'bg-[#338C26]',
+      lightBg: 'bg-[#F0F8F0]',
+      borderColor: 'border-[#C5E6C2]',
+      accentColor: 'text-[#338C26]',
       link: '/our-work/health',
       buttonText: 'Explore Health',
+      buttonBg: 'bg-[#338C26] hover:bg-[#266E1C] text-white',
       programmeCount: 10,
-      programmes: [
-        'Maternal, Women & Reproductive Health',
-        'Child Health & Nutrition',
-        'Community Health Outreach',
-        'Primary Healthcare Strengthening',
-        'Eye Care & Vision',
+      keyProgrammes: [
+        'Maternal & Reproductive Healthcare',
+        'Child Nutrition & Pediatric Care',
+        'Community Medical Outreaches',
+        'Eye Care & Vision Restoration Surgeries',
       ],
-      targetBeneficiaries:
-        'Women & mothers, children, families, older persons and vulnerable communities.',
-      outcomes: [
-        'Healthier mothers and children',
-        'Improved access to healthcare',
-        'Early detection and treatment',
-        'Stronger, healthier communities',
-      ],
+      targetBeneficiaries: 'Mothers, infants, senior citizens & rural households',
+      primaryOutcome: 'Free surgeries & solar-powered primary care clinics',
     },
     {
-      id: 'community',
-      title: 'Community Resilience & Social Well-being',
-      pathway: 'Support → Protect → Strengthen',
+      id: 'humanitarian',
+      number: '03',
+      title: 'Humanitarian Support',
+      pathway: 'Relieve → Rebuild → Sustain',
       description:
-        'Strengthening the ability of individuals, families and communities to meet essential needs, withstand shocks and maintain dignity and well-being.',
+        'Strengthening the safety nets of vulnerable families through food aid, clean solar water boreholes, senior welfare packages, and rapid crisis relief.',
       image: '/images/pillar_community_elderly.jpg',
       icon: <Users size={22} strokeWidth={2.4} />,
-      badgeBg: 'bg-[#EA580C]',
-      badgeBorder: 'border-white',
-      accentColor: 'text-[#EA580C]',
-      boxBg: 'bg-[#FFF7ED]',
-      boxBorder: 'border-[#FFEDD5]',
-      dotColor: 'text-[#EA580C]',
-      checkColor: 'text-[#EA580C]',
-      buttonBg: 'bg-[#EA580C] hover:bg-[#C2410C]',
-      link: '/our-work/community-resilience',
-      buttonText: 'Explore Community',
+      colorHex: '#5B2E19',
+      badgeBg: 'bg-[#5B2E19]',
+      lightBg: 'bg-[#FAF6EE]',
+      borderColor: 'border-[#EADDC9]',
+      accentColor: 'text-[#5B2E19]',
+      link: '/our-work/humanitarian-support',
+      buttonText: 'Explore Humanitarian',
+      buttonBg: 'bg-[#5B2E19] hover:bg-[#3D1E10] text-[#FAF6EE]',
       programmeCount: 10,
-      programmes: [
-        'Food Security & Nutrition',
-        'Clean Water & Sanitation',
-        'Elderly & Social Care',
-        'Emergency Response & Recovery',
-        'Household Resilience',
+      keyProgrammes: [
+        'Food Security & Nutrition Aid',
+        'Clean Water & Solar Boreholes (WASH)',
+        'Senior Citizens Dignity Packages',
+        'Disability Mobility & Assistive Kits',
       ],
-      targetBeneficiaries:
-        'Families & households, children, older persons, persons with disabilities and underserved communities.',
-      outcomes: [
-        'Greater food and water security',
-        'Stronger, more resilient communities',
-        'Improved social inclusion and support',
-        'Enhanced dignity and quality of life',
+      targetBeneficiaries: 'Impoverished families, senior citizens & disaster victims',
+      primaryOutcome: 'Potable water access & permanent welfare safety nets',
+    },
+    {
+      id: 'economic-empowerment',
+      number: '04',
+      title: 'Economic Empowerment',
+      pathway: 'Empower → Produce → Thrive',
+      description:
+        'Fostering financial self-sufficiency through vocational apprenticeships, agricultural enablement, micro-seed grants, and youth startup incubation.',
+      image: '/images/past_event_seedling_girl.jpg',
+      icon: <TrendingUp size={22} strokeWidth={2.4} className="text-[#3D1E10]" />,
+      colorHex: '#FCCD37',
+      badgeBg: 'bg-[#FCCD37]',
+      lightBg: 'bg-[#FFFBF0]',
+      borderColor: 'border-[#F8E39D]',
+      accentColor: 'text-[#7A5200]',
+      link: '/our-work/economic-empowerment',
+      buttonText: 'Explore Empowerment',
+      buttonBg: 'bg-[#FCCD37] hover:bg-[#E8B823] text-[#3D1E10] font-black',
+      programmeCount: 10,
+      keyProgrammes: [
+        'Vocational Trades Apprenticeships',
+        'Agri-Enterprise Value Chains',
+        'Financial Literacy & Cooperative Credit',
+        'Youth Seed Grants & Tech Incubation',
       ],
+      targetBeneficiaries: 'Artisans, smallholder farmers, youth & women traders',
+      primaryOutcome: 'Micro-grants, enterprise growth & certified trades',
     },
   ];
 
   return (
-    <section id="our-work-pillars" className="py-4 sm:py-6 bg-white font-sans">
+    <section id="our-work-pillars" className="py-8 sm:py-12 bg-[#FCFBF8] font-sans border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* ── Section Header matching screenshot ── */}
-        <div className="flex items-start gap-2.5 sm:gap-3 mb-4 sm:mb-5">
-          {/* Orange Vertical Accent Bar */}
-          <div className="w-1.5 h-9 sm:h-10 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
-          
-          <div className="space-y-0.5">
-            <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#0F4C3A] block">
-              OUR STRATEGIC PILLARS
+        {/* ── Section Header ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10 pb-5 border-b border-[#E8DEC2]/80">
+          <div className="flex items-start gap-3">
+            <div className="w-1.5 h-11 sm:h-13 bg-[#FCCD37] rounded-full shrink-0 mt-0.5 shadow-2xs" />
+            <div className="space-y-1">
+              <span className="text-xs sm:text-[12.5px] font-black uppercase tracking-wider text-[#5B2E19] block">
+                STRATEGIC IMPACT FRAMEWORK
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-extrabold text-[#5B2E19] tracking-tight leading-tight">
+                Four Strategic Pillars. One Sustainable Nigeria.
+              </h2>
+              <p className="text-slate-600 text-xs sm:text-[14px] font-normal leading-relaxed max-w-2xl pt-0.5">
+                Our interventions are structured across four synergistic pillars engineered to break systemic barriers, foster self-reliance, and build lasting intergenerational change.
+              </p>
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center gap-2 self-end">
+            <span className="text-xs font-semibold text-[#5B2E19]/80 bg-white px-3 py-1.5 rounded-full border border-[#E8DEC2] shadow-2xs flex items-center gap-1.5">
+              <ShieldCheck size={14} className="text-[#338C26]" />
+              <span>40 Flagship Programmes Nationwide</span>
             </span>
-            <h2 className="text-xl sm:text-2xl lg:text-[26px] font-extrabold text-[#0F2B5B] tracking-tight leading-tight">
-              Three Pillars. One Brighter Future.
-            </h2>
-            <p className="text-slate-600 text-xs sm:text-[13.5px] font-normal leading-relaxed max-w-3xl pt-0.5">
-              Our work focuses on three interconnected areas that create lasting change in people&apos;s lives and communities.
-            </p>
           </div>
         </div>
 
-        {/* ── 3 Strategic Pillar Cards Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5 items-stretch">
+        {/* ── 4 Strategic Pillar Cards Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
           {pillars.map((pillar) => (
             <div
               key={pillar.id}
-              className="bg-white rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+              className="bg-white rounded-2xl border border-slate-200/90 hover:border-[#5B2E19]/30 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
             >
               <div>
-                {/* 1. Card Top Photographic Banner */}
-                <div className="relative h-36 sm:h-40 w-full overflow-hidden bg-slate-100">
+                {/* 1. Photographic Banner with Number & Pathway Badge */}
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-100">
                   <img
                     src={pillar.image}
                     alt={pillar.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/25 pointer-events-none" />
+
+                  {/* Top Badges */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                    <span className="bg-white/95 backdrop-blur-sm text-[#5B2E19] text-[11px] font-black px-2.5 py-0.5 rounded-md shadow-xs">
+                      Pillar {pillar.number}
+                    </span>
+                    <span 
+                      className="text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-xs bg-white text-[#5B2E19]"
+                    >
+                      {pillar.pathway}
+                    </span>
+                  </div>
                 </div>
 
-                {/* 2. Floating Circular Icon Badge */}
-                <div className="px-4 sm:px-5 relative -mt-5 z-10">
+                {/* 2. Floating Circular Icon Emblem */}
+                <div className="px-5 relative -mt-6 z-10 flex items-center justify-between">
                   <div
-                    className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full ${pillar.badgeBg} text-white flex items-center justify-center border-[3px] border-white shadow-sm`}
+                    className={`w-12 h-12 rounded-xl ${pillar.badgeBg} text-white flex items-center justify-center border-2 border-white shadow-md transition-transform duration-200 group-hover:scale-105`}
                   >
                     {pillar.icon}
                   </div>
+                  <span className="text-[10.5px] font-extrabold uppercase tracking-wider text-[#5B2E19]/70 bg-[#FAF6EE] px-2 py-0.5 rounded-md border border-[#E8DEC2]">
+                    10 Initiatives
+                  </span>
                 </div>
 
                 {/* 3. Title, Pathway & Descriptive Text */}
-                <div className="px-4 sm:px-5 pt-2 pb-2 space-y-1.5">
-                  <h3 className="text-lg sm:text-[19px] font-extrabold text-[#0F2B5B] leading-snug tracking-tight">
+                <div className="px-5 pt-3 pb-3 space-y-2">
+                  <h3 className="text-xl font-black text-[#5B2E19] leading-tight tracking-tight group-hover:text-[#0047BA] transition-colors">
                     {pillar.title}
                   </h3>
 
-                  <div className={`text-xs font-bold tracking-tight ${pillar.accentColor}`}>
-                    {pillar.pathway}
-                  </div>
-
-                  <p className="text-slate-700 text-sm leading-relaxed font-medium">
+                  <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed font-normal">
                     {pillar.description}
                   </p>
                 </div>
 
-                {/* 4. Three Information Tinted Boxes */}
-                <div className="px-4 sm:px-5 pb-1 space-y-2">
-                  
-                  {/* Box A: Programme Families (10) */}
-                  <div className={`rounded-lg sm:rounded-xl p-2.5 sm:p-3 ${pillar.boxBg} border ${pillar.boxBorder} space-y-1.5`}>
-                    <h4 className={`text-xs font-bold ${pillar.accentColor}`}>
-                      Programme Families ({pillar.programmeCount})
-                    </h4>
-
-                    <ul className="space-y-1 text-[11.5px] sm:text-xs text-slate-700 font-medium">
-                      {pillar.programmes.map((prog, idx) => (
-                        <li key={idx} className="flex items-start gap-1.5 leading-snug">
-                          <span className={`${pillar.dotColor} text-sm leading-none select-none`}>•</span>
-                          <span>{prog}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="pt-0.5">
-                      <Link
-                        to={pillar.link}
-                        className={`inline-flex items-center gap-1 text-[11.5px] font-bold ${pillar.accentColor} hover:underline cursor-pointer`}
-                      >
-                        <span>View all programmes</span>
-                        <ArrowRight size={12} strokeWidth={2.4} />
-                      </Link>
+                {/* 4. Structured Impact Highlights Box */}
+                <div className="px-5 pb-3">
+                  <div className={`rounded-xl p-3.5 ${pillar.lightBg} border ${pillar.borderColor} space-y-2.5`}>
+                    
+                    {/* Key Initiatives */}
+                    <div className="space-y-1">
+                      <span className={`text-[11px] font-bold uppercase tracking-wider ${pillar.accentColor} block`}>
+                        Core Interventions
+                      </span>
+                      <ul className="space-y-1 text-xs text-slate-700 font-medium">
+                        {pillar.keyProgrammes.map((prog, idx) => (
+                          <li key={idx} className="flex items-start gap-1.5 leading-snug">
+                            <span className={`${pillar.accentColor} text-sm leading-none`}>•</span>
+                            <span className="text-[11.5px]">{prog}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
 
-                  {/* Box B: Target Beneficiaries */}
-                  <div className={`rounded-lg sm:rounded-xl p-2.5 sm:p-3 ${pillar.boxBg} border ${pillar.boxBorder} flex items-start gap-2.5`}>
-                    <div className={`${pillar.accentColor} shrink-0 mt-0.5`}>
-                      <Users size={16} strokeWidth={2.3} />
-                    </div>
-                    <div className="space-y-0.5">
-                      <div className={`text-xs font-bold leading-none ${pillar.accentColor}`}>
-                        Target Beneficiaries
-                      </div>
-                      <p className="text-[11px] sm:text-[11.5px] text-slate-600 leading-snug font-normal">
-                        {pillar.targetBeneficiaries}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Box C: Key Outcomes */}
-                  <div className={`rounded-lg sm:rounded-xl p-2.5 sm:p-3 ${pillar.boxBg} border ${pillar.boxBorder} space-y-1.5`}>
-                    <div className="flex items-center gap-2">
-                      <div className={`${pillar.accentColor} shrink-0`}>
-                        <BarChart3 size={15} strokeWidth={2.3} />
-                      </div>
-                      <div className={`text-xs font-bold ${pillar.accentColor}`}>
-                        Key Outcomes
+                    {/* Primary Outcome */}
+                    <div className="pt-2 border-t border-black/5 flex items-start gap-2">
+                      <Check size={14} className={`${pillar.accentColor} stroke-[3] shrink-0 mt-0.5`} />
+                      <div className="text-[11px] text-slate-700 font-medium leading-snug">
+                        <span className="font-bold text-[#5B2E19]">Expected Impact: </span>
+                        {pillar.primaryOutcome}
                       </div>
                     </div>
 
-                    <ul className="space-y-1 pl-4 text-[11px] sm:text-[11.5px] text-slate-700 font-normal">
-                      {pillar.outcomes.map((outcome, idx) => (
-                        <li key={idx} className="flex items-start gap-1.5 leading-snug">
-                          <Check size={13} className={`${pillar.checkColor} stroke-[2.8] shrink-0 mt-0.5`} />
-                          <span>{outcome}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-
                 </div>
               </div>
 
               {/* 5. Full-Width Bottom CTA Button */}
-              <div className="px-4 sm:px-5 pb-4 pt-2">
+              <div className="px-5 pb-5 pt-1">
                 <Link
                   to={pillar.link}
-                  className={`w-full ${pillar.buttonBg} text-white font-extrabold text-xs sm:text-[13px] py-2.5 px-3 rounded-lg sm:rounded-xl flex items-center justify-center gap-2 shadow-xs hover:shadow-sm transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer`}
+                  className={`w-full ${pillar.buttonBg} text-xs sm:text-[13px] font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all group-hover:scale-[1.01] active:scale-[0.99] cursor-pointer`}
                 >
                   <span>{pillar.buttonText}</span>
-                  <ArrowRight size={14} strokeWidth={2.4} />
+                  <ArrowRight size={14} strokeWidth={2.5} className="group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
 

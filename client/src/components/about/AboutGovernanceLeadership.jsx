@@ -3,19 +3,19 @@ import { founderImages } from '../../assets/founderImages';
 
 // Custom filled SVG icons matching the reference image 100%
 const ShieldCheckIcon = () => (
-  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#0F4C3A]" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#5B2E19]" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z" />
   </svg>
 );
 
 const FileTextIcon = () => (
-  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#0F4C3A]" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#5B2E19]" viewBox="0 0 24 24" fill="currentColor">
     <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
   </svg>
 );
 
 const UsersGroupIcon = () => (
-  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#0F4C3A]" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#5B2E19]" viewBox="0 0 24 24" fill="currentColor">
     {/* Center person */}
     <circle cx="12" cy="7" r="3" />
     <path d="M12 11.5c-2.8 0-5.2 1.4-5.2 3.5V17h10.4v-2c0-2.1-2.4-3.5-5.2-3.5z" />
@@ -29,13 +29,13 @@ const UsersGroupIcon = () => (
 );
 
 const GearSettingsIcon = () => (
-  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#0F4C3A]" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#5B2E19]" viewBox="0 0 24 24" fill="currentColor">
     <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
   </svg>
 );
 
 const LeavesSproutIcon = () => (
-  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#0F4C3A]" viewBox="0 0 24 24" fill="currentColor">
+  <svg className="w-8 h-8 md:w-9 md:h-9 text-[#5B2E19]" viewBox="0 0 24 24" fill="currentColor">
     {/* Stem */}
     <path d="M12 21a10 10 0 0 0 1-5v-6h-2v6a8 8 0 0 1-.8 3.5L12 21z" />
     {/* Left Leaf */}
@@ -108,8 +108,8 @@ const leaders = [
 const geographicLegend = [
   { label: 'North Central', color: 'bg-[#0F4C3A]' },
   { label: 'South West', color: 'bg-[#0F4C3A]' },
-  { label: 'South East', color: 'bg-[#EA580C]' },
-  { label: 'South South', color: 'bg-[#EA580C]' },
+  { label: 'South East', color: 'bg-[#FCCD37]' },
+  { label: 'South South', color: 'bg-[#FCCD37]' },
   { label: 'Core Focus States', color: 'bg-[#F59E0B]' },
   { label: 'Expansion States', color: 'bg-[#FDE68A]' },
 ];
@@ -128,12 +128,12 @@ const AboutGovernanceLeadership = () => {
           <div className="w-full lg:w-[38%] space-y-3.5">
             {/* Eyebrow & Title with Orange Accent Bar */}
             <div className="flex items-start gap-3">
-              <div className="w-[3.5px] h-12 md:h-14 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+              <div className="w-[3.5px] h-12 md:h-14 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-bold text-[#0F2B5B] uppercase tracking-wider mb-1">
+                <span className="block text-xs font-bold text-[#5B2E19] uppercase tracking-wider mb-1">
                   OUR GOVERNANCE
                 </span>
-                <h2 className="text-2xl md:text-[27px] font-bold text-[#0F2B5B] leading-tight tracking-tight">
+                <h2 className="text-2xl md:text-[27px] font-bold text-[#5B2E19] leading-tight tracking-tight">
                   Built on Trust and Accountability
                 </h2>
               </div>
@@ -150,7 +150,7 @@ const AboutGovernanceLeadership = () => {
             <div className="pt-1.5">
               <a
                 href="#governance-approach"
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#0F4C3A] text-[#0F4C3A] text-xs font-semibold hover:bg-[#0F4C3A] hover:text-white transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#5B2E19] text-[#5B2E19] text-xs font-bold hover:bg-[#5B2E19] hover:text-white transition-all duration-200"
               >
                 <span>Our Governance Approach</span>
                 <span className="text-sm font-bold leading-none">→</span>
@@ -171,7 +171,7 @@ const AboutGovernanceLeadership = () => {
                     <div className="h-11 flex items-center justify-center mb-2.5">
                       <IconComponent />
                     </div>
-                    <p className="text-xs md:text-[13px] font-semibold text-[#0F2B5B] leading-snug">
+                    <p className="text-xs md:text-[13px] font-semibold text-[#5B2E19] leading-snug">
                       <span className="block">{item.title1}</span>
                       <span className="block">{item.title2}</span>
                     </p>
@@ -193,12 +193,12 @@ const AboutGovernanceLeadership = () => {
             <div className="space-y-3.5">
               {/* Eyebrow & Title with Orange Accent Bar */}
               <div className="flex items-start gap-3">
-                <div className="w-[3.5px] h-12 md:h-14 bg-[#EA580C] rounded-full shrink-0 mt-0.5" />
+                <div className="w-[3.5px] h-12 md:h-14 bg-[#FCCD37] rounded-full shrink-0 mt-0.5" />
                 <div>
-                  <span className="block text-xs font-bold text-[#0F2B5B] uppercase tracking-wider mb-1">
+                  <span className="block text-xs font-bold text-[#5B2E19] uppercase tracking-wider mb-1">
                     OUR LEADERSHIP
                   </span>
-                  <h2 className="text-xl md:text-[23px] font-bold text-[#0F2B5B] leading-tight tracking-tight">
+                  <h2 className="text-xl md:text-[23px] font-bold text-[#5B2E19] leading-tight tracking-tight">
                     Guided by Experienced and Committed Leaders
                   </h2>
                 </div>
@@ -215,7 +215,7 @@ const AboutGovernanceLeadership = () => {
             <div className="pt-2">
               <a
                 href="#meet-leadership"
-                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#0F4C3A] text-[#0F4C3A] text-xs font-semibold hover:bg-[#0F4C3A] hover:text-white transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#5B2E19] text-[#5B2E19] text-xs font-bold hover:bg-[#5B2E19] hover:text-white transition-all duration-200"
               >
                 <span>Meet Our Leadership</span>
                 <span className="text-sm font-bold leading-none">→</span>
@@ -243,7 +243,7 @@ const AboutGovernanceLeadership = () => {
                   {/* Card Content & Role */}
                   <div className="p-3 pt-2.5 pb-3 flex flex-col justify-between flex-1 bg-white">
                     <div className="min-h-[38px]">
-                      <h4 className="text-[#0F4C3A] font-bold text-xs sm:text-[13px] leading-tight">
+                      <h4 className="text-[#5B2E19] font-bold text-xs sm:text-[13px] leading-tight">
                         {leader.role}
                       </h4>
                       {leader.subRole ? (
@@ -257,7 +257,7 @@ const AboutGovernanceLeadership = () => {
                     
                     {/* Bottom Left Arrow */}
                     <div className="mt-2.5 flex items-center">
-                      <span className="text-[#0F4C3A] text-sm font-bold leading-none group-hover:translate-x-1 transition-transform inline-block">
+                      <span className="text-[#5B2E19] text-sm font-bold leading-none group-hover:translate-x-1 transition-transform inline-block">
                         →
                       </span>
                     </div>
@@ -272,8 +272,8 @@ const AboutGovernanceLeadership = () => {
             <div>
               {/* Eyebrow with Orange Accent Bar */}
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-[3px] h-4 bg-[#EA580C] rounded-full shrink-0" />
-                <span className="text-xs font-bold text-[#0F2B5B] uppercase tracking-wider">
+                <div className="w-[3px] h-4 bg-[#FCCD37] rounded-full shrink-0" />
+                <span className="text-xs font-bold text-[#5B2E19] uppercase tracking-wider">
                   OUR GEOGRAPHIC FOCUS
                 </span>
               </div>

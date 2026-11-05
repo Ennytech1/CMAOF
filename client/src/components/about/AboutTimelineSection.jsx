@@ -52,10 +52,10 @@ const AboutTimelineSection = () => {
       step: '01',
       year: '2007',
       tag: 'Genesis',
-      tagBg: 'bg-emerald-50 text-[#0F4C3A] border-emerald-200/60',
-      yearColor: 'text-[#0F4C3A]',
-      accentBg: 'bg-[#0F4C3A]',
-      ringColor: 'ring-emerald-100',
+      tagBg: 'bg-[#EBF3FC] text-[#0047BA] border-[#0047BA]/30',
+      yearColor: 'text-[#0047BA]',
+      accentBg: 'bg-[#0047BA]',
+      ringColor: 'ring-blue-100',
       icon: <BookOpen size={20} strokeWidth={2.4} className="text-white" />,
       title: 'Elizade Ojo Educational Foundation',
       desc: 'Established by Chief Michael Ade.Ojo to support higher education, university scholarships, and human capital development across Nigeria.',
@@ -65,10 +65,10 @@ const AboutTimelineSection = () => {
       step: '02',
       year: '2015',
       tag: 'Expansion',
-      tagBg: 'bg-teal-50 text-[#054E3B] border-teal-200/60',
-      yearColor: 'text-[#054E3B]',
-      accentBg: 'bg-[#054E3B]',
-      ringColor: 'ring-teal-100',
+      tagBg: 'bg-[#EDF7EB] text-[#338C26] border-[#338C26]/30',
+      yearColor: 'text-[#338C26]',
+      accentBg: 'bg-[#338C26]',
+      ringColor: 'ring-green-100',
       icon: <Users size={20} strokeWidth={2.4} className="text-white" />,
       title: 'Expanding Impact & Community Reach',
       desc: 'Increased reach with substantial support for schools, infrastructure, community development programs, and youth empowerment.',
@@ -78,24 +78,24 @@ const AboutTimelineSection = () => {
       step: '03',
       year: '2021',
       tag: 'Historic Rebrand',
-      tagBg: 'bg-orange-50 text-[#EA580C] border-orange-200/60',
-      yearColor: 'text-[#EA580C]',
-      accentBg: 'bg-[#EA580C]',
-      ringColor: 'ring-orange-100',
+      tagBg: 'bg-[#FAF6EE] text-[#5B2E19] border-[#5B2E19]/30',
+      yearColor: 'text-[#5B2E19]',
+      accentBg: 'bg-[#5B2E19]',
+      ringColor: 'ring-amber-100',
       icon: <BranchingTreeIcon />,
       title: 'Chief Michael Ade.Ojo Foundation (CMAOF)',
       desc: 'Formally restructured with an expanded multi-pillar mandate: Education & Human Capital, Health & Well-being, and Community Resilience.',
-      highlight: 'Three Strategic Pillars',
+      highlight: 'Official Brand Restructure',
       isFeatured: true,
     },
     {
       step: '04',
       year: 'Today',
       tag: 'Current Mission',
-      tagBg: 'bg-blue-50 text-[#0F2B5B] border-blue-200/60',
-      yearColor: 'text-[#0F2B5B]',
-      accentBg: 'bg-[#0F2B5B]',
-      ringColor: 'ring-blue-100',
+      tagBg: 'bg-[#FFF8E5] text-[#996F00] border-[#FCCD37]/60',
+      yearColor: 'text-[#996F00]',
+      accentBg: 'bg-[#FCCD37]',
+      ringColor: 'ring-amber-200',
       icon: <BarChartIcon />,
       title: 'Stronger People. Brighter Communities.',
       desc: 'Continuing the founder’s legacy with nationwide reach, deeper measurable impact, and an unshakeable commitment to building a brighter Nigeria.',
@@ -105,20 +105,20 @@ const AboutTimelineSection = () => {
   ];
 
   return (
-    <section className="pt-3 sm:pt-4 pb-12 sm:pb-16 bg-gradient-to-b from-white via-slate-50/60 to-white font-sans">
+    <section className="pt-3 sm:pt-4 pb-12 sm:pb-16 bg-gradient-to-b from-white via-[#FAF6EE]/30 to-white font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ── Top Header with Provenance Badge ── */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-slate-200/80">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-8 border-b border-[#EFE8DC]">
           <div className="max-w-2xl space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-4 bg-[#EA580C] rounded-full shrink-0" />
-              <span className="text-xs sm:text-[13px] font-extrabold uppercase tracking-wider text-[#0F4C3A]">
+              <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0" />
+              <span className="text-xs sm:text-[13px] font-black uppercase tracking-wider text-[#5B2E19]">
                 OUR JOURNEY
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0F2B5B] tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#5B2E19] tracking-tight leading-tight">
               From a Bold Vision to a Broader Impact
             </h2>
 
@@ -128,8 +128,8 @@ const AboutTimelineSection = () => {
           </div>
 
           {/* Founder Provenance Citation Badge */}
-          <div className="inline-flex items-center gap-3.5 p-2 sm:p-2.5 pr-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm self-start lg:self-end">
-            <div className="w-11 h-11 rounded-xl overflow-hidden border-2 border-[#0F4C3A] shrink-0 bg-slate-100 shadow-xs">
+          <div className="inline-flex items-center gap-3.5 p-2 sm:p-2.5 pr-5 rounded-2xl bg-white border border-[#EFE8DC] shadow-xs self-start lg:self-end">
+            <div className="w-11 h-11 rounded-xl overflow-hidden border-2 border-[#5B2E19] shrink-0 bg-slate-100 shadow-xs">
               <img 
                 src={founderImages.founder7} 
                 alt="Chief Michael Ade.Ojo, OON" 
@@ -137,10 +137,10 @@ const AboutTimelineSection = () => {
               />
             </div>
             <div>
-              <span className="block text-xs sm:text-sm font-bold text-[#0F2B5B] leading-snug">
+              <span className="block text-xs sm:text-sm font-bold text-[#5B2E19] leading-snug">
                 Chief Michael Ade.Ojo, OON
               </span>
-              <span className="block text-[11px] font-semibold text-[#0F4C3A]">
+              <span className="block text-[11px] font-bold text-[#8C4A26]">
                 Founding Visionary (2007 – Present)
               </span>
             </div>

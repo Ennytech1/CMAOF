@@ -41,27 +41,27 @@ const ResourcesHero = () => {
           <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
             
             {/* 1. Breadcrumb navigation */}
-            <div className="flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-[#0F2B5B]">
-              <div className="w-1 h-3.5 bg-[#EA580C] rounded-full shrink-0" />
-              <Link to="/" className="hover:text-[#0F4C3A] transition-colors">
+            <div className="flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-[#5B2E19]">
+              <div className="w-1.5 h-3.5 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+              <Link to="/" className="hover:text-[#8C4A26] transition-colors">
                 Home
               </Link>
               <ChevronRight size={13} className="text-slate-400 stroke-[2.2]" />
-              <span className="text-[#0F2B5B]">Resources</span>
+              <span className="text-[#5B2E19] font-bold">Resources</span>
             </div>
 
             {/* 2. Category Eyebrow */}
             <div className="flex items-center gap-2 pt-0.5">
-              <div className="w-1 h-4 bg-[#EA580C] rounded-full shrink-0" />
-              <span className="text-xs sm:text-[12.5px] font-black uppercase tracking-wider text-[#0F4C3A]">
+              <div className="w-1.5 h-4 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+              <span className="text-xs sm:text-[12.5px] font-black uppercase tracking-wider text-[#5B2E19]">
                 RESOURCES LIBRARY
               </span>
             </div>
 
             {/* 3. Main Title */}
             <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black tracking-tight leading-[1.08]">
-              <span className="text-[#0F4C3A] block">Knowledge for a</span>
-              <span className="text-[#0F2B5B] block">Brighter Tomorrow.</span>
+              <span className="text-[#5B2E19] block">Knowledge for a</span>
+              <span className="bg-gradient-to-r from-[#8C4A26] to-[#5B2E19] bg-clip-text text-transparent block">Brighter Tomorrow.</span>
             </h1>
 
             {/* 4. Subtitle / Description */}
@@ -73,19 +73,19 @@ const ResourcesHero = () => {
 
           {/* ── Right Column: Floating Quote Card beside the Schoolgirl (col-span-5) ── */}
           <div className="lg:col-span-5 flex justify-start lg:justify-end items-center pt-4 lg:pt-0">
-            <div className="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xl shadow-slate-900/8 border border-slate-100/90 max-w-[220px] sm:max-w-[240px] space-y-2.5 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-              {/* Green double quotation icon */}
-              <div className="text-3xl font-serif font-black text-[#0F4C3A] leading-none select-none">
+            <div className="bg-white/95 backdrop-blur-xs rounded-2xl p-5 sm:p-6 shadow-xl shadow-slate-900/8 border border-[#5B2E19]/10 max-w-[220px] sm:max-w-[240px] space-y-2.5 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+              {/* Sun Yellow double quotation icon */}
+              <div className="text-3xl font-serif font-black text-[#FCCD37] leading-none select-none">
                 “
               </div>
               
               {/* Quotation text */}
-              <p className="text-xs sm:text-[13px] font-medium text-[#0F2B5B] leading-snug">
+              <p className="text-xs sm:text-[13px] font-bold text-[#5B2E19] leading-snug">
                 Knowledge inspires action and helps build a better future for all.
               </p>
               
-              {/* Orange bottom accent line */}
-              <div className="w-8 h-1 bg-[#EA580C] rounded-full pt-0.5" />
+              {/* Brand bottom accent line */}
+              <div className="w-8 h-1 bg-[#FCCD37] rounded-full pt-0.5" />
             </div>
           </div>
 

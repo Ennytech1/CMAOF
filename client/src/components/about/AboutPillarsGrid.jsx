@@ -7,13 +7,13 @@ const AboutPillarsGrid = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         
         {/* 1. OUR PURPOSE */}
-        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#EFE8DC] shadow-xs flex flex-col justify-between space-y-4 hover:shadow-xl hover:border-[#5B2E19]/40 transition-all hover:-translate-y-1">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(234, 88, 12, 0.12)', color: '#EA580C' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 border border-[#5B2E19]/25 shadow-xs" style={{ background: '#FAF6EE', color: '#5B2E19' }}>
                 <Target size={26} strokeWidth={2.4} />
               </div>
-              <h3 className="font-extrabold text-xs sm:text-[13px] uppercase tracking-wider text-[#0F4C3A] font-sans">
+              <h3 className="font-black text-xs sm:text-[13px] uppercase tracking-wider text-[#5B2E19] font-sans">
                 OUR PURPOSE
               </h3>
             </div>
@@ -24,13 +24,13 @@ const AboutPillarsGrid = () => {
         </div>
 
         {/* 2. OUR VISION */}
-        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#EFE8DC] shadow-xs flex flex-col justify-between space-y-4 hover:shadow-xl hover:border-[#FCCD37] transition-all hover:-translate-y-1">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(15, 76, 58, 0.12)', color: '#0F4C3A' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 border border-[#FCCD37]/50 shadow-xs" style={{ background: '#FFF8E5', color: '#D4A017' }}>
                 <Eye size={26} strokeWidth={2.4} />
               </div>
-              <h3 className="font-extrabold text-xs sm:text-[13px] uppercase tracking-wider text-[#0F4C3A] font-sans">
+              <h3 className="font-black text-xs sm:text-[13px] uppercase tracking-wider text-[#996F00] font-sans">
                 OUR VISION
               </h3>
             </div>
@@ -41,13 +41,13 @@ const AboutPillarsGrid = () => {
         </div>
 
         {/* 3. OUR MISSION */}
-        <div className="bg-[#F4F7FC]/80 rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-xs flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+        <div className="bg-[#FAF6EE]/50 rounded-2xl p-6 sm:p-7 border border-[#EFE8DC] shadow-xs flex flex-col justify-between space-y-4 hover:shadow-xl hover:border-[#338C26] transition-all hover:-translate-y-1">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ background: 'rgba(15, 43, 91, 0.12)', color: '#0F2B5B' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 border border-[#338C26]/30 shadow-xs" style={{ background: '#EDF7EB', color: '#338C26' }}>
                 <Mountain size={26} strokeWidth={2.4} />
               </div>
-              <h3 className="font-extrabold text-xs sm:text-[13px] uppercase tracking-wider text-[#0F2B5B] font-sans">
+              <h3 className="font-black text-xs sm:text-[13px] uppercase tracking-wider text-[#338C26] font-sans">
                 OUR MISSION
               </h3>
             </div>
@@ -58,33 +58,33 @@ const AboutPillarsGrid = () => {
         </div>
 
         {/* 4. OUR VALUES */}
-        <div className="bg-slate-50/90 rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div className="bg-white rounded-2xl p-6 sm:p-7 border border-[#EFE8DC] shadow-xs flex flex-col justify-between hover:shadow-xl hover:border-[#0047BA] transition-all hover:-translate-y-1">
           <div className="space-y-4">
-            <h3 className="font-extrabold text-xs sm:text-[13px] uppercase tracking-wider text-[#0F2B5B] font-sans text-center">
+            <h3 className="font-black text-xs sm:text-[13px] uppercase tracking-wider text-[#5B2E19] font-sans text-center">
               OUR VALUES
             </h3>
             
             <div className="grid grid-cols-3 gap-2 text-center items-start">
               {/* Dignity */}
               <div className="flex flex-col items-center gap-1.5">
-                <div className="w-9 h-9 rounded-full bg-emerald-100/90 text-[#0F4C3A] flex items-center justify-center shadow-xs">
-                  <HeartHandshake size={18} strokeWidth={2.3} />
+                <div className="w-9 h-9 rounded-full bg-[#EDF7EB] text-[#338C26] flex items-center justify-center shadow-xs border border-[#338C26]/20">
+                  <HeartHandshake size={18} strokeWidth={2.4} />
                 </div>
                 <span className="text-[11px] font-bold text-slate-800">Dignity</span>
               </div>
 
               {/* Compassion */}
               <div className="flex flex-col items-center gap-1.5 border-x border-slate-200/70 px-1">
-                <div className="w-9 h-9 rounded-full bg-orange-100/90 text-[#EA580C] flex items-center justify-center shadow-xs">
-                  <Heart size={18} className="fill-[#EA580C] text-[#EA580C]" strokeWidth={2.3} />
+                <div className="w-9 h-9 rounded-full bg-[#FFF8E5] text-[#D4A017] flex items-center justify-center shadow-xs border border-[#FCCD37]/30">
+                  <Heart size={18} className="fill-[#FCCD37] text-[#D4A017]" strokeWidth={2.4} />
                 </div>
                 <span className="text-[11px] font-bold text-slate-800">Compassion</span>
               </div>
 
               {/* Empowerment */}
               <div className="flex flex-col items-center gap-1.5">
-                <div className="w-9 h-9 rounded-full bg-blue-100/90 text-[#0F2B5B] flex items-center justify-center shadow-xs">
-                  <Users size={18} strokeWidth={2.3} />
+                <div className="w-9 h-9 rounded-full bg-[#EBF3FC] text-[#0047BA] flex items-center justify-center shadow-xs border border-[#0047BA]/20">
+                  <Users size={18} strokeWidth={2.4} />
                 </div>
                 <span className="text-[11px] font-bold text-slate-800">Empowerment</span>
               </div>

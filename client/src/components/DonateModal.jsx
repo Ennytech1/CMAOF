@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import {
   X, Heart, ShieldCheck, CheckCircle2, Lock,
   BookOpen, HeartPulse, Users, ArrowRight, Check,
-  RefreshCw, BadgeCheck, Receipt,
+  RefreshCw, BadgeCheck,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import CmaofLogo from './CmaofLogo';
@@ -17,40 +17,40 @@ const PILLARS = [
     label: 'Where Need is Greatest',
     shortLabel: 'General',
     icon: <Heart size={15} />,
-    activeBg: 'bg-emerald-50',
-    activeText: 'text-emerald-700',
-    activeBorder: 'border-emerald-400',
-    activeRing: 'ring-emerald-200',
+    activeBg: 'bg-[#FAF6EE]',
+    activeText: 'text-[#5B2E19]',
+    activeBorder: 'border-[#5B2E19]',
+    activeRing: 'ring-[#5B2E19]/20',
   },
   {
     id: 'education',
     label: 'Education & Human Capital',
     shortLabel: 'Education',
     icon: <BookOpen size={15} />,
-    activeBg: 'bg-blue-50',
-    activeText: 'text-blue-700',
-    activeBorder: 'border-blue-400',
-    activeRing: 'ring-blue-200',
+    activeBg: 'bg-[#EBF3FC]',
+    activeText: 'text-[#0047BA]',
+    activeBorder: 'border-[#0047BA]',
+    activeRing: 'ring-[#0047BA]/20',
   },
   {
     id: 'health',
     label: 'Health & Well-being',
     shortLabel: 'Health',
     icon: <HeartPulse size={15} />,
-    activeBg: 'bg-rose-50',
-    activeText: 'text-rose-700',
-    activeBorder: 'border-rose-400',
-    activeRing: 'ring-rose-200',
+    activeBg: 'bg-[#EDF7EB]',
+    activeText: 'text-[#338C26]',
+    activeBorder: 'border-[#338C26]',
+    activeRing: 'ring-[#338C26]/20',
   },
   {
     id: 'community',
     label: 'Community Resilience',
     shortLabel: 'Community',
     icon: <Users size={15} />,
-    activeBg: 'bg-amber-50',
-    activeText: 'text-amber-700',
-    activeBorder: 'border-amber-400',
-    activeRing: 'ring-amber-200',
+    activeBg: 'bg-[#FFF8E5]',
+    activeText: 'text-[#996F00]',
+    activeBorder: 'border-[#FCCD37]',
+    activeRing: 'ring-[#FCCD37]/30',
   },
 ];
 
@@ -64,20 +64,36 @@ const DonateModal = ({ isOpen, onClose }) => {
   const [donorName, setDonorName]       = useState('');
   const [donorEmail, setDonorEmail]     = useState('');
   const [isSubmitted, setIsSubmitted]   = useState(false);
-
-  if (!isOpen) return null;
+  const [txRef, setTxRef]               = useState('');
+  const [submissionDate, setSubmissionDate] = useState('');
 
   const rawAmount   = amount === 'custom' ? parseFloat(customAmount) || 0 : parseFloat(amount) || 0;
   const formatted   = '₦' + Number(rawAmount).toLocaleString('en-NG');
   const pillarObj   = PILLARS.find(p => p.id === pillar);
-  const txRef       = `CMAOF-${Date.now().toString().slice(-8)}`;
+
+  const handleClose = useCallback(() => {
+    setIsSubmitted(false);
+    setDonorName('');
+    setDonorEmail('');
+    setAmount('25000');
+    setCustomAmount('');
+    setTxRef('');
+    setSubmissionDate('');
+    onClose?.();
+  }, [onClose]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!rawAmount || rawAmount <= 0) { toast.error('Please enter a valid donation amount.'); return; }
     if (!donorEmail.trim() || !donorEmail.includes('@')) { toast.error('Please enter a valid email address.'); return; }
 
+    const currentTxRef = `CMAOF-${Date.now().toString().slice(-8)}`;
+    const formattedDate = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    setTxRef(currentTxRef);
+    setSubmissionDate(formattedDate);
+
     const recordDonation = async (resolvedRef) => {
+      const finalRef = resolvedRef || currentTxRef;
       try {
         await fetch('/api/donations', {
           method: 'POST',
@@ -90,7 +106,7 @@ const DonateModal = ({ isOpen, onClose }) => {
             donorName: isAnonymous ? 'Anonymous Supporter' : (donorName || 'Generous Supporter'),
             donorEmail: donorEmail.trim(),
             isAnonymous,
-            transactionRef: resolvedRef || txRef,
+            transactionRef: finalRef,
             paymentMethod: 'Paystack Card Online',
           }),
         });
@@ -98,6 +114,7 @@ const DonateModal = ({ isOpen, onClose }) => {
         console.warn('Backend sync notice (offline mode fallback active):', err.message);
       }
 
+      setTxRef(finalRef);
       setIsSubmitted(true);
       toast.success('Thank you for your donation to CMAOF!');
     };
@@ -110,7 +127,7 @@ const DonateModal = ({ isOpen, onClose }) => {
           email: donorEmail.trim(),
           amount: rawAmount * 100,
           currency: 'NGN',
-          ref: txRef,
+          ref: currentTxRef,
           metadata: {
             custom_fields: [
               { display_name: 'Donor Name', variable_name: 'donor_name', value: donorName || 'Supporter' },
@@ -118,32 +135,25 @@ const DonateModal = ({ isOpen, onClose }) => {
             ],
           },
           callback: (response) => {
-            recordDonation(response.reference || txRef);
+            recordDonation(response.reference || currentTxRef);
           },
           onClose: () => {
             toast('Payment modal closed', { icon: 'ℹ️' });
           },
         });
         handler.openIframe();
-      } catch (err) {
-        await recordDonation(txRef);
+      } catch {
+        await recordDonation(currentTxRef);
       }
     } else {
-      await recordDonation(txRef);
+      await recordDonation(currentTxRef);
     }
-  };
-
-  const handleClose = () => {
-    setIsSubmitted(false);
-    setDonorName('');
-    setDonorEmail('');
-    setAmount('25000');
-    setCustomAmount('');
-    onClose();
   };
 
   // Lock body scroll and handle Escape key
   useEffect(() => {
+    if (!isOpen) return;
+
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
@@ -156,9 +166,9 @@ const DonateModal = ({ isOpen, onClose }) => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [isOpen, handleClose]);
 
-  if (typeof document === 'undefined') return null;
+  if (!isOpen || typeof document === 'undefined') return null;
 
   return createPortal(
     <div 
@@ -173,13 +183,13 @@ const DonateModal = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
 
-        {/* Tricolor top accent bar */}
-        <div className="h-1.5 bg-gradient-to-r from-[#06402B] via-[#0B2D6E] to-[#EA580C]" />
+        {/* Official Brand Top Accent Bar */}
+        <div className="h-2 bg-gradient-to-r from-[#5B2E19] via-[#FCCD37] to-[#5B2E19]" />
 
         {/* Close */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-[#EA580C] rounded-full hover:bg-slate-100 transition-colors z-10 cursor-pointer"
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-[#5B2E19] rounded-full hover:bg-slate-100 transition-colors z-10 cursor-pointer"
           aria-label="Close modal"
         >
           <X size={18} />
@@ -196,17 +206,17 @@ const DonateModal = ({ isOpen, onClose }) => {
                 <div className="flex justify-center mb-3">
                   <CmaofLogo asLink={false} imgClassName="h-10 w-auto max-w-[200px] object-contain" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-black text-[#1e293b]">
+                <h3 className="text-xl sm:text-2xl font-black text-[#5B2E19]">
                   Support CMAOF Initiatives
                 </h3>
-                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   Your contribution directly creates pathways for education, healthcare,
                   and community resilience across Nigeria.
                 </p>
               </div>
 
               {/* Frequency toggle */}
-              <div className="grid grid-cols-2 p-1 bg-slate-100 rounded-2xl gap-1">
+              <div className="grid grid-cols-2 p-1 bg-[#FAF6EE] rounded-2xl gap-1 border border-[#EFE8DC]">
                 {[
                   { key: 'one-time',  icon: <Heart size={13} />,     label: 'One-Time Giving' },
                   { key: 'recurring', icon: <RefreshCw size={13} />, label: 'Monthly Partner' },
@@ -218,10 +228,10 @@ const DonateModal = ({ isOpen, onClose }) => {
                       type="button"
                       onClick={() => setFrequency(key)}
                       className={`flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer
-                        ${active ? 'bg-[#06402B] text-white shadow-md shadow-green-900/20' : 'text-slate-600 hover:text-slate-900'}
+                        ${active ? 'bg-[#5B2E19] text-[#FCCD37] shadow-md' : 'text-slate-600 hover:text-[#5B2E19]'}
                       `}
                     >
-                      {React.cloneElement(icon, { className: active ? 'text-white' : 'text-slate-400' })}
+                      {React.cloneElement(icon, { className: active ? 'text-[#FCCD37]' : 'text-slate-400' })}
                       {label}
                     </button>
                   );
@@ -275,12 +285,12 @@ const DonateModal = ({ isOpen, onClose }) => {
                           relative py-3 px-2 rounded-xl border-2 text-sm font-black text-center
                           transition-all cursor-pointer
                           ${active
-                            ? 'border-[#06402B] bg-[#eefbf4] text-[#06402B] ring-2 ring-[#06402B]/15'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-green-200 hover:bg-green-50/20'}
+                            ? 'border-[#FCCD37] bg-[#FFF8E5] text-[#5B2E19] ring-2 ring-[#FCCD37]/40 shadow-xs'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-[#FCCD37]/60 hover:bg-[#FAF6EE]/50'}
                         `}
                       >
                         {amt === '25000' && (
-                          <span className="absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#f97316] text-white text-[8px] font-black px-1.5 py-px rounded-full uppercase tracking-wide">
+                          <span className="absolute -top-2 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#5B2E19] text-[#FCCD37] text-[8px] font-black px-1.5 py-px rounded-full uppercase tracking-wide border border-[#FCCD37]/40">
                             Popular
                           </span>
                         )}
@@ -296,7 +306,7 @@ const DonateModal = ({ isOpen, onClose }) => {
                       py-3 px-2 rounded-xl border-2 text-sm font-black text-center
                       transition-all cursor-pointer
                       ${amount === 'custom'
-                        ? 'border-[#06402B] bg-[#eefbf4] text-[#06402B] ring-2 ring-[#06402B]/15'
+                        ? 'border-[#FCCD37] bg-[#FFF8E5] text-[#5B2E19] ring-2 ring-[#FCCD37]/40'
                         : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'}
                     `}
                   >
@@ -314,7 +324,7 @@ const DonateModal = ({ isOpen, onClose }) => {
                       onChange={e => setCustomAmount(e.target.value)}
                       placeholder="Enter custom amount"
                       autoFocus
-                      className="w-full pl-9 pr-4 py-3 rounded-xl border-2 border-[#06402B] bg-[#eefbf4] text-sm font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full pl-9 pr-4 py-3 rounded-xl border-2 border-[#5B2E19] bg-[#FAF6EE] text-sm font-bold text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#FCCD37]"
                       required
                     />
                   </div>
@@ -333,14 +343,14 @@ const DonateModal = ({ isOpen, onClose }) => {
                     value={donorName}
                     onChange={e => setDonorName(e.target.value)}
                     disabled={isAnonymous}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 disabled:opacity-50 transition-colors"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#FCCD37] disabled:opacity-50 transition-colors"
                   />
                   <input
                     type="email"
                     placeholder="Email Address *"
                     value={donorEmail}
                     onChange={e => setDonorEmail(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 transition-colors"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#FCCD37] transition-colors"
                     required
                   />
                 </div>
@@ -350,7 +360,7 @@ const DonateModal = ({ isOpen, onClose }) => {
                     id="anon-modal"
                     checked={isAnonymous}
                     onChange={e => setIsAnonymous(e.target.checked)}
-                    className="w-4 h-4 rounded accent-[#06402B] cursor-pointer"
+                    className="w-4 h-4 rounded accent-[#5B2E19] cursor-pointer"
                   />
                   <label htmlFor="anon-modal" className="text-xs text-slate-600 font-medium cursor-pointer group-hover:text-slate-800 transition-colors">
                     Make this an anonymous donation
@@ -362,17 +372,17 @@ const DonateModal = ({ isOpen, onClose }) => {
               <div className="space-y-3 pt-1 border-t border-slate-100">
                 <button
                   type="submit"
-                  className="w-full bg-[#06402B] hover:bg-[#042c1d] active:bg-[#031f15] text-white py-4 rounded-2xl font-black text-sm sm:text-base shadow-lg shadow-green-900/20 hover:shadow-xl hover:shadow-green-900/25 transition-all flex items-center justify-center gap-2.5 cursor-pointer group"
+                  className="w-full btn-cmao-primary py-4 rounded-2xl font-black text-sm sm:text-base shadow-lg shadow-[#FCCD37]/35 flex items-center justify-center gap-2.5 cursor-pointer group"
                 >
-                  <Heart size={16} className="fill-white/20 stroke-white" />
+                  <Heart size={16} className="fill-[#5B2E19]/30 stroke-[#5B2E19]" />
                   <span>Complete Donation — {formatted}</span>
                   <ArrowRight size={15} strokeWidth={2.5} className="group-hover:translate-x-0.5 transition-transform" />
                 </button>
                 <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                   {[
-                    { icon: <Lock size={11} className="text-[#06402B]" />, label: 'SSL Encrypted' },
-                    { icon: <ShieldCheck size={11} className="text-[#06402B]" />, label: 'Secure' },
-                    { icon: <BadgeCheck size={11} className="text-[#06402B]" />, label: 'Tax Deductible' },
+                    { icon: <Lock size={11} className="text-[#5B2E19]" />, label: 'SSL Encrypted' },
+                    { icon: <ShieldCheck size={11} className="text-[#338C26]" />, label: 'Secure' },
+                    { icon: <BadgeCheck size={11} className="text-[#0047BA]" />, label: 'Tax Deductible' },
                   ].map(({ icon, label }) => (
                     <div key={label} className="flex items-center gap-1 text-[11px] text-slate-500 font-semibold">
                       {icon}{label}
@@ -416,8 +426,8 @@ const DonateModal = ({ isOpen, onClose }) => {
               {/* Mini receipt */}
               <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-xs text-left max-w-sm mx-auto space-y-2">
                 {[
-                  ['Reference ID', txRef],
-                  ['Date', new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })],
+                  ['Reference ID', txRef || 'CMAOF-PENDING'],
+                  ['Date', submissionDate || 'Pending Confirmation'],
                   ['Purpose', pillarObj?.label || 'General'],
                   ...(donorEmail ? [['Receipt Sent To', donorEmail]] : []),
                 ].map(([k, v]) => (

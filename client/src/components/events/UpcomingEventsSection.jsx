@@ -22,15 +22,15 @@ const eventsData = INITIAL_EVENTS;
 
 // ── Filter Tabs matching top row icons & labels ──
 const filterTabs = [
-  { id: 'all', label: 'All Events', icon: CalendarIcon, color: '#06402B' },
-  { id: 'foundation', label: 'Foundation Events', icon: Star, color: '#1D4ED8' },
-  { id: 'education', label: 'Education Initiatives', icon: BookOpen, color: '#0B2D6E' },
-  { id: 'medical', label: 'Medical Outreaches', icon: HeartPulse, color: '#DC2626' },
-  { id: 'community', label: 'Community Activities', icon: Users, color: '#EA580C' },
-  { id: 'stakeholder', label: 'Stakeholder Meetings', icon: Briefcase, color: '#06402B' },
+  { id: 'all', label: 'All Events', icon: CalendarIcon, color: '#5B2E19' },
+  { id: 'foundation', label: 'Foundation Events', icon: Star, color: '#5B2E19' },
+  { id: 'education', label: 'Education Initiatives', icon: BookOpen, color: '#0047BA' },
+  { id: 'medical', label: 'Medical Outreaches', icon: HeartPulse, color: '#338C26' },
+  { id: 'community', label: 'Community Activities', icon: Users, color: '#FCCD37' },
+  { id: 'stakeholder', label: 'Stakeholder Meetings', icon: Briefcase, color: '#8C4A26' },
 ];
 
-const UpcomingEventsSection = ({ onOpenDonate }) => {
+const UpcomingEventsSection = () => {
   const [activeTab, setActiveTab] = useState('all');
   const [selectedEventForModal, setSelectedEventForModal] = useState(null);
   const [modalMode, setModalMode] = useState(null); // 'register' | 'details'
@@ -94,7 +94,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
   }, [selectedEventForModal]);
 
   return (
-    <section id="upcoming-events" className="w-full bg-[#F8FAFC] py-12 sm:py-16">
+    <section id="upcoming-events" className="w-full bg-[#FAF6EE]/40 py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         
         {/* ═══════════════════════════════════════════════════════════
@@ -112,14 +112,14 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2.5 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer shadow-xs select-none ${
                     isActive
-                      ? 'bg-[#06402B] text-white shadow-md scale-[1.02]'
-                      : 'bg-white text-[#0B2D6E] hover:bg-slate-100 hover:text-[#06402B] border border-slate-200/80'
+                      ? 'bg-[#5B2E19] text-[#FCCD37] shadow-md shadow-[#5B2E19]/25 scale-[1.02]'
+                      : 'bg-white text-slate-700 hover:bg-[#FAF6EE] hover:text-[#5B2E19] border border-slate-200/80'
                   }`}
                 >
                   <IconComponent
                     size={18}
                     strokeWidth={isActive ? 2.5 : 2.2}
-                    style={{ color: isActive ? '#FFFFFF' : tab.color }}
+                    style={{ color: isActive ? '#FCCD37' : tab.color }}
                     className="shrink-0"
                   />
                   <span>{tab.label}</span>
@@ -134,15 +134,15 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
             ═══════════════════════════════════════════════════════════ */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-2">
           
-          {/* Left: Orange Accent Bar + Title & Subtitle */}
+          {/* Left: Accent Bar + Title & Subtitle */}
           <div className="space-y-1">
             <div className="flex items-center gap-2.5">
-              <div className="w-[3.5px] h-6 bg-[#EA580C] rounded-xs shrink-0" />
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2D6E] tracking-tight">
+              <div className="w-[4px] h-6 bg-[#FCCD37] rounded-full shrink-0 shadow-xs" />
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#5B2E19] tracking-tight">
                 Upcoming Events
               </h2>
             </div>
-            <p className="text-slate-500 text-xs sm:text-sm font-medium pl-3.5">
+            <p className="text-slate-600 text-xs sm:text-sm font-medium pl-3.5">
               Be part of our upcoming events and initiatives.
             </p>
           </div>
@@ -150,7 +150,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
           {/* Right: View All Upcoming Events Link */}
           <button
             onClick={() => setActiveTab('all')}
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#06402B] hover:text-[#042D1E] transition-colors group cursor-pointer self-start sm:self-auto"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#5B2E19] hover:text-[#8C4A26] transition-colors group cursor-pointer self-start sm:self-auto"
           >
             <span>View All Upcoming Events</span>
             <ArrowRight size={15} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
@@ -191,11 +191,11 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                     />
 
                     {/* Floating Date Badge (Top-Left) */}
-                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs rounded-xl px-2.5 py-1.5 shadow-md border border-white/80 text-center select-none min-w-[56px]">
-                      <span className="block text-base sm:text-lg font-black text-[#06402B] leading-none">
+                    <div className="absolute top-3 left-3 bg-[#FAF6EE]/95 backdrop-blur-xs rounded-xl px-2.5 py-1.5 shadow-md border border-[#FCCD37]/30 text-center select-none min-w-[56px]">
+                      <span className="block text-base sm:text-lg font-black text-[#5B2E19] leading-none">
                         {event.dateDay}
                       </span>
-                      <span className="block text-[10px] font-extrabold uppercase text-slate-700 tracking-wider leading-none mt-1">
+                      <span className="block text-[10px] font-extrabold uppercase text-[#8C4A26] tracking-wider leading-none mt-1">
                         {event.dateMonthYear}
                       </span>
                     </div>
@@ -205,7 +205,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                   <div className="p-4 sm:p-5 space-y-3">
                     
                     {/* Title */}
-                    <h3 className="text-base sm:text-[17px] font-extrabold text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors line-clamp-2">
+                    <h3 className="text-base sm:text-[17px] font-extrabold text-[#5B2E19] leading-snug group-hover:text-[#8C4A26] transition-colors line-clamp-2">
                       {event.title}
                     </h3>
 
@@ -216,7 +216,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
 
                     {/* Location Pin */}
                     <div className="flex items-center gap-1.5 text-xs text-slate-700 pt-1">
-                      <MapPin size={14} className="text-[#DC2626] shrink-0" />
+                      <MapPin size={14} className="text-[#8C4A26] shrink-0" />
                       <span className="font-semibold truncate">{event.location}</span>
                     </div>
 
@@ -235,12 +235,11 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                   </div>
                 </div>
 
-                {/* ── Card Bottom: Solid Dark Green Action Button ── */}
+                {/* ── Card Bottom: Secondary Brand Action Button ── */}
                 <div className="p-4 sm:p-5 pt-0">
                   <button
                     onClick={() => handleOpenAction(event, event.buttonType)}
-                    className="w-full py-2.5 px-4 rounded-xl font-bold text-white text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-2 shadow-xs hover:shadow-md cursor-pointer hover:scale-[1.01] active:scale-95"
-                    style={{ backgroundColor: '#06402B' }}
+                    className="w-full py-2.5 px-4 rounded-xl font-bold btn-cmao-secondary text-xs sm:text-[13px] transition-all duration-200 flex items-center justify-center gap-2 shadow-xs hover:shadow-md cursor-pointer hover:scale-[1.01] active:scale-95"
                   >
                     <span>{event.buttonText}</span>
                     <ArrowRight size={14} strokeWidth={2.4} />
@@ -270,27 +269,27 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Tricolor top brand bar */}
-            <div className="h-1.5 bg-gradient-to-r from-[#06402B] via-[#0B2D6E] to-[#EA580C]" />
+            <div className="h-1.5 bg-gradient-to-r from-[#5B2E19] via-[#8C4A26] to-[#FCCD37]" />
             
             {/* Modal Header */}
-            <div className="relative h-40 bg-slate-900 overflow-hidden shrink-0">
+            <div className="relative h-40 bg-[#2B1309] overflow-hidden shrink-0">
               <img
                 src={selectedEventForModal.image}
                 alt={selectedEventForModal.title}
                 className="w-full h-full object-cover opacity-60"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2B1309] via-[#2B1309]/60 to-transparent" />
               
               <button
                 onClick={handleCloseModal}
-                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-[#EA580C] text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-[#5B2E19] text-white flex items-center justify-center transition-colors cursor-pointer"
                 aria-label="Close (Esc)"
               >
                 <X size={18} />
               </button>
 
               <div className="absolute bottom-4 left-5 right-5 text-white">
-                <span className="text-[11px] font-black uppercase tracking-wider text-[#D4AF37]">
+                <span className="text-[11px] font-black uppercase tracking-wider text-[#FCCD37]">
                   {selectedEventForModal.dateDay} {selectedEventForModal.dateMonthYear}
                 </span>
                 <h3 className="text-lg font-black leading-tight text-white mt-0.5">
@@ -303,13 +302,13 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
             <div className="p-6 overflow-y-auto space-y-5 flex-1 min-h-0">
               
               {/* Event Quick Details */}
-              <div className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs">
+              <div className="grid grid-cols-2 gap-3 p-3.5 rounded-2xl bg-[#FAF6EE]/60 border border-slate-200 text-xs">
                 <div className="flex items-center gap-2 text-slate-700">
-                  <MapPin size={15} className="text-[#EA580C] shrink-0" />
+                  <MapPin size={15} className="text-[#8C4A26] shrink-0" />
                   <span className="font-semibold truncate">{selectedEventForModal.location}</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-700">
-                  <Clock size={15} className="text-[#06402B] shrink-0" />
+                  <Clock size={15} className="text-[#5B2E19] shrink-0" />
                   <span className="font-semibold truncate">{selectedEventForModal.time}</span>
                 </div>
               </div>
@@ -322,22 +321,22 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
               {/* Form or Confirmation */}
               {modalMode === 'register' ? (
                 registrationSuccess ? (
-                  <div className="p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-2">
-                    <CheckCircle2 size={36} className="text-[#06402B] mx-auto" />
-                    <h4 className="text-sm font-extrabold text-[#06402B]">Registration Confirmed!</h4>
+                  <div className="p-5 rounded-2xl bg-[#FFF8E5] border border-[#FCCD37]/40 text-center space-y-2">
+                    <CheckCircle2 size={36} className="text-[#338C26] mx-auto" />
+                    <h4 className="text-sm font-extrabold text-[#5B2E19]">Registration Confirmed!</h4>
                     <p className="text-xs text-slate-600">
                       An event pass and invitation schedule have been sent to your email address.
                     </p>
                     <button
                       onClick={handleCloseModal}
-                      className="mt-3 px-5 py-2 rounded-xl bg-[#06402B] hover:bg-[#042A1D] text-white text-xs font-bold cursor-pointer transition-colors"
+                      className="mt-3 px-5 py-2 rounded-xl btn-cmao-primary text-xs font-bold cursor-pointer transition-colors"
                     >
                       Done
                     </button>
                   </div>
                 ) : (
                   <form onSubmit={handleRegisterSubmit} className="space-y-3.5 pt-1">
-                    <h4 className="text-xs font-extrabold text-[#0B2D6E] uppercase tracking-wider">
+                    <h4 className="text-xs font-extrabold text-[#5B2E19] uppercase tracking-wider">
                       Attendee Registration
                     </h4>
                     
@@ -349,7 +348,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                         placeholder="e.g. Adebayo Ogunlesi"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]"
+                        className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]"
                       />
                     </div>
 
@@ -362,7 +361,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                           placeholder="adebayo@example.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]"
+                          className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]"
                         />
                       </div>
                       <div>
@@ -372,14 +371,14 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                           placeholder="+234 800 000 0000"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]"
+                          className="w-full px-3.5 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]"
                         />
                       </div>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full py-3 rounded-xl bg-[#06402B] hover:bg-[#042D1E] text-white font-bold text-xs transition-all shadow-sm cursor-pointer"
+                      className="w-full py-3 rounded-xl btn-cmao-primary font-bold text-xs transition-all shadow-md shadow-[#FCCD37]/20 cursor-pointer"
                     >
                       Complete Free Registration
                     </button>
@@ -389,7 +388,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                 /* Learn More Details */
                 <div className="space-y-4 pt-1">
                   <div className="space-y-2">
-                    <h4 className="text-xs font-extrabold text-[#0B2D6E] uppercase tracking-wider">
+                    <h4 className="text-xs font-extrabold text-[#5B2E19] uppercase tracking-wider">
                       Event Highlights & Purpose
                     </h4>
                     <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
@@ -402,7 +401,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                   <div className="pt-2 flex items-center gap-3">
                     <button
                       onClick={() => setModalMode('register')}
-                      className="flex-1 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042D1E] text-white font-bold text-xs transition-all cursor-pointer text-center"
+                      className="flex-1 py-2.5 rounded-xl btn-cmao-primary font-bold text-xs transition-all cursor-pointer text-center"
                     >
                       Register to Attend
                     </button>
@@ -418,7 +417,7 @@ const UpcomingEventsSection = ({ onOpenDonate }) => {
                           toast.success('Event link copied to clipboard!');
                         }
                       }}
-                      className="p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 cursor-pointer"
+                      className="p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-[#FAF6EE] cursor-pointer"
                       title="Share Event"
                     >
                       <Share2 size={16} />
