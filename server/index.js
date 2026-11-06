@@ -27,6 +27,7 @@ const allowedOrigins = [
   'http://127.0.0.1:5174',
   'http://localhost:3000',
   process.env.CLIENT_URL,
+  process.env.ADMIN_URL,
 ].filter(Boolean);
 
 app.use(
@@ -98,6 +99,7 @@ app.use('/api/impact', require('./routes/impactRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/upload', require('./routes/uploadRoutes'));
 
 // Gateway Info
 app.get('/', (req, res) => {

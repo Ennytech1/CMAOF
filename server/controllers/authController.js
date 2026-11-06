@@ -104,27 +104,8 @@ exports.login = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse('Invalid email or password', 401));
   }
 
-  // If user is Admin or Staff, require Step 2 MFA
-  if (user.role === 'admin' || user.role === 'staff') {
-    const otpCode = '264810'; // Standard foundation demo OTP code
-    activeOtps.set(normalizedEmail, {
-      code: otpCode,
-      expiresAt: Date.now() + 10 * 60 * 1000,
-    });
-
-    return res.status(200).json({
-      success: true,
-      requireMfa: true,
-      email: user.email,
-      name: user.name,
-      role: user.role,
-      message: 'Step 1 verified. Please enter your 6-digit MFA verification code.',
-      demoOtpHint: otpCode,
-    });
-  }
-
-  // Standard donor / supporter login proceeds directly
-  sendTokenResponse(user, 200, res, { message: 'Login successful' });
+  // Direct authentication with signed JWT session token
+  sendTokenResponse(user, 200, res, { message: 'Authentication successful! Welcome to CMAOF Admin Portal.' });
 });
 
 // @desc    Verify 2FA / MFA OTP Code for Admin Portal

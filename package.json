@@ -4,8 +4,10 @@
   "description": "Chief Michael Ade.Ojo Foundation (CMAOF) Full-Stack Application",
   "scripts": {
     "dev:client": "npm run dev --prefix client",
+    "dev:admin": "npm run dev --prefix admin",
     "dev:server": "npm run dev --prefix server",
     "build:client": "npm run build --prefix client",
+    "build:admin": "npm run build --prefix admin",
     "start:server": "npm run start --prefix server"
   },
   "keywords": [

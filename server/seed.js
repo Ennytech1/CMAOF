@@ -30,13 +30,15 @@ const seedData = async () => {
     console.log('\x1b[33m%s\x1b[0m', '1. Seeding Admin & Staff Personnel...');
 
     const salt = await bcrypt.genSalt(10);
-    const adminPassword = await bcrypt.hash('admin123', salt);
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@cmaof.org';
+    const adminRawPass = process.env.ADMIN_PASSWORD || 'cmaof12@';
+    const adminPassword = await bcrypt.hash(adminRawPass, salt);
     const staffPassword = await bcrypt.hash('cmaof2026', salt);
 
     const users = [
       {
         name: 'Abiola Kabiru',
-        email: 'admin@cmaof.org',
+        email: adminEmail,
         password: adminPassword,
         role: 'admin',
       },

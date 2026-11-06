@@ -58,17 +58,6 @@ export const AuthProvider = ({ children }) => {
 
       const data = res.data;
 
-      // If MFA is required for admin/staff, return challenge payload without saving full token yet
-      if (data.requireMfa) {
-        return {
-          requireMfa: true,
-          email: data.email,
-          name: data.name,
-          role: data.role,
-          demoOtpHint: data.demoOtpHint,
-        };
-      }
-
       // Standard login
       if (data.token) {
         setToken(data.token);

@@ -22,17 +22,24 @@ import ResourcesPage from './pages/ResourcesPage';
 import ContactPage from './pages/ContactPage';
 import PoliciesPage from './pages/PoliciesPage';
 import DonatePage from './pages/DonatePage';
-import AdminLoginPage from './pages/AdminLoginPage';
-import AdminDashboard from './pages/AdminDashboard';
-import BeneficiaryProfilePage from './pages/BeneficiaryProfilePage';
-import RegisterBeneficiaryPage from './pages/RegisterBeneficiaryPage';
-import NeedsAssessmentPage from './pages/NeedsAssessmentPage';
-import ProgrammeDetailPage from './pages/ProgrammeDetailPage';
-import DonationsPage from './pages/DonationsPage';
-import ImpactDashboardPage from './pages/ImpactDashboardPage';
-import CaseTimelinePage from './pages/CaseTimelinePage';
 import FounderProfilePage from './pages/FounderProfilePage';
 import NotFoundPage from './pages/NotFoundPage';
+
+// Redirects /admin visitors to the dedicated Admin Portal Subdomain
+function AdminRedirect() {
+  useEffect(() => {
+    const adminUrl = import.meta.env.VITE_ADMIN_URL || 'http://localhost:5174';
+    window.location.href = adminUrl;
+  }, []);
+
+  return (
+    <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center bg-[#FAF6EE]/50 font-sans">
+      <div className="w-10 h-10 border-4 border-[#5B2E19]/20 border-t-[#5B2E19] rounded-full animate-spin mb-4" />
+      <h2 className="text-lg font-black text-[#5B2E19]">Redirecting to CMAOF Admin Portal...</h2>
+      <p className="text-xs text-slate-500 mt-1">Please wait while we transfer you to the secure management console.</p>
+    </div>
+  );
+}
 
 // Global Route Change Scroll-to-Top Handler
 function ScrollToTop() {
@@ -99,32 +106,9 @@ function AppContent() {
           <Route path="/policies" element={<PoliciesPage />} />
           <Route path="/donate" element={<DonatePage />} />
           
-          <Route path="/admin" element={<AdminLoginPage />} />
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard initialTab="dashboard" />} />
-          <Route path="/admin/beneficiaries" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-overview" />} />
-          <Route path="/admin/beneficiaries/directory" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-directory" />} />
-          <Route path="/admin/beneficiaries/assessment" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-assessments" />} />
-          <Route path="/admin/beneficiaries/assessments" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-assessments" />} />
-          <Route path="/admin/beneficiaries/cases" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-cases" />} />
-          <Route path="/admin/beneficiaries/register" element={<AdminDashboard initialTab="beneficiaries" initialSubItem="beneficiaries-register" />} />
-          <Route path="/admin/beneficiaries/:id/assessment" element={<NeedsAssessmentPage />} />
-          <Route path="/admin/beneficiaries/:id/cases" element={<CaseTimelinePage />} />
-          <Route path="/admin/beneficiaries/:id" element={<BeneficiaryProfilePage />} />
-          <Route path="/admin/programmes" element={<AdminDashboard initialTab="programmes" />} />
-          <Route path="/admin/programmes/:id" element={<ProgrammeDetailPage />} />
-          <Route path="/admin/donations" element={<AdminDashboard initialTab="donations" />} />
-          <Route path="/admin/impact" element={<AdminDashboard initialTab="impact" />} />
-          <Route path="/admin/communications" element={<AdminDashboard initialTab="communications" />} />
-          <Route path="/admin/events" element={<AdminDashboard initialTab="events" />} />
-          <Route path="/admin/resources" element={<AdminDashboard initialTab="resources" />} />
-          <Route path="/admin/media" element={<AdminDashboard initialTab="media" />} />
-          <Route path="/admin/reports" element={<AdminDashboard initialTab="reports" />} />
-          <Route path="/admin/users" element={<AdminDashboard initialTab="team" />} />
-          <Route path="/admin/team" element={<AdminDashboard initialTab="team" />} />
-          <Route path="/admin/approvals" element={<AdminDashboard initialTab="approvals" />} />
-          <Route path="/admin/audit" element={<AdminDashboard initialTab="audit" />} />
-          <Route path="/admin/settings" element={<AdminDashboard initialTab="settings" />} />
+          {/* Admin Portal Redirect (Routes to the separated Admin Subdomain) */}
+          <Route path="/admin" element={<AdminRedirect />} />
+          <Route path="/admin/*" element={<AdminRedirect />} />
           
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
