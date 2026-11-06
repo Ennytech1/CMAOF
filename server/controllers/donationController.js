@@ -133,35 +133,41 @@ exports.createDonation = asyncHandler(async (req, res, next) => {
 // @route   GET /api/donations/stats
 // @access  Public
 exports.getDonationStats = asyncHandler(async (req, res, next) => {
-  let totalRaised = 125000000; // Base historical seed (₦125M+)
-  let donorCount = 1420;
-  let recentDonations = [];
+  let dbDonations = [];
 
   if (isDbConnected()) {
-    const dbDonations = await Donation.find({ status: 'completed' });
-    const additionalAmount = dbDonations.reduce((sum, d) => sum + (d.amount || 0), 0);
-    totalRaised += additionalAmount;
-    donorCount += dbDonations.length;
-
-    recentDonations = await Donation.find({ status: 'completed' })
-      .sort({ createdAt: -1 })
-      .limit(6)
-      .select('amount pillar isAnonymous donorName createdAt');
+    dbDonations = await Donation.find({ status: 'completed' });
   } else {
-    const memDonations = await Donation.inMemory.find({ status: 'completed' });
-    const additionalAmount = memDonations.reduce((sum, d) => sum + (d.amount || 0), 0);
-    totalRaised += additionalAmount;
-    donorCount += memDonations.length;
-    recentDonations = memDonations.slice(0, 6);
+    dbDonations = await Donation.inMemory.find({ status: 'completed' });
   }
 
-  // Sanitise recent donors (mask anonymous)
-  const sanitizedRecent = recentDonations.map(d => ({
-    amount: d.amount,
-    pillar: d.pillar,
-    donorName: d.isAnonymous ? 'Anonymous Donor' : (d.donorName || 'Supporter'),
-    createdAt: d.createdAt,
-  }));
+  const totalRaised = dbDonations.reduce((sum, d) => sum + (d.amount || 0), 0);
+  const donorCount = new Set(dbDonations.map((d) => d.donorEmail || d.donorName)).size;
+
+  const recentDonations = dbDonations
+    .slice()
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 8)
+    .map((d) => ({
+      amount: d.amount,
+      pillar: d.pillar,
+      donorName: d.isAnonymous ? 'Anonymous Donor' : (d.donorName || 'Supporter'),
+      createdAt: d.createdAt,
+    }));
+
+  // Real pillar breakdown
+  const pillarTotals = {};
+  dbDonations.forEach((d) => {
+    const p = d.pillar || 'General Support';
+    pillarTotals[p] = (pillarTotals[p] || 0) + (d.amount || 0);
+  });
+
+  const pillarPercentages = {};
+  if (totalRaised > 0) {
+    for (const [key, val] of Object.entries(pillarTotals)) {
+      pillarPercentages[key] = `${Math.round((val / totalRaised) * 100)}%`;
+    }
+  }
 
   res.status(200).json({
     success: true,
@@ -169,13 +175,9 @@ exports.getDonationStats = asyncHandler(async (req, res, next) => {
       totalRaised,
       formattedTotal: `₦${totalRaised.toLocaleString('en-NG')}`,
       donorCount,
-      recentDonations: sanitizedRecent,
-      pillars: {
-        education: '45%',
-        healthcare: '30%',
-        community: '20%',
-        general: '5%',
-      },
+      donationCount: dbDonations.length,
+      recentDonations,
+      pillars: pillarPercentages,
     },
   });
 });

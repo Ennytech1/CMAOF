@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Calendar as CalendarIcon,
   Search,
@@ -252,12 +252,45 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
    MAIN ADMIN EVENTS SECTION
 ───────────────────────────────────────────────────────────────── */
 const AdminEventsSection = () => {
-  const [events, setEvents] = useState(INITIAL_EVENTS);
+  const [events, setEvents] = useState([]);
   const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'table'
   const [statusFilter, setStatusFilter] = useState('All');
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedEventDossier, setSelectedEventDossier] = useState(null);
+
+  // Fetch real database events on mount
+  useEffect(() => {
+    fetch('/api/events')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
+          const liveEvents = res.data.map((ev, idx) => ({
+            id: ev._id || ev.eventId || idx + 1,
+            title: ev.title,
+            image: ev.image || '/images/event_summit_stage.jpg',
+            dateDay: ev.dateDay || '15',
+            dateMonthYear: ev.dateMonthYear || 'APR 2026',
+            date: `${ev.dateDay || '15'} ${ev.dateMonthYear || 'APR 2026'}`,
+            time: ev.time || '09:00 AM – 04:30 PM WAT',
+            location: ev.location || 'Ilara-Mokin / Lagos, Nigeria',
+            category: ev.category === 'medical' ? 'Medical Outreach' : 'Flagship Assembly',
+            categoryId: ev.category || 'foundation',
+            capacity: ev.capacity || 500,
+            pillar: ev.category === 'medical' ? 'Health & Wellbeing' : 'Education & Opportunity',
+            leadCoordinator: 'Hauwa Bello',
+            description: ev.description || '',
+            status: ev.type === 'upcoming' ? 'Upcoming' : 'Completed',
+            tags: ev.tags || [
+              { label: 'Flagship Event', bg: 'bg-[#FAF0D4]', text: 'text-[#5B2E19]' },
+            ],
+            attendees: ev.attendees || [],
+          }));
+          setEvents(liveEvents);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // View state: 'events' | 'schedule'
   const [currentView, setCurrentView] = useState('events');
@@ -304,7 +337,7 @@ const AdminEventsSection = () => {
     });
   }, [events, searchQuery, statusFilter, categoryFilter]);
 
-  const handleCreateEvent = () => {
+  const handleCreateEvent = async () => {
     if (!newEvent.title.trim() || !newEvent.location.trim()) {
       toast.error('Please enter the event title and location');
       return;
@@ -334,6 +367,25 @@ const AdminEventsSection = () => {
       buttonType: newEvent.buttonType || 'register',
       attendees: [],
     };
+
+    try {
+      const token = localStorage.getItem('cmaof_admin_token');
+      const resp = await fetch('/api/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify(created),
+      });
+      const data = await resp.json().catch(() => null);
+      if (data && data.success && data.data) {
+        created._id = data.data._id;
+        created.id = data.data._id || created.id;
+      }
+    } catch (err) {
+      console.warn('Event API sync notice (offline mode active):', err.message);
+    }
 
     setEvents([created, ...events]);
     toast.success(`Event "${created.title}" successfully published to calendar!`);

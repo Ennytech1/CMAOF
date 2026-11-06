@@ -39,19 +39,20 @@ exports.subscribe = asyncHandler(async (req, res, next) => {
       message: 'Thank you for subscribing to CMAOF updates.',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 16px;">
-          <h2 style="color: #06402B;">Welcome to the CMAOF Community!</h2>
+          <h2 style="color: #5B2E19;">Welcome to the CMAOF Community!</h2>
           <p style="color: #475569; font-size: 14px; line-height: 1.6;">
             Thank you for subscribing to updates from the <strong>Chief Michael Ade.Ojo Foundation</strong>.
           </p>
           <p style="color: #475569; font-size: 14px; line-height: 1.6;">
             You will now receive regular stories on our community development milestones, scholarship programmes, healthcare outreaches, and upcoming events.
           </p>
-          <div style="background-color: #f0fdf4; border-radius: 12px; padding: 16px; margin: 20px 0;">
-            <p style="color: #06402B; font-weight: bold; margin: 0 0 6px 0;">Our Core Pillars:</p>
-            <ul style="color: #166534; font-size: 13px; margin: 0; padding-left: 20px;">
-              <li>Education & Human Capital Development</li>
-              <li>Healthcare & Medical Outreaches</li>
-              <li>Community Resilience & Water Infrastructure</li>
+          <div style="background-color: #FAF6EE; border-radius: 12px; padding: 16px; margin: 20px 0; border: 1px solid #EFE8DC;">
+            <p style="color: #5B2E19; font-weight: bold; margin: 0 0 6px 0;">Our Four Official Foundation Pillars:</p>
+            <ul style="color: #5B2E19; font-size: 13px; margin: 0; padding-left: 20px;">
+              <li><strong>Education & Opportunity:</strong> Learn → Develop → Excel</li>
+              <li><strong>Health & Wellbeing:</strong> Prevent → Treat → Restore</li>
+              <li><strong>Humanitarian Support:</strong> Relieve → Rebuild → Sustain</li>
+              <li><strong>Economic Empowerment:</strong> Empower → Produce → Thrive</li>
             </ul>
           </div>
           <p style="color: #94a3b8; font-size: 12px; margin-top: 24px;">

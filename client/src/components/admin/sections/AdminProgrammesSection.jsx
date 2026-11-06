@@ -33,7 +33,7 @@ import { PROGRAMMES_DATA, enrichProgrammeData } from '../../../data/programmesDa
 import ProgrammeRegistrationSection from './ProgrammeRegistrationSection';
 
 const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
-  const [programmes, setProgrammes] = useState(PROGRAMMES_DATA);
+  const [programmes, setProgrammes] = useState([]);
   const [selectedPillar, setSelectedPillar] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,30 +50,25 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
       .then((r) => (r.ok ? r.json() : null))
       .then((res) => {
         if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
-          setProgrammes((prev) => {
-            const existingSlugs = new Set(prev.map((p) => p.slug));
-            const newItems = res.data
-              .filter((p) => !existingSlugs.has(p.slug))
-              .map((p) => ({
-                id: p._id || p.id,
-                slug: p.slug,
-                name: p.name,
-                pillar: p.pillar,
-                status: p.status || 'Active',
-                thumbnail: p.thumbnail || '/images/past_event_school_support.jpg',
-                objective: p.objective,
-                locations: p.locations,
-                programmeManager: p.programmeManager,
-                budgetFormatted: p.budgetFormatted,
-                stats: {
-                  beneficiaries: (p.beneficiariesReached || 1200).toLocaleString(),
-                  communities: p.locationsCount || 12,
-                  schools: p.schoolsCount || 18,
-                  completionRate: `${p.percentageComplete || 75}%`,
-                },
-              }));
-            return [...newItems, ...prev];
-          });
+          const liveProgrammes = res.data.map((p, idx) => ({
+            id: p._id || p.id || idx + 1,
+            slug: p.slug,
+            name: p.name,
+            pillar: p.pillar,
+            status: p.status || 'Active',
+            thumbnail: p.thumbnail || '/images/past_event_school_support.jpg',
+            objective: p.objective,
+            locations: p.locations,
+            programmeManager: p.programmeManager,
+            budgetFormatted: p.budgetFormatted,
+            stats: {
+              beneficiaries: (p.beneficiariesReached || 0).toLocaleString(),
+              communities: p.locationsCount || 0,
+              schools: p.schoolsCount || 0,
+              completionRate: `${p.percentageComplete || 70}%`,
+            },
+          }));
+          setProgrammes(liveProgrammes);
         }
       })
       .catch(() => {});
@@ -81,9 +76,10 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
 
   const pillars = [
     { label: 'All', id: 'All' },
-    { label: 'Education & Human Capital', id: 'Education' },
-    { label: 'Health & Well-being', id: 'Health' },
-    { label: 'Community Resilience', id: 'Community' },
+    { label: 'Education & Opportunity', id: 'Education & Opportunity' },
+    { label: 'Health & Wellbeing', id: 'Health & Wellbeing' },
+    { label: 'Humanitarian Support', id: 'Humanitarian Support' },
+    { label: 'Economic Empowerment', id: 'Economic Empowerment' },
   ];
 
   // Helper to parse numeric budget for sorting

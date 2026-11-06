@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Users,
   Briefcase,
@@ -22,43 +22,84 @@ import { Link } from 'react-router-dom';
 const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
   const [selectedYear, setSelectedYear] = useState('2026');
   const [hoveredBar, setHoveredBar] = useState(null);
+  const [liveDonations, setLiveDonations] = useState([]);
 
-  // Monthly Donations Data for 2026
-  const monthlyData2026 = [
-    { month: 'Jan', value: 750, label: '₦750K' },
-    { month: 'Feb', value: 1280, label: '₦1.28M' },
-    { month: 'Mar', value: 1620, label: '₦1.62M' },
-    { month: 'Apr', value: 1580, label: '₦1.58M' },
-    { month: 'May', value: 2040, label: '₦2.04M' },
-    { month: 'Jun', value: 2850, label: '₦2.85M' },
-    { month: 'Jul', value: 2280, label: '₦2.28M' },
-    { month: 'Aug', value: 2750, label: '₦2.75M' },
-    { month: 'Sep', value: 3150, label: '₦3.15M' },
-    { month: 'Oct', value: 3780, label: '₦3.78M' },
-  ];
+  // Fetch real donations from API to power real monthly analytics
+  useEffect(() => {
+    fetch('/api/donations')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          setLiveDonations(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
-  const monthlyData2025 = [
-    { month: 'Jan', value: 520, label: '₦520K' },
-    { month: 'Feb', value: 890, label: '₦890K' },
-    { month: 'Mar', value: 1100, label: '₦1.10M' },
-    { month: 'Apr', value: 1350, label: '₦1.35M' },
-    { month: 'May', value: 1600, label: '₦1.60M' },
-    { month: 'Jun', value: 2100, label: '₦2.10M' },
-    { month: 'Jul', value: 1850, label: '₦1.85M' },
-    { month: 'Aug', value: 2200, label: '₦2.20M' },
-    { month: 'Sep', value: 2500, label: '₦2.50M' },
-    { month: 'Oct', value: 2900, label: '₦2.90M' },
-  ];
+  // Compute real monthly inflow from database
+  const activeMonthlyData = useMemo(() => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthlyTotals = {};
+    months.forEach((m) => (monthlyTotals[m] = 0));
 
-  const activeMonthlyData = selectedYear === '2026' ? monthlyData2026 : monthlyData2025;
-  const maxBarValue = 5000;
+    liveDonations.forEach((d) => {
+      const date = d.createdAt ? new Date(d.createdAt) : new Date();
+      if (date.getFullYear().toString() === selectedYear) {
+        const m = months[date.getMonth()];
+        monthlyTotals[m] = (monthlyTotals[m] || 0) + (Number(d.amount) || 0);
+      }
+    });
 
-  // 8 Executive Metric Cards Data aligned with CMAOF brand
+    return months.slice(0, 10).map((m) => {
+      const val = monthlyTotals[m] || 0;
+      let label = '₦0';
+      if (val >= 1000000) {
+        label = `₦${(val / 1000000).toFixed(1)}M`;
+      } else if (val >= 1000) {
+        label = `₦${(val / 1000).toFixed(0)}K`;
+      } else if (val > 0) {
+        label = `₦${val}`;
+      }
+      return {
+        month: m,
+        rawAmount: val,
+        value: val / 1000000, // scaled for chart in millions
+        label,
+      };
+    });
+  }, [liveDonations, selectedYear]);
+
+  const maxBarValue = useMemo(() => {
+    const max = Math.max(...activeMonthlyData.map((d) => d.value), 10);
+    return max * 1.15; // 15% headroom
+  }, [activeMonthlyData]);
+
+  // Pillar counts & percentages directly from real database
+  const totalBeneficiaries = stats?.totalBeneficiaries || 0;
+  const eduCount = stats?.pillarBreakdown?.['Education & Opportunity'] || 0;
+  const healthCount = stats?.pillarBreakdown?.['Health & Wellbeing'] || 0;
+  const humCount = stats?.pillarBreakdown?.['Humanitarian Support'] || 0;
+  const ecoCount = stats?.pillarBreakdown?.['Economic Empowerment'] || 0;
+
+  const totalCalculated = (eduCount + healthCount + humCount + ecoCount) || totalBeneficiaries || 1;
+  const eduPct = Math.round((eduCount / totalCalculated) * 100);
+  const healthPct = Math.round((healthCount / totalCalculated) * 100);
+  const humPct = Math.round((humCount / totalCalculated) * 100);
+  const ecoPct = Math.max(0, 100 - (eduPct + healthPct + humPct));
+
+  // Circumference = 2 * PI * 38 = 238.76
+  const CIRCUMFERENCE = 238.76;
+  const eduDash = (eduPct / 100) * CIRCUMFERENCE;
+  const healthDash = (healthPct / 100) * CIRCUMFERENCE;
+  const humDash = (humPct / 100) * CIRCUMFERENCE;
+  const ecoDash = (ecoPct / 100) * CIRCUMFERENCE;
+
+  // 8 Executive Metric Cards Data directly from live database
   const kpiCards = [
     {
       title: 'Total Beneficiaries',
-      value: stats?.totalBeneficiaries?.toLocaleString('en-US') || '12,480',
-      trend: '+12% annual expansion',
+      value: totalBeneficiaries > 0 ? totalBeneficiaries.toLocaleString('en-US') : '0',
+      trend: `${stats?.newRegistrations || 0} active records`,
       trendColor: 'text-[#338C26] font-bold',
       icon: <Users size={19} className="text-[#5B2E19]" />,
       bgIcon: 'bg-[#FAF0D4]',
@@ -66,7 +107,7 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
     },
     {
       title: 'Active Programmes',
-      value: stats?.activeProgrammes || 28,
+      value: stats?.activeProgrammes || 4,
       trend: '4 Strategic Pillars',
       trendColor: 'text-[#0047BA] font-bold',
       icon: <Briefcase size={19} className="text-[#0047BA]" />,
@@ -75,8 +116,8 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
     },
     {
       title: 'Health Interventions',
-      value: stats?.medicalInterventions?.toLocaleString('en-US') || '8,520',
-      trend: '+18% clinical reach',
+      value: healthCount > 0 ? healthCount.toLocaleString('en-US') : '0',
+      trend: `${healthPct}% of cohort`,
       trendColor: 'text-[#338C26] font-bold',
       icon: <Activity size={19} className="text-[#338C26]" />,
       bgIcon: 'bg-emerald-50',
@@ -84,8 +125,8 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
     },
     {
       title: 'Grants & Donations',
-      value: stats?.donationsReceived || '₦245.3M',
-      trend: '+21% endowment inflow',
+      value: stats?.donationsReceived || '₦0',
+      trend: `${stats?.donorCount || liveDonations.length} verified donors`,
       trendColor: 'text-[#8B5E00] font-bold',
       icon: <FileText size={19} className="text-[#8B5E00]" />,
       bgIcon: 'bg-amber-100/70',
@@ -93,8 +134,8 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
     },
     {
       title: 'Communities Reached',
-      value: stats?.communitiesReached || 86,
-      trend: '36 States & FCT targeted',
+      value: stats?.communitiesReached || 8,
+      trend: 'Ondo, Kano, Lagos, Niger',
       trendColor: 'text-[#5B2E19] font-bold',
       icon: <Building size={19} className="text-[#5B2E19]" />,
       bgIcon: 'bg-[#FAF0D4]',
@@ -102,79 +143,30 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
     },
     {
       title: 'Scholarships Awarded',
-      value: stats?.scholarships?.toLocaleString('en-US') || '2,340',
-      trend: '100% tuition coverage',
+      value: eduCount > 0 ? eduCount.toLocaleString('en-US') : '0',
+      trend: `${eduPct}% education focus`,
       trendColor: 'text-[#0047BA] font-bold',
       icon: <GraduationCap size={19} className="text-[#0047BA]" />,
       bgIcon: 'bg-blue-50',
       cardBg: 'bg-white',
     },
     {
-      title: 'Open Field Cases',
-      value: stats?.openCases || 312,
-      trend: 'Active caseworker follow-up',
+      title: 'Active Field Cases',
+      value: stats?.activeCases || 0,
+      trend: 'Caseworker supervised',
       trendColor: 'text-amber-700 font-bold',
       icon: <Layers size={19} className="text-amber-700" />,
       bgIcon: 'bg-amber-50',
       cardBg: 'bg-white',
     },
     {
-      title: 'Pending Approvals',
-      value: stats?.pendingApprovals || 7,
-      trend: 'Awaiting director review',
-      trendColor: 'text-rose-600 font-black',
-      icon: <Bell size={19} className="text-rose-600" />,
-      bgIcon: 'bg-rose-50',
+      title: 'Pending Reviews',
+      value: stats?.pendingAssessments || 0,
+      trend: 'Needs assessment pipeline',
+      trendColor: 'text-[#5B2E19] font-bold',
+      icon: <Bell size={19} className="text-[#5B2E19]" />,
+      bgIcon: 'bg-[#FAF0D4]',
       cardBg: 'bg-white',
-    },
-  ];
-
-  // 4 Official Strategic Pillars Data (Matching Brand Identity Image)
-  const pillars = [
-    {
-      id: 'education',
-      title: 'Education & Opportunity',
-      tagline: 'Learn → Develop → Excel',
-      description: 'Scholarships, academic infrastructure, and technical skill development across Nigeria.',
-      color: '#0047BA',
-      icon: BookOpen,
-      iconBg: 'bg-[#0047BA]',
-      pillBg: 'bg-blue-50 text-[#0047BA]',
-      route: '/our-work/education',
-    },
-    {
-      id: 'health',
-      title: 'Health & Wellbeing',
-      tagline: 'Prevent → Treat → Restore',
-      description: 'Primary care access, maternal welfare, medical outreach, and disease prevention.',
-      color: '#338C26',
-      icon: Heart,
-      iconBg: 'bg-[#338C26]',
-      pillBg: 'bg-emerald-50 text-[#338C26]',
-      route: '/our-work/health',
-    },
-    {
-      id: 'humanitarian',
-      title: 'Humanitarian Support',
-      tagline: 'Relieve → Rebuild → Sustain',
-      description: 'Emergency relief, food security, social safety nets, and community resilience.',
-      color: '#5B2E19',
-      icon: Users,
-      iconBg: 'bg-[#5B2E19]',
-      pillBg: 'bg-[#FAF0E6] text-[#5B2E19]',
-      route: '/our-work/humanitarian-support',
-    },
-    {
-      id: 'economic',
-      title: 'Economic Empowerment',
-      tagline: 'Empower → Produce → Thrive',
-      description: 'Vocational trades, micro-credit, enterprise acceleration, and youth entrepreneurship.',
-      color: '#FCCD37',
-      icon: TrendingUp,
-      iconBg: 'bg-[#FCCD37]',
-      iconText: 'text-[#3D1E10]',
-      pillBg: 'bg-amber-50 text-[#7A4F00]',
-      route: '/our-work/economic-empowerment',
     },
   ];
 
@@ -206,85 +198,7 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
       </div>
 
       {/* ─────────────────────────────────────────────────────────────
-          2. STRATEGIC IMPACT AREAS: FOUR OFFICIAL FOUNDATION PILLARS
-             (Directly inspired by the official CMAOF Brand Design)
-      ───────────────────────────────────────────────────────────── */}
-      <div className="bg-[#FAF6EE]/70 rounded-2xl p-5 sm:p-6 border border-[#E8DEC2] shadow-2xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-4 border-b border-[#E8DEC2]">
-          <div className="flex items-center gap-3">
-            <span className="w-1.5 h-9 rounded-full bg-[#FCCD37]" />
-            <div>
-              <p className="text-[11px] font-black uppercase tracking-wider text-[#5B2E19]/70">Strategic Impact Areas</p>
-              <h2 className="text-lg sm:text-xl font-black text-[#3D1E10] tracking-tight">
-                Four Official Foundation Pillars
-              </h2>
-            </div>
-          </div>
-          <Link
-            to="/our-work"
-            target="_blank"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-[#E8DEC2] text-xs font-bold text-[#5B2E19] hover:bg-[#FAF0D4] transition-colors self-start sm:self-auto shadow-2xs"
-          >
-            <span>Framework Overview</span>
-            <ArrowRight size={13} />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.id}
-                className="bg-white rounded-2xl p-4.5 sm:p-5 border border-[#E8DEC2] hover:border-[#5B2E19]/40 hover:shadow-sm transition-all duration-200 group flex items-start gap-4"
-              >
-                <div
-                  className={`w-12 h-12 rounded-xl ${pillar.iconBg} ${pillar.iconText || 'text-white'} flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform`}
-                >
-                  <Icon size={22} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-sm sm:text-base font-extrabold text-[#3D1E10] truncate">
-                      {pillar.title}
-                    </h3>
-                    <ArrowRight
-                      size={14}
-                      className="text-[#5B2E19]/40 group-hover:text-[#5B2E19] group-hover:translate-x-0.5 transition-all shrink-0"
-                    />
-                  </div>
-                  <div className="mt-1">
-                    <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wide ${pillar.pillBg}`}>
-                      {pillar.tagline}
-                    </span>
-                  </div>
-                  <p className="text-xs text-[#5B2E19]/75 mt-2 line-clamp-2 leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-5 pt-3.5 border-t border-[#E8DEC2] flex flex-col sm:flex-row sm:items-center justify-between text-xs text-[#5B2E19]/70 gap-2">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#338C26]" />
-            <span className="font-semibold">Structured for generational impact across Nigeria</span>
-          </div>
-          <Link
-            to="/our-work"
-            target="_blank"
-            className="text-[#5B2E19] font-bold hover:underline flex items-center gap-1"
-          >
-            <span>Explore Strategic Framework</span>
-            <ArrowRight size={13} />
-          </Link>
-        </div>
-      </div>
-
-      {/* ─────────────────────────────────────────────────────────────
-          3. 8 EXECUTIVE KPI CARDS
+          2. 8 EXECUTIVE KPI CARDS
       ───────────────────────────────────────────────────────────── */}
       <div>
         <div className="flex items-center justify-between mb-3 px-1">
@@ -339,7 +253,7 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
               <div className="relative w-44 h-44 shrink-0 flex items-center justify-center">
                 <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="38" fill="none" stroke="#FAF6EE" strokeWidth="16" />
-                  {/* Education: 42% = 100.27 of 238.76 */}
+                  {/* Education & Opportunity */}
                   <circle
                     cx="50"
                     cy="50"
@@ -347,10 +261,10 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                     fill="none"
                     stroke="#0047BA"
                     strokeWidth="16"
-                    strokeDasharray="100.27 238.76"
+                    strokeDasharray={`${eduDash} 238.76`}
                     strokeDashoffset="0"
                   />
-                  {/* Health: 33% = 78.79 */}
+                  {/* Health & Wellbeing */}
                   <circle
                     cx="50"
                     cy="50"
@@ -358,10 +272,10 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                     fill="none"
                     stroke="#338C26"
                     strokeWidth="16"
-                    strokeDasharray="78.79 238.76"
-                    strokeDashoffset="-100.27"
+                    strokeDasharray={`${healthDash} 238.76`}
+                    strokeDashoffset={`-${eduDash}`}
                   />
-                  {/* Humanitarian: 15% = 35.81 */}
+                  {/* Humanitarian Support */}
                   <circle
                     cx="50"
                     cy="50"
@@ -369,10 +283,10 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                     fill="none"
                     stroke="#5B2E19"
                     strokeWidth="16"
-                    strokeDasharray="35.81 238.76"
-                    strokeDashoffset="-179.06"
+                    strokeDasharray={`${humDash} 238.76`}
+                    strokeDashoffset={`-${eduDash + healthDash}`}
                   />
-                  {/* Economic: 10% = 23.88 */}
+                  {/* Economic Empowerment */}
                   <circle
                     cx="50"
                     cy="50"
@@ -380,13 +294,15 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                     fill="none"
                     stroke="#FCCD37"
                     strokeWidth="16"
-                    strokeDasharray="23.88 238.76"
-                    strokeDashoffset="-214.87"
+                    strokeDasharray={`${ecoDash} 238.76`}
+                    strokeDashoffset={`-${eduDash + healthDash + humDash}`}
                   />
                 </svg>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                  <span className="text-lg sm:text-xl font-black text-[#3D1E10] leading-tight">12,480</span>
+                  <span className="text-lg sm:text-xl font-black text-[#3D1E10] leading-tight">
+                    {totalBeneficiaries}
+                  </span>
                   <span className="text-[10px] font-bold text-[#5B2E19]/60 uppercase tracking-wider">Total Active</span>
                 </div>
               </div>
@@ -396,7 +312,9 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                   <span className="w-3 h-3 rounded-full bg-[#0047BA] mt-1 shrink-0" />
                   <div>
                     <p className="text-xs font-bold text-[#3D1E10] leading-tight">Education & Opportunity</p>
-                    <p className="text-xs font-extrabold text-[#0047BA] mt-0.5">5,240 <span className="text-[#5B2E19]/50 font-medium">(42%)</span></p>
+                    <p className="text-xs font-extrabold text-[#0047BA] mt-0.5">
+                      {eduCount} <span className="text-[#5B2E19]/50 font-medium">({eduPct}%)</span>
+                    </p>
                   </div>
                 </div>
 
@@ -404,7 +322,9 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                   <span className="w-3 h-3 rounded-full bg-[#338C26] mt-1 shrink-0" />
                   <div>
                     <p className="text-xs font-bold text-[#3D1E10] leading-tight">Health & Wellbeing</p>
-                    <p className="text-xs font-extrabold text-[#338C26] mt-0.5">4,120 <span className="text-[#5B2E19]/50 font-medium">(33%)</span></p>
+                    <p className="text-xs font-extrabold text-[#338C26] mt-0.5">
+                      {healthCount} <span className="text-[#5B2E19]/50 font-medium">({healthPct}%)</span>
+                    </p>
                   </div>
                 </div>
 
@@ -412,7 +332,9 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                   <span className="w-3 h-3 rounded-full bg-[#5B2E19] mt-1 shrink-0" />
                   <div>
                     <p className="text-xs font-bold text-[#3D1E10] leading-tight">Humanitarian Support</p>
-                    <p className="text-xs font-extrabold text-[#5B2E19] mt-0.5">1,870 <span className="text-[#5B2E19]/50 font-medium">(15%)</span></p>
+                    <p className="text-xs font-extrabold text-[#5B2E19] mt-0.5">
+                      {humCount} <span className="text-[#5B2E19]/50 font-medium">({humPct}%)</span>
+                    </p>
                   </div>
                 </div>
 
@@ -420,7 +342,9 @@ const AdminOverviewSection = ({ stats, onNavigateToBeneficiaries }) => {
                   <span className="w-3 h-3 rounded-full bg-[#FCCD37] mt-1 shrink-0" />
                   <div>
                     <p className="text-xs font-bold text-[#3D1E10] leading-tight">Economic Empowerment</p>
-                    <p className="text-xs font-extrabold text-[#8B5E00] mt-0.5">1,250 <span className="text-[#5B2E19]/50 font-medium">(10%)</span></p>
+                    <p className="text-xs font-extrabold text-[#8B5E00] mt-0.5">
+                      {ecoCount} <span className="text-[#5B2E19]/50 font-medium">({ecoPct}%)</span>
+                    </p>
                   </div>
                 </div>
               </div>

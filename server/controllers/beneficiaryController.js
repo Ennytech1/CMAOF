@@ -269,26 +269,28 @@ exports.getBeneficiaryStats = asyncHandler(async (req, res, next) => {
   }
 
   const total = list.length;
-  const activeCases = list.filter((b) => b.caseTag === 'Active').length;
+  const activeCases = list.filter((b) => b.status === 'Active' || b.caseTag === 'Active').length;
   const pendingAssessments = list.filter((b) => b.status === 'Assessment' || b.caseTag === 'Pending Assessment').length;
-  const followUpDue = list.filter((b) => b.caseTag === 'Follow-up Due').length;
+  const followUpDue = list.filter((b) => b.caseTag === 'Follow-up Due' || b.status === 'Follow-up').length;
+  const openReferrals = list.filter((b) => b.status === 'Referral').length;
 
   const pillarBreakdown = {
-    Education: list.filter((b) => b.pillar === 'Education').length,
-    Healthcare: list.filter((b) => b.pillar === 'Healthcare').length,
-    Community: list.filter((b) => b.pillar === 'Community').length,
+    'Education & Opportunity': list.filter((b) => (b.pillar || '').toLowerCase().includes('education')).length,
+    'Health & Wellbeing': list.filter((b) => (b.pillar || '').toLowerCase().includes('health')).length,
+    'Humanitarian Support': list.filter((b) => (b.pillar || '').toLowerCase().includes('humanitarian') || (b.pillar || '').toLowerCase().includes('community')).length,
+    'Economic Empowerment': list.filter((b) => (b.pillar || '').toLowerCase().includes('economic')).length,
   };
 
   res.status(200).json({
     success: true,
     data: {
-      totalBeneficiaries: 12480 + total,
-      activeCases: 3260 + activeCases,
-      newRegistrations: 1245 + total,
-      pendingAssessments: 320 + pendingAssessments,
-      openReferrals: 186,
-      completedInterventions: 4820,
-      measuredOutcomes: 3960,
+      totalBeneficiaries: total,
+      activeCases,
+      newRegistrations: total,
+      pendingAssessments,
+      openReferrals,
+      completedInterventions: list.reduce((acc, b) => acc + (b.interventionsHistory?.length || 1), 0),
+      measuredOutcomes: list.filter((b) => b.outcomesSummary).length,
       followUpDue,
       pillarBreakdown,
     },

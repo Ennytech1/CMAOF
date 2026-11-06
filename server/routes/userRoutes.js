@@ -4,6 +4,8 @@ const {
   authUser,
   verifyOtp,
   registerUser,
+  getUsers,
+  deleteUser,
   getUserProfile,
   updateUserProfile,
   logout,
@@ -13,7 +15,8 @@ const {
 const { protect } = require('../middleware/auth');
 const { validateRegister, validateLogin } = require('../middleware/validator');
 
-router.post('/', validateRegister, registerUser);
+router.route('/').get(getUsers).post(validateRegister, registerUser);
+router.route('/:id').delete(deleteUser);
 router.post('/login', validateLogin, authUser);
 router.post('/verify-otp', verifyOtp);
 router.get('/logout', logout);

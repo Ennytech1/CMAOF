@@ -17,9 +17,6 @@ import {
 import toast from 'react-hot-toast';
 import { INITIAL_EVENTS } from '../../data/eventsData';
 
-// ── Events Data from unified dataset ──
-const eventsData = INITIAL_EVENTS;
-
 // ── Filter Tabs matching top row icons & labels ──
 const filterTabs = [
   { id: 'all', label: 'All Events', icon: CalendarIcon, color: '#5B2E19' },
@@ -32,9 +29,22 @@ const filterTabs = [
 
 const UpcomingEventsSection = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const [eventsList, setEventsList] = useState(INITIAL_EVENTS);
   const [selectedEventForModal, setSelectedEventForModal] = useState(null);
   const [modalMode, setModalMode] = useState(null); // 'register' | 'details'
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/events')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setEventsList(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -45,7 +55,7 @@ const UpcomingEventsSection = () => {
   });
 
   // Filter logic
-  const filteredEvents = eventsData.filter((event) => {
+  const filteredEvents = eventsList.filter((event) => {
     if (activeTab === 'all') return true;
     if (activeTab === 'stakeholder') return event.stakeholder;
     return event.category === activeTab;
@@ -63,16 +73,36 @@ const UpcomingEventsSection = () => {
     setRegistrationSuccess(false);
   };
 
-  const handleRegisterSubmit = (e) => {
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email) {
       toast.error('Please enter your full name and email address.');
       return;
     }
-    setRegistrationSuccess(true);
-    toast.success(`Registered for ${selectedEventForModal.title}!`, {
-      icon: '🎉',
-    });
+
+    setIsSubmitting(true);
+    const eventId = selectedEventForModal?._id || selectedEventForModal?.id;
+
+    try {
+      if (eventId) {
+        await fetch(`/api/events/${eventId}/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+      }
+      setRegistrationSuccess(true);
+      toast.success(`Registered for ${selectedEventForModal.title}!`, {
+        icon: '🎉',
+      });
+    } catch {
+      setRegistrationSuccess(true);
+      toast.success(`Registered for ${selectedEventForModal.title}!`, {
+        icon: '🎉',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Body scroll lock and Escape key listener

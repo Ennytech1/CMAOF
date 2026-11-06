@@ -219,11 +219,22 @@ const ResourcesPage = ({ onOpenDonate }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [activeDossierResource, setActiveDossierResource] = useState(null);
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    if (newsletterEmail.trim()) {
+    if (newsletterEmail.trim() && newsletterEmail.includes('@')) {
+      try {
+        await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: newsletterEmail.trim(), source: 'resources_page' }),
+        });
+      } catch (err) {
+        console.warn('Newsletter submission notice:', err.message);
+      }
       toast.success('Thank you for subscribing to CMAOF Resources & Publications!');
       setNewsletterEmail('');
+    } else {
+      toast.error('Please enter a valid email address.');
     }
   };
 

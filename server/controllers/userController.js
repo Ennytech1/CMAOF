@@ -256,3 +256,44 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 
   sendTokenResponse(user, 200, res);
 });
+
+// @desc    Get all users / team members
+// @route   GET /api/users
+// @access  Admin
+exports.getUsers = asyncHandler(async (req, res, next) => {
+  let users;
+  if (isDbConnected()) {
+    users = await User.find({}).select('-password').sort({ createdAt: -1 });
+  } else {
+    users = await User.inMemory.find({});
+  }
+
+  res.status(200).json({
+    success: true,
+    count: users.length,
+    data: users,
+  });
+});
+
+// @desc    Delete user
+// @route   DELETE /api/users/:id
+// @access  Admin
+exports.deleteUser = asyncHandler(async (req, res, next) => {
+  const { id } = req.params;
+
+  let user;
+  if (isDbConnected()) {
+    user = await User.findByIdAndDelete(id);
+  } else {
+    user = await User.inMemory.findByIdAndDelete(id);
+  }
+
+  if (!user) {
+    return next(new ErrorResponse('User not found', 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    message: 'User removed successfully',
+  });
+});

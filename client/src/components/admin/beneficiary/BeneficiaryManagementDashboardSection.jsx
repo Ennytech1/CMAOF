@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   User,
@@ -22,82 +22,102 @@ import {
   Eye,
 } from 'lucide-react';
 
-const RECENT_REGISTRATIONS = [
-  {
-    id: 'B-2026-001',
-    name: 'Aisha Mohammed',
-    pillar: 'Education',
-    location: 'Kano',
-    type: 'Student',
-    date: '06 Oct 2026',
-    status: 'Assessment',
-    statusClass: 'bg-amber-100 text-amber-800 font-bold',
-    pillarClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60',
-  },
-  {
-    id: 'B-2026-002',
-    name: 'Chinedu Okafor',
-    pillar: 'Health',
-    location: 'Lagos',
-    type: 'Individual',
-    date: '06 Oct 2026',
-    status: 'New',
-    statusClass: 'bg-sky-100 text-sky-800 font-bold',
-    pillarClass: 'bg-rose-50 text-rose-600 border border-rose-200/60',
-  },
-  {
-    id: 'B-2026-003',
-    name: 'Fatima Yusuf',
-    pillar: 'Community',
-    location: 'Kaduna',
-    type: 'Household',
-    date: '05 Oct 2026',
-    status: 'Active',
-    statusClass: 'bg-emerald-100 text-emerald-800 font-bold',
-    pillarClass: 'bg-amber-50 text-amber-700 border border-amber-200/60',
-  },
-  {
-    id: 'B-2026-004',
-    name: 'Ibrahim Musa',
-    pillar: 'Health',
-    location: 'Oyo',
-    type: 'Individual',
-    date: '05 Oct 2026',
-    status: 'Assessment',
-    statusClass: 'bg-amber-100 text-amber-800 font-bold',
-    pillarClass: 'bg-rose-50 text-rose-600 border border-rose-200/60',
-  },
-  {
-    id: 'B-2026-005',
-    name: 'Grace Eze',
-    pillar: 'Education',
-    location: 'Enugu',
-    type: 'Student',
-    date: '04 Oct 2026',
-    status: 'Approved',
-    statusClass: 'bg-teal-100 text-teal-800 font-bold',
-    pillarClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60',
-  },
-];
-
-const CASE_STATUS_BARS = [
-  { label: 'New', count: 320, color: 'bg-rose-500', height: 18 },
-  { label: 'Assessment', count: 450, color: 'bg-orange-500', height: 26 },
-  { label: 'Approved', count: 680, color: 'bg-amber-500', height: 38 },
-  { label: 'Active', count: 3260, color: 'bg-[#5B2E19]', height: 100 },
-  { label: 'Follow-up', count: 1540, color: 'bg-sky-500', height: 58 },
-  { label: 'Outcome', count: 2180, color: 'bg-[#3D1E10]', height: 74 },
-  { label: 'Closed', count: 2050, color: 'bg-slate-500', height: 70 },
-];
-
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const REGISTRATIONS_DATA = [450, 680, 890, 1100, 1050, 1420, 1380, 1450, 1480, 1390, 1480, 1620];
-const INTERVENTIONS_DATA = [210, 340, 520, 610, 780, 950, 890, 980, 1050, 1080, 1150, 1220];
 
 const BeneficiaryManagementDashboardSection = () => {
   const navigate = useNavigate();
-  const [dateFilter, setDateFilter] = useState('Jan 2025 - Dec 2026');
+  const [dateFilter, setDateFilter] = useState('2026 Fiscal Year');
   const [selectedStateFilter, setSelectedStateFilter] = useState('All States');
+  const [liveBeneficiaries, setLiveBeneficiaries] = useState([]);
+  const [liveStats, setLiveStats] = useState(null);
+
+  // Fetch real database records and stats
+  useEffect(() => {
+    fetch('/api/beneficiaries?limit=10')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          setLiveBeneficiaries(res.data);
+        }
+      })
+      .catch(() => {});
+
+    fetch('/api/beneficiaries/stats')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && res.data) {
+          setLiveStats(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Compute real case status distribution
+  const caseStatusBars = useMemo(() => {
+    const counts = {
+      New: 0,
+      Assessment: 0,
+      Approved: 0,
+      Active: 0,
+      'Follow-up': 0,
+      Outcome: 0,
+      Closed: 0,
+    };
+
+    liveBeneficiaries.forEach((b) => {
+      const s = b.status || b.caseTag || 'Active';
+      if (counts[s] !== undefined) counts[s]++;
+      else if (s.toLowerCase().includes('assess')) counts.Assessment++;
+      else counts.Active++;
+    });
+
+    const max = Math.max(...Object.values(counts), 1);
+
+    return [
+      { label: 'New', count: counts.New, color: 'bg-rose-500', height: Math.max(15, (counts.New / max) * 100) },
+      { label: 'Assessment', count: counts.Assessment, color: 'bg-orange-500', height: Math.max(15, (counts.Assessment / max) * 100) },
+      { label: 'Approved', count: counts.Approved, color: 'bg-amber-500', height: Math.max(15, (counts.Approved / max) * 100) },
+      { label: 'Active', count: counts.Active, color: 'bg-[#5B2E19]', height: Math.max(25, (counts.Active / max) * 100) },
+      { label: 'Follow-up', count: counts['Follow-up'], color: 'bg-sky-500', height: Math.max(15, (counts['Follow-up'] / max) * 100) },
+      { label: 'Outcome', count: counts.Outcome, color: 'bg-[#3D1E10]', height: Math.max(15, (counts.Outcome / max) * 100) },
+      { label: 'Closed', count: counts.Closed, color: 'bg-slate-500', height: Math.max(15, (counts.Closed / max) * 100) },
+    ];
+  }, [liveBeneficiaries]);
+
+  // Compute real pillar counts
+  const pillarCounts = useMemo(() => {
+    const counts = {
+      Education: 0,
+      Health: 0,
+      Humanitarian: 0,
+      Economic: 0,
+    };
+    liveBeneficiaries.forEach((b) => {
+      const p = (b.pillar || '').toLowerCase();
+      if (p.includes('edu')) counts.Education++;
+      else if (p.includes('heal')) counts.Health++;
+      else if (p.includes('hum') || p.includes('comm')) counts.Humanitarian++;
+      else if (p.includes('eco') || p.includes('emp')) counts.Economic++;
+      else counts.Education++;
+    });
+    return counts;
+  }, [liveBeneficiaries]);
+
+  const getPillarBadge = (pillar = '') => {
+    const p = pillar.toLowerCase();
+    if (p.includes('edu')) return 'bg-blue-50 text-blue-700 border border-blue-200';
+    if (p.includes('heal')) return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+    if (p.includes('hum') || p.includes('comm')) return 'bg-amber-50 text-[#5B2E19] border border-amber-200';
+    return 'bg-amber-100 text-amber-800 border border-amber-300';
+  };
+
+  const getStatusBadge = (status = '') => {
+    const s = status.toLowerCase();
+    if (s.includes('active') || s.includes('enrolled')) return 'bg-emerald-50 text-emerald-800 border border-emerald-200';
+    if (s.includes('assess')) return 'bg-amber-50 text-amber-800 border border-amber-200';
+    if (s.includes('closed') || s.includes('grad')) return 'bg-purple-50 text-purple-800 border border-purple-200';
+    return 'bg-sky-50 text-sky-800 border border-sky-200';
+  };
 
   return (
     <div className="space-y-6 animate-[fadeIn_0.2s_ease]">
@@ -177,7 +197,7 @@ const BeneficiaryManagementDashboardSection = () => {
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-100">
               <TrendingUp size={12} />
-              +18.4% YoY
+              Live DB
             </span>
           </div>
           <div>
@@ -185,11 +205,11 @@ const BeneficiaryManagementDashboardSection = () => {
               Total Beneficiaries
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
-              12,480
+              {(liveStats?.totalBeneficiaries ?? liveBeneficiaries.length).toLocaleString('en-US')}
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
-              Verified individuals across 14 LGAs
+              Verified individuals across Nigerian States
             </p>
           </div>
         </div>
@@ -209,7 +229,7 @@ const BeneficiaryManagementDashboardSection = () => {
               Active Beneficiaries
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
-              3,260
+              {(liveStats?.activeCases ?? liveBeneficiaries.filter(b => b.status === 'Active' || b.caseTag === 'Active').length).toLocaleString('en-US')}
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500 shrink-0" />
@@ -226,7 +246,7 @@ const BeneficiaryManagementDashboardSection = () => {
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-100">
               <TrendingUp size={12} />
-              +22% intake
+              Intake
             </span>
           </div>
           <div>
@@ -234,7 +254,7 @@ const BeneficiaryManagementDashboardSection = () => {
               New Registrations
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
-              1,245
+              {(liveStats?.newRegistrations ?? liveBeneficiaries.length).toLocaleString('en-US')}
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
@@ -250,7 +270,7 @@ const BeneficiaryManagementDashboardSection = () => {
               <Award size={20} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-100">
-              94.2% Success
+              100% Verified
             </span>
           </div>
           <div>
@@ -258,11 +278,11 @@ const BeneficiaryManagementDashboardSection = () => {
               Completed Interventions
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
-              4,820
+              {(liveStats?.completedInterventions ?? liveBeneficiaries.length).toLocaleString('en-US')}
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 shrink-0" />
-              Graduated to self-reliance & stability
+              Graduated or active support milestones
             </p>
           </div>
         </div>
@@ -284,41 +304,63 @@ const BeneficiaryManagementDashboardSection = () => {
 
             <div className="flex flex-col items-center justify-center pt-1">
               <div className="relative w-40 h-40 flex items-center justify-center mb-4">
-                <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="38" fill="none" stroke="#f1f5f9" strokeWidth="15" />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="none"
-                    stroke="#0284c7"
-                    strokeWidth="15"
-                    strokeDasharray="100.2 238.76"
-                    strokeDashoffset="0"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="none"
-                    stroke="#ef4444"
-                    strokeWidth="15"
-                    strokeDasharray="78.79 238.76"
-                    strokeDashoffset="-100.2"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="none"
-                    stroke="#5B2E19"
-                    strokeWidth="15"
-                    strokeDasharray="59.69 238.76"
-                    strokeDashoffset="-178.99"
-                  />
-                </svg>
+                {(() => {
+                  const total = liveBeneficiaries.length || 1;
+                  const c1 = (pillarCounts.Education / total) * 238.76;
+                  const c2 = (pillarCounts.Health / total) * 238.76;
+                  const c3 = (pillarCounts.Humanitarian / total) * 238.76;
+                  const c4 = (pillarCounts.Economic / total) * 238.76;
+
+                  return (
+                    <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="38" fill="none" stroke="#f1f5f9" strokeWidth="15" />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="none"
+                        stroke="#0047BA"
+                        strokeWidth="15"
+                        strokeDasharray={`${c1} 238.76`}
+                        strokeDashoffset="0"
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="none"
+                        stroke="#338C26"
+                        strokeWidth="15"
+                        strokeDasharray={`${c2} 238.76`}
+                        strokeDashoffset={`${-c1}`}
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="none"
+                        stroke="#5B2E19"
+                        strokeWidth="15"
+                        strokeDasharray={`${c3} 238.76`}
+                        strokeDashoffset={`${-(c1 + c2)}`}
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="38"
+                        fill="none"
+                        stroke="#FCCD37"
+                        strokeWidth="15"
+                        strokeDasharray={`${c4} 238.76`}
+                        strokeDashoffset={`${-(c1 + c2 + c3)}`}
+                      />
+                    </svg>
+                  );
+                })()}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                  <span className="text-lg font-black text-[#3D1E10] leading-tight">12,480</span>
+                  <span className="text-lg font-black text-[#3D1E10] leading-tight">
+                    {(liveStats?.totalBeneficiaries ?? liveBeneficiaries.length).toLocaleString('en-US')}
+                  </span>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total</span>
                 </div>
               </div>
@@ -326,26 +368,54 @@ const BeneficiaryManagementDashboardSection = () => {
               <div className="w-full space-y-2 text-xs">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7]" />
-                    <span className="text-slate-600 font-semibold">Education & Human Capital</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#0047BA]" />
+                    <span className="text-slate-600 font-semibold">Education & Opportunity</span>
                   </div>
-                  <span className="font-bold text-[#3D1E10]">5,240 <span className="text-slate-400 font-normal">(42%)</span></span>
+                  <span className="font-bold text-[#3D1E10]">
+                    {pillarCounts.Education}{' '}
+                    <span className="text-slate-400 font-normal">
+                      ({Math.round((pillarCounts.Education / (liveBeneficiaries.length || 1)) * 100)}%)
+                    </span>
+                  </span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" />
-                    <span className="text-slate-600 font-semibold">Health & Well-being</span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#338C26]" />
+                    <span className="text-slate-600 font-semibold">Health & Wellbeing</span>
                   </div>
-                  <span className="font-bold text-[#3D1E10]">4,120 <span className="text-slate-400 font-normal">(33%)</span></span>
+                  <span className="font-bold text-[#3D1E10]">
+                    {pillarCounts.Health}{' '}
+                    <span className="text-slate-400 font-normal">
+                      ({Math.round((pillarCounts.Health / (liveBeneficiaries.length || 1)) * 100)}%)
+                    </span>
+                  </span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#5B2E19]" />
-                    <span className="text-slate-600 font-semibold">Community Resilience</span>
+                    <span className="text-slate-600 font-semibold">Humanitarian Support</span>
                   </div>
-                  <span className="font-bold text-[#3D1E10]">3,120 <span className="text-slate-400 font-normal">(25%)</span></span>
+                  <span className="font-bold text-[#3D1E10]">
+                    {pillarCounts.Humanitarian}{' '}
+                    <span className="text-slate-400 font-normal">
+                      ({Math.round((pillarCounts.Humanitarian / (liveBeneficiaries.length || 1)) * 100)}%)
+                    </span>
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FCCD37]" />
+                    <span className="text-slate-600 font-semibold">Economic Empowerment</span>
+                  </div>
+                  <span className="font-bold text-[#3D1E10]">
+                    {pillarCounts.Economic}{' '}
+                    <span className="text-slate-400 font-normal">
+                      ({Math.round((pillarCounts.Economic / (liveBeneficiaries.length || 1)) * 100)}%)
+                    </span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -513,54 +583,65 @@ const BeneficiaryManagementDashboardSection = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
-                  {RECENT_REGISTRATIONS.map((r) => (
-                    <tr
-                      key={r.id}
-                      className="hover:bg-slate-50 transition-colors group"
-                    >
-                      <td className="py-2.5 font-mono font-bold text-slate-600 group-hover:text-[#5B2E19]">
-                        <Link to={`/admin/beneficiaries/${r.id}`} className="hover:underline">
-                          {r.id}
-                        </Link>
-                      </td>
-                      <td className="py-2.5 font-bold text-slate-900">
-                        <Link to={`/admin/beneficiaries/${r.id}`} className="hover:text-[#5B2E19]">
-                          {r.name}
-                        </Link>
-                      </td>
-                      <td className="py-2.5">
-                        <span className={`px-2 py-0.5 rounded-full text-[11px] ${r.pillarClass}`}>
-                          {r.pillar}
-                        </span>
-                      </td>
-                      <td className="py-2.5 text-slate-600">{r.location}</td>
-                      <td className="py-2.5 text-slate-500">{r.type}</td>
-                      <td className="py-2.5 text-slate-500 whitespace-nowrap">{r.date}</td>
-                      <td className="py-2.5">
-                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] ${r.statusClass}`}>
-                          {r.status}
-                        </span>
-                      </td>
-                      <td className="py-2.5 text-right">
-                        <div className="flex items-center justify-end gap-1">
-                          <Link
-                            to={`/admin/beneficiaries/${r.id}/assessment`}
-                            className="px-2 py-1 rounded-md bg-amber-50 text-amber-800 hover:bg-amber-600 hover:text-white text-[10px] font-bold border border-amber-200/80 transition-colors"
-                            title="Needs Assessment"
-                          >
-                            Assessment
+                  {liveBeneficiaries.slice(0, 6).map((r) => {
+                    const id = r.code || r.altCode || r._id;
+                    const dateFormatted = r.createdAt ? new Date(r.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '02 Jan 2026';
+                    return (
+                      <tr
+                        key={id}
+                        className="hover:bg-slate-50 transition-colors group"
+                      >
+                        <td className="py-2.5 font-mono font-bold text-slate-600 group-hover:text-[#5B2E19]">
+                          <Link to={`/admin/beneficiaries/${id}`} className="hover:underline">
+                            {id}
                           </Link>
-                          <Link
-                            to={`/admin/beneficiaries/${r.id}/cases`}
-                            className="px-2 py-1 rounded-md bg-sky-50 text-sky-800 hover:bg-[#3D1E10] hover:text-white text-[10px] font-bold border border-sky-200/80 transition-colors"
-                            title="Case Timeline"
-                          >
-                            Cases
+                        </td>
+                        <td className="py-2.5 font-bold text-slate-900">
+                          <Link to={`/admin/beneficiaries/${id}`} className="hover:text-[#5B2E19]">
+                            {r.name}
                           </Link>
-                        </div>
+                        </td>
+                        <td className="py-2.5">
+                          <span className={`px-2 py-0.5 rounded-full text-[11px] font-medium ${getPillarBadge(r.pillar)}`}>
+                            {r.pillar || 'Education'}
+                          </span>
+                        </td>
+                        <td className="py-2.5 text-slate-600">{r.location || r.state || 'Lagos'}</td>
+                        <td className="py-2.5 text-slate-500">{r.type || r.beneficiaryType || 'Individual'}</td>
+                        <td className="py-2.5 text-slate-500 whitespace-nowrap">{dateFormatted}</td>
+                        <td className="py-2.5">
+                          <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold ${getStatusBadge(r.status || r.caseTag)}`}>
+                            {r.status || r.caseTag || 'Active'}
+                          </span>
+                        </td>
+                        <td className="py-2.5 text-right">
+                          <div className="flex items-center justify-end gap-1">
+                            <Link
+                              to={`/admin/beneficiaries/${id}/assessment`}
+                              className="px-2 py-1 rounded-md bg-amber-50 text-amber-800 hover:bg-amber-600 hover:text-white text-[10px] font-bold border border-amber-200/80 transition-colors"
+                              title="Needs Assessment"
+                            >
+                              Assessment
+                            </Link>
+                            <Link
+                              to={`/admin/beneficiaries/${id}/cases`}
+                              className="px-2 py-1 rounded-md bg-sky-50 text-sky-800 hover:bg-[#3D1E10] hover:text-white text-[10px] font-bold border border-sky-200/80 transition-colors"
+                              title="Case Timeline"
+                            >
+                              Cases
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                  {liveBeneficiaries.length === 0 && (
+                    <tr>
+                      <td colSpan={8} className="py-6 text-center text-slate-400">
+                        No beneficiary records loaded from database.
                       </td>
                     </tr>
-                  ))}
+                  )}
                 </tbody>
               </table>
             </div>
@@ -579,7 +660,7 @@ const BeneficiaryManagementDashboardSection = () => {
 
             {/* Vertical Bar Chart matching screenshot */}
             <div className="h-48 flex items-end justify-between gap-2 pt-6 pb-2 px-1">
-              {CASE_STATUS_BARS.map((bar, idx) => (
+              {caseStatusBars.map((bar, idx) => (
                 <div key={idx} className="flex-1 flex flex-col items-center justify-end h-full group">
                   <span className="text-[10px] font-black text-slate-700 mb-1 group-hover:scale-110 transition-transform">
                     {bar.count >= 1000 ? bar.count.toLocaleString('en-US') : bar.count}
@@ -597,8 +678,8 @@ const BeneficiaryManagementDashboardSection = () => {
           </div>
 
           <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Tallest: Active Cases (3,260)</span>
-            <span className="text-emerald-700 font-bold">Health & Education leading</span>
+            <span>Tallest: Active Cases ({(liveStats?.activeCases ?? liveBeneficiaries.filter(b => b.status === 'Active' || b.caseTag === 'Active').length)})</span>
+            <span className="text-emerald-700 font-bold">Live Case Tracking</span>
           </div>
         </div>
       </div>

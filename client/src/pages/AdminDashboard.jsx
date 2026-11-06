@@ -79,21 +79,27 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState('');
 
-  // Beneficiaries State loaded from central dataset
-  const [beneficiaries, setBeneficiaries] = useState(BENEFICIARIES_DATA);
+  // Beneficiaries State loaded directly from database
+  const [beneficiaries, setBeneficiaries] = useState([]);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [selectedBeneficiaryDetail, setSelectedBeneficiaryDetail] = useState(null);
 
-  // Live stats
+  // Live real database stats
   const [stats, setStats] = useState({
-    totalBeneficiaries: 12480,
-    activeCases: 3260,
-    newRegistrations: 1245,
-    pendingAssessments: 320,
-    openReferrals: 186,
-    completedInterventions: 4820,
-    measuredOutcomes: 3960,
-    donationsReceived: '₦245.3M',
+    totalBeneficiaries: 0,
+    activeCases: 0,
+    newRegistrations: 0,
+    pendingAssessments: 0,
+    openReferrals: 0,
+    completedInterventions: 0,
+    measuredOutcomes: 0,
+    donationsReceived: '₦0',
+    activeProgrammes: 4,
+    communitiesReached: 8,
+    scholarships: 0,
+    openCases: 0,
+    pendingApprovals: 0,
+    pillarBreakdown: {},
   });
 
   // Fetch real donation stats & registered beneficiaries from backend
@@ -101,45 +107,66 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
     const token = localStorage.getItem('cmaof_admin_token');
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
+    // 1. Fetch live donation stats from database
     fetch('/api/donations/stats', { headers })
       .then((r) => (r.ok ? r.json() : null))
       .then((res) => {
         if (res && res.success && res.data) {
           setStats((prev) => ({
             ...prev,
-            donationsReceived: res.data.formattedTotal || '₦245.3M',
+            donationsReceived: res.data.formattedTotal || '₦0',
+            donorCount: res.data.donorCount || 0,
           }));
         }
       })
       .catch(() => {});
 
-    // Fetch live beneficiaries if available
-    fetch('/api/beneficiaries', { headers })
+    // 2. Fetch live beneficiary stats from database
+    fetch('/api/beneficiaries/stats', { headers })
       .then((r) => (r.ok ? r.json() : null))
       .then((res) => {
-        if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
-          setBeneficiaries((prev) => {
-            const existingCodes = new Set(prev.map((p) => p.code));
-            const newRecords = res.data
-              .filter((r) => !existingCodes.has(r.code))
-              .map((r) => ({
-                id: r._id || r.id,
-                code: r.code,
-                name: r.name || r.fullName,
-                photo: r.photoPreview || r.photo || '/images/story_amina.jpg',
-                type: r.beneficiaryType || r.type || 'Individual',
-                pillar: r.pillar,
-                location: r.state || r.location,
-                ageGender: `${r.age || '16'}/${r.gender?.[0] || 'F'}`,
-                status: r.status || 'Active',
-                assignedOfficer: r.assignedOfficer || 'Hauwa Bello',
-                dateRegistered: r.createdAt ? new Date(r.createdAt).toLocaleDateString('en-GB') : '28 Oct 2026',
-                phone: r.phone || '+234 800 000 0000',
-                gender: r.gender,
-                intervention: r.programme || r.intervention || 'Field Intervention Programme',
-              }));
-            return [...newRecords, ...prev];
-          });
+        if (res && res.success && res.data) {
+          setStats((prev) => ({
+            ...prev,
+            totalBeneficiaries: res.data.totalBeneficiaries || 0,
+            activeCases: res.data.activeCases || 0,
+            newRegistrations: res.data.newRegistrations || 0,
+            pendingAssessments: res.data.pendingAssessments || 0,
+            openReferrals: res.data.openReferrals || 0,
+            completedInterventions: res.data.completedInterventions || 0,
+            measuredOutcomes: res.data.measuredOutcomes || 0,
+            scholarships: res.data.pillarBreakdown?.['Education & Opportunity'] || 0,
+            openCases: res.data.activeCases || 0,
+            pendingApprovals: res.data.pendingAssessments || 0,
+            pillarBreakdown: res.data.pillarBreakdown || {},
+          }));
+        }
+      })
+      .catch(() => {});
+
+    // 3. Fetch real beneficiaries directly from database
+    fetch('/api/beneficiaries?limit=100', { headers })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          const records = res.data.map((r, idx) => ({
+            id: r._id || r.id || idx + 1,
+            code: r.code || `BNF-2026-${String(idx + 1).padStart(3, '0')}`,
+            name: r.name || r.fullName || 'Registered Beneficiary',
+            photo: r.photoPreview || r.photo || '/images/story_amina.jpg',
+            type: r.beneficiaryType || r.type || 'Individual',
+            pillar: r.pillar || 'Education & Opportunity',
+            location: r.state || r.location || 'Ondo',
+            ageGender: r.ageGender || `${r.age || '20'}/${(r.gender || 'F')[0]?.toUpperCase() || 'F'}`,
+            status: r.status || 'Active',
+            assignedOfficer: r.assignedOfficer || 'Hauwa Bello',
+            dateRegistered: r.dateRegistered || (r.createdAt ? new Date(r.createdAt).toLocaleDateString('en-GB') : '15 Jan 2024'),
+            phone: r.phone || '+234 800 000 0000',
+            gender: r.gender || 'Female',
+            intervention: r.programme || r.intervention || 'Field Intervention Programme',
+            outcomesSummary: r.outcomesSummary || '',
+          }));
+          setBeneficiaries(records);
         }
       })
       .catch(() => {});
@@ -231,7 +258,7 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
   const handleCreateBeneficiary = async (formData) => {
     const nextId = beneficiaries.length + 1;
     const nextCode = `B-2026-${String(nextId).padStart(3, '0')}`;
-    const todayStr = '28 Oct 2026';
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 
     const created = {
       id: nextId,
@@ -253,7 +280,7 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
     // Attempt backend persistence
     try {
       const token = localStorage.getItem('cmaof_admin_token');
-      await fetch('/api/beneficiaries', {
+      const resp = await fetch('/api/beneficiaries', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -269,6 +296,11 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
           status: created.status,
         }),
       });
+      const data = await resp.json().catch(() => null);
+      if (data && data.success && data.data) {
+        created.id = data.data._id || created.id;
+        created.code = data.data.code || created.code;
+      }
     } catch (err) {
       console.warn('Beneficiary API sync notice (offline mode active):', err.message);
     }
@@ -282,10 +314,25 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
     setRegisterModalOpen(false);
   };
 
-  // Delete beneficiary handler
-  const handleDeleteBeneficiary = (id, name) => {
+  // Delete beneficiary handler with backend persistence
+  const handleDeleteBeneficiary = async (id, name) => {
+    try {
+      const token = localStorage.getItem('cmaof_admin_token');
+      await fetch(`/api/beneficiaries/${id}`, {
+        method: 'DELETE',
+        headers: {
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+      });
+    } catch (err) {
+      console.warn('Beneficiary delete sync notice:', err.message);
+    }
     setBeneficiaries((prev) => prev.filter((item) => item.id !== id));
-    toast.success(`${name} removed from active register`);
+    setStats((prev) => ({
+      ...prev,
+      totalBeneficiaries: Math.max(0, prev.totalBeneficiaries - 1),
+    }));
+    toast.success(`${name || 'Beneficiary'} removed from active register`);
   };
 
   return (

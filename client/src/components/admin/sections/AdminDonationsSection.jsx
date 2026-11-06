@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   HeartHandshake,
   Search,
@@ -222,7 +222,7 @@ const DonationDetailDrawer = ({ donation, onClose, onOpenReceipt, onSendGratitud
    MAIN ADMIN DONATIONS SECTION COMPONENT
 ───────────────────────────────────────────────────────────────── */
 const AdminDonationsSection = () => {
-  const [donations, setDonations] = useState(INITIAL_DONATIONS);
+  const [donations, setDonations] = useState([]);
   const [activeTab, setActiveTab] = useState('all'); // 'all' | 'recurring' | 'corporate' | 'campaigns'
   const [viewMode, setViewMode] = useState('table'); // 'table' | 'grid'
   const [searchQuery, setSearchQuery] = useState('');
@@ -240,6 +240,64 @@ const AdminDonationsSection = () => {
   const [currentView, setCurrentView] = useState('ledger');
   const [currentStep, setCurrentStep] = useState(1);
 
+  // Fetch real database donations
+  const fetchLiveDonations = () => {
+    setIsRefreshing(true);
+    fetch('/api/donations')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          const mapped = res.data.map((d, idx) => ({
+            id: d._id || d.id || idx + 1,
+            reference: d.transactionRef || `DON-2026-${String(idx + 1).padStart(3, '0')}`,
+            date: d.createdAt ? new Date(d.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '2026',
+            donorName: d.donorName || (d.isAnonymous ? 'Anonymous Supporter' : 'Generous Donor'),
+            email: d.donorEmail || d.email || 'donor@cmaof.org',
+            phone: d.donorPhone || d.phone || '+234 800 000 0000',
+            amount: Number(d.amount) || 0,
+            amountFormatted: Number(d.amount || 0).toLocaleString('en-NG'),
+            type: (Number(d.amount) >= 5000000 || (d.donorName || '').toLowerCase().includes('bank') || (d.donorName || '').toLowerCase().includes('foundation') || (d.donorName || '').toLowerCase().includes('trust') || (d.donorName || '').toLowerCase().includes('csr')) ? 'Corporate' : 'Individual',
+            campaign: d.pillar || 'General Endowment',
+            pillar: d.pillar || 'Education & Opportunity',
+            paymentMethod: d.paymentMethod || 'Direct Bank Wire',
+            status: (d.status || 'completed').charAt(0).toUpperCase() + (d.status || 'completed').slice(1),
+            taxExempt: true,
+            notes: d.notes || 'Institutional donation record.',
+          }));
+          setDonations(mapped);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setIsRefreshing(false));
+  };
+
+  useEffect(() => {
+    fetchLiveDonations();
+  }, []);
+
+  // Real database metrics computation
+  const totalAmount = useMemo(() => donations.reduce((sum, d) => sum + (d.amount || 0), 0), [donations]);
+  const formattedTotalAmount = useMemo(() => {
+    if (totalAmount >= 1000000) return `₦${(totalAmount / 1000000).toFixed(1)}M`;
+    return `₦${totalAmount.toLocaleString('en-NG')}`;
+  }, [totalAmount]);
+
+  const recurringDonations = useMemo(() => donations.filter((d) => (d.paymentMethod || '').toLowerCase().includes('recurring') || (d.notes || '').toLowerCase().includes('monthly')), [donations]);
+  const recurringAmount = useMemo(() => recurringDonations.reduce((sum, d) => sum + (d.amount || 0), 0), [recurringDonations]);
+
+  const corporateDonations = useMemo(() => donations.filter((d) => d.type === 'Corporate'), [donations]);
+  const corporateAmount = useMemo(() => corporateDonations.reduce((sum, d) => sum + (d.amount || 0), 0), [corporateDonations]);
+  const formattedCorporate = useMemo(() => {
+    if (corporateAmount >= 1000000) return `₦${(corporateAmount / 1000000).toFixed(1)}M`;
+    return `₦${corporateAmount.toLocaleString('en-NG')}`;
+  }, [corporateAmount]);
+
+  const avgGift = useMemo(() => {
+    if (!donations.length) return '₦0';
+    const avg = Math.round(totalAmount / donations.length);
+    return `₦${avg.toLocaleString('en-NG')}`;
+  }, [totalAmount, donations.length]);
+
   // Form State for Recording Offline Gift
   const [newGift, setNewGift] = useState({
     donorName: '',
@@ -251,7 +309,7 @@ const AdminDonationsSection = () => {
     paymentMethod: 'Direct Bank Wire Transfer',
     bankReference: `CBN-NIP-${Math.floor(10000000 + Math.random() * 90000000)}`,
     campaign: 'School Support Programme',
-    pillar: 'Education & Human Capital',
+    pillar: 'Education & Opportunity',
     dedicatedNote: '',
     taxReceiptRequired: true,
   });
@@ -322,8 +380,8 @@ const AdminDonationsSection = () => {
     toast.success(`Appeal link for "${camp.name}" copied to clipboard!`);
   };
 
-  // Submit new recorded gift
-  const handleConfirmRecordGift = () => {
+  // Submit new recorded gift with live API persistence
+  const handleConfirmRecordGift = async () => {
     if (!newGift.donorName.trim()) {
       toast.error('Donor full name or organization is required');
       return;
@@ -356,6 +414,34 @@ const AdminDonationsSection = () => {
         'Manual institutional record entered by foundation administrator.',
     };
 
+    try {
+      const token = localStorage.getItem('cmaof_admin_token');
+      const resp = await fetch('/api/donations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({
+          amount: cleanedAmount,
+          donorName: created.donorName,
+          donorEmail: created.email,
+          pillar: created.pillar,
+          paymentMethod: created.paymentMethod,
+          notes: created.notes,
+          transactionRef: refCode,
+          frequency: 'one-time',
+        }),
+      });
+      const res = await resp.json().catch(() => null);
+      if (res && res.success && res.data) {
+        created.id = res.data._id || created.id;
+        created.reference = res.data.transactionRef || created.reference;
+      }
+    } catch (err) {
+      console.warn('Donation API sync notice (offline mode active):', err.message);
+    }
+
     setDonations([created, ...donations]);
     toast.success(
       `Philanthropic gift of ₦${created.amountFormatted} recorded under ${created.reference}!`
@@ -372,7 +458,7 @@ const AdminDonationsSection = () => {
       paymentMethod: 'Direct Bank Wire Transfer',
       bankReference: '',
       campaign: 'School Support Programme',
-      pillar: 'Education & Human Capital',
+      pillar: 'Education & Opportunity',
       dedicatedNote: '',
       taxReceiptRequired: true,
     });
@@ -942,11 +1028,11 @@ const AdminDonationsSection = () => {
               Total Capital Raised
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
-              ₦333.4M
+              {formattedTotalAmount}
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
-              1,420 contributions across Nigeria
+              {donations.length} verified transactions in database
             </p>
           </div>
         </div>
@@ -976,11 +1062,11 @@ const AdminDonationsSection = () => {
               Recurring Patrons
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
-              ₦4,250,000 <span className="text-xs text-slate-400 font-sans font-bold">/ mo</span>
+              ₦{recurringAmount.toLocaleString('en-NG')} <span className="text-xs text-slate-400 font-sans font-bold">/ mo</span>
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
-              1,280 active sustaining contributors (98.4%)
+              {recurringDonations.length} active recurring patrons
             </p>
           </div>
         </div>
@@ -1003,7 +1089,7 @@ const AdminDonationsSection = () => {
               <Building size={18} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200/60">
-              14 Grants
+              {corporateDonations.length} Grants
             </span>
           </div>
           <div>
@@ -1011,7 +1097,7 @@ const AdminDonationsSection = () => {
               Corporate & CSR Grants
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
-              ₦220.0M
+              {formattedCorporate}
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-600 shrink-0" />
@@ -1040,7 +1126,7 @@ const AdminDonationsSection = () => {
               Average Benefactor Gift
             </p>
             <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
-              ₦234,800
+              {avgGift}
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-600 shrink-0" />
