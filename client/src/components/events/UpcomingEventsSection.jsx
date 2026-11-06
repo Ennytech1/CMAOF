@@ -29,7 +29,7 @@ const filterTabs = [
 
 const UpcomingEventsSection = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const [eventsList, setEventsList] = useState(INITIAL_EVENTS);
+  const [eventsList, setEventsList] = useState([]);
   const [selectedEventForModal, setSelectedEventForModal] = useState(null);
   const [modalMode, setModalMode] = useState(null); // 'register' | 'details'
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
@@ -39,11 +39,13 @@ const UpcomingEventsSection = () => {
     fetch('/api/events')
       .then((r) => (r.ok ? r.json() : null))
       .then((res) => {
-        if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
+        if (res && res.success && Array.isArray(res.data)) {
           setEventsList(res.data);
+        } else {
+          setEventsList([]);
         }
       })
-      .catch(() => {});
+      .catch(() => setEventsList([]));
   }, []);
 
   // Form state

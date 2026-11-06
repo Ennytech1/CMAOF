@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, MapPin, ArrowRight, Clock } from 'lucide-react';
-import { INITIAL_EVENTS } from '../../data/eventsData';
 
 const HomeEventsPreview = () => {
-  // Take top 3 upcoming events
-  const upcomingEvents = INITIAL_EVENTS.filter((e) => e.status === 'Upcoming').slice(0, 3);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/events')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          setEvents(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Take top 3 upcoming real events
+  const upcomingEvents = events.filter((e) => e.status === 'Upcoming').slice(0, 3);
 
   return (
     <section className="w-full bg-[#FAF6EE]/50 py-16 sm:py-20 border-y border-[#EFE8DC]">
@@ -37,8 +49,19 @@ const HomeEventsPreview = () => {
           </Link>
         </div>
 
-        {/* 3-Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* 3-Card Grid or Empty State */}
+        {upcomingEvents.length === 0 ? (
+          <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border border-[#EFE8DC] shadow-xs">
+            <div className="w-12 h-12 rounded-2xl bg-[#FAF0D4] text-[#5B2E19] mx-auto flex items-center justify-center mb-3">
+              <Calendar size={24} />
+            </div>
+            <h3 className="text-base sm:text-lg font-black text-[#5B2E19]">No Public Events Scheduled Yet</h3>
+            <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mt-1">
+              Field outreaches and summits are currently being scheduled. Subscribe to our newsletter to receive official notifications.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {upcomingEvents.map((event) => (
             <div
               key={event.id}
@@ -109,6 +132,7 @@ const HomeEventsPreview = () => {
             </div>
           ))}
         </div>
+        )}
 
       </div>
     </section>

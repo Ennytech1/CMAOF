@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   FileCheck2,
@@ -20,42 +20,55 @@ import {
   UserCheck,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { BENEFICIARIES_DATA } from '../../../data/beneficiariesData';
-
 const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCases }) => {
   const navigate = useNavigate();
+  const [beneficiaries, setBeneficiaries] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPillar, setSelectedPillar] = useState('All');
   const [selectedPriority, setSelectedPriority] = useState('All');
   const [selectedStatusTab, setSelectedStatusTab] = useState('all'); // 'all', 'pending', 'completed', 'high-priority'
 
-  // Augmented list with assessment diagnostic details
-  const assessmentsList = BENEFICIARIES_DATA.map((b, idx) => {
-    const isOdd = idx % 2 === 1;
-    const isThird = idx % 3 === 0;
+  useEffect(() => {
+    const token = localStorage.getItem('cmaof_admin_token');
+    fetch('/api/beneficiaries', {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          setBeneficiaries(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
-    const status = isThird
+  // Augmented list with assessment diagnostic details from real database records
+  const assessmentsList = beneficiaries.map((b, idx) => {
+    const status = b.status === 'Assessment' || !b.assessmentDetails
       ? 'Pending Assessment'
-      : isOdd
-      ? 'Under Assessment'
       : 'Assessment Completed';
 
-    const priority = isThird ? 'Critical' : isOdd ? 'High' : 'Standard';
+    const priority = b.priority || 'Standard';
 
-    const evaluatedNeeds =
-      b.pillar === 'Education'
-        ? ['Tuition Support', 'Textbooks & Uniforms', 'Digital Learning Device']
-        : b.pillar === 'Health'
-        ? ['Primary Healthcare', 'Nutritional Supplementation', 'Optical Examination']
-        : ['Family Economic Grants', 'Clean Water Access', 'Shelter Stabilization'];
+    const evaluatedNeeds = b.evaluatedNeeds || (
+      (b.pillar || '').includes('Education')
+        ? ['Tuition Support', 'Textbooks & Learning Materials']
+        : (b.pillar || '').includes('Health')
+        ? ['Primary Healthcare Support']
+        : ['Community Relief Support']
+    );
 
     return {
       ...b,
+      code: b.code || `BNF-2026-${String(idx + 1).padStart(3, '0')}`,
+      name: b.name || b.fullName || 'Registered Beneficiary',
+      location: b.location || b.state || 'Nigeria',
+      pillar: b.pillar || 'Education',
       assessmentStatus: status,
       priority,
       evaluatedNeeds,
-      score: isThird ? '92/100 (Extreme Vulnerability)' : isOdd ? '76/100 (High Need)' : '58/100 (Moderate Need)',
-      lastAssessedDate: isThird ? 'Pending Review' : '14 Oct 2026',
+      score: b.vulnerabilityScore || 'Pending Evaluation',
+      lastAssessedDate: b.assessedAt ? new Date(b.assessedAt).toLocaleDateString('en-GB') : 'Pending Review',
     };
   });
 

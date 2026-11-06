@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   GitBranch,
@@ -18,7 +18,6 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { BENEFICIARIES_DATA } from '../../../data/beneficiariesData';
 
 const PIPELINE_STAGES = [
   { id: 'all', label: 'All Lifecycle Stages' },
@@ -34,30 +33,43 @@ const PIPELINE_STAGES = [
 
 const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessments }) => {
   const navigate = useNavigate();
+  const [beneficiaries, setBeneficiaries] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPillar, setSelectedPillar] = useState('All');
   const [selectedStage, setSelectedStage] = useState('all');
 
-  // Enriched case data
-  const casesList = BENEFICIARIES_DATA.map((b, idx) => {
-    // Distribute cases across lifecycle milestones
-    const stageNames = [
-      'Registration',
-      'Assessment',
-      'Approval',
-      'Intervention',
-      'Referral',
-      'Follow-up',
-      'Outcome Measurement',
-      'Closure',
-    ];
-    const stageIdx = (idx % 7) + 1; // 1 to 7
-    const stageName = stageNames[stageIdx - 1];
-    const progressPct = Math.round((stageIdx / 8) * 100);
+  useEffect(() => {
+    const token = localStorage.getItem('cmaof_admin_token');
+    fetch('/api/beneficiaries', {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && Array.isArray(res.data)) {
+          setBeneficiaries(res.data);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
-    const nextMilestoneDate = ['15 Nov 2026', '20 Nov 2026', '02 Dec 2026', '12 Dec 2026'][idx % 4];
+  // Enriched real case data from database
+  const casesList = beneficiaries.map((b, idx) => {
+    const stageName = b.caseStage || b.status || 'Registration';
+    const progressPct = b.progressPercentage || (stageName === 'Closure' ? 100 : stageName === 'Active' ? 65 : 25);
+    const nextMilestoneDate = b.nextReviewDate || 'Scheduled on Intake';
 
     return {
+      ...b,
+      code: b.code || `BNF-2026-${String(idx + 1).padStart(3, '0')}`,
+      name: b.name || b.fullName || 'Registered Beneficiary',
+      location: b.location || b.state || 'Nigeria',
+      pillar: b.pillar || 'Education',
+      caseOfficer: b.assignedOfficer || 'CMAOF Field Caseworker',
+      stage: stageName,
+      progress: progressPct,
+      nextMilestoneDate,
+    };
+  });
       ...b,
       currentMilestoneStage: stageName,
       milestoneIndex: stageIdx,

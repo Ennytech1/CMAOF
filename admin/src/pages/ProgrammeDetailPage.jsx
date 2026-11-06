@@ -52,22 +52,41 @@ const SUB_TABS = [
 ];
 
 const ProgrammeDetailPage = () => {
-  const { id } = useParams();
+  const { slug, id } = useParams();
   const navigate = useNavigate();
-  const initialProg = getProgrammeByIdOrSlug(id || 'school-support-programme');
+  const [programme, setProgramme] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [activeTab, setActiveTab] = useState('overview');
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState('');
 
-  // Editable programme state
-  const [programme, setProgramme] = useState(initialProg);
-
-  // Synchronize when route id changes
+  // Fetch real programme from database
   useEffect(() => {
-    const loaded = getProgrammeByIdOrSlug(id || 'school-support-programme');
-    setProgramme(loaded);
-  }, [id]);
+    const target = slug || id || 'el-education-stem-scholars';
+    setLoading(true);
+    fetch(`/api/programmes/${target}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && res.data) {
+          setProgramme(res.data);
+        } else {
+          fetch('/api/programmes')
+            .then((r) => (r.ok ? r.json() : null))
+            .then((res2) => {
+              if (res2 && res2.success && Array.isArray(res2.data)) {
+                const found = res2.data.find((p) => p.slug === target || p._id === target || p.id === target);
+                setProgramme(found || null);
+              } else {
+                setProgramme(null);
+              }
+            })
+            .catch(() => setProgramme(null));
+        }
+      })
+      .catch(() => setProgramme(null))
+      .finally(() => setLoading(false));
+  }, [slug, id]);
 
   // Tab-specific filters & states
   const [beneficiarySearch, setBeneficiarySearch] = useState('');
@@ -339,6 +358,31 @@ const ProgrammeDetailPage = () => {
 
         {/* Scrollable Main Area */}
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-7 space-y-5">
+          {loading ? (
+            <div className="min-h-[50vh] flex flex-col items-center justify-center text-center">
+              <div className="w-9 h-9 border-4 border-[#5B2E19]/20 border-t-[#5B2E19] rounded-full animate-spin mb-3" />
+              <p className="text-xs font-bold text-slate-500">Loading strategic programme from database...</p>
+            </div>
+          ) : !programme ? (
+            <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border border-slate-200/80 shadow-xs max-w-lg mx-auto my-12">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-700 mx-auto flex items-center justify-center mb-4">
+                <Briefcase size={28} />
+              </div>
+              <h2 className="text-lg font-black text-[#3D1E10]">Programme Not Found</h2>
+              <p className="text-xs text-slate-500 mt-1 mb-6">
+                No active strategic programme matches identifier <strong className="font-mono text-slate-800">{slug || id}</strong>.
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/admin/programmes')}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow transition-colors cursor-pointer"
+              >
+                <ArrowLeft size={14} />
+                <span>Return to Programmes Portfolio</span>
+              </button>
+            </div>
+          ) : (
+            <>
           {/* Top Breadcrumb: 🏠 Programmes > Programme Name */}
           <div className="flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-slate-500">
             <Link
@@ -1431,6 +1475,8 @@ const ProgrammeDetailPage = () => {
               </div>
             </div>
           )}
+          </>
+        )}
         </main>
       </div>
 

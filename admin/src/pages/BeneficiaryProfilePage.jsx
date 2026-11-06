@@ -42,8 +42,9 @@ const BeneficiaryProfilePage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Load target beneficiary or default to Aisha Mohammed (B-2026-001)
-  const [beneficiary, setBeneficiary] = useState(() => getBeneficiaryByIdOrCode(id || 'B-2026-001'));
+  // Load real beneficiary from database
+  const [beneficiary, setBeneficiary] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState('');
@@ -54,9 +55,36 @@ const BeneficiaryProfilePage = () => {
   const [interventionModalOpen, setInterventionModalOpen] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      setBeneficiary(getBeneficiaryByIdOrCode(id));
+    if (!id) {
+      setLoading(false);
+      return;
     }
+    setLoading(true);
+    const token = localStorage.getItem('cmaof_admin_token');
+    fetch(`/api/beneficiaries/${id}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((res) => {
+        if (res && res.success && res.data) {
+          setBeneficiary(res.data);
+        } else {
+          fetch(`/api/beneficiaries?code=${encodeURIComponent(id)}`, {
+            headers: token ? { Authorization: `Bearer ${token}` } : {},
+          })
+            .then((r) => (r.ok ? r.json() : null))
+            .then((res2) => {
+              if (res2 && res2.success && Array.isArray(res2.data) && res2.data.length > 0) {
+                setBeneficiary(res2.data[0]);
+              } else {
+                setBeneficiary(null);
+              }
+            })
+            .catch(() => setBeneficiary(null));
+        }
+      })
+      .catch(() => setBeneficiary(null))
+      .finally(() => setLoading(false));
   }, [id]);
 
   const handleTabSwitch = (tabId, subItem) => {
@@ -114,6 +142,31 @@ const BeneficiaryProfilePage = () => {
 
         {/* Scrollable Content Container */}
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-7 space-y-5">
+          {loading ? (
+            <div className="min-h-[50vh] flex flex-col items-center justify-center text-center">
+              <div className="w-9 h-9 border-4 border-[#5B2E19]/20 border-t-[#5B2E19] rounded-full animate-spin mb-3" />
+              <p className="text-xs font-bold text-slate-500">Loading beneficiary profile from database...</p>
+            </div>
+          ) : !beneficiary ? (
+            <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border border-slate-200/80 shadow-xs max-w-lg mx-auto my-12">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-700 mx-auto flex items-center justify-center mb-4">
+                <Users size={28} />
+              </div>
+              <h2 className="text-lg font-black text-[#3D1E10]">Beneficiary Not Found</h2>
+              <p className="text-xs text-slate-500 mt-1 mb-6">
+                No active beneficiary record matches identifier <strong className="font-mono text-slate-800">{id}</strong>.
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/admin/beneficiaries/directory')}
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow transition-colors cursor-pointer"
+              >
+                <ArrowLeft size={14} />
+                <span>Return to Beneficiary Directory</span>
+              </button>
+            </div>
+          ) : (
+            <>
           {/* Top Breadcrumb & Actions matching Image 3 */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-slate-500">
@@ -308,6 +361,8 @@ const BeneficiaryProfilePage = () => {
           {activeTab === 'safeguarding' && (
             <BeneficiarySafeguardingTab beneficiary={beneficiary} />
           )}
+          </>
+        )}
         </main>
       </div>
 
