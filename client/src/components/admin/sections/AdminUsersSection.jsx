@@ -66,7 +66,7 @@ const TeamMemberDossierDrawer = ({ member, onClose, onRevoke, onResetMfa }) => {
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200">
                 {member.id}
               </span>
               <span
@@ -104,16 +104,16 @@ const TeamMemberDossierDrawer = ({ member, onClose, onRevoke, onResetMfa }) => {
               {member.photo ? (
                 <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
               ) : (
-                <div className="w-full h-full bg-[#06402B] text-white font-black text-lg flex items-center justify-center">
+                <div className="w-full h-full bg-[#5B2E19] text-white font-black text-lg flex items-center justify-center">
                   {member.avatar}
                 </div>
               )}
             </div>
             <div className="min-w-0 flex-1 space-y-1">
-              <h3 className="text-base sm:text-lg font-black text-[#0B2D6E] leading-snug truncate">
+              <h3 className="text-base sm:text-lg font-black text-[#3D1E10] leading-snug truncate">
                 {member.name}
               </h3>
-              <p className="text-xs font-bold text-[#06402B] truncate">{member.role}</p>
+              <p className="text-xs font-bold text-[#5B2E19] truncate">{member.role}</p>
               <div className="flex items-center gap-2 text-[11px] text-slate-500 pt-0.5">
                 <MapPin size={12} className="shrink-0 text-slate-400" />
                 <span className="truncate">{member.location}</span>
@@ -131,7 +131,7 @@ const TeamMemberDossierDrawer = ({ member, onClose, onRevoke, onResetMfa }) => {
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Official Email</span>
                 <div className="flex items-center gap-1.5 font-bold text-slate-800">
                   <span className="truncate">{member.email}</span>
-                  <button type="button" onClick={copyEmail} className="text-slate-400 hover:text-[#06402B] cursor-pointer" title="Copy">
+                  <button type="button" onClick={copyEmail} className="text-slate-400 hover:text-[#5B2E19] cursor-pointer" title="Copy">
                     <Copy size={12} />
                   </button>
                 </div>
@@ -142,11 +142,11 @@ const TeamMemberDossierDrawer = ({ member, onClose, onRevoke, onResetMfa }) => {
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Department Unit</span>
-                <span className="font-bold text-[#0B2D6E]">{member.department}</span>
+                <span className="font-bold text-[#3D1E10]">{member.department}</span>
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Strategic Pillar</span>
-                <span className="font-bold text-[#06402B]">{member.pillar}</span>
+                <span className="font-bold text-[#5B2E19]">{member.pillar}</span>
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ const TeamMemberDossierDrawer = ({ member, onClose, onRevoke, onResetMfa }) => {
                 'General Operational Coordination',
               ]).map((perm, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                  <div className="w-4 h-4 rounded-full bg-emerald-100 text-[#06402B] flex items-center justify-center shrink-0">
+                  <div className="w-4 h-4 rounded-full bg-emerald-100 text-[#5B2E19] flex items-center justify-center shrink-0">
                     <Check size={11} strokeWidth={3} />
                   </div>
                   <span>{perm}</span>
@@ -229,7 +229,7 @@ const TeamMemberDossierDrawer = ({ member, onClose, onRevoke, onResetMfa }) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
+              className="px-5 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
             >
               Done
             </button>
@@ -378,13 +378,13 @@ const AdminUsersSection = () => {
                 setCurrentView('directory');
                 setInviteStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Team</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Authorize Foundation Personnel</span>
+            <span className="font-bold text-[#3D1E10]">Authorize Foundation Personnel</span>
           </div>
 
           <button
@@ -393,7 +393,7 @@ const AdminUsersSection = () => {
               setCurrentView('directory');
               setInviteStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Team Directory</span>
@@ -419,11 +419,11 @@ const AdminUsersSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -435,7 +435,7 @@ const AdminUsersSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[140px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -454,8 +454,8 @@ const AdminUsersSection = () => {
         {/* STEP 1: Identity & Contact */}
         {inviteStep === 1 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Users size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Users size={18} className="text-[#5B2E19]" />
               <span>Personnel Identity & Official Contact Details</span>
             </h2>
 
@@ -470,7 +470,7 @@ const AdminUsersSection = () => {
                   placeholder="e.g. Adebayo Ogunlesi"
                   value={newMember.name}
                   onChange={(e) => setNewMember({ ...newMember, name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -485,7 +485,7 @@ const AdminUsersSection = () => {
                     placeholder="e.g. adebayo.o@cmaof.org"
                     value={newMember.email}
                     onChange={(e) => setNewMember({ ...newMember, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 font-mono"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10 font-mono"
                   />
                 </div>
 
@@ -496,7 +496,7 @@ const AdminUsersSection = () => {
                     placeholder="e.g. +234 803 124 5590"
                     value={newMember.phone}
                     onChange={(e) => setNewMember({ ...newMember, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                   />
                 </div>
               </div>
@@ -506,7 +506,7 @@ const AdminUsersSection = () => {
                 <select
                   value={newMember.location}
                   onChange={(e) => setNewMember({ ...newMember, location: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   {OPERATIONAL_BASES.map((b) => (
                     <option key={b} value={b}>
@@ -523,7 +523,7 @@ const AdminUsersSection = () => {
                   value={newMember.bio}
                   onChange={(e) => setNewMember({ ...newMember, bio: e.target.value })}
                   placeholder="Summary of experience, academic qualifications, and field responsibility..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                 />
               </div>
             </div>
@@ -533,8 +533,8 @@ const AdminUsersSection = () => {
         {/* STEP 2: Role & Pillar Clearance */}
         {inviteStep === 2 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Briefcase size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Briefcase size={18} className="text-[#5B2E19]" />
               <span>Role-Based Access Control (RBAC) & Strategic Pillar Alignment</span>
             </h2>
 
@@ -545,7 +545,7 @@ const AdminUsersSection = () => {
                   <select
                     value={newMember.role}
                     onChange={(e) => setNewMember({ ...newMember, role: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     <option value="Director of Programmes">Director of Programmes (Full Operations)</option>
                     <option value="Head of Education Pillar & STEM Grants">Head of Education & STEM Grants</option>
@@ -562,7 +562,7 @@ const AdminUsersSection = () => {
                   <select
                     value={newMember.department}
                     onChange={(e) => setNewMember({ ...newMember, department: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     {DEPARTMENTS.map((d) => (
                       <option key={d} value={d}>
@@ -578,7 +578,7 @@ const AdminUsersSection = () => {
                 <select
                   value={newMember.pillar}
                   onChange={(e) => setNewMember({ ...newMember, pillar: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   <option value="Education & Human Capital">Education & Human Capital</option>
                   <option value="Health & Well-being">Health & Well-being</option>
@@ -601,8 +601,8 @@ const AdminUsersSection = () => {
         {/* STEP 3: Security & Real-Time Live Badge Preview */}
         {inviteStep === 3 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Shield size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Shield size={18} className="text-[#5B2E19]" />
               <span>Review Authorization & Real-Time Live Staff Badge Preview</span>
             </h2>
 
@@ -619,7 +619,7 @@ const AdminUsersSection = () => {
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <span className="text-slate-500">Role & Department:</span>
-                    <span className="font-bold text-[#0B2D6E]">{newMember.role}</span>
+                    <span className="font-bold text-[#3D1E10]">{newMember.role}</span>
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <span className="text-slate-500">Assigned Base:</span>
@@ -637,10 +637,10 @@ const AdminUsersSection = () => {
                     id="memberVerify"
                     checked={newMember.mfaEnforced}
                     onChange={(e) => setNewMember({ ...newMember, mfaEnforced: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                   />
                   <label htmlFor="memberVerify" className="text-xs text-slate-700 font-medium cursor-pointer">
-                    <span className="font-bold text-[#06402B]">Governance Clearance:</span> I certify that this personnel authorization complies with CMAOF trustee charters, safeguarding guidelines, and data confidentiality standards.
+                    <span className="font-bold text-[#5B2E19]">Governance Clearance:</span> I certify that this personnel authorization complies with CMAOF trustee charters, safeguarding guidelines, and data confidentiality standards.
                   </label>
                 </div>
               </div>
@@ -660,11 +660,11 @@ const AdminUsersSection = () => {
                 {/* Team Card Mockup */}
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 space-y-3 text-xs">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-[#06402B] text-white font-black text-sm flex items-center justify-center shadow-xs shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-[#5B2E19] text-white font-black text-sm flex items-center justify-center shadow-xs shrink-0">
                       {newMember.name ? newMember.name.slice(0, 2).toUpperCase() : 'TM'}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h4 className="font-bold text-sm text-[#0B2D6E] truncate">
+                      <h4 className="font-bold text-sm text-[#3D1E10] truncate">
                         {newMember.name || 'Personnel Name'}
                       </h4>
                       <p className="text-[11px] font-mono text-slate-400 truncate">{newMember.email || 'email@cmaof.org'}</p>
@@ -674,7 +674,7 @@ const AdminUsersSection = () => {
                   <div className="space-y-1 pt-1 border-t border-slate-100 text-[11px]">
                     <div className="flex items-center justify-between">
                       <span className="text-slate-400">Role:</span>
-                      <span className="font-bold text-[#06402B]">{newMember.role}</span>
+                      <span className="font-bold text-[#5B2E19]">{newMember.role}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-slate-400">Base:</span>
@@ -709,7 +709,7 @@ const AdminUsersSection = () => {
             <button
               type="button"
               onClick={() => toast.success('Staff authorization draft saved.')}
-              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
             >
               Save Draft
             </button>
@@ -727,7 +727,7 @@ const AdminUsersSection = () => {
                   handleAuthorizeMember();
                 }
               }}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
             >
               <span>{inviteStep === 3 ? 'Confirm & Authorize Staff' : 'Next Step'}</span>
               <ArrowRight size={14} />
@@ -747,7 +747,7 @@ const AdminUsersSection = () => {
       {/* 1. Header with Clear Simple Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06402B]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5B2E19]">
             <Users size={15} />
             <span>Team & Governance Directory</span>
           </div>
@@ -766,7 +766,7 @@ const AdminUsersSection = () => {
             setInviteStep(1);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
         >
           <Plus size={16} />
           <span>Add Team Member</span>
@@ -779,7 +779,7 @@ const AdminUsersSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Total Officers</span>
-            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#06402B]">
+            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#5B2E19]">
               <Users size={18} />
             </div>
           </div>
@@ -796,12 +796,12 @@ const AdminUsersSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">MFA Compliance</span>
-            <div className="p-2.5 rounded-xl bg-blue-50 text-[#0B2D6E]">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-[#3D1E10]">
               <ShieldCheck size={18} />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-black text-[#0B2D6E]">
+            <span className="text-2xl font-black text-[#3D1E10]">
               {Math.round((teamMembers.filter((m) => m.mfaEnabled).length / teamMembers.length) * 100)}%
             </span>
             <div className="flex items-center gap-1.5 mt-1 text-[11px] text-blue-700 font-bold">
@@ -857,7 +857,7 @@ const AdminUsersSection = () => {
             placeholder="Search team by name, role, base..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]/20"
+            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]/20"
           />
         </div>
 
@@ -866,7 +866,7 @@ const AdminUsersSection = () => {
           <select
             value={departmentFilter}
             onChange={(e) => setDepartmentFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+            className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
           >
             <option value="All">All Departments & Roles</option>
             <option value="Governance">Board Governance</option>
@@ -885,7 +885,7 @@ const AdminUsersSection = () => {
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'grid'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -897,7 +897,7 @@ const AdminUsersSection = () => {
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'table'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -924,7 +924,7 @@ const AdminUsersSection = () => {
                       {m.photo ? (
                         <img src={m.photo} alt={m.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                       ) : (
-                        <div className="w-full h-full bg-[#06402B] text-white font-black text-sm flex items-center justify-center">
+                        <div className="w-full h-full bg-[#5B2E19] text-white font-black text-sm flex items-center justify-center">
                           {m.avatar}
                         </div>
                       )}
@@ -941,11 +941,11 @@ const AdminUsersSection = () => {
                 <div className="space-y-1">
                   <h3
                     onClick={() => setActiveDossierMember(m)}
-                    className="font-bold text-[14.5px] text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors cursor-pointer line-clamp-1"
+                    className="font-bold text-[14.5px] text-[#3D1E10] leading-snug group-hover:text-[#5B2E19] transition-colors cursor-pointer line-clamp-1"
                   >
                     {m.name}
                   </h3>
-                  <p className="text-xs font-bold text-[#06402B] line-clamp-1">{m.role}</p>
+                  <p className="text-xs font-bold text-[#5B2E19] line-clamp-1">{m.role}</p>
                   <p className="text-[11px] font-mono text-slate-400 truncate">{m.email}</p>
                 </div>
 
@@ -955,7 +955,7 @@ const AdminUsersSection = () => {
                     <MapPin size={12} className="text-slate-400 shrink-0" />
                     <span className="truncate">{m.location}</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-[11px] text-[#0B2D6E] font-medium">
+                  <div className="flex items-center gap-1.5 text-[11px] text-[#3D1E10] font-medium">
                     <Briefcase size={12} className="text-blue-500 shrink-0" />
                     <span className="truncate">{m.pillar}</span>
                   </div>
@@ -980,7 +980,7 @@ const AdminUsersSection = () => {
                   <button
                     type="button"
                     onClick={() => setActiveDossierMember(m)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 transition-colors cursor-pointer"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 transition-colors cursor-pointer"
                     title="View Member Dossier"
                   >
                     <Eye size={15} />
@@ -988,7 +988,7 @@ const AdminUsersSection = () => {
                   <button
                     type="button"
                     onClick={() => handleResetMfa(m.email)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B2D6E] hover:bg-blue-50 transition-colors cursor-pointer"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-[#3D1E10] hover:bg-blue-50 transition-colors cursor-pointer"
                     title="Reset Password / MFA"
                   >
                     <RefreshCw size={14} />
@@ -1034,7 +1034,7 @@ const AdminUsersSection = () => {
                           {m.photo ? (
                             <img src={m.photo} alt={m.name} className="w-full h-full object-cover" />
                           ) : (
-                            <div className="w-full h-full bg-[#06402B] text-white font-black text-xs flex items-center justify-center">
+                            <div className="w-full h-full bg-[#5B2E19] text-white font-black text-xs flex items-center justify-center">
                               {m.avatar}
                             </div>
                           )}
@@ -1042,7 +1042,7 @@ const AdminUsersSection = () => {
                         <div className="min-w-0">
                           <p
                             onClick={() => setActiveDossierMember(m)}
-                            className="font-bold text-slate-900 hover:text-[#06402B] cursor-pointer"
+                            className="font-bold text-slate-900 hover:text-[#5B2E19] cursor-pointer"
                           >
                             {m.name}
                           </p>
@@ -1055,7 +1055,7 @@ const AdminUsersSection = () => {
                       <span className="text-[10px] text-slate-400">{m.department}</span>
                     </td>
                     <td className="py-3 px-4 text-slate-600">{m.location}</td>
-                    <td className="py-3 px-4 text-[#06402B] font-semibold">{m.pillar}</td>
+                    <td className="py-3 px-4 text-[#5B2E19] font-semibold">{m.pillar}</td>
                     <td className="py-3 px-4">
                       {m.mfaEnabled ? (
                         <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -1075,7 +1075,7 @@ const AdminUsersSection = () => {
                         <button
                           type="button"
                           onClick={() => setActiveDossierMember(m)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 cursor-pointer"
                           title="View Dossier"
                         >
                           <Eye size={15} />
@@ -1083,7 +1083,7 @@ const AdminUsersSection = () => {
                         <button
                           type="button"
                           onClick={() => handleResetMfa(m.email)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B2D6E] hover:bg-blue-50 cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#3D1E10] hover:bg-blue-50 cursor-pointer"
                           title="Reset MFA"
                         >
                           <RefreshCw size={14} />
@@ -1122,7 +1122,7 @@ const AdminUsersSection = () => {
               setSearchQuery('');
               setDepartmentFilter('All');
             }}
-            className="text-xs font-bold text-[#06402B] hover:underline cursor-pointer"
+            className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer"
           >
             Clear all filters
           </button>

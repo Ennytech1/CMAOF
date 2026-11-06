@@ -84,9 +84,9 @@ const CASE_STATUS_BARS = [
   { label: 'New', count: 320, color: 'bg-rose-500', height: 18 },
   { label: 'Assessment', count: 450, color: 'bg-orange-500', height: 26 },
   { label: 'Approved', count: 680, color: 'bg-amber-500', height: 38 },
-  { label: 'Active', count: 3260, color: 'bg-[#06402B]', height: 100 },
+  { label: 'Active', count: 3260, color: 'bg-[#5B2E19]', height: 100 },
   { label: 'Follow-up', count: 1540, color: 'bg-sky-500', height: 58 },
-  { label: 'Outcome', count: 2180, color: 'bg-[#0B2D6E]', height: 74 },
+  { label: 'Outcome', count: 2180, color: 'bg-[#3D1E10]', height: 74 },
   { label: 'Closed', count: 2050, color: 'bg-slate-500', height: 70 },
 ];
 
@@ -108,7 +108,7 @@ const BeneficiaryManagementDashboardSection = () => {
         <div className="flex items-start gap-2.5">
           <span className="w-1.5 h-8 sm:h-9 rounded-full bg-[#f97316] mt-0.5 shrink-0" />
           <div>
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight">
               Beneficiary Management Dashboard
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
@@ -122,7 +122,7 @@ const BeneficiaryManagementDashboardSection = () => {
           <select
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
-            className="px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 shadow-xs focus:outline-none focus:border-[#06402B] cursor-pointer"
+            className="px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 shadow-xs focus:outline-none focus:border-[#5B2E19] cursor-pointer"
           >
             <option value="Jan 2025 - Dec 2026">Jan 2025 - Dec 2026</option>
             <option value="2026 Fiscal Year">2026 Fiscal Year</option>
@@ -135,7 +135,7 @@ const BeneficiaryManagementDashboardSection = () => {
       <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
         <button
           type="button"
-          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#06402B] text-white shadow-xs cursor-default"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#5B2E19] text-white shadow-xs cursor-default"
         >
           Overview Dashboard
         </button>
@@ -158,9 +158,9 @@ const BeneficiaryManagementDashboardSection = () => {
         <button
           type="button"
           onClick={() => navigate('/admin/beneficiaries/cases')}
-          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-sky-50/70 text-slate-700 hover:text-[#0B2D6E] border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-sky-50/70 text-slate-700 hover:text-[#3D1E10] border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
         >
-          <GitBranch size={13} className="text-[#0B2D6E]" />
+          <GitBranch size={13} className="text-[#3D1E10]" />
           <span>Case Management & Timelines</span>
         </button>
       </div>
@@ -172,7 +172,7 @@ const BeneficiaryManagementDashboardSection = () => {
         {/* Card 1: Total Beneficiaries */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 text-[#06402B] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 text-[#5B2E19] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <Users size={20} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-100">
@@ -184,7 +184,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Total Beneficiaries
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               12,480
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -208,7 +208,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Active Beneficiaries
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               3,260
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -233,7 +233,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               New Registrations
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               1,245
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -257,7 +257,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Completed Interventions
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               4,820
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -277,7 +277,7 @@ const BeneficiaryManagementDashboardSection = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span className="w-1 h-4 rounded-full bg-[#f97316]" />
-              <h3 className="text-sm sm:text-base font-black text-[#0B2D6E]">
+              <h3 className="text-sm sm:text-base font-black text-[#3D1E10]">
                 Beneficiaries by Pillar
               </h3>
             </div>
@@ -311,14 +311,14 @@ const BeneficiaryManagementDashboardSection = () => {
                     cy="50"
                     r="38"
                     fill="none"
-                    stroke="#06402B"
+                    stroke="#5B2E19"
                     strokeWidth="15"
                     strokeDasharray="59.69 238.76"
                     strokeDashoffset="-178.99"
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                  <span className="text-lg font-black text-[#0B2D6E] leading-tight">12,480</span>
+                  <span className="text-lg font-black text-[#3D1E10] leading-tight">12,480</span>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total</span>
                 </div>
               </div>
@@ -329,7 +329,7 @@ const BeneficiaryManagementDashboardSection = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-[#0284c7]" />
                     <span className="text-slate-600 font-semibold">Education & Human Capital</span>
                   </div>
-                  <span className="font-bold text-[#0B2D6E]">5,240 <span className="text-slate-400 font-normal">(42%)</span></span>
+                  <span className="font-bold text-[#3D1E10]">5,240 <span className="text-slate-400 font-normal">(42%)</span></span>
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -337,15 +337,15 @@ const BeneficiaryManagementDashboardSection = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-[#ef4444]" />
                     <span className="text-slate-600 font-semibold">Health & Well-being</span>
                   </div>
-                  <span className="font-bold text-[#0B2D6E]">4,120 <span className="text-slate-400 font-normal">(33%)</span></span>
+                  <span className="font-bold text-[#3D1E10]">4,120 <span className="text-slate-400 font-normal">(33%)</span></span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#06402B]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#5B2E19]" />
                     <span className="text-slate-600 font-semibold">Community Resilience</span>
                   </div>
-                  <span className="font-bold text-[#0B2D6E]">3,120 <span className="text-slate-400 font-normal">(25%)</span></span>
+                  <span className="font-bold text-[#3D1E10]">3,120 <span className="text-slate-400 font-normal">(25%)</span></span>
                 </div>
               </div>
             </div>
@@ -358,7 +358,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <span className="w-1 h-4 rounded-full bg-[#f97316]" />
-                <h3 className="text-sm sm:text-base font-black text-[#0B2D6E]">
+                <h3 className="text-sm sm:text-base font-black text-[#3D1E10]">
                   Beneficiaries by Location
                 </h3>
               </div>
@@ -386,7 +386,7 @@ const BeneficiaryManagementDashboardSection = () => {
             {/* Legend */}
             <div className="flex items-center justify-around pt-3 text-[11px] font-bold text-slate-600">
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-[#06402B]" />
+                <span className="w-3 h-3 rounded-full bg-[#5B2E19]" />
                 <span>High (500+)</span>
               </div>
               <div className="flex items-center gap-1.5">
@@ -407,7 +407,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <span className="w-1 h-4 rounded-full bg-[#f97316]" />
-                <h3 className="text-sm sm:text-base font-black text-[#0B2D6E]">
+                <h3 className="text-sm sm:text-base font-black text-[#3D1E10]">
                   Monthly Trend
                 </h3>
               </div>
@@ -437,16 +437,16 @@ const BeneficiaryManagementDashboardSection = () => {
                 <path
                   d="M 10 90 Q 40 75, 70 65 T 130 50 T 190 35 T 250 40 T 290 25"
                   fill="none"
-                  stroke="#06402B"
+                  stroke="#5B2E19"
                   strokeWidth="2.5"
                 />
                 {/* Registrations Dots */}
-                <circle cx="10" cy="90" r="3" fill="#06402B" />
-                <circle cx="70" cy="65" r="3" fill="#06402B" />
-                <circle cx="130" cy="50" r="3" fill="#06402B" />
-                <circle cx="190" cy="35" r="3" fill="#06402B" />
-                <circle cx="250" cy="40" r="3" fill="#06402B" />
-                <circle cx="290" cy="25" r="3" fill="#06402B" />
+                <circle cx="10" cy="90" r="3" fill="#5B2E19" />
+                <circle cx="70" cy="65" r="3" fill="#5B2E19" />
+                <circle cx="130" cy="50" r="3" fill="#5B2E19" />
+                <circle cx="190" cy="35" r="3" fill="#5B2E19" />
+                <circle cx="250" cy="40" r="3" fill="#5B2E19" />
+                <circle cx="290" cy="25" r="3" fill="#5B2E19" />
 
                 {/* Interventions Orange Path */}
                 <path
@@ -484,7 +484,7 @@ const BeneficiaryManagementDashboardSection = () => {
             <div className="flex items-center justify-between mb-3.5">
               <div className="flex items-center gap-2">
                 <span className="w-1 h-4 rounded-full bg-[#f97316]" />
-                <h3 className="text-sm sm:text-base font-black text-[#0B2D6E]">
+                <h3 className="text-sm sm:text-base font-black text-[#3D1E10]">
                   Recent Registrations
                 </h3>
               </div>
@@ -518,13 +518,13 @@ const BeneficiaryManagementDashboardSection = () => {
                       key={r.id}
                       className="hover:bg-slate-50 transition-colors group"
                     >
-                      <td className="py-2.5 font-mono font-bold text-slate-600 group-hover:text-[#06402B]">
+                      <td className="py-2.5 font-mono font-bold text-slate-600 group-hover:text-[#5B2E19]">
                         <Link to={`/admin/beneficiaries/${r.id}`} className="hover:underline">
                           {r.id}
                         </Link>
                       </td>
                       <td className="py-2.5 font-bold text-slate-900">
-                        <Link to={`/admin/beneficiaries/${r.id}`} className="hover:text-[#06402B]">
+                        <Link to={`/admin/beneficiaries/${r.id}`} className="hover:text-[#5B2E19]">
                           {r.name}
                         </Link>
                       </td>
@@ -552,7 +552,7 @@ const BeneficiaryManagementDashboardSection = () => {
                           </Link>
                           <Link
                             to={`/admin/beneficiaries/${r.id}/cases`}
-                            className="px-2 py-1 rounded-md bg-sky-50 text-sky-800 hover:bg-[#0B2D6E] hover:text-white text-[10px] font-bold border border-sky-200/80 transition-colors"
+                            className="px-2 py-1 rounded-md bg-sky-50 text-sky-800 hover:bg-[#3D1E10] hover:text-white text-[10px] font-bold border border-sky-200/80 transition-colors"
                             title="Case Timeline"
                           >
                             Cases
@@ -572,7 +572,7 @@ const BeneficiaryManagementDashboardSection = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <span className="w-1 h-4 rounded-full bg-[#f97316]" />
-              <h3 className="text-sm sm:text-base font-black text-[#0B2D6E]">
+              <h3 className="text-sm sm:text-base font-black text-[#3D1E10]">
                 Case Status Overview
               </h3>
             </div>

@@ -289,7 +289,7 @@ const AdminDashboard = ({ initialTab, initialSubItem }) => {
   };
 
   return (
-    <div className="h-screen w-full bg-[#f8fafc] flex overflow-hidden font-sans selection:bg-[#06402B] selection:text-white">
+    <div className="h-screen w-full bg-[#FDFBF7] flex overflow-hidden font-sans selection:bg-[#5B2E19] selection:text-[#FAF6EE]">
       {/* ─────────────────────────────────────────────────────────────
           1. FIXED 100VH LEFT SIDEBAR
       ───────────────────────────────────────────────────────────── */}

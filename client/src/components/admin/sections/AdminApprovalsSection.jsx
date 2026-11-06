@@ -50,7 +50,7 @@ const ApprovalDossierDrawer = ({ request, onClose, onApprove, onReject }) => {
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200">
                 {request.id}
               </span>
               <span
@@ -95,11 +95,11 @@ const ApprovalDossierDrawer = ({ request, onClose, onApprove, onReject }) => {
               <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
                 Requested Funding Commitment
               </span>
-              <span className="text-[11px] font-mono font-bold text-[#06402B] bg-emerald-50 px-2 py-0.5 rounded">
+              <span className="text-[11px] font-mono font-bold text-[#5B2E19] bg-emerald-50 px-2 py-0.5 rounded">
                 Ref: {request.beneficiaryCode}
               </span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-[#0B2D6E]">
+            <div className="text-2xl sm:text-3xl font-black text-[#3D1E10]">
               ₦{request.amountFormatted}
             </div>
             <h3 className="text-sm sm:text-base font-bold text-slate-900 pt-1 leading-snug">
@@ -116,7 +116,7 @@ const ApprovalDossierDrawer = ({ request, onClose, onApprove, onReject }) => {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Submitted By</span>
-                <span className="font-bold text-[#06402B]">{request.requestor}</span>
+                <span className="font-bold text-[#5B2E19]">{request.requestor}</span>
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Department Unit</span>
@@ -170,7 +170,7 @@ const ApprovalDossierDrawer = ({ request, onClose, onApprove, onReject }) => {
               <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 space-y-2">
                 {request.checklist.map((chk, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
-                    <div className="w-4 h-4 rounded-full bg-emerald-100 text-[#06402B] flex items-center justify-center shrink-0">
+                    <div className="w-4 h-4 rounded-full bg-emerald-100 text-[#5B2E19] flex items-center justify-center shrink-0">
                       <Check size={11} strokeWidth={3} />
                     </div>
                     <span>{chk}</span>
@@ -196,7 +196,7 @@ const ApprovalDossierDrawer = ({ request, onClose, onApprove, onReject }) => {
               <button
                 type="button"
                 onClick={() => onApprove(request.id, request.title)}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
               >
                 <CheckCircle2 size={15} />
                 <span>Authorize & Sign Disbursement</span>
@@ -312,7 +312,7 @@ const AdminApprovalsSection = () => {
       {/* 1. Header with Breadcrumb & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06402B]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5B2E19]">
             <CheckCircle2 size={15} />
             <span>Governance Clearances & Fund Authorizations</span>
           </div>
@@ -338,7 +338,7 @@ const AdminApprovalsSection = () => {
             <button
               type="button"
               onClick={handleBatchApprove}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
             >
               <CheckCircle2 size={15} />
               <span>Batch Clear Clean</span>
@@ -370,12 +370,12 @@ const AdminApprovalsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Total Commitment Value</span>
-            <div className="p-2.5 rounded-xl bg-blue-50 text-[#0B2D6E]">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-[#3D1E10]">
               <DollarSign size={18} />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-black text-[#0B2D6E]">₦{totalCommitmentValue}M</span>
+            <span className="text-2xl font-black text-[#3D1E10]">₦{totalCommitmentValue}M</span>
             <div className="flex items-center gap-1.5 mt-1 text-[11px] text-blue-700 font-bold">
               <TrendingUp size={13} />
               <span>Pending Disbursements</span>
@@ -387,7 +387,7 @@ const AdminApprovalsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Review Velocity</span>
-            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#06402B]">
+            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#5B2E19]">
               <Sparkles size={18} />
             </div>
           </div>
@@ -427,7 +427,7 @@ const AdminApprovalsSection = () => {
             placeholder="Search approvals by title, requestor..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]/20"
+            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]/20"
           />
         </div>
 
@@ -441,7 +441,7 @@ const AdminApprovalsSection = () => {
                 onClick={() => setFilterPriority(p)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   filterPriority === p
-                    ? 'bg-[#06402B] text-white shadow-xs'
+                    ? 'bg-[#5B2E19] text-white shadow-xs'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                 }`}
               >
@@ -458,7 +458,7 @@ const AdminApprovalsSection = () => {
               onClick={() => setViewMode('cards')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'cards'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -470,7 +470,7 @@ const AdminApprovalsSection = () => {
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'table'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -510,7 +510,7 @@ const AdminApprovalsSection = () => {
 
                 <h3
                   onClick={() => setSelectedApproval(req)}
-                  className="text-base font-black text-[#0B2D6E] leading-snug hover:text-[#06402B] cursor-pointer transition-colors"
+                  className="text-base font-black text-[#3D1E10] leading-snug hover:text-[#5B2E19] cursor-pointer transition-colors"
                 >
                   {req.title}
                 </h3>
@@ -548,7 +548,7 @@ const AdminApprovalsSection = () => {
                     <button
                       type="button"
                       onClick={() => setSelectedApproval(req)}
-                      className="p-2 rounded-xl border border-slate-200 text-slate-500 hover:text-[#06402B] hover:bg-emerald-50 transition-colors cursor-pointer"
+                      className="p-2 rounded-xl border border-slate-200 text-slate-500 hover:text-[#5B2E19] hover:bg-emerald-50 transition-colors cursor-pointer"
                       title="Inspect Dossier"
                     >
                       <Eye size={15} />
@@ -563,7 +563,7 @@ const AdminApprovalsSection = () => {
                     <button
                       type="button"
                       onClick={() => handleApprove(req.id, req.title)}
-                      className="flex items-center gap-1.5 px-4.5 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs cursor-pointer transition-all shadow-xs hover:shadow-md"
+                      className="flex items-center gap-1.5 px-4.5 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs cursor-pointer transition-all shadow-xs hover:shadow-md"
                     >
                       <CheckCircle2 size={14} />
                       <span>Approve Grant</span>
@@ -606,7 +606,7 @@ const AdminApprovalsSection = () => {
                     <td className="py-3.5 px-4 font-bold text-slate-800 max-w-sm">
                       <p
                         onClick={() => setSelectedApproval(req)}
-                        className="truncate text-[#0B2D6E] font-bold hover:text-[#06402B] cursor-pointer"
+                        className="truncate text-[#3D1E10] font-bold hover:text-[#5B2E19] cursor-pointer"
                       >
                         {req.title}
                       </p>
@@ -646,7 +646,7 @@ const AdminApprovalsSection = () => {
                         <button
                           type="button"
                           onClick={() => setSelectedApproval(req)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 cursor-pointer"
                           title="View Dossier"
                         >
                           <Eye size={15} />
@@ -663,7 +663,7 @@ const AdminApprovalsSection = () => {
                             <button
                               type="button"
                               onClick={() => handleApprove(req.id, req.title)}
-                              className="px-3 py-1 rounded-lg bg-[#06402B] text-white hover:bg-[#042C1D] text-[11px] font-bold cursor-pointer"
+                              className="px-3 py-1 rounded-lg bg-[#5B2E19] text-white hover:bg-[#3D1E10] text-[11px] font-bold cursor-pointer"
                             >
                               Approve
                             </button>

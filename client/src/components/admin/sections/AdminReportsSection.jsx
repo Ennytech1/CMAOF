@@ -76,14 +76,14 @@ const ReportDossierDrawer = ({ report, onClose, onDelete }) => {
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200">
                 {report.id}
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
                 <CheckCircle2 size={11} className="text-emerald-600" />
                 <span>{report.status}</span>
               </span>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-blue-50 text-[#0B2D6E] border border-blue-200">
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-blue-50 text-[#3D1E10] border border-blue-200">
                 {report.fileType}
               </span>
             </div>
@@ -108,7 +108,7 @@ const ReportDossierDrawer = ({ report, onClose, onDelete }) => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
-            <div className="absolute top-3 left-3 bg-[#06402B]/90 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg border border-emerald-400/30">
+            <div className="absolute top-3 left-3 bg-[#5B2E19]/90 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg border border-emerald-400/30">
               {report.period}
             </div>
             <div className="absolute bottom-3 left-3 right-3 text-white">
@@ -137,7 +137,7 @@ const ReportDossierDrawer = ({ report, onClose, onDelete }) => {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Auditing Body</span>
-                <span className="font-bold text-[#06402B]">{report.author}</span>
+                <span className="font-bold text-[#5B2E19]">{report.author}</span>
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Reporting Scope</span>
@@ -149,7 +149,7 @@ const ReportDossierDrawer = ({ report, onClose, onDelete }) => {
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Dossier File Size</span>
-                <span className="font-bold text-[#0B2D6E]">{report.size} • {report.pages ? `${report.pages} pages` : 'Certified'}</span>
+                <span className="font-bold text-[#3D1E10]">{report.size} • {report.pages ? `${report.pages} pages` : 'Certified'}</span>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ const ReportDossierDrawer = ({ report, onClose, onDelete }) => {
             <button
               type="button"
               onClick={exportMetricsCSV}
-              className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[#0B2D6E] font-bold text-xs transition-colors shadow-2xs cursor-pointer"
+              className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[#3D1E10] font-bold text-xs transition-colors shadow-2xs cursor-pointer"
             >
               <Download size={13} />
               <span>Export Metrics CSV</span>
@@ -204,7 +204,7 @@ const ReportDossierDrawer = ({ report, onClose, onDelete }) => {
             onClick={() => {
               toast.success(`Downloading certified dossier: ${report.title}...`, { icon: '📥' });
             }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
           >
             <Download size={14} />
             <span>Download Certified PDF</span>
@@ -360,13 +360,13 @@ const AdminReportsSection = () => {
                 setCurrentView('portfolio');
                 setCurrentStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Reports</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Compile Transparency Dossier</span>
+            <span className="font-bold text-[#3D1E10]">Compile Transparency Dossier</span>
           </div>
 
           <button
@@ -375,7 +375,7 @@ const AdminReportsSection = () => {
               setCurrentView('portfolio');
               setCurrentStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Repository</span>
@@ -401,11 +401,11 @@ const AdminReportsSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -417,7 +417,7 @@ const AdminReportsSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[140px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -436,8 +436,8 @@ const AdminReportsSection = () => {
         {/* STEP 1: Scope & Audit Period */}
         {currentStep === 1 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <FileBarChart size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <FileBarChart size={18} className="text-[#5B2E19]" />
               <span>Dossier Scope, Audit Period & Issuing Directorate</span>
             </h2>
 
@@ -452,7 +452,7 @@ const AdminReportsSection = () => {
                   value={genConfig.title}
                   onChange={(e) => setGenConfig({ ...genConfig, title: e.target.value })}
                   placeholder="e.g. Q4 2026 Interim Field Performance Report"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -463,7 +463,7 @@ const AdminReportsSection = () => {
                   value={genConfig.subtitle}
                   onChange={(e) => setGenConfig({ ...genConfig, subtitle: e.target.value })}
                   placeholder="Scope, key intervention milestones, and empirical takeaways..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -475,7 +475,7 @@ const AdminReportsSection = () => {
                     value={genConfig.period}
                     onChange={(e) => setGenConfig({ ...genConfig, period: e.target.value })}
                     placeholder="e.g. Oct 2026 – Dec 2026"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                   />
                 </div>
 
@@ -484,7 +484,7 @@ const AdminReportsSection = () => {
                   <select
                     value={genConfig.pillar}
                     onChange={(e) => setGenConfig({ ...genConfig, pillar: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     {REPORT_PILLARS.map((p) => (
                       <option key={p} value={p}>
@@ -503,7 +503,7 @@ const AdminReportsSection = () => {
                     value={genConfig.author}
                     onChange={(e) => setGenConfig({ ...genConfig, author: e.target.value })}
                     placeholder="e.g. Deloitte Nigeria / Board of Trustees"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                   />
                 </div>
 
@@ -512,7 +512,7 @@ const AdminReportsSection = () => {
                   <select
                     value={genConfig.format}
                     onChange={(e) => setGenConfig({ ...genConfig, format: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     <option value="Executive PDF">Executive PDF (Full Color Print)</option>
                     <option value="Certified PDF">Certified Statutory PDF (Signed)</option>
@@ -527,8 +527,8 @@ const AdminReportsSection = () => {
         {/* STEP 2: Metrics & Data Breakdown */}
         {currentStep === 2 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <TrendingUp size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <TrendingUp size={18} className="text-[#5B2E19]" />
               <span>Verified Financial Disclosures & Section Inclusion Controls</span>
             </h2>
 
@@ -542,7 +542,7 @@ const AdminReportsSection = () => {
                       type="checkbox"
                       checked={genConfig.includeFinancials}
                       onChange={(e) => setGenConfig({ ...genConfig, includeFinancials: e.target.checked })}
-                      className="w-4 h-4 rounded text-[#06402B] focus:ring-[#06402B]"
+                      className="w-4 h-4 rounded text-[#5B2E19] focus:ring-[#5B2E19]"
                     />
                     <div className="space-y-0.5">
                       <span className="font-bold text-slate-800 block">Itemized Grants Disbursements</span>
@@ -555,7 +555,7 @@ const AdminReportsSection = () => {
                       type="checkbox"
                       checked={genConfig.includeLedgers}
                       onChange={(e) => setGenConfig({ ...genConfig, includeLedgers: e.target.checked })}
-                      className="w-4 h-4 rounded text-[#06402B] focus:ring-[#06402B]"
+                      className="w-4 h-4 rounded text-[#5B2E19] focus:ring-[#5B2E19]"
                     />
                     <div className="space-y-0.5">
                       <span className="font-bold text-slate-800 block">Beneficiary Roll Ledger</span>
@@ -568,7 +568,7 @@ const AdminReportsSection = () => {
                       type="checkbox"
                       checked={genConfig.includePhotos}
                       onChange={(e) => setGenConfig({ ...genConfig, includePhotos: e.target.checked })}
-                      className="w-4 h-4 rounded text-[#06402B] focus:ring-[#06402B]"
+                      className="w-4 h-4 rounded text-[#5B2E19] focus:ring-[#5B2E19]"
                     />
                     <div className="space-y-0.5">
                       <span className="font-bold text-slate-800 block">Photographic Field Testimonials</span>
@@ -581,7 +581,7 @@ const AdminReportsSection = () => {
                       type="checkbox"
                       checked={genConfig.includeSafeguarding}
                       onChange={(e) => setGenConfig({ ...genConfig, includeSafeguarding: e.target.checked })}
-                      className="w-4 h-4 rounded text-[#06402B] focus:ring-[#06402B]"
+                      className="w-4 h-4 rounded text-[#5B2E19] focus:ring-[#5B2E19]"
                     />
                     <div className="space-y-0.5">
                       <span className="font-bold text-slate-800 block">PSEA & Safeguarding Certificate</span>
@@ -598,7 +598,7 @@ const AdminReportsSection = () => {
                   value={genConfig.signatory}
                   onChange={(e) => setGenConfig({ ...genConfig, signatory: e.target.value })}
                   placeholder="e.g. Chief Michael Ade.Ojo & Deloitte Engagement Partner"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                 />
               </div>
             </div>
@@ -608,8 +608,8 @@ const AdminReportsSection = () => {
         {/* STEP 3: Sign-off & Real-Time Live Preview */}
         {currentStep === 3 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Shield size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Shield size={18} className="text-[#5B2E19]" />
               <span>Compilation Review & Real-Time Live Certified Dossier Preview</span>
             </h2>
 
@@ -626,11 +626,11 @@ const AdminReportsSection = () => {
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <span className="text-slate-500">Audit Period:</span>
-                    <span className="font-bold text-[#06402B]">{genConfig.period}</span>
+                    <span className="font-bold text-[#5B2E19]">{genConfig.period}</span>
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <span className="text-slate-500">Pillar & Scope:</span>
-                    <span className="font-bold text-[#0B2D6E]">{genConfig.pillar}</span>
+                    <span className="font-bold text-[#3D1E10]">{genConfig.pillar}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-500">Certifying Authority:</span>
@@ -644,10 +644,10 @@ const AdminReportsSection = () => {
                     id="govSeal"
                     checked={genConfig.governanceCertified}
                     onChange={(e) => setGenConfig({ ...genConfig, governanceCertified: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                   />
                   <label htmlFor="govSeal" className="text-xs text-slate-700 font-medium cursor-pointer">
-                    <span className="font-bold text-[#06402B]">Governance Seal:</span> I certify that this dossier reflects true financial statements, verified field records, and institutional integrity standards under the CMAOF Foundation Charter.
+                    <span className="font-bold text-[#5B2E19]">Governance Seal:</span> I certify that this dossier reflects true financial statements, verified field records, and institutional integrity standards under the CMAOF Foundation Charter.
                   </label>
                 </div>
               </div>
@@ -683,7 +683,7 @@ const AdminReportsSection = () => {
                       <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 inline-block">
                         {genConfig.period}
                       </span>
-                      <h4 className="font-bold text-sm text-[#0B2D6E] leading-snug line-clamp-2">
+                      <h4 className="font-bold text-sm text-[#3D1E10] leading-snug line-clamp-2">
                         {genConfig.title}
                       </h4>
                       <p className="text-[11px] text-slate-500 truncate">{genConfig.author}</p>
@@ -691,7 +691,7 @@ const AdminReportsSection = () => {
                   </div>
 
                   <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                    <span className="font-bold text-[#06402B]">{genConfig.format}</span>
+                    <span className="font-bold text-[#5B2E19]">{genConfig.format}</span>
                     <span className="text-slate-400">Audited & Signed</span>
                   </div>
                 </div>
@@ -718,7 +718,7 @@ const AdminReportsSection = () => {
             <button
               type="button"
               onClick={() => toast.success('Dossier draft configuration saved.')}
-              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
             >
               Save Draft
             </button>
@@ -736,7 +736,7 @@ const AdminReportsSection = () => {
                   handleCompile();
                 }
               }}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
             >
               <span>{currentStep === 3 ? 'Compile & Seal Dossier' : 'Next Step'}</span>
               <ArrowRight size={14} />
@@ -756,7 +756,7 @@ const AdminReportsSection = () => {
       {/* 1. Header with Clear Title & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06402B]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5B2E19]">
             <FileBarChart size={15} />
             <span>Institutional Accountability & Transparency</span>
           </div>
@@ -785,7 +785,7 @@ const AdminReportsSection = () => {
               setCurrentStep(1);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Plus size={16} />
             <span>Compile New Dossier</span>
@@ -799,7 +799,7 @@ const AdminReportsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Certified Dossiers</span>
-            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#06402B]">
+            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#5B2E19]">
               <FileCheck2 size={18} />
             </div>
           </div>
@@ -816,12 +816,12 @@ const AdminReportsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Audited Disbursements</span>
-            <div className="p-2.5 rounded-xl bg-blue-50 text-[#0B2D6E]">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-[#3D1E10]">
               <DollarSign size={18} />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-black text-[#0B2D6E]">{auditedFundsDisclosed}</span>
+            <span className="text-2xl font-black text-[#3D1E10]">{auditedFundsDisclosed}</span>
             <div className="flex items-center gap-1.5 mt-1 text-[11px] text-blue-700 font-bold">
               <Award size={13} />
               <span>Deloitte Independent Clean</span>
@@ -873,7 +873,7 @@ const AdminReportsSection = () => {
             placeholder="Search dossiers, auditors, periods..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]/20"
+            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]/20"
           />
         </div>
 
@@ -882,7 +882,7 @@ const AdminReportsSection = () => {
           <select
             value={formatFilter}
             onChange={(e) => setFormatFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+            className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
           >
             <option value="All">All Formats</option>
             <option value="Executive PDF">Executive PDF</option>
@@ -899,7 +899,7 @@ const AdminReportsSection = () => {
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'grid'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -911,7 +911,7 @@ const AdminReportsSection = () => {
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'table'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -931,7 +931,7 @@ const AdminReportsSection = () => {
             onClick={() => setFilterPillar(p)}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
               filterPillar === p
-                ? 'bg-[#06402B] text-white shadow-xs'
+                ? 'bg-[#5B2E19] text-white shadow-xs'
                 : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80'
             }`}
           >
@@ -962,14 +962,14 @@ const AdminReportsSection = () => {
                 
                 {/* Status Badge */}
                 <div className="absolute top-2.5 left-2.5">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#06402B] shadow-xs">
-                    <CheckCircle2 size={11} className="text-[#06402B]" />
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#5B2E19] shadow-xs">
+                    <CheckCircle2 size={11} className="text-[#5B2E19]" />
                     <span>{r.status}</span>
                   </span>
                 </div>
 
                 <div className="absolute top-2.5 right-2.5">
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-[#0B2D6E]/90 text-white shadow-xs">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-[#3D1E10]/90 text-white shadow-xs">
                     {r.period}
                   </span>
                 </div>
@@ -987,7 +987,7 @@ const AdminReportsSection = () => {
                 <div className="space-y-1">
                   <h3
                     onClick={() => setActiveDossierReport(r)}
-                    className="font-bold text-[14.5px] text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors cursor-pointer line-clamp-2"
+                    className="font-bold text-[14.5px] text-[#3D1E10] leading-snug group-hover:text-[#5B2E19] transition-colors cursor-pointer line-clamp-2"
                   >
                     {r.title}
                   </h3>
@@ -1001,7 +1001,7 @@ const AdminReportsSection = () => {
                   <div className="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-slate-50 text-[11px] text-slate-600">
                     <div>
                       <span className="text-[9px] uppercase font-bold text-slate-400 block">{r.metrics[0].label}</span>
-                      <span className="font-extrabold text-[#06402B]">{r.metrics[0].val}</span>
+                      <span className="font-extrabold text-[#5B2E19]">{r.metrics[0].val}</span>
                     </div>
                     <div>
                       <span className="text-[9px] uppercase font-bold text-slate-400 block">{r.metrics[1].label}</span>
@@ -1018,7 +1018,7 @@ const AdminReportsSection = () => {
                     <button
                       type="button"
                       onClick={() => setActiveDossierReport(r)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 transition-colors cursor-pointer"
                       title="Inspect Dossier"
                     >
                       <Eye size={15} />
@@ -1026,7 +1026,7 @@ const AdminReportsSection = () => {
                     <button
                       type="button"
                       onClick={() => toast.success(`Exporting certified PDF for ${r.title}`)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B2D6E] hover:bg-blue-50 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#3D1E10] hover:bg-blue-50 transition-colors cursor-pointer"
                       title="Download Certified PDF"
                     >
                       <Download size={15} />
@@ -1081,7 +1081,7 @@ const AdminReportsSection = () => {
                         <div className="min-w-0">
                           <p
                             onClick={() => setActiveDossierReport(r)}
-                            className="truncate text-[#0B2D6E] font-bold hover:text-[#06402B] cursor-pointer"
+                            className="truncate text-[#3D1E10] font-bold hover:text-[#5B2E19] cursor-pointer"
                           >
                             {r.title}
                           </p>
@@ -1095,7 +1095,7 @@ const AdminReportsSection = () => {
                       </span>
                     </td>
                     <td className="py-3.5 px-4 font-mono text-slate-600">{r.period}</td>
-                    <td className="py-3.5 px-4 font-bold text-[#0B2D6E]">{r.fileType}</td>
+                    <td className="py-3.5 px-4 font-bold text-[#3D1E10]">{r.fileType}</td>
                     <td className="py-3.5 px-4 text-slate-500">{r.dateGenerated}</td>
                     <td className="py-3.5 px-4">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -1108,7 +1108,7 @@ const AdminReportsSection = () => {
                         <button
                           type="button"
                           onClick={() => setActiveDossierReport(r)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 cursor-pointer"
                           title="View Dossier"
                         >
                           <Eye size={15} />
@@ -1116,7 +1116,7 @@ const AdminReportsSection = () => {
                         <button
                           type="button"
                           onClick={() => toast.success(`Exporting "${r.title}" (Certified PDF)`)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B2D6E] hover:bg-blue-50 cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#3D1E10] hover:bg-blue-50 cursor-pointer"
                           title="Download PDF"
                         >
                           <Download size={15} />
@@ -1158,7 +1158,7 @@ const AdminReportsSection = () => {
               setFilterPillar('All');
               setFormatFilter('All');
             }}
-            className="text-xs font-bold text-[#06402B] hover:underline cursor-pointer"
+            className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer"
           >
             Clear all filters
           </button>

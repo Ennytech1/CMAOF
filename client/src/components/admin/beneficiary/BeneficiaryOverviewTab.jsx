@@ -72,7 +72,7 @@ const BeneficiaryOverviewTab = ({
         <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
             <span className="w-1.5 h-5 rounded-full bg-[#f97316]" />
-            <h2 className="text-sm sm:text-base font-bold text-[#0B2D6E]">
+            <h2 className="text-sm sm:text-base font-bold text-[#3D1E10]">
               Personal Information
             </h2>
           </div>
@@ -124,7 +124,7 @@ const BeneficiaryOverviewTab = ({
         <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
             <span className="w-1.5 h-5 rounded-full bg-[#f97316]" />
-            <h2 className="text-sm sm:text-base font-bold text-[#0B2D6E]">
+            <h2 className="text-sm sm:text-base font-bold text-[#3D1E10]">
               Household Information
             </h2>
           </div>
@@ -166,7 +166,7 @@ const BeneficiaryOverviewTab = ({
         <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs">
           <div className="flex items-center gap-2.5 pb-3 border-b border-slate-100">
             <span className="w-1.5 h-5 rounded-full bg-[#f97316]" />
-            <h2 className="text-sm sm:text-base font-bold text-[#0B2D6E]">
+            <h2 className="text-sm sm:text-base font-bold text-[#3D1E10]">
               Case Information
             </h2>
           </div>
@@ -191,7 +191,7 @@ const BeneficiaryOverviewTab = ({
 
             <div className="py-2 flex items-center justify-between gap-3">
               <span className="text-slate-500 font-medium">Programme</span>
-              <span className="font-bold text-[#0B2D6E] text-right">{beneficiary.caseInfo?.programme || 'School Support Programme'}</span>
+              <span className="font-bold text-[#3D1E10] text-right">{beneficiary.caseInfo?.programme || 'School Support Programme'}</span>
             </div>
 
             <div className="py-2 flex items-center justify-between gap-3">
@@ -218,7 +218,7 @@ const BeneficiaryOverviewTab = ({
         <div className="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <span className="w-1.5 h-6 rounded-full bg-[#f97316]" />
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
               Intervention History
             </h2>
           </div>
@@ -232,7 +232,7 @@ const BeneficiaryOverviewTab = ({
                 value={interventionSearch}
                 onChange={(e) => setInterventionSearch(e.target.value)}
                 placeholder="Search..."
-                className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 font-medium"
+                className="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 font-medium"
               />
             </div>
 
@@ -240,7 +240,7 @@ const BeneficiaryOverviewTab = ({
             <button
               type="button"
               onClick={onOpenAddIntervention}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold transition-all shadow-xs cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold transition-all shadow-xs cursor-pointer shrink-0"
             >
               <Plus size={14} strokeWidth={2.5} />
               <span>Add Intervention</span>

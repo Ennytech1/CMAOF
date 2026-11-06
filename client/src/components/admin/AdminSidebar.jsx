@@ -43,8 +43,8 @@ const AdminSidebar = ({
   const beneficiarySubItems = [
     { id: 'beneficiaries-overview', label: 'Overview & Metrics', icon: LayoutDashboard, route: '/admin/beneficiaries' },
     { id: 'beneficiaries-directory', label: 'Beneficiary Directory', icon: Users, route: '/admin/beneficiaries/directory' },
-    { id: 'beneficiaries-assessments', label: 'Needs Assessment', icon: FileCheck2, iconColor: 'text-amber-500', route: '/admin/beneficiaries/assessments' },
-    { id: 'beneficiaries-cases', label: 'Case Management', icon: GitBranch, iconColor: 'text-sky-500', route: '/admin/beneficiaries/cases' },
+    { id: 'beneficiaries-assessments', label: 'Needs Assessment', icon: FileCheck2, iconColor: 'text-[#D97706]', route: '/admin/beneficiaries/assessments' },
+    { id: 'beneficiaries-cases', label: 'Case Management', icon: GitBranch, iconColor: 'text-[#0047BA]', route: '/admin/beneficiaries/cases' },
     { id: 'beneficiaries-register', label: 'Register Beneficiary', icon: Plus, hasPlus: true, route: '/admin/beneficiaries/register' },
   ];
 
@@ -71,21 +71,25 @@ const AdminSidebar = ({
       <aside
         className={`
           fixed top-0 bottom-0 left-0 z-40
-          w-64 h-screen max-h-screen bg-white text-slate-800 flex flex-col justify-between
-          border-r border-slate-200/90 shadow-sm
+          w-64 h-screen max-h-screen bg-white text-[#3D1E10] flex flex-col justify-between
+          border-r border-[#E8DEC2] shadow-sm
           transition-transform duration-300 ease-in-out
           ${mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0'}
         `}
       >
         {/* Top Header with CMAOF Logo */}
-        <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
-          <div className="flex items-center gap-2.5">
-            <CmaofLogo variant="light" asLink={false} imgClassName="h-9 w-auto object-contain" />
+        <div className="p-4 sm:p-5 border-b border-[#E8DEC2] flex items-center justify-between shrink-0 bg-[#FAF6EE]/60">
+          <div className="flex flex-col gap-1">
+            <CmaofLogo variant="light" asLink={false} imgClassName="h-8.5 w-auto object-contain" />
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#338C26] animate-pulse" />
+              <span className="text-[10px] uppercase font-bold tracking-wider text-[#5B2E19]/70">Admin Command Center</span>
+            </div>
           </div>
           <button
             type="button"
             onClick={onMobileClose}
-            className="lg:hidden p-1.5 rounded-lg hover:bg-slate-100 text-slate-500 cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg hover:bg-[#FAF6EE] text-[#5B2E19] cursor-pointer"
             aria-label="Close Sidebar"
           >
             <X size={18} />
@@ -93,7 +97,7 @@ const AdminSidebar = ({
         </div>
 
         {/* Scrollable Navigation List */}
-        <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-y-auto scrollbar-none text-xs sm:text-[13px]">
+        <nav className="flex-1 px-3 py-3 space-y-1 overflow-y-auto scrollbar-none text-xs sm:text-[13px]">
           {/* 1. Dashboard */}
           <button
             type="button"
@@ -102,12 +106,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'dashboard'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <LayoutDashboard size={17} className={activeTab === 'dashboard' ? 'text-white' : 'text-slate-500'} />
+            <LayoutDashboard size={17} className={activeTab === 'dashboard' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Dashboard</span>
           </button>
 
@@ -118,10 +122,10 @@ const AdminSidebar = ({
                 w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
                 ${
                   activeTab === 'beneficiaries' && (!activeSubItem || activeSubItem === 'beneficiaries-overview')
-                    ? 'bg-[#06402B] text-white shadow-sm'
+                    ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
                     : activeTab === 'beneficiaries'
-                    ? 'text-[#06402B] bg-emerald-50/70'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'text-[#5B2E19] bg-[#FAF0D4]'
+                    : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
                 }
               `}
               onClick={() => handleParentClick({ id: 'beneficiaries' })}
@@ -131,10 +135,10 @@ const AdminSidebar = ({
                   size={17}
                   className={
                     activeTab === 'beneficiaries' && (!activeSubItem || activeSubItem === 'beneficiaries-overview')
-                      ? 'text-white'
+                      ? 'text-[#FCCD37]'
                       : activeTab === 'beneficiaries'
-                      ? 'text-[#06402B]'
-                      : 'text-slate-500'
+                      ? 'text-[#5B2E19]'
+                      : 'text-[#5B2E19]/60'
                   }
                 />
                 <span>Beneficiaries</span>
@@ -147,8 +151,8 @@ const AdminSidebar = ({
                 }}
                 className={`p-1 rounded-md transition-colors cursor-pointer ${
                   activeTab === 'beneficiaries' && (!activeSubItem || activeSubItem === 'beneficiaries-overview')
-                    ? 'text-white/80 hover:text-white hover:bg-white/10'
-                    : 'text-slate-400 hover:text-slate-600 hover:bg-slate-200/60'
+                    ? 'text-[#FAF6EE]/80 hover:text-white hover:bg-white/10'
+                    : 'text-[#5B2E19]/50 hover:text-[#5B2E19] hover:bg-[#FAF0D4]'
                 }`}
                 title="Toggle submenu"
               >
@@ -158,7 +162,7 @@ const AdminSidebar = ({
 
             {/* Sub-items Indented */}
             {beneficiariesExpanded && (
-              <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-slate-200 ml-5 my-0.5 animate-[fadeIn_0.15s_ease]">
+              <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-[#E8DEC2] ml-5 my-0.5 animate-[fadeIn_0.15s_ease]">
                 {beneficiarySubItems.map((sub) => {
                   const isSubActive =
                     activeTab === 'beneficiaries' && activeSubItem === sub.id;
@@ -172,19 +176,19 @@ const AdminSidebar = ({
                         w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-left
                         ${
                           isSubActive
-                            ? 'bg-[#06402B] text-white shadow-xs font-black'
-                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                            ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-xs font-black'
+                            : 'text-[#5B2E19]/75 hover:text-[#3D1E10] hover:bg-[#FAF6EE]'
                         }
                       `}
                     >
                       {sub.icon ? (
                         <sub.icon
                           size={13}
-                          className={isSubActive ? 'text-white' : sub.iconColor || 'text-slate-400'}
+                          className={isSubActive ? 'text-[#FCCD37]' : sub.iconColor || 'text-[#5B2E19]/50'}
                           strokeWidth={sub.hasPlus ? 3 : 2.2}
                         />
                       ) : sub.hasPlus ? (
-                        <Plus size={12} strokeWidth={3} className={isSubActive ? 'text-white' : 'text-slate-400'} />
+                        <Plus size={12} strokeWidth={3} className={isSubActive ? 'text-[#FCCD37]' : 'text-[#5B2E19]/50'} />
                       ) : null}
                       <span className="truncate">{sub.label}</span>
                     </button>
@@ -201,10 +205,10 @@ const AdminSidebar = ({
                 w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
                 ${
                   activeTab === 'programmes' && (!activeSubItem || activeSubItem === 'programmes-portfolio')
-                    ? 'bg-[#06402B] text-white shadow-sm'
+                    ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
                     : activeTab === 'programmes'
-                    ? 'text-[#06402B] bg-emerald-50/70'
-                    : 'text-slate-700 hover:bg-slate-100'
+                    ? 'text-[#5B2E19] bg-[#FAF0D4]'
+                    : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
                 }
               `}
               onClick={() => handleParentClick({ id: 'programmes' })}
@@ -214,10 +218,10 @@ const AdminSidebar = ({
                   size={17}
                   className={
                     activeTab === 'programmes' && (!activeSubItem || activeSubItem === 'programmes-portfolio')
-                      ? 'text-white'
+                      ? 'text-[#FCCD37]'
                       : activeTab === 'programmes'
-                      ? 'text-[#06402B]'
-                      : 'text-slate-500'
+                      ? 'text-[#5B2E19]'
+                      : 'text-[#5B2E19]/60'
                   }
                 />
                 <span>Programmes</span>
@@ -230,8 +234,8 @@ const AdminSidebar = ({
                 }}
                 className={`p-1 rounded-md transition-colors cursor-pointer ${
                   activeTab === 'programmes' && (!activeSubItem || activeSubItem === 'programmes-portfolio')
-                    ? 'text-white/80 hover:text-white hover:bg-white/10'
-                    : 'text-slate-400 hover:text-slate-600 hover:bg-slate-200/60'
+                    ? 'text-[#FAF6EE]/80 hover:text-white hover:bg-white/10'
+                    : 'text-[#5B2E19]/50 hover:text-[#5B2E19] hover:bg-[#FAF0D4]'
                 }`}
                 title="Toggle submenu"
               >
@@ -241,7 +245,7 @@ const AdminSidebar = ({
 
             {/* Sub-items Indented */}
             {programmesExpanded && (
-              <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-slate-200 ml-5 my-0.5 animate-[fadeIn_0.15s_ease]">
+              <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-[#E8DEC2] ml-5 my-0.5 animate-[fadeIn_0.15s_ease]">
                 {programmesSubItems.map((sub) => {
                   const isSubActive =
                     activeTab === 'programmes' && activeSubItem === sub.id;
@@ -255,12 +259,12 @@ const AdminSidebar = ({
                         w-full flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer text-left
                         ${
                           isSubActive
-                            ? 'bg-[#06402B] text-white shadow-xs font-black'
-                            : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                            ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-xs font-black'
+                            : 'text-[#5B2E19]/75 hover:text-[#3D1E10] hover:bg-[#FAF6EE]'
                         }
                       `}
                     >
-                      {sub.hasPlus && <Plus size={12} strokeWidth={3} className={isSubActive ? 'text-white' : 'text-slate-400'} />}
+                      {sub.hasPlus && <Plus size={12} strokeWidth={3} className={isSubActive ? 'text-[#FCCD37]' : 'text-[#5B2E19]/50'} />}
                       <span>{sub.label}</span>
                     </button>
                   );
@@ -277,12 +281,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'impact'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <TrendingUp size={17} className={activeTab === 'impact' ? 'text-white' : 'text-slate-500'} />
+            <TrendingUp size={17} className={activeTab === 'impact' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Impact</span>
           </button>
 
@@ -294,12 +298,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'donations'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <HeartHandshake size={17} className={activeTab === 'donations' ? 'text-white' : 'text-slate-500'} />
+            <HeartHandshake size={17} className={activeTab === 'donations' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Donations</span>
           </button>
 
@@ -311,12 +315,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'communications'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <Send size={17} className={activeTab === 'communications' ? 'text-white' : 'text-slate-500'} />
+            <Send size={17} className={activeTab === 'communications' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <div className="flex items-center justify-between flex-1">
               <span>Newsletters & Broadcasts</span>
             </div>
@@ -330,12 +334,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'events'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <Calendar size={17} className={activeTab === 'events' ? 'text-white' : 'text-slate-500'} />
+            <Calendar size={17} className={activeTab === 'events' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Events</span>
           </button>
 
@@ -347,12 +351,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'resources'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <BookOpen size={17} className={activeTab === 'resources' ? 'text-white' : 'text-slate-500'} />
+            <BookOpen size={17} className={activeTab === 'resources' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Resources</span>
           </button>
 
@@ -364,12 +368,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'media'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <ImageIcon size={17} className={activeTab === 'media' ? 'text-white' : 'text-slate-500'} />
+            <ImageIcon size={17} className={activeTab === 'media' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Media</span>
           </button>
 
@@ -381,12 +385,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'reports'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <FileBarChart size={17} className={activeTab === 'reports' ? 'text-white' : 'text-slate-500'} />
+            <FileBarChart size={17} className={activeTab === 'reports' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Reports</span>
           </button>
 
@@ -398,12 +402,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'users' || activeTab === 'team'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <UserCheck size={17} className={activeTab === 'users' || activeTab === 'team' ? 'text-white' : 'text-slate-500'} />
+            <UserCheck size={17} className={activeTab === 'users' || activeTab === 'team' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Team</span>
           </button>
 
@@ -415,16 +419,16 @@ const AdminSidebar = ({
               w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'approvals'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
             <div className="flex items-center gap-3">
-              <CheckCircle2 size={17} className={activeTab === 'approvals' ? 'text-white' : 'text-slate-500'} />
+              <CheckCircle2 size={17} className={activeTab === 'approvals' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
               <span>Approvals</span>
             </div>
-            <span className="w-5 h-5 rounded-full bg-rose-500 text-white font-black text-[10px] flex items-center justify-center shadow-xs">
+            <span className="w-5 h-5 rounded-full bg-[#FCCD37] text-[#3D1E10] font-black text-[10px] flex items-center justify-center shadow-xs">
               5
             </span>
           </button>
@@ -437,12 +441,12 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'audit'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <ShieldCheck size={17} className={activeTab === 'audit' ? 'text-white' : 'text-slate-500'} />
+            <ShieldCheck size={17} className={activeTab === 'audit' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Audit</span>
           </button>
 
@@ -454,39 +458,39 @@ const AdminSidebar = ({
               w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-bold transition-all cursor-pointer text-left
               ${
                 activeTab === 'settings'
-                  ? 'bg-[#06402B] text-white shadow-sm'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-[#5B2E19] text-[#FAF6EE] shadow-sm'
+                  : 'text-[#5B2E19]/80 hover:bg-[#FAF6EE] hover:text-[#3D1E10]'
               }
             `}
           >
-            <Settings size={17} className={activeTab === 'settings' ? 'text-white' : 'text-slate-500'} />
+            <Settings size={17} className={activeTab === 'settings' ? 'text-[#FCCD37]' : 'text-[#5B2E19]/60'} />
             <span>Settings</span>
           </button>
         </nav>
 
         {/* Bottom Sidebar Footer & Logout */}
-        <div className="p-3.5 border-t border-slate-100 bg-slate-50/80 shrink-0 space-y-2">
+        <div className="p-3.5 border-t border-[#E8DEC2] bg-[#FAF6EE]/50 shrink-0 space-y-2">
           {/* Quick 1-Click Link to Live Public Website */}
           <Link
             to="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white hover:bg-emerald-50 text-slate-700 hover:text-[#06402B] text-xs font-bold transition-all border border-slate-200/80 hover:border-emerald-200 shadow-2xs group"
+            className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white hover:bg-[#FAF0D4] text-[#5B2E19] text-xs font-bold transition-all border border-[#E8DEC2] shadow-2xs group"
             title="Open Live CMAOF Public Website in new tab"
           >
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-[#338C26] animate-pulse shrink-0" />
               <span>Live Website</span>
             </span>
-            <ExternalLink size={13} className="text-slate-400 group-hover:text-[#06402B] group-hover:translate-x-0.5 transition-transform" />
+            <ExternalLink size={13} className="text-[#5B2E19]/60 group-hover:text-[#5B2E19] group-hover:translate-x-0.5 transition-transform" />
           </Link>
 
           <div className="flex items-center justify-between px-1 text-xs">
-            <span className="font-semibold text-[11px] text-slate-400">System v1.0 • 2026</span>
+            <span className="font-semibold text-[11px] text-[#5B2E19]/50">CMAOF v2.6 • 2026</span>
             <button
               type="button"
               onClick={onSignOut}
-              className="text-rose-600 hover:text-rose-700 font-bold flex items-center gap-1 cursor-pointer transition-colors"
+              className="text-[#5B2E19] hover:text-red-700 font-bold flex items-center gap-1 cursor-pointer transition-colors"
               title="Sign out"
             >
               <LogOut size={13} />
@@ -500,7 +504,7 @@ const AdminSidebar = ({
       {mobileOpen && (
         <div
           onClick={onMobileClose}
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-30 lg:hidden"
+          className="fixed inset-0 bg-[#3D1E10]/60 backdrop-blur-xs z-30 lg:hidden"
         />
       )}
     </>

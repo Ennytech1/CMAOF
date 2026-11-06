@@ -80,7 +80,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200">
                 {campaign.id}
               </span>
               <span
@@ -117,7 +117,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
             <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
               Subject Line & Header
             </span>
-            <h3 className="text-base font-black text-[#0B2D6E] leading-snug">{campaign.title}</h3>
+            <h3 className="text-base font-black text-[#3D1E10] leading-snug">{campaign.title}</h3>
             {campaign.subtitle && (
               <p className="text-xs text-slate-600 leading-relaxed">{campaign.subtitle}</p>
             )}
@@ -127,7 +127,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
           <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 text-center">
             <div>
               <span className="text-[10px] font-bold text-slate-500 uppercase block">Total Delivered</span>
-              <span className="text-base font-black text-[#06402B]">
+              <span className="text-base font-black text-[#5B2E19]">
                 {campaign.deliveredCount?.toLocaleString() || campaign.totalRecipients?.toLocaleString() || '14,280'}
               </span>
             </div>
@@ -137,7 +137,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
             </div>
             <div>
               <span className="text-[10px] font-bold text-slate-500 uppercase block">Click Rate</span>
-              <span className="text-base font-black text-[#0B2D6E]">{campaign.clickRate || '0.0%'}</span>
+              <span className="text-base font-black text-[#3D1E10]">{campaign.clickRate || '0.0%'}</span>
             </div>
           </div>
 
@@ -155,7 +155,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Sender Identity</span>
-                <span className="font-bold text-[#06402B] truncate block">{campaign.senderIdentity || 'Executive Office'}</span>
+                <span className="font-bold text-[#5B2E19] truncate block">{campaign.senderIdentity || 'Executive Office'}</span>
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Channel Carrier</span>
@@ -171,7 +171,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
               <button
                 type="button"
                 onClick={copyEmailContent}
-                className="text-xs font-bold text-[#06402B] hover:underline flex items-center gap-1 cursor-pointer"
+                className="text-xs font-bold text-[#5B2E19] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <Copy size={12} />
                 <span>Copy Body</span>
@@ -227,7 +227,7 @@ const BroadcastDossierDrawer = ({ campaign, onClose, onDelete }) => {
               onClick={() => {
                 toast.success('Retargeting un-opened recipients (4,230 subscribers queued)...', { icon: '🚀' });
               }}
-              className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
             >
               <Send size={13} />
               <span>Resend to Unopened</span>
@@ -404,13 +404,13 @@ const AdminCommunicationsSection = () => {
                 setCurrentView('list');
                 setCurrentStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Broadcasts</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Compose New Broadcast & Newsletter</span>
+            <span className="font-bold text-[#3D1E10]">Compose New Broadcast & Newsletter</span>
           </div>
 
           <button
@@ -419,7 +419,7 @@ const AdminCommunicationsSection = () => {
               setCurrentView('list');
               setCurrentStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Broadcasts</span>
@@ -445,11 +445,11 @@ const AdminCommunicationsSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -461,7 +461,7 @@ const AdminCommunicationsSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[140px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -480,8 +480,8 @@ const AdminCommunicationsSection = () => {
         {/* STEP 1: Audience & Channel */}
         {currentStep === 1 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Radio size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Radio size={18} className="text-[#5B2E19]" />
               <span>Target Audience, Channel Carrier & Subject Line</span>
             </h2>
 
@@ -496,7 +496,7 @@ const AdminCommunicationsSection = () => {
                   value={newBroadcast.title}
                   onChange={(e) => setNewBroadcast({ ...newBroadcast, title: e.target.value })}
                   placeholder="e.g. Q4 Foundation Impact Report: 4 New Solar Boreholes Handover"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -507,7 +507,7 @@ const AdminCommunicationsSection = () => {
                   value={newBroadcast.previewText}
                   onChange={(e) => setNewBroadcast({ ...newBroadcast, previewText: e.target.value })}
                   placeholder="Short line preview visible in user inboxes..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -523,13 +523,13 @@ const AdminCommunicationsSection = () => {
                         onClick={() => setNewBroadcast({ ...newBroadcast, channel: ch.label, type: ch.label.includes('SMS') ? 'Field Emergency' : ch.label.includes('Press') ? 'Official Press Release' : 'Newsletter' })}
                         className={`p-4 rounded-2xl border-2 transition-all cursor-pointer space-y-1.5 ${
                           isSelected
-                            ? 'border-[#06402B] bg-emerald-50/50 shadow-xs'
+                            ? 'border-[#5B2E19] bg-emerald-50/50 shadow-xs'
                             : 'border-slate-200 hover:border-slate-300 bg-white'
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="font-black text-xs text-[#0B2D6E]">{ch.label}</span>
-                          {isSelected && <Check size={14} className="text-[#06402B]" strokeWidth={3} />}
+                          <span className="font-black text-xs text-[#3D1E10]">{ch.label}</span>
+                          {isSelected && <Check size={14} className="text-[#5B2E19]" strokeWidth={3} />}
                         </div>
                         <p className="text-[11px] text-slate-500 leading-snug">{ch.desc}</p>
                       </div>
@@ -552,7 +552,7 @@ const AdminCommunicationsSection = () => {
                         audienceSegment: segment ? segment.id : 'all',
                       });
                     }}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     {AUDIENCE_SEGMENTS.map((seg) => (
                       <option key={seg.id} value={seg.label}>
@@ -567,7 +567,7 @@ const AdminCommunicationsSection = () => {
                   <select
                     value={newBroadcast.priority}
                     onChange={(e) => setNewBroadcast({ ...newBroadcast, priority: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     <option value="Standard">Standard Delivery (Immediate Queue)</option>
                     <option value="Urgent">Urgent Field Priority (Bypass Throttle)</option>
@@ -582,8 +582,8 @@ const AdminCommunicationsSection = () => {
         {/* STEP 2: Narrative & Content */}
         {currentStep === 2 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Mail size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Mail size={18} className="text-[#5B2E19]" />
               <span>Broadcast Narrative, Sender Identity & Call-to-Action</span>
             </h2>
 
@@ -594,7 +594,7 @@ const AdminCommunicationsSection = () => {
                   type="text"
                   value={newBroadcast.senderIdentity}
                   onChange={(e) => setNewBroadcast({ ...newBroadcast, senderIdentity: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#5B2E19]"
                 />
               </div>
 
@@ -607,7 +607,7 @@ const AdminCommunicationsSection = () => {
                   value={newBroadcast.message}
                   onChange={(e) => setNewBroadcast({ ...newBroadcast, message: e.target.value })}
                   placeholder="Compose the full institutional message, field testimonials, milestone figures, and executive signature..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 font-sans leading-relaxed"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10 font-sans leading-relaxed"
                 />
               </div>
 
@@ -619,7 +619,7 @@ const AdminCommunicationsSection = () => {
                     value={newBroadcast.ctaLabel}
                     onChange={(e) => setNewBroadcast({ ...newBroadcast, ctaLabel: e.target.value })}
                     placeholder="e.g. Read Audited Field Report"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                   />
                 </div>
 
@@ -630,7 +630,7 @@ const AdminCommunicationsSection = () => {
                     value={newBroadcast.ctaUrl}
                     onChange={(e) => setNewBroadcast({ ...newBroadcast, ctaUrl: e.target.value })}
                     placeholder="https://cmaofoundation.org/resources"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#06402B]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#5B2E19]"
                   />
                 </div>
               </div>
@@ -641,8 +641,8 @@ const AdminCommunicationsSection = () => {
         {/* STEP 3: Schedule & Real-Time Live Preview */}
         {currentStep === 3 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Sparkles size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Sparkles size={18} className="text-[#5B2E19]" />
               <span>Dispatch Review & Real-Time Live Email Digest Preview</span>
             </h2>
 
@@ -655,7 +655,7 @@ const AdminCommunicationsSection = () => {
                   </span>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <span className="text-slate-500">Carrier Channel:</span>
-                    <span className="font-bold text-[#06402B]">{newBroadcast.channel}</span>
+                    <span className="font-bold text-[#5B2E19]">{newBroadcast.channel}</span>
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                     <span className="text-slate-500">Audience Cohort:</span>
@@ -677,10 +677,10 @@ const AdminCommunicationsSection = () => {
                     id="broadcastVerify"
                     checked={newBroadcast.complianceApproved}
                     onChange={(e) => setNewBroadcast({ ...newBroadcast, complianceApproved: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                   />
                   <label htmlFor="broadcastVerify" className="text-xs text-slate-700 font-medium cursor-pointer">
-                    <span className="font-bold text-[#06402B]">Governance Clearance:</span> I certify that this message narrative complies with institutional communications standards, contains authorized donor disclosures, and has been approved for distribution.
+                    <span className="font-bold text-[#5B2E19]">Governance Clearance:</span> I certify that this message narrative complies with institutional communications standards, contains authorized donor disclosures, and has been approved for distribution.
                   </label>
                 </div>
               </div>
@@ -689,7 +689,7 @@ const AdminCommunicationsSection = () => {
               <div className="lg:col-span-6 bg-slate-100/80 rounded-2xl p-4 border border-slate-200 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                    <Mail size={13} className="text-[#06402B]" />
+                    <Mail size={13} className="text-[#5B2E19]" />
                     <span>Live In-Inbox Preview</span>
                   </span>
                   <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-full">
@@ -700,7 +700,7 @@ const AdminCommunicationsSection = () => {
                 {/* Email Mockup Container */}
                 <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden text-xs">
                   {/* Top Email Header */}
-                  <div className="bg-[#06402B] p-4 text-white flex items-center justify-between">
+                  <div className="bg-[#5B2E19] p-4 text-white flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center font-bold text-white text-xs">
                         C
@@ -715,7 +715,7 @@ const AdminCommunicationsSection = () => {
                     <span className="text-[10px] text-slate-400 font-mono block">
                       From: {newBroadcast.senderIdentity}
                     </span>
-                    <h4 className="text-sm font-black text-[#0B2D6E] leading-snug">
+                    <h4 className="text-sm font-black text-[#3D1E10] leading-snug">
                       {newBroadcast.title || 'Untitled Broadcast Subject'}
                     </h4>
                     <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-line">
@@ -759,7 +759,7 @@ const AdminCommunicationsSection = () => {
             <button
               type="button"
               onClick={() => toast.success('Broadcast campaign draft saved.')}
-              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
             >
               Save Draft
             </button>
@@ -777,7 +777,7 @@ const AdminCommunicationsSection = () => {
                   handleSendBroadcast();
                 }
               }}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
             >
               <span>{currentStep === 3 ? 'Dispatch Broadcast Now' : 'Next Step'}</span>
               <ArrowRight size={14} />
@@ -797,7 +797,7 @@ const AdminCommunicationsSection = () => {
       {/* 1. Header with Clear Simple Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06402B]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5B2E19]">
             <Send size={15} />
             <span>Broadcasts & Newsletters</span>
           </div>
@@ -826,7 +826,7 @@ const AdminCommunicationsSection = () => {
               setCurrentStep(1);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Send size={15} />
             <span>New Broadcast</span>
@@ -840,7 +840,7 @@ const AdminCommunicationsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Subscribers</span>
-            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#06402B]">
+            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#5B2E19]">
               <Users size={18} />
             </div>
           </div>
@@ -857,12 +857,12 @@ const AdminCommunicationsSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Average Open Rate</span>
-            <div className="p-2.5 rounded-xl bg-blue-50 text-[#0B2D6E]">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-[#3D1E10]">
               <Mail size={18} />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-black text-[#0B2D6E]">{avgOpenRate}</span>
+            <span className="text-2xl font-black text-[#3D1E10]">{avgOpenRate}</span>
             <div className="flex items-center gap-1.5 mt-1 text-[11px] text-blue-700 font-bold">
               <CheckCircle2 size={13} />
               <span>+14.2% vs NGO benchmark</span>
@@ -912,7 +912,7 @@ const AdminCommunicationsSection = () => {
           onClick={() => setActiveTab('campaigns')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'campaigns'
-              ? 'bg-[#06402B] text-white shadow-xs'
+              ? 'bg-[#5B2E19] text-white shadow-xs'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
@@ -929,7 +929,7 @@ const AdminCommunicationsSection = () => {
           onClick={() => setActiveTab('subscribers')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'subscribers'
-              ? 'bg-[#06402B] text-white shadow-xs'
+              ? 'bg-[#5B2E19] text-white shadow-xs'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
@@ -946,7 +946,7 @@ const AdminCommunicationsSection = () => {
           onClick={() => setActiveTab('press')}
           className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
             activeTab === 'press'
-              ? 'bg-[#06402B] text-white shadow-xs'
+              ? 'bg-[#5B2E19] text-white shadow-xs'
               : 'text-slate-600 hover:bg-slate-100'
           }`}
         >
@@ -971,7 +971,7 @@ const AdminCommunicationsSection = () => {
                 placeholder="Search subject lines, audiences..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]/20"
+                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]/20"
               />
             </div>
 
@@ -980,7 +980,7 @@ const AdminCommunicationsSection = () => {
               <select
                 value={channelFilter}
                 onChange={(e) => setChannelFilter(e.target.value)}
-                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
               >
                 <option value="All">All Channels</option>
                 <option value="Email">Email Newsletter</option>
@@ -996,7 +996,7 @@ const AdminCommunicationsSection = () => {
                   onClick={() => setViewMode('grid')}
                   className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                     viewMode === 'grid'
-                      ? 'bg-white text-[#06402B] shadow-xs'
+                      ? 'bg-white text-[#5B2E19] shadow-xs'
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -1008,7 +1008,7 @@ const AdminCommunicationsSection = () => {
                   onClick={() => setViewMode('table')}
                   className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                     viewMode === 'table'
-                      ? 'bg-white text-[#06402B] shadow-xs'
+                      ? 'bg-white text-[#5B2E19] shadow-xs'
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -1047,7 +1047,7 @@ const AdminCommunicationsSection = () => {
 
                     <h3
                       onClick={() => setActiveDossierCampaign(c)}
-                      className="font-bold text-sm text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors cursor-pointer line-clamp-2"
+                      className="font-bold text-sm text-[#3D1E10] leading-snug group-hover:text-[#5B2E19] transition-colors cursor-pointer line-clamp-2"
                     >
                       {c.title}
                     </h3>
@@ -1062,11 +1062,11 @@ const AdminCommunicationsSection = () => {
                     <div className="grid grid-cols-2 gap-2 text-[11px] bg-slate-50 p-2.5 rounded-xl">
                       <div>
                         <span className="text-slate-400 block font-bold uppercase text-[9px]">Open Rate</span>
-                        <span className="font-black text-[#06402B] text-xs">{c.openRate}</span>
+                        <span className="font-black text-[#5B2E19] text-xs">{c.openRate}</span>
                       </div>
                       <div>
                         <span className="text-slate-400 block font-bold uppercase text-[9px]">Click Rate</span>
-                        <span className="font-black text-[#0B2D6E] text-xs">{c.clickRate}</span>
+                        <span className="font-black text-[#3D1E10] text-xs">{c.clickRate}</span>
                       </div>
                     </div>
 
@@ -1076,7 +1076,7 @@ const AdminCommunicationsSection = () => {
                         <button
                           type="button"
                           onClick={() => setActiveDossierCampaign(c)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 cursor-pointer"
                           title="View Intelligence"
                         >
                           <Eye size={15} />
@@ -1121,7 +1121,7 @@ const AdminCommunicationsSection = () => {
                         <td className="py-3.5 px-4 font-bold text-slate-800 max-w-sm">
                           <div
                             onClick={() => setActiveDossierCampaign(c)}
-                            className="truncate text-[#0B2D6E] font-bold hover:text-[#06402B] cursor-pointer"
+                            className="truncate text-[#3D1E10] font-bold hover:text-[#5B2E19] cursor-pointer"
                           >
                             {c.title}
                           </div>
@@ -1149,7 +1149,7 @@ const AdminCommunicationsSection = () => {
                             <button
                               type="button"
                               onClick={() => setActiveDossierCampaign(c)}
-                              className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 cursor-pointer"
+                              className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 cursor-pointer"
                               title="View Dossier"
                             >
                               <Eye size={15} />
@@ -1189,7 +1189,7 @@ const AdminCommunicationsSection = () => {
                 placeholder="Search subscribers by name, email, or city..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B]"
+                className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
             <button
@@ -1252,15 +1252,15 @@ const AdminCommunicationsSection = () => {
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono text-[10px] font-bold text-[#06402B]">{pr.id}</span>
+                  <span className="font-mono text-[10px] font-bold text-[#5B2E19]">{pr.id}</span>
                   <span>{pr.date}</span>
                 </div>
-                <h3 className="font-bold text-sm text-[#0B2D6E] leading-snug">{pr.headline}</h3>
+                <h3 className="font-bold text-sm text-[#3D1E10] leading-snug">{pr.headline}</h3>
                 <p className="text-xs text-slate-500 leading-relaxed">{pr.summary}</p>
               </div>
 
               <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span className="text-[11px] font-bold text-[#06402B]">{pr.circulationCount}</span>
+                <span className="text-[11px] font-bold text-[#5B2E19]">{pr.circulationCount}</span>
                 <button
                   type="button"
                   onClick={() => toast.success(`Downloading official press release: ${pr.fileRef}`, { icon: '📄' })}

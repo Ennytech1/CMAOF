@@ -64,7 +64,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
       >
         <div className="flex items-center justify-between pb-4 border-b border-slate-100">
           <div>
-            <h3 className="text-lg font-black text-[#0B2D6E]">Register New Beneficiary</h3>
+            <h3 className="text-lg font-black text-[#3D1E10]">Register New Beneficiary</h3>
             <p className="text-xs text-slate-500">Add an individual to the CMAOF foundation database.</p>
           </div>
           <button
@@ -87,7 +87,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g. Oluwaseun Adeleke"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:outline-none focus:border-[#06402B]"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5B2E19]"
             />
           </div>
 
@@ -97,7 +97,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
               <select
                 value={formData.pillar}
                 onChange={(e) => setFormData({ ...formData, pillar: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
               >
                 <option value="Education">Education</option>
                 <option value="Health">Health</option>
@@ -110,7 +110,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
               <select
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
               >
                 <option value="Kaduna">Kaduna</option>
                 <option value="Lagos">Lagos</option>
@@ -135,7 +135,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 placeholder="+234 800 000 0000"
-                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -144,7 +144,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
               >
                 <option value="Active">Active</option>
                 <option value="Assessment">Assessment</option>
@@ -161,7 +161,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
               value={formData.intervention}
               onChange={(e) => setFormData({ ...formData, intervention: e.target.value })}
               placeholder="e.g. Tertiary tuition scholarship or medical intervention"
-              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:outline-none focus:border-[#06402B]"
+              className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:outline-none focus:border-[#5B2E19]"
             />
           </div>
 
@@ -175,7 +175,7 @@ const RegisterBeneficiaryModal = ({ isOpen, onClose, onSave }) => {
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer flex items-center gap-1.5"
+              className="px-5 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer flex items-center gap-1.5"
             >
               <UserPlus size={14} />
               <span>Save Beneficiary</span>

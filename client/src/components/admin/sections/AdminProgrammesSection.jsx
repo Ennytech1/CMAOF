@@ -361,7 +361,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
         <div className="flex items-start gap-3">
           <span className="w-1.5 h-8 sm:h-9 rounded-full bg-[#f97316] mt-0.5 shrink-0" />
           <div>
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight">
               Programmes Portfolio
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
@@ -383,7 +383,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
           <button
             type="button"
             onClick={handleOpenLaunch}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
           >
             <Plus size={15} strokeWidth={2.5} />
             <span>Launch Programme</span>
@@ -398,7 +398,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
         {/* Card 1: Active Initiatives */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-[#06402B] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-[#5B2E19] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <Layers size={18} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-100">
@@ -409,7 +409,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Active Initiatives
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               {programmes.length}
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -422,10 +422,10 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
         {/* Card 2: Portfolio Capital */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-[#0B2D6E] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-[#3D1E10] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <DollarSign size={18} />
             </div>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#0B2D6E] border border-blue-100">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#3D1E10] border border-blue-100">
               89.4% Executed
             </span>
           </div>
@@ -433,7 +433,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Portfolio Capital
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               ₦2.03 Billion
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -457,7 +457,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Target Beneficiaries
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               {totalBeneficiaries.toLocaleString()}+
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -481,7 +481,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Operational Footprint
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               {totalCommunities} Communities
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -511,7 +511,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                   inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer
                   ${
                     isActive
-                      ? 'bg-[#06402B] text-white shadow-xs'
+                      ? 'bg-[#5B2E19] text-white shadow-xs'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
                   }
                 `}
@@ -539,7 +539,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search initiatives, locations..."
-              className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:bg-white transition-all"
+              className="w-full pl-8 pr-3 py-2 rounded-xl border border-slate-200 bg-slate-50/50 text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:bg-white transition-all"
             />
           </div>
 
@@ -547,7 +547,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 cursor-pointer shadow-xs focus:outline-none focus:border-[#06402B]"
+            className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 cursor-pointer shadow-xs focus:outline-none focus:border-[#5B2E19]"
           >
             <option value="All">All Statuses</option>
             <option value="Active">Active</option>
@@ -559,7 +559,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 cursor-pointer shadow-xs focus:outline-none focus:border-[#06402B]"
+            className="px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold text-slate-700 cursor-pointer shadow-xs focus:outline-none focus:border-[#5B2E19]"
           >
             <option value="budget-desc">Sort: Budget (High to Low)</option>
             <option value="budget-asc">Sort: Budget (Low to High)</option>
@@ -574,7 +574,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                 viewMode === 'grid'
-                  ? 'bg-white text-[#06402B] shadow-xs font-bold'
+                  ? 'bg-white text-[#5B2E19] shadow-xs font-bold'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
               title="Grid View"
@@ -586,7 +586,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                 viewMode === 'table'
-                  ? 'bg-white text-[#06402B] shadow-xs font-bold'
+                  ? 'bg-white text-[#5B2E19] shadow-xs font-bold'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
               title="Ledger Table View"
@@ -677,7 +677,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                   {/* Card Main Body */}
                   <div className="p-5 space-y-4">
                     <div>
-                      <h3 className="text-base font-extrabold text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-snug line-clamp-1">
+                      <h3 className="text-base font-extrabold text-[#3D1E10] group-hover:text-[#5B2E19] transition-colors leading-snug line-clamp-1">
                         {prog.name}
                       </h3>
                       <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mt-1">
@@ -691,7 +691,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                         <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                           Milestone Velocity
                         </span>
-                        <span className="font-extrabold text-[#06402B]">{completionVal}%</span>
+                        <span className="font-extrabold text-[#5B2E19]">{completionVal}%</span>
                       </div>
                       <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
                         <div
@@ -707,7 +707,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                         <span className="text-[10px] uppercase font-bold text-slate-400 block tracking-tight">
                           Allocated Budget
                         </span>
-                        <span className="font-black text-[#0B2D6E] text-[13px] block mt-0.5">
+                        <span className="font-black text-[#3D1E10] text-[13px] block mt-0.5">
                           {prog.budgetFormatted}
                         </span>
                       </div>
@@ -725,7 +725,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                     {/* Lead Manager Footnote */}
                     <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-emerald-100 text-[#06402B] font-bold flex items-center justify-center text-[10px]">
+                        <div className="w-6 h-6 rounded-full bg-emerald-100 text-[#5B2E19] font-bold flex items-center justify-center text-[10px]">
                           {prog.programmeManager?.charAt(0) || 'M'}
                         </div>
                         <span className="font-semibold text-slate-700 truncate max-w-[130px]">
@@ -739,7 +739,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
 
                 {/* Bottom Action Footer */}
                 <div className="p-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#06402B] group-hover:text-[#0B2D6E] transition-colors">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#5B2E19] group-hover:text-[#3D1E10] transition-colors">
                     <span>Open Programme Dossier</span>
                     <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                   </span>
@@ -748,7 +748,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                     <button
                       type="button"
                       onClick={(e) => handleOpenEdit(prog, e)}
-                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-white transition-colors cursor-pointer"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-white transition-colors cursor-pointer"
                       title="Edit Programme Parameters"
                     >
                       <Edit size={14} />
@@ -807,7 +807,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                             className="w-10 h-10 rounded-xl object-cover ring-1 ring-slate-200 shrink-0"
                           />
                           <div>
-                            <p className="font-extrabold text-[#0B2D6E] group-hover:text-[#06402B] transition-colors leading-tight">
+                            <p className="font-extrabold text-[#3D1E10] group-hover:text-[#5B2E19] transition-colors leading-tight">
                               {prog.name}
                             </p>
                             <span
@@ -832,7 +832,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                       </td>
 
                       {/* Budget */}
-                      <td className="py-3.5 px-3 font-mono font-bold text-[#0B2D6E]">
+                      <td className="py-3.5 px-3 font-mono font-bold text-[#3D1E10]">
                         {prog.budgetFormatted}
                       </td>
 
@@ -845,7 +845,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                       <td className="py-3.5 px-3 min-w-[130px]">
                         <div className="flex items-center justify-between text-[11px] font-bold mb-1">
                           <span className="text-slate-500">Execution</span>
-                          <span className="text-[#06402B]">{compVal}%</span>
+                          <span className="text-[#5B2E19]">{compVal}%</span>
                         </div>
                         <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
                           <div
@@ -877,7 +877,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                             onClick={() => {
                               if (onSelectProgramme) onSelectProgramme(prog.slug || prog.id);
                             }}
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-50 text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold text-xs transition-all border border-emerald-200/70 cursor-pointer shadow-2xs"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-50 text-[#5B2E19] hover:bg-[#5B2E19] hover:text-white font-bold text-xs transition-all border border-emerald-200/70 cursor-pointer shadow-2xs"
                             title="Open Dossier"
                           >
                             <Eye size={13} />
@@ -887,7 +887,7 @@ const AdminProgrammesSection = ({ onSelectProgramme, onLaunchProgramme }) => {
                           <button
                             type="button"
                             onClick={(e) => handleOpenEdit(prog, e)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 transition-colors cursor-pointer"
                             title="Edit Programme"
                           >
                             <Edit size={14} />

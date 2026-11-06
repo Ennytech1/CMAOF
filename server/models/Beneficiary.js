@@ -55,7 +55,17 @@ const beneficiarySchema = new mongoose.Schema(
     },
     pillar: {
       type: String,
-      enum: ['Education', 'Healthcare', 'Community', 'Youth Empowerment', 'Emergency Relief'],
+      enum: [
+        'Education',
+        'Healthcare',
+        'Community',
+        'Youth Empowerment',
+        'Emergency Relief',
+        'Education & Opportunity',
+        'Health & Wellbeing',
+        'Humanitarian Support',
+        'Economic Empowerment',
+      ],
       required: true,
     },
     pillarFull: {

@@ -24,7 +24,7 @@ export const EditProfileModal = ({ isOpen, onClose, beneficiary, onSave }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-[fadeIn_0.15s_ease]">
       <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-          <h3 className="text-base font-black text-[#0B2D6E]">Edit Beneficiary Profile</h3>
+          <h3 className="text-base font-black text-[#3D1E10]">Edit Beneficiary Profile</h3>
           <button type="button" onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X size={18} />
           </button>
@@ -87,7 +87,7 @@ export const EditProfileModal = ({ isOpen, onClose, beneficiary, onSave }) => {
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-xl bg-[#06402B] text-white font-bold"
+              className="px-5 py-2 rounded-xl bg-[#5B2E19] text-white font-bold"
             >
               Save Changes
             </button>
@@ -106,8 +106,8 @@ export const RegisterInterventionModal = ({ isOpen, onClose, beneficiary }) => {
       <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <FolderPlus className="text-[#06402B]" size={20} />
-            <h3 className="text-base font-black text-[#0B2D6E]">Register Intervention</h3>
+            <FolderPlus className="text-[#5B2E19]" size={20} />
+            <h3 className="text-base font-black text-[#3D1E10]">Register Intervention</h3>
           </div>
           <button type="button" onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-slate-600">
             <X size={18} />
@@ -142,7 +142,7 @@ export const RegisterInterventionModal = ({ isOpen, onClose, beneficiary }) => {
                 toast.success('Intervention registered and queued for finance disbursement.');
                 onClose();
               }}
-              className="px-5 py-2 rounded-xl bg-[#06402B] text-white font-bold"
+              className="px-5 py-2 rounded-xl bg-[#5B2E19] text-white font-bold"
             >
               Approve Intervention
             </button>

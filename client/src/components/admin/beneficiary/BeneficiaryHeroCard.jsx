@@ -39,7 +39,7 @@ const BeneficiaryHeroCard = ({
           {/* Core Info */}
           <div className="space-y-2 flex-1">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight">
                 {beneficiary.name}
               </h1>
               <p className="text-xs sm:text-sm font-mono font-bold text-slate-500 mt-0.5">

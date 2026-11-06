@@ -19,16 +19,20 @@ import {
 import toast from 'react-hot-toast';
 
 const getPillarBadge = (pillar) => {
-  switch (pillar?.toLowerCase()) {
-    case 'education':
-      return 'bg-amber-50 text-amber-700 border border-amber-200/80 font-semibold';
-    case 'health':
-      return 'bg-rose-50 text-rose-600 border border-rose-200/80 font-semibold';
-    case 'community':
-      return 'bg-orange-50 text-orange-700 border border-orange-200/80 font-semibold';
-    default:
-      return 'bg-slate-50 text-slate-700 border border-slate-200 font-semibold';
+  const p = pillar?.toLowerCase() || '';
+  if (p.includes('education')) {
+    return 'bg-blue-50 text-[#0047BA] border border-blue-200 font-semibold';
   }
+  if (p.includes('health')) {
+    return 'bg-emerald-50 text-[#338C26] border border-emerald-200 font-semibold';
+  }
+  if (p.includes('humanitarian') || p.includes('community')) {
+    return 'bg-amber-50 text-[#5B2E19] border border-[#E8DEC2] font-semibold';
+  }
+  if (p.includes('economic')) {
+    return 'bg-yellow-50 text-[#8B5E00] border border-yellow-200 font-semibold';
+  }
+  return 'bg-[#FAF6EE] text-[#5B2E19] border border-[#E8DEC2] font-semibold';
 };
 
 const getStatusBadge = (status) => {
@@ -215,13 +219,13 @@ const BeneficiaryDirectorySection = ({
       ───────────────────────────────────────────────────────────── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-start gap-3">
-          <span className="w-1.5 h-8 rounded-full bg-[#f97316] shrink-0 mt-0.5" />
+          <span className="w-1.5 h-8 rounded-full bg-[#FCCD37] shrink-0 mt-0.5" />
           <div>
-            <h1 className="text-2xl sm:text-[1.65rem] font-black text-[#0B2D6E] tracking-tight">
+            <h1 className="text-2xl sm:text-[1.65rem] font-black text-[#3D1E10] tracking-tight">
               Beneficiary Directory
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium">
-              Search, filter and manage registered beneficiaries.
+            <p className="text-xs sm:text-sm text-[#5B2E19]/70 font-medium">
+              Search, filter and manage registered beneficiaries across all four pillars.
             </p>
           </div>
         </div>
@@ -230,18 +234,18 @@ const BeneficiaryDirectorySection = ({
           <button
             type="button"
             onClick={handleImportModal}
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-bold shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[#E8DEC2] bg-white hover:bg-[#FAF6EE] text-[#5B2E19] text-xs sm:text-sm font-bold shadow-xs transition-colors cursor-pointer"
           >
-            <Upload size={14} className="text-slate-500" />
+            <Upload size={14} className="text-[#5B2E19]/60" />
             <span>Import</span>
           </button>
 
           <button
             type="button"
             onClick={handleExportCSV}
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-bold shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[#E8DEC2] bg-white hover:bg-[#FAF6EE] text-[#5B2E19] text-xs sm:text-sm font-bold shadow-xs transition-colors cursor-pointer"
           >
-            <Download size={14} className="text-slate-500" />
+            <Download size={14} className="text-[#5B2E19]/60" />
             <span>Export</span>
           </button>
 
@@ -251,9 +255,9 @@ const BeneficiaryDirectorySection = ({
               if (onOpenRegisterModal) onOpenRegisterModal();
               else navigate('/admin/beneficiaries/register');
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs sm:text-sm font-bold shadow-sm transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-[#FAF6EE] text-xs sm:text-sm font-bold shadow-sm transition-all cursor-pointer"
           >
-            <Plus size={16} strokeWidth={2.5} />
+            <Plus size={16} strokeWidth={2.5} className="text-[#FCCD37]" />
             <span>Register Beneficiary</span>
           </button>
         </div>
@@ -263,24 +267,24 @@ const BeneficiaryDirectorySection = ({
       <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
         <button
           type="button"
-          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#06402B] text-white shadow-xs cursor-default"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#5B2E19] text-[#FAF6EE] shadow-xs cursor-default"
         >
           Directory Register
         </button>
         <button
           type="button"
           onClick={() => navigate('/admin/beneficiaries/assessments')}
-          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-amber-50/70 text-slate-700 hover:text-amber-800 border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-[#FAF6EE] text-[#5B2E19] border border-[#E8DEC2] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
         >
-          <FileCheck2 size={13} className="text-amber-600" />
+          <FileCheck2 size={13} className="text-[#D97706]" />
           <span>Needs Assessment Hub</span>
         </button>
         <button
           type="button"
           onClick={() => navigate('/admin/beneficiaries/cases')}
-          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-sky-50/70 text-slate-700 hover:text-[#0B2D6E] border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white hover:bg-[#FAF6EE] text-[#5B2E19] border border-[#E8DEC2] transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
         >
-          <GitBranch size={13} className="text-[#0B2D6E]" />
+          <GitBranch size={13} className="text-[#0047BA]" />
           <span>Case Management & Timelines</span>
         </button>
       </div>
@@ -297,12 +301,13 @@ const BeneficiaryDirectorySection = ({
               value={selectedPillar}
               onChange={(e) => setSelectedPillar(e.target.value)}
               aria-label="Filter by Pillar"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Pillars</option>
-              <option>Education</option>
-              <option>Health</option>
-              <option>Community</option>
+              <option>Education & Opportunity</option>
+              <option>Health & Wellbeing</option>
+              <option>Humanitarian Support</option>
+              <option>Economic Empowerment</option>
             </select>
           </div>
 
@@ -312,7 +317,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedProgramme}
               onChange={(e) => setSelectedProgramme(e.target.value)}
               aria-label="Filter by Programme"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Programmes</option>
               <option>School Support Programme</option>
@@ -330,7 +335,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
               aria-label="Filter by Location"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Locations</option>
               <option>Kano</option>
@@ -352,7 +357,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
               aria-label="Filter by Beneficiary Type"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Types</option>
               <option>Student</option>
@@ -370,7 +375,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedAgeGroup}
               onChange={(e) => setSelectedAgeGroup(e.target.value)}
               aria-label="Filter by Age Group"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Ages</option>
               <option>Under 18</option>
@@ -386,7 +391,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedGender}
               onChange={(e) => setSelectedGender(e.target.value)}
               aria-label="Filter by Gender"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Genders</option>
               <option>Female</option>
@@ -400,7 +405,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedCaseStatus}
               onChange={(e) => setSelectedCaseStatus(e.target.value)}
               aria-label="Filter by Case Status"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Statuses</option>
               <option>Assessment</option>
@@ -418,7 +423,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedDateRange}
               onChange={(e) => setSelectedDateRange(e.target.value)}
               aria-label="Filter by Date Range"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>Select date range</option>
               <option>Oct 2026</option>
@@ -434,7 +439,7 @@ const BeneficiaryDirectorySection = ({
               value={selectedAssignedStaff}
               onChange={(e) => setSelectedAssignedStaff(e.target.value)}
               aria-label="Filter by Assigned Staff"
-              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 cursor-pointer"
+              className="w-full px-3 py-2 text-xs font-semibold rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] cursor-pointer"
             >
               <option>All Staff</option>
               <option>Hauwa Bello</option>
@@ -459,7 +464,7 @@ const BeneficiaryDirectorySection = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by name, ID, phone, or keywords..."
-              className="w-full pl-9 pr-4 py-2 text-xs sm:text-sm bg-slate-50/70 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#06402B]/20 placeholder:text-slate-400 font-medium"
+              className="w-full pl-9 pr-4 py-2 text-xs sm:text-sm bg-slate-50/70 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#5B2E19]/20 focus:border-[#5B2E19] placeholder:text-slate-400 font-medium"
             />
             {searchQuery && (
               <button
@@ -476,7 +481,7 @@ const BeneficiaryDirectorySection = ({
             <button
               type="button"
               onClick={handleResetFilters}
-              className="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 text-xs font-bold transition-colors cursor-pointer"
+              className="px-3.5 py-2 rounded-xl border border-slate-200 bg-white hover:bg-[#FAF6EE] text-[#5B2E19] text-xs font-bold transition-colors cursor-pointer"
             >
               Reset
             </button>
@@ -484,7 +489,7 @@ const BeneficiaryDirectorySection = ({
             <button
               type="button"
               onClick={() => setShowMoreFilters(!showMoreFilters)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-blue-50 text-[#0B2D6E] hover:bg-blue-100 text-xs font-bold border border-blue-200/60 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#FAF0D4] text-[#5B2E19] hover:bg-[#FAF6EE] text-xs font-bold border border-[#E8DEC2] transition-colors cursor-pointer"
             >
               <Filter size={13} />
               <span>More Filters</span>
@@ -507,7 +512,7 @@ const BeneficiaryDirectorySection = ({
                     checked={selectedIds.length === filtered.length && filtered.length > 0}
                     onChange={handleSelectAll}
                     aria-label="Select all beneficiaries"
-                    className="w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                    className="w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                   />
                 </th>
                 <th className="py-3.5 px-3">Photo</th>
@@ -540,7 +545,7 @@ const BeneficiaryDirectorySection = ({
                   return (
                     <tr
                       key={b.id}
-                      className={`hover:bg-slate-50/70 transition-colors group ${isChecked ? 'bg-emerald-50/30' : ''}`}
+                      className={`hover:bg-slate-50/70 transition-colors group ${isChecked ? 'bg-[#FAF0D4]/30' : ''}`}
                     >
                       {/* Checkbox */}
                       <td className="py-3 px-3 text-center">
@@ -549,7 +554,7 @@ const BeneficiaryDirectorySection = ({
                           checked={isChecked}
                           onChange={() => handleToggleSelect(b.id)}
                           aria-label={`Select beneficiary ${b.name}`}
-                          className="w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                          className="w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                         />
                       </td>
 
@@ -559,7 +564,7 @@ const BeneficiaryDirectorySection = ({
                           <img
                             src={b.photo || '/images/story_amina.jpg'}
                             alt={b.name}
-                            className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100 hover:ring-[#06402B] transition-all cursor-pointer shadow-xs"
+                            className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100 hover:ring-[#5B2E19] transition-all cursor-pointer shadow-xs"
                           />
                         </Link>
                       </td>
@@ -568,7 +573,7 @@ const BeneficiaryDirectorySection = ({
                       <td className="py-3 px-3 font-mono font-bold text-slate-700">
                         <Link
                           to={`/admin/beneficiaries/${b.code}`}
-                          className="hover:text-[#06402B] hover:underline"
+                          className="hover:text-[#5B2E19] hover:underline"
                         >
                           {b.code}
                         </Link>
@@ -578,7 +583,7 @@ const BeneficiaryDirectorySection = ({
                       <td className="py-3 px-3 font-bold text-slate-900">
                         <Link
                           to={`/admin/beneficiaries/${b.code}`}
-                          className="hover:text-[#06402B] hover:underline"
+                          className="hover:text-[#5B2E19] hover:underline"
                         >
                           {b.name}
                         </Link>
@@ -624,12 +629,12 @@ const BeneficiaryDirectorySection = ({
                       </td>
 
                       {/* Sticky, Always-Visible Action Toolbar */}
-                      <td className={`py-2.5 px-3 text-right sticky right-0 backdrop-blur-xs group-hover:bg-slate-50 transition-colors shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.06)] z-10 min-w-[285px] ${isChecked ? 'bg-emerald-50/90' : 'bg-white'}`}>
+                      <td className={`py-2.5 px-3 text-right sticky right-0 backdrop-blur-xs group-hover:bg-[#FAF6EE]/50 transition-colors shadow-[-8px_0_12px_-4px_rgba(0,0,0,0.06)] z-10 min-w-[285px] ${isChecked ? 'bg-[#FAF0D4]/80' : 'bg-white'}`}>
                         <div className="flex items-center justify-end gap-1.5">
                           {/* 1. Primary Action: View Full Profile */}
                           <Link
                             to={`/admin/beneficiaries/${b.code}`}
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-50 text-[#06402B] hover:bg-[#06402B] hover:text-white font-bold text-xs transition-all shadow-2xs border border-emerald-200/80"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FAF0D4] text-[#5B2E19] hover:bg-[#5B2E19] hover:text-white font-bold text-xs transition-all shadow-2xs border border-[#E8DEC2]"
                             title="View Full Profile Dossier"
                           >
                             <Eye size={12} />
@@ -649,7 +654,7 @@ const BeneficiaryDirectorySection = ({
                           {/* 3. Case Timeline Quick Action (Clear Labeled Pill) */}
                           <Link
                             to={`/admin/beneficiaries/${b.code}/cases`}
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 hover:bg-[#0B2D6E] hover:text-white font-bold text-xs transition-all shadow-2xs border border-sky-200/80"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-sky-50 text-[#0047BA] hover:bg-[#0047BA] hover:text-white font-bold text-xs transition-all shadow-2xs border border-sky-200/80"
                             title="View 8-Stage Case Timeline"
                           >
                             <GitBranch size={12} />
@@ -699,7 +704,7 @@ const BeneficiaryDirectorySection = ({
 
               <button
                 type="button"
-                className="w-8 h-8 rounded-lg bg-[#06402B] text-white font-bold flex items-center justify-center cursor-pointer shadow-xs"
+                className="w-8 h-8 rounded-lg bg-[#5B2E19] text-[#FAF6EE] font-bold flex items-center justify-center cursor-pointer shadow-xs"
               >
                 1
               </button>

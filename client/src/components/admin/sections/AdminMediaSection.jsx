@@ -180,13 +180,13 @@ const AdminMediaSection = () => {
                 setCurrentView('gallery');
                 setCurrentStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Media Assets</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Upload High-Res Media</span>
+            <span className="font-bold text-[#3D1E10]">Upload High-Res Media</span>
           </div>
 
           <button
@@ -195,7 +195,7 @@ const AdminMediaSection = () => {
               setCurrentView('gallery');
               setCurrentStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Media Gallery</span>
@@ -221,11 +221,11 @@ const AdminMediaSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -237,7 +237,7 @@ const AdminMediaSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[120px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -256,8 +256,8 @@ const AdminMediaSection = () => {
         {/* STEP 1: Asset & File Select */}
         {currentStep === 1 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <ImageIcon size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <ImageIcon size={18} className="text-[#5B2E19]" />
               <span>Media Title & High-Resolution Asset Upload</span>
             </h2>
 
@@ -272,7 +272,7 @@ const AdminMediaSection = () => {
                   value={newAsset.title}
                   onChange={(e) => setNewAsset({ ...newAsset, title: e.target.value })}
                   placeholder="e.g. 2026 Scholars Laboratory Hands-on Training & Biotech Workshop"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -282,7 +282,7 @@ const AdminMediaSection = () => {
                   <select
                     value={newAsset.type}
                     onChange={(e) => setNewAsset({ ...newAsset, type: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                   >
                     <option value="Photo">High-Res Photograph (RAW/JPG/PNG)</option>
                     <option value="Video">Documentary B-Roll / Video Clip</option>
@@ -295,7 +295,7 @@ const AdminMediaSection = () => {
                   <select
                     value={newAsset.category}
                     onChange={(e) => setNewAsset({ ...newAsset, category: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                   >
                     <option value="Education Pillar">Education Pillar</option>
                     <option value="Healthcare Pillar">Healthcare Pillar</option>
@@ -306,15 +306,15 @@ const AdminMediaSection = () => {
               </div>
 
               {/* Upload Box */}
-              <div className="p-8 border-2 border-dashed border-slate-200 rounded-3xl text-center space-y-2 hover:border-[#06402B] cursor-pointer bg-slate-50/50 transition-colors">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#06402B] flex items-center justify-center mx-auto">
+              <div className="p-8 border-2 border-dashed border-slate-200 rounded-3xl text-center space-y-2 hover:border-[#5B2E19] cursor-pointer bg-slate-50/50 transition-colors">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#5B2E19] flex items-center justify-center mx-auto">
                   <ImageIcon size={24} />
                 </div>
                 <span className="font-bold text-slate-800 block text-sm">Drop raw image/video file here</span>
                 <span className="text-xs text-slate-400 block">Supports PNG, JPG, WebP, MP4 up to 60MB</span>
                 <button
                   type="button"
-                  className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#0B2D6E] shadow-xs hover:bg-slate-50 cursor-pointer"
+                  className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs font-bold text-[#3D1E10] shadow-xs hover:bg-slate-50 cursor-pointer"
                 >
                   <Upload size={13} />
                   <span>Browse Device Library</span>
@@ -327,8 +327,8 @@ const AdminMediaSection = () => {
         {/* STEP 2: Tagging & Geo */}
         {currentStep === 2 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Tag size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Tag size={18} className="text-[#5B2E19]" />
               <span>Taxonomy, Keywords, Geo-location & Captions</span>
             </h2>
 
@@ -342,7 +342,7 @@ const AdminMediaSection = () => {
                   value={newAsset.tags}
                   onChange={(e) => setNewAsset({ ...newAsset, tags: e.target.value })}
                   placeholder="e.g. Ondo State, Ilara-Mokin, Clean Water, Solar Borehole, Community"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -353,7 +353,7 @@ const AdminMediaSection = () => {
                   value={newAsset.caption}
                   onChange={(e) => setNewAsset({ ...newAsset, caption: e.target.value })}
                   placeholder="Describe the moment, beneficiary individuals shown, date, and field verification location..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
             </div>
@@ -363,8 +363,8 @@ const AdminMediaSection = () => {
         {/* STEP 3: Consent & Rights */}
         {currentStep === 3 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Shield size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Shield size={18} className="text-[#5B2E19]" />
               <span>Safeguarding Consent & Foundation Intellectual Property</span>
             </h2>
 
@@ -372,9 +372,9 @@ const AdminMediaSection = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Media Title</span>
-                  <p className="text-base font-extrabold text-[#0B2D6E]">{newAsset.title || 'Untitled Asset'}</p>
+                  <p className="text-base font-extrabold text-[#3D1E10]">{newAsset.title || 'Untitled Asset'}</p>
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#06402B] border border-emerald-200 self-start sm:self-auto">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#5B2E19] border border-emerald-200 self-start sm:self-auto">
                   {newAsset.category}
                 </span>
               </div>
@@ -401,10 +401,10 @@ const AdminMediaSection = () => {
                 id="mediaConsent"
                 checked={newAsset.consentSigned}
                 onChange={(e) => setNewAsset({ ...newAsset, consentSigned: e.target.checked })}
-                className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
               />
               <label htmlFor="mediaConsent" className="text-xs text-slate-700 font-medium cursor-pointer">
-                <span className="font-bold text-[#06402B]">Beneficiary Safeguarding Consent:</span> I confirm that signed child safeguarding & adult media release consent forms have been obtained in full compliance with the CMAOF PSEA policy.
+                <span className="font-bold text-[#5B2E19]">Beneficiary Safeguarding Consent:</span> I confirm that signed child safeguarding & adult media release consent forms have been obtained in full compliance with the CMAOF PSEA policy.
               </label>
             </div>
           </div>
@@ -428,7 +428,7 @@ const AdminMediaSection = () => {
             <button
               type="button"
               onClick={handleSaveDraft}
-              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
             >
               Save Draft
             </button>
@@ -446,7 +446,7 @@ const AdminMediaSection = () => {
                   handleUploadSubmit();
                 }
               }}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
             >
               <span>{currentStep === 3 ? 'Index & Save Asset' : 'Next'}</span>
               <ArrowRight size={14} />
@@ -465,7 +465,7 @@ const AdminMediaSection = () => {
       {/* 1. Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06402B]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5B2E19]">
             <ImageIcon size={15} />
             <span>Digital Assets & Photographic Archives</span>
           </div>
@@ -484,7 +484,7 @@ const AdminMediaSection = () => {
             setCurrentStep(1);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
         >
           <Plus size={16} />
           <span>Upload Media</span>
@@ -500,7 +500,7 @@ const AdminMediaSection = () => {
             placeholder="Search media by title or tags..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-white rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B]"
+            className="w-full pl-9 pr-4 py-2 bg-white rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19]"
           />
         </div>
 
@@ -512,7 +512,7 @@ const AdminMediaSection = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-[#06402B] text-white shadow-xs'
+                  ? 'bg-[#5B2E19] text-white shadow-xs'
                   : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80'
               }`}
             >
@@ -550,7 +550,7 @@ const AdminMediaSection = () => {
               </div>
 
               <div className="p-4 space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#06402B]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#5B2E19]">
                   {m.category}
                 </span>
                 <h3 className="text-xs sm:text-sm font-bold text-slate-800 line-clamp-1">{m.title}</h3>
@@ -610,7 +610,7 @@ const AdminMediaSection = () => {
               <button
                 type="button"
                 onClick={() => toast.success('Original master image downloaded')}
-                className="px-3 py-1.5 rounded-xl bg-[#06402B] text-white font-bold text-xs cursor-pointer"
+                className="px-3 py-1.5 rounded-xl bg-[#5B2E19] text-white font-bold text-xs cursor-pointer"
               >
                 Download Original Asset
               </button>

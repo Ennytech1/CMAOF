@@ -37,7 +37,7 @@ export const DonationReceiptModal = ({ donation, onClose }) => {
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                 Official Receipt Number
               </span>
-              <span className="font-mono font-black text-[#0B2D6E] text-sm">
+              <span className="font-mono font-black text-[#3D1E10] text-sm">
                 REC-{donation.reference}
               </span>
             </div>
@@ -60,7 +60,7 @@ export const DonationReceiptModal = ({ donation, onClose }) => {
             </div>
             <div className="flex justify-between py-1">
               <span className="text-slate-500 font-medium">Target Campaign / Pillar:</span>
-              <span className="font-bold text-[#06402B]">{donation.campaign}</span>
+              <span className="font-bold text-[#5B2E19]">{donation.campaign}</span>
             </div>
             <div className="flex justify-between py-1">
               <span className="text-slate-500 font-medium">Payment Mode:</span>
@@ -77,7 +77,7 @@ export const DonationReceiptModal = ({ donation, onClose }) => {
             <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">
               Amount Received
             </span>
-            <p className="text-2xl sm:text-3xl font-black text-[#06402B] mt-0.5">
+            <p className="text-2xl sm:text-3xl font-black text-[#5B2E19] mt-0.5">
               ₦{donation.amountFormatted}
             </p>
             <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 mt-1">
@@ -114,7 +114,7 @@ export const DonationReceiptModal = ({ donation, onClose }) => {
                 toast.success(`Receipt for ${donation.donorName} downloaded as PDF.`);
                 onClose();
               }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-xs cursor-pointer"
             >
               <Download size={14} />
               <span>Download PDF</span>
@@ -168,7 +168,7 @@ export const RecordDonationModal = ({ isOpen, onClose, onSave }) => {
       <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
           <div>
-            <h3 className="text-base sm:text-lg font-black text-[#0B2D6E]">Record New Donation</h3>
+            <h3 className="text-base sm:text-lg font-black text-[#3D1E10]">Record New Donation</h3>
             <p className="text-xs text-slate-500">Log incoming bank wires, CSR cheques or manual receipts.</p>
           </div>
           <button
@@ -287,7 +287,7 @@ export const RecordDonationModal = ({ isOpen, onClose, onSave }) => {
             </button>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold shadow-md cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold shadow-md cursor-pointer"
             >
               Record Donation
             </button>

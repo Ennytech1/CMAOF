@@ -18,7 +18,7 @@ export const BeneficiaryInterventionsTab = ({ beneficiary }) => (
   <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
     <div className="flex items-center justify-between">
       <div>
-        <h3 className="text-base sm:text-lg font-black text-[#0B2D6E]">Registered Interventions (1)</h3>
+        <h3 className="text-base sm:text-lg font-black text-[#3D1E10]">Registered Interventions (1)</h3>
         <p className="text-xs text-slate-500">Foundation assistance, financial disbursements, and kit allocations.</p>
       </div>
       <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
@@ -37,7 +37,7 @@ export const BeneficiaryInterventionsTab = ({ beneficiary }) => (
           </h4>
         </div>
         <div className="text-right">
-          <span className="text-lg font-black text-[#06402B]">₦180,000</span>
+          <span className="text-lg font-black text-[#5B2E19]">₦180,000</span>
           <p className="text-[11px] text-slate-400">Total Approved Value</p>
         </div>
       </div>
@@ -64,7 +64,7 @@ export const BeneficiaryReferralsTab = ({ beneficiary }) => (
   <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
     <div className="flex items-center justify-between">
       <div>
-        <h3 className="text-base sm:text-lg font-black text-[#0B2D6E]">Partner Referrals (1)</h3>
+        <h3 className="text-base sm:text-lg font-black text-[#3D1E10]">Partner Referrals (1)</h3>
         <p className="text-xs text-slate-500">External agency and government institutional linkages.</p>
       </div>
       <span className="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800">
@@ -93,13 +93,13 @@ export const BeneficiaryFollowupTab = ({ beneficiary }) => (
   <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
     <div className="flex items-center justify-between">
       <div>
-        <h3 className="text-base sm:text-lg font-black text-[#0B2D6E]">Follow-up & Monitoring Logs (2)</h3>
+        <h3 className="text-base sm:text-lg font-black text-[#3D1E10]">Follow-up & Monitoring Logs (2)</h3>
         <p className="text-xs text-slate-500">On-site verification logs by assigned case officers.</p>
       </div>
       <button
         type="button"
         onClick={() => toast.success('New follow-up log form ready.')}
-        className="px-3 py-1.5 rounded-xl bg-[#06402B] text-white text-xs font-bold cursor-pointer"
+        className="px-3 py-1.5 rounded-xl bg-[#5B2E19] text-white text-xs font-bold cursor-pointer"
       >
         + Add Log
       </button>
@@ -139,7 +139,7 @@ export const BeneficiaryDocumentsTab = ({ beneficiary }) => (
   <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
     <div className="flex items-center justify-between">
       <div>
-        <h3 className="text-base sm:text-lg font-black text-[#0B2D6E]">Documents & Attachments</h3>
+        <h3 className="text-base sm:text-lg font-black text-[#3D1E10]">Documents & Attachments</h3>
         <p className="text-xs text-slate-500">Official certificates, assessment reports, and verification forms.</p>
       </div>
       <button
@@ -186,7 +186,7 @@ export const BeneficiarySafeguardingTab = ({ beneficiary }) => (
   <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-xs space-y-4 animate-[fadeIn_0.2s_ease]">
     <div className="flex items-center justify-between pb-3 border-b border-slate-100">
       <div>
-        <h3 className="text-base sm:text-lg font-black text-[#0B2D6E]">Consent & Child Safeguarding</h3>
+        <h3 className="text-base sm:text-lg font-black text-[#3D1E10]">Consent & Child Safeguarding</h3>
         <p className="text-xs text-slate-500">Protection standards in compliance with the Child Rights Act.</p>
       </div>
       <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 flex items-center gap-1">

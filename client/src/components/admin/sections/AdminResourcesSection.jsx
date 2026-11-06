@@ -90,7 +90,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200">
                 {resource.id}
               </span>
               <span
@@ -129,7 +129,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent" />
             
-            <div className="absolute top-3 left-3 bg-[#06402B]/90 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg shadow-sm border border-emerald-400/30">
+            <div className="absolute top-3 left-3 bg-[#5B2E19]/90 backdrop-blur-xs text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-lg shadow-sm border border-emerald-400/30">
               {resource.categoryName || resource.category}
             </div>
 
@@ -145,7 +145,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
           <div className="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 text-center">
             <div>
               <span className="text-[10px] font-bold text-slate-500 uppercase block">Total Downloads</span>
-              <span className="text-base font-black text-[#06402B]">
+              <span className="text-base font-black text-[#5B2E19]">
                 {resource.downloads?.toLocaleString() || 0}
               </span>
             </div>
@@ -155,7 +155,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
             </div>
             <div>
               <span className="text-[10px] font-bold text-slate-500 uppercase block">Pages / Scope</span>
-              <span className="text-base font-black text-[#0B2D6E]">{resource.pages ? `${resource.pages} pp` : 'Full'}</span>
+              <span className="text-base font-black text-[#3D1E10]">{resource.pages ? `${resource.pages} pp` : 'Full'}</span>
             </div>
           </div>
 
@@ -173,7 +173,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Authoring Authority</span>
-                <span className="font-bold text-[#06402B]">{resource.author || 'CMAOF Directorate'}</span>
+                <span className="font-bold text-[#5B2E19]">{resource.author || 'CMAOF Directorate'}</span>
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Access Tier</span>
@@ -203,7 +203,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
             <button
               type="button"
               onClick={copyCitation}
-              className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[#0B2D6E] font-bold text-xs transition-colors shadow-2xs cursor-pointer"
+              className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[#3D1E10] font-bold text-xs transition-colors shadow-2xs cursor-pointer"
             >
               <Share2 size={13} />
               <span>Copy APA Citation</span>
@@ -240,7 +240,7 @@ const ResourceDossierDrawer = ({ resource, onClose, onDelete, onToggleStatus }) 
               onClick={() => {
                 toast.success(`Downloading ${resource.title}...`, { icon: '📥' });
               }}
-              className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-md transition-colors cursor-pointer"
             >
               <Download size={14} />
               <span>Download File</span>
@@ -441,13 +441,13 @@ const AdminResourcesSection = () => {
                 setCurrentView('portfolio');
                 setCurrentStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Resources</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Publish Institutional Document</span>
+            <span className="font-bold text-[#3D1E10]">Publish Institutional Document</span>
           </div>
 
           <button
@@ -456,7 +456,7 @@ const AdminResourcesSection = () => {
               setCurrentView('portfolio');
               setCurrentStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Repository</span>
@@ -482,11 +482,11 @@ const AdminResourcesSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -498,7 +498,7 @@ const AdminResourcesSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[140px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -517,8 +517,8 @@ const AdminResourcesSection = () => {
         {/* STEP 1: Document Metadata */}
         {currentStep === 1 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <FileText size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <FileText size={18} className="text-[#5B2E19]" />
               <span>Publication Title, Taxonomy & Authoring Body</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -536,7 +536,7 @@ const AdminResourcesSection = () => {
                   value={newResource.title}
                   onChange={(e) => setNewResource({ ...newResource, title: e.target.value })}
                   placeholder="e.g. 2026 Maternal Healthcare & Rural Clinical Operations Whitepaper"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -547,7 +547,7 @@ const AdminResourcesSection = () => {
                   value={newResource.subtitle}
                   onChange={(e) => setNewResource({ ...newResource, subtitle: e.target.value })}
                   placeholder="e.g. Field operations data, clinical outcomes, and policy takeaways for 2,400 screened mothers."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -567,7 +567,7 @@ const AdminResourcesSection = () => {
                         categoryName: matched ? matched.label : 'Publication',
                       });
                     }}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10 cursor-pointer"
                   >
                     <option value="annual-reports">Annual Reports & Audits</option>
                     <option value="impact-reports">Impact Reports & Studies</option>
@@ -584,7 +584,7 @@ const AdminResourcesSection = () => {
                   <select
                     value={newResource.pillar}
                     onChange={(e) => setNewResource({ ...newResource, pillar: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10 cursor-pointer"
                   >
                     <option value="Governance & Accountability">Governance & Accountability</option>
                     <option value="Education & Human Capital">Education & Human Capital</option>
@@ -603,7 +603,7 @@ const AdminResourcesSection = () => {
                     type="text"
                     value={newResource.author}
                     onChange={(e) => setNewResource({ ...newResource, author: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                   />
                 </div>
 
@@ -614,7 +614,7 @@ const AdminResourcesSection = () => {
                     value={newResource.version}
                     onChange={(e) => setNewResource({ ...newResource, version: e.target.value })}
                     placeholder="e.g. v2.1 Final"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                   />
                 </div>
               </div>
@@ -626,7 +626,7 @@ const AdminResourcesSection = () => {
                   value={newResource.summary}
                   onChange={(e) => setNewResource({ ...newResource, summary: e.target.value })}
                   placeholder="Summarize key empirical findings, policy directives, or institutional scope..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
             </div>
@@ -636,8 +636,8 @@ const AdminResourcesSection = () => {
         {/* STEP 2: Cover & Digital File Specs */}
         {currentStep === 2 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Upload size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Upload size={18} className="text-[#5B2E19]" />
               <span>Publication Cover Image & File Attributes</span>
             </h2>
 
@@ -655,7 +655,7 @@ const AdminResourcesSection = () => {
                       onClick={() => setNewResource({ ...newResource, coverImage: preset.url })}
                       className={`relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all p-1 group ${
                         isSelected
-                          ? 'border-[#06402B] ring-2 ring-[#06402B]/20 bg-emerald-50/40 shadow-sm'
+                          ? 'border-[#5B2E19] ring-2 ring-[#5B2E19]/20 bg-emerald-50/40 shadow-sm'
                           : 'border-slate-200 hover:border-slate-300 bg-white'
                       }`}
                     >
@@ -666,7 +666,7 @@ const AdminResourcesSection = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         {isSelected && (
-                          <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-md">
+                          <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-md">
                             <Check size={14} strokeWidth={3} />
                           </div>
                         )}
@@ -688,7 +688,7 @@ const AdminResourcesSection = () => {
                 value={newResource.coverImage}
                 onChange={(e) => setNewResource({ ...newResource, coverImage: e.target.value })}
                 placeholder="/images/cover_annual_report_2024.jpg"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-mono focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -699,7 +699,7 @@ const AdminResourcesSection = () => {
                 <select
                   value={newResource.format}
                   onChange={(e) => setNewResource({ ...newResource, format: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   <option value="PDF">PDF (Portable Document)</option>
                   <option value="DOCX">DOCX (Microsoft Word)</option>
@@ -715,7 +715,7 @@ const AdminResourcesSection = () => {
                   value={newResource.size}
                   onChange={(e) => setNewResource({ ...newResource, size: e.target.value })}
                   placeholder="e.g. 5.4 MB"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                 />
               </div>
 
@@ -726,14 +726,14 @@ const AdminResourcesSection = () => {
                   value={newResource.pages}
                   onChange={(e) => setNewResource({ ...newResource, pages: e.target.value })}
                   placeholder="e.g. 48"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                 />
               </div>
             </div>
 
             {/* Drag & Drop Simulation */}
-            <div className="p-8 border-2 border-dashed border-slate-200 rounded-3xl text-center space-y-2 hover:border-[#06402B] cursor-pointer bg-slate-50/50 transition-colors">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#06402B] flex items-center justify-center mx-auto shadow-2xs">
+            <div className="p-8 border-2 border-dashed border-slate-200 rounded-3xl text-center space-y-2 hover:border-[#5B2E19] cursor-pointer bg-slate-50/50 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#5B2E19] flex items-center justify-center mx-auto shadow-2xs">
                 <FileText size={24} />
               </div>
               <span className="font-bold text-slate-800 block text-sm">
@@ -749,8 +749,8 @@ const AdminResourcesSection = () => {
         {/* STEP 3: Clearance, Sign-off & Real-Time Live Preview */}
         {currentStep === 3 && (
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Shield size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Shield size={18} className="text-[#5B2E19]" />
               <span>Review Resource Clearance & Real-Time Live Preview</span>
             </h2>
 
@@ -762,7 +762,7 @@ const AdminResourcesSection = () => {
                   <select
                     value={newResource.accessLevel}
                     onChange={(e) => setNewResource({ ...newResource, accessLevel: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] cursor-pointer"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                   >
                     <option value="Public Institutional Access">Public Institutional Access (Open Download)</option>
                     <option value="Registered Stakeholders Only">Registered Donors & Institutional Partners Only</option>
@@ -776,7 +776,7 @@ const AdminResourcesSection = () => {
                   </span>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200 text-xs">
                     <span className="text-slate-500">Thematic Pillar:</span>
-                    <span className="font-bold text-[#06402B]">{newResource.pillar}</span>
+                    <span className="font-bold text-[#5B2E19]">{newResource.pillar}</span>
                   </div>
                   <div className="flex items-center justify-between pb-2 border-b border-slate-200 text-xs">
                     <span className="text-slate-500">Document Size & Pages:</span>
@@ -794,10 +794,10 @@ const AdminResourcesSection = () => {
                     id="docVerify"
                     checked={newResource.complianceApproved}
                     onChange={(e) => setNewResource({ ...newResource, complianceApproved: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                    className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                   />
                   <label htmlFor="docVerify" className="text-xs text-slate-700 font-medium cursor-pointer">
-                    <span className="font-bold text-[#06402B]">Governance Sign-off:</span> I certify that this document has been reviewed for public dissemination, contains no sensitive beneficiary PII, and represents official foundation intelligence.
+                    <span className="font-bold text-[#5B2E19]">Governance Sign-off:</span> I certify that this document has been reviewed for public dissemination, contains no sensitive beneficiary PII, and represents official foundation intelligence.
                   </label>
                 </div>
               </div>
@@ -830,10 +830,10 @@ const AdminResourcesSection = () => {
                     </div>
 
                     <div className="space-y-1 min-w-0 flex-1">
-                      <h4 className="font-bold text-[13.5px] text-[#0B2D6E] leading-snug line-clamp-2">
+                      <h4 className="font-bold text-[13.5px] text-[#3D1E10] leading-snug line-clamp-2">
                         {newResource.title || 'Untitled Publication'}
                       </h4>
-                      <span className="text-[11px] font-semibold text-[#06402B] block">
+                      <span className="text-[11px] font-semibold text-[#5B2E19] block">
                         {newResource.categoryName}
                       </span>
                       <span className="text-[10.5px] font-normal text-slate-500 block">
@@ -850,7 +850,7 @@ const AdminResourcesSection = () => {
                     <button
                       type="button"
                       disabled
-                      className="w-full bg-[#06402B] text-white py-2 px-3 rounded-lg font-medium text-xs flex items-center justify-center gap-1.5 opacity-90"
+                      className="w-full bg-[#5B2E19] text-white py-2 px-3 rounded-lg font-medium text-xs flex items-center justify-center gap-1.5 opacity-90"
                     >
                       <span>Download</span>
                       <Download size={13} strokeWidth={2.3} />
@@ -880,7 +880,7 @@ const AdminResourcesSection = () => {
             <button
               type="button"
               onClick={handleSaveDraft}
-              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+              className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
             >
               Save Draft
             </button>
@@ -898,7 +898,7 @@ const AdminResourcesSection = () => {
                   handlePublish();
                 }
               }}
-              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
             >
               <span>{currentStep === 3 ? 'Publish Document Now' : 'Next Step'}</span>
               <ArrowRight size={14} />
@@ -918,7 +918,7 @@ const AdminResourcesSection = () => {
       {/* 1. Header with Breadcrumb & Upload CTA */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#06402B]">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#5B2E19]">
             <BookOpen size={15} />
             <span>Document Repository & Whitepapers</span>
           </div>
@@ -937,7 +937,7 @@ const AdminResourcesSection = () => {
             setCurrentStep(1);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
         >
           <Plus size={16} />
           <span>Upload Publication</span>
@@ -950,7 +950,7 @@ const AdminResourcesSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Total Publications</span>
-            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#06402B]">
+            <div className="p-2.5 rounded-xl bg-emerald-50 text-[#5B2E19]">
               <BookOpen size={18} />
             </div>
           </div>
@@ -967,12 +967,12 @@ const AdminResourcesSection = () => {
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-black uppercase tracking-wider text-slate-500">Total Downloads</span>
-            <div className="p-2.5 rounded-xl bg-blue-50 text-[#0B2D6E]">
+            <div className="p-2.5 rounded-xl bg-blue-50 text-[#3D1E10]">
               <Download size={18} />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-black text-[#0B2D6E]">
+            <span className="text-2xl font-black text-[#3D1E10]">
               {totalDownloads.toLocaleString()}
             </span>
             <div className="flex items-center gap-1.5 mt-1 text-[11px] text-blue-700 font-bold">
@@ -1027,7 +1027,7 @@ const AdminResourcesSection = () => {
             placeholder="Search publications, authors, pillars..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B] focus:ring-1 focus:ring-[#06402B]/20"
+            className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19] focus:ring-1 focus:ring-[#5B2E19]/20"
           />
         </div>
 
@@ -1037,7 +1037,7 @@ const AdminResourcesSection = () => {
           <select
             value={formatFilter}
             onChange={(e) => setFormatFilter(e.target.value)}
-            className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+            className="px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
           >
             <option value="All">All Formats</option>
             <option value="PDF">PDF</option>
@@ -1055,7 +1055,7 @@ const AdminResourcesSection = () => {
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'grid'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -1067,7 +1067,7 @@ const AdminResourcesSection = () => {
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 viewMode === 'table'
-                  ? 'bg-white text-[#06402B] shadow-xs'
+                  ? 'bg-white text-[#5B2E19] shadow-xs'
                   : 'text-slate-500 hover:text-slate-800'
               }`}
             >
@@ -1087,7 +1087,7 @@ const AdminResourcesSection = () => {
             onClick={() => setCategoryFilter(cat)}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
               categoryFilter === cat
-                ? 'bg-[#06402B] text-white shadow-xs'
+                ? 'bg-[#5B2E19] text-white shadow-xs'
                 : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/80'
             }`}
           >
@@ -1145,7 +1145,7 @@ const AdminResourcesSection = () => {
                 <div className="space-y-1">
                   <h3
                     onClick={() => setActiveDossierResource(res)}
-                    className="font-bold text-[14px] text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors cursor-pointer line-clamp-2"
+                    className="font-bold text-[14px] text-[#3D1E10] leading-snug group-hover:text-[#5B2E19] transition-colors cursor-pointer line-clamp-2"
                   >
                     {res.title}
                   </h3>
@@ -1162,7 +1162,7 @@ const AdminResourcesSection = () => {
                   </div>
 
                   <div className="flex items-center justify-between pt-1">
-                    <span className="text-[11px] font-bold text-[#06402B] flex items-center gap-1">
+                    <span className="text-[11px] font-bold text-[#5B2E19] flex items-center gap-1">
                       <Download size={12} />
                       <span>{res.downloads?.toLocaleString() || 0} downloads</span>
                     </span>
@@ -1171,7 +1171,7 @@ const AdminResourcesSection = () => {
                       <button
                         type="button"
                         onClick={() => setActiveDossierResource(res)}
-                        className="p-1.5 rounded-lg text-slate-500 hover:text-[#06402B] hover:bg-emerald-50 transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg text-slate-500 hover:text-[#5B2E19] hover:bg-emerald-50 transition-colors cursor-pointer"
                         title="View Full Dossier"
                       >
                         <Eye size={15} />
@@ -1181,7 +1181,7 @@ const AdminResourcesSection = () => {
                         onClick={() => {
                           toast.success(`Downloading ${res.title}`);
                         }}
-                        className="p-1.5 rounded-lg text-slate-500 hover:text-[#0B2D6E] hover:bg-blue-50 transition-colors cursor-pointer"
+                        className="p-1.5 rounded-lg text-slate-500 hover:text-[#3D1E10] hover:bg-blue-50 transition-colors cursor-pointer"
                         title="Download Document"
                       >
                         <Download size={15} />
@@ -1238,7 +1238,7 @@ const AdminResourcesSection = () => {
                         <div className="min-w-0">
                           <div
                             onClick={() => setActiveDossierResource(res)}
-                            className="truncate text-slate-900 font-bold hover:text-[#06402B] cursor-pointer"
+                            className="truncate text-slate-900 font-bold hover:text-[#5B2E19] cursor-pointer"
                           >
                             {res.title}
                           </div>
@@ -1277,7 +1277,7 @@ const AdminResourcesSection = () => {
                         <button
                           type="button"
                           onClick={() => setActiveDossierResource(res)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#06402B] hover:bg-emerald-50 transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#5B2E19] hover:bg-emerald-50 transition-colors cursor-pointer"
                           title="View Dossier"
                         >
                           <Eye size={15} />
@@ -1285,7 +1285,7 @@ const AdminResourcesSection = () => {
                         <button
                           type="button"
                           onClick={() => toast.success(`Downloading ${res.title}`)}
-                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#0B2D6E] hover:bg-blue-50 transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg text-slate-400 hover:text-[#3D1E10] hover:bg-blue-50 transition-colors cursor-pointer"
                           title="Download"
                         >
                           <Download size={15} />
@@ -1327,7 +1327,7 @@ const AdminResourcesSection = () => {
               setCategoryFilter('All');
               setFormatFilter('All');
             }}
-            className="text-xs font-bold text-[#06402B] hover:underline cursor-pointer"
+            className="text-xs font-bold text-[#5B2E19] hover:underline cursor-pointer"
           >
             Clear all filters
           </button>

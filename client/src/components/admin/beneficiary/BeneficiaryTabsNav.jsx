@@ -26,7 +26,7 @@ const BeneficiaryTabsNav = ({ activeTab, onSelectTab }) => {
               whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-[13px] font-bold transition-all cursor-pointer
               ${
                 isActive
-                  ? 'bg-[#06402B] text-white shadow-xs'
+                  ? 'bg-[#5B2E19] text-white shadow-xs'
                   : 'bg-white hover:bg-slate-50 text-slate-600 border border-slate-200/80 hover:text-slate-900'
               }
             `}

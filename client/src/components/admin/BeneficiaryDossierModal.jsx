@@ -76,7 +76,7 @@ const BeneficiaryDossierModal = ({ beneficiary, onClose }) => {
             />
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-black text-[#0B2D6E]">{beneficiary.name}</h3>
+                <h3 className="text-lg font-black text-[#3D1E10]">{beneficiary.name}</h3>
                 <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
                   <Shield size={11} /> Verified
                 </span>

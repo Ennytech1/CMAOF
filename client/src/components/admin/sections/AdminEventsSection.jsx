@@ -101,7 +101,7 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200">
                 {event.id}
               </span>
               <span
@@ -135,7 +135,7 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
             <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs rounded-xl px-2.5 py-1.5 shadow-md border border-white/80 text-center select-none min-w-[56px]">
-              <span className="block text-base font-black text-[#06402B] leading-none">{event.dateDay}</span>
+              <span className="block text-base font-black text-[#5B2E19] leading-none">{event.dateDay}</span>
               <span className="block text-[10px] font-extrabold uppercase text-slate-700 tracking-wider leading-none mt-1">
                 {event.dateMonthYear}
               </span>
@@ -156,7 +156,7 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
               </div>
               <div>
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Strategic Pillar</span>
-                <span className="font-bold text-[#06402B]">{event.pillar}</span>
+                <span className="font-bold text-[#5B2E19]">{event.pillar}</span>
               </div>
               <div className="col-span-2">
                 <span className="text-slate-400 block text-[10px] font-bold uppercase">Venue & Assembly Point</span>
@@ -178,7 +178,7 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
             {/* Capacity Progress Bar */}
             <div className="space-y-1 pt-1 border-t border-slate-200">
               <div className="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
-                <div className="h-full rounded-full bg-[#06402B]" style={{ width: `${capacityPct}%` }} />
+                <div className="h-full rounded-full bg-[#5B2E19]" style={{ width: `${capacityPct}%` }} />
               </div>
             </div>
           </div>
@@ -192,7 +192,7 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
               <button
                 type="button"
                 onClick={handleExportAttendeesCSV}
-                className="inline-flex items-center gap-1 text-[11px] font-bold text-[#06402B] hover:underline cursor-pointer"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-[#5B2E19] hover:underline cursor-pointer"
               >
                 <Download size={11} />
                 <span>Export CSV</span>
@@ -207,7 +207,7 @@ const EventDossierDrawer = ({ event, onClose, onDelete }) => {
                       <p className="font-bold text-slate-900">{att.name}</p>
                       <span className="text-[10px] text-slate-400 block">{att.org} • {att.email}</span>
                     </div>
-                    <span className="font-mono text-[10px] font-bold text-[#06402B] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 shrink-0">
+                    <span className="font-mono text-[10px] font-bold text-[#5B2E19] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 shrink-0">
                       {att.ticketRef}
                     </span>
                   </div>
@@ -391,13 +391,13 @@ const AdminEventsSection = () => {
                 setCurrentView('events');
                 setScheduleStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Events</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Schedule Strategic Assembly</span>
+            <span className="font-bold text-[#3D1E10]">Schedule Strategic Assembly</span>
           </div>
 
           <button
@@ -406,7 +406,7 @@ const AdminEventsSection = () => {
               setCurrentView('events');
               setScheduleStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Events Calendar</span>
@@ -432,11 +432,11 @@ const AdminEventsSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -448,7 +448,7 @@ const AdminEventsSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[120px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -471,8 +471,8 @@ const AdminEventsSection = () => {
             {/* STEP 1: Identity & Visual Cover */}
             {scheduleStep === 1 && (
               <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-                <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-                  <Sparkles size={18} className="text-[#06402B]" />
+                <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+                  <Sparkles size={18} className="text-[#5B2E19]" />
                   <span>Assembly Identity, Cover Photo & Summary</span>
                 </h2>
                 <p className="text-xs text-slate-500">
@@ -490,14 +490,14 @@ const AdminEventsSection = () => {
                       placeholder="e.g. 2026 Ilara-Mokin Community Townhall & Free Health Screenings"
                       value={newEvent.title}
                       onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-xs sm:text-sm font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                     />
                   </div>
 
                   {/* Visual Cover Photo Selector */}
                   <div>
                     <label className="block font-bold text-slate-700 mb-2 flex items-center gap-1.5">
-                      <ImageIcon size={14} className="text-[#06402B]" />
+                      <ImageIcon size={14} className="text-[#5B2E19]" />
                       <span>Select Cover Photo Preset (Matching Public Card)</span>
                     </label>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -508,7 +508,7 @@ const AdminEventsSection = () => {
                             key={cov.id}
                             onClick={() => setNewEvent({ ...newEvent, image: cov.url })}
                             className={`rounded-2xl overflow-hidden border-2 cursor-pointer transition-all relative group ${
-                              isSelected ? 'border-[#06402B] ring-2 ring-[#06402B]/20 shadow-sm' : 'border-slate-200 hover:border-slate-300'
+                              isSelected ? 'border-[#5B2E19] ring-2 ring-[#5B2E19]/20 shadow-sm' : 'border-slate-200 hover:border-slate-300'
                             }`}
                           >
                             <div className="aspect-[16/10] w-full overflow-hidden bg-slate-100">
@@ -518,7 +518,7 @@ const AdminEventsSection = () => {
                               {cov.label}
                             </div>
                             {isSelected && (
-                              <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs">
+                              <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs">
                                 <Check size={11} strokeWidth={3} />
                               </div>
                             )}
@@ -536,7 +536,7 @@ const AdminEventsSection = () => {
                       value={newEvent.description}
                       onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
                       placeholder="e.g. Flagship gathering bringing together civic leaders, traditional institutions, and development partners to advance healthcare and education..."
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                     />
                   </div>
                 </div>
@@ -546,8 +546,8 @@ const AdminEventsSection = () => {
             {/* STEP 2: Date, Venue & Pillar */}
             {scheduleStep === 2 && (
               <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-                <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-                  <CalendarIcon size={18} className="text-[#06402B]" />
+                <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+                  <CalendarIcon size={18} className="text-[#5B2E19]" />
                   <span>Date, Schedule, Venue & Pillar Alignment</span>
                 </h2>
 
@@ -563,7 +563,7 @@ const AdminEventsSection = () => {
                         placeholder="e.g. 15 - 17 or 12"
                         value={newEvent.dateDay}
                         onChange={(e) => setNewEvent({ ...newEvent, dateDay: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-bold text-slate-900 focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-bold text-slate-900 focus:outline-none focus:border-[#5B2E19]"
                       />
                     </div>
                     <div>
@@ -575,7 +575,7 @@ const AdminEventsSection = () => {
                         placeholder="e.g. APR 2026 or NOV 2026"
                         value={newEvent.dateMonthYear}
                         onChange={(e) => setNewEvent({ ...newEvent, dateMonthYear: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-bold text-slate-900 focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-bold text-slate-900 focus:outline-none focus:border-[#5B2E19]"
                       />
                     </div>
                   </div>
@@ -588,7 +588,7 @@ const AdminEventsSection = () => {
                         value={newEvent.time}
                         onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
                         placeholder="e.g. 09:00 AM – 04:30 PM WAT"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                       />
                     </div>
 
@@ -597,7 +597,7 @@ const AdminEventsSection = () => {
                       <select
                         value={newEvent.category}
                         onChange={(e) => setNewEvent({ ...newEvent, category: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                       >
                         <option value="Flagship Summit">Flagship Summit</option>
                         <option value="Medical Outreach">Medical Outreach</option>
@@ -618,7 +618,7 @@ const AdminEventsSection = () => {
                       placeholder="e.g. Grand Ballroom, Eko Hotels & Suites, Victoria Island, Lagos"
                       value={newEvent.location}
                       onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                     />
                   </div>
 
@@ -628,7 +628,7 @@ const AdminEventsSection = () => {
                       <select
                         value={newEvent.pillar}
                         onChange={(e) => setNewEvent({ ...newEvent, pillar: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                       >
                         <option value="Education & Human Capital">Education & Human Capital</option>
                         <option value="Health & Well-being">Health & Well-being</option>
@@ -644,7 +644,7 @@ const AdminEventsSection = () => {
                         value={newEvent.leadCoordinator}
                         onChange={(e) => setNewEvent({ ...newEvent, leadCoordinator: e.target.value })}
                         placeholder="e.g. Hauwa Bello / Dr. Kelechi Nwosu"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                       />
                     </div>
                   </div>
@@ -655,8 +655,8 @@ const AdminEventsSection = () => {
             {/* STEP 3: Capacity, Button Type & Authorization */}
             {scheduleStep === 3 && (
               <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-                <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-                  <Shield size={18} className="text-[#06402B]" />
+                <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+                  <Shield size={18} className="text-[#5B2E19]" />
                   <span>Capacity, Action Buttons & Authorization</span>
                 </h2>
 
@@ -668,7 +668,7 @@ const AdminEventsSection = () => {
                         type="number"
                         value={newEvent.capacity}
                         onChange={(e) => setNewEvent({ ...newEvent, capacity: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-mono font-bold text-sm focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-mono font-bold text-sm focus:outline-none focus:border-[#5B2E19]"
                       />
                     </div>
 
@@ -684,7 +684,7 @@ const AdminEventsSection = () => {
                             buttonType: val.includes('Register') ? 'register' : 'learn_more',
                           });
                         }}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#06402B]"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19]"
                       >
                         <option value="Register Now">Register Now (Opens RSVP Form)</option>
                         <option value="Learn More">Learn More (Opens Event Details)</option>
@@ -694,7 +694,7 @@ const AdminEventsSection = () => {
                   </div>
 
                   <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200/60 flex items-start gap-3">
-                    <CheckCircle2 size={16} className="text-[#06402B] shrink-0 mt-0.5" />
+                    <CheckCircle2 size={16} className="text-[#5B2E19] shrink-0 mt-0.5" />
                     <p className="text-xs text-slate-700 leading-relaxed font-medium">
                       Publishing this assembly will immediately synchronize it across the <strong>Home Page</strong> and <strong>Events Page</strong>, enabling online attendee registrations and public calendar syndication.
                     </p>
@@ -721,7 +721,7 @@ const AdminEventsSection = () => {
                 <button
                   type="button"
                   onClick={() => toast.success('Event draft saved to session.')}
-                  className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+                  className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
                 >
                   Save Draft
                 </button>
@@ -743,7 +743,7 @@ const AdminEventsSection = () => {
                       handleCreateEvent();
                     }
                   }}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
                 >
                   <span>{scheduleStep === 3 ? 'Publish Event to Calendar' : 'Next Step'}</span>
                   <ArrowRight size={14} />
@@ -768,7 +768,7 @@ const AdminEventsSection = () => {
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
                     <img src={newEvent.image} alt={newEvent.title} className="w-full h-full object-cover" />
                     <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-xs rounded-xl px-2.5 py-1.5 shadow-md border border-white/80 text-center select-none min-w-[56px]">
-                      <span className="block text-base font-black text-[#06402B] leading-none">{newEvent.dateDay || '15 - 17'}</span>
+                      <span className="block text-base font-black text-[#5B2E19] leading-none">{newEvent.dateDay || '15 - 17'}</span>
                       <span className="block text-[10px] font-extrabold uppercase text-slate-700 tracking-wider leading-none mt-1">
                         {newEvent.dateMonthYear || 'APR 2026'}
                       </span>
@@ -776,7 +776,7 @@ const AdminEventsSection = () => {
                   </div>
 
                   <div className="p-4 space-y-2.5 text-xs">
-                    <h4 className="font-extrabold text-[#0B2D6E] text-sm leading-snug line-clamp-2">
+                    <h4 className="font-extrabold text-[#3D1E10] text-sm leading-snug line-clamp-2">
                       {newEvent.title || 'Untitled Assembly'}
                     </h4>
                     <p className="text-slate-600 text-[11px] leading-relaxed line-clamp-2">
@@ -784,7 +784,7 @@ const AdminEventsSection = () => {
                     </p>
 
                     <div className="flex items-center gap-1.5 text-slate-700 font-semibold pt-1">
-                      <Clock size={12} className="text-[#06402B] shrink-0" />
+                      <Clock size={12} className="text-[#5B2E19] shrink-0" />
                       <span className="truncate">{newEvent.time}</span>
                     </div>
                     <div className="flex items-center gap-1.5 text-slate-600">
@@ -804,7 +804,7 @@ const AdminEventsSection = () => {
                 </div>
 
                 <div className="p-4 pt-0">
-                  <div className="w-full py-2 px-3 rounded-xl font-bold text-white text-xs bg-[#06402B] flex items-center justify-center gap-1.5">
+                  <div className="w-full py-2 px-3 rounded-xl font-bold text-white text-xs bg-[#5B2E19] flex items-center justify-center gap-1.5">
                     <span>{newEvent.buttonText}</span>
                     <ArrowRight size={13} />
                   </div>
@@ -829,7 +829,7 @@ const AdminEventsSection = () => {
         <div className="space-y-1.5">
           <div className="flex items-center gap-2.5 flex-wrap">
             <span className="w-1.5 h-7 rounded-full bg-[#f97316]" />
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight">
               Events & Outreach Assemblies
             </h1>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs">
@@ -852,7 +852,7 @@ const AdminEventsSection = () => {
             setScheduleStep(1);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md hover:shadow-lg transition-all cursor-pointer self-start sm:self-auto shrink-0"
         >
           <Plus size={15} strokeWidth={2.5} />
           <span>Schedule Strategic Event</span>
@@ -867,7 +867,7 @@ const AdminEventsSection = () => {
           <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
             Upcoming Assemblies
           </span>
-          <div className="text-2xl font-black text-[#0B2D6E] font-mono">
+          <div className="text-2xl font-black text-[#3D1E10] font-mono">
             {events.filter((e) => e.status === 'Upcoming').length} Active
           </div>
           <p className="text-[11px] text-emerald-700 font-bold flex items-center gap-1">
@@ -879,7 +879,7 @@ const AdminEventsSection = () => {
           <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
             Total RSVPs & Delegates
           </span>
-          <div className="text-2xl font-black text-[#0B2D6E] font-mono">
+          <div className="text-2xl font-black text-[#3D1E10] font-mono">
             {events.reduce((sum, e) => sum + e.registered, 0).toLocaleString()} Registered
           </div>
           <p className="text-[11px] text-emerald-700 font-bold flex items-center gap-1">
@@ -891,7 +891,7 @@ const AdminEventsSection = () => {
           <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
             Completed Missions
           </span>
-          <div className="text-2xl font-black text-[#0B2D6E] font-mono">
+          <div className="text-2xl font-black text-[#3D1E10] font-mono">
             {events.filter((e) => e.status === 'Completed').length} Audited
           </div>
           <p className="text-[11px] text-slate-500 font-semibold">100% MEAL verified</p>
@@ -901,7 +901,7 @@ const AdminEventsSection = () => {
           <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
             Average Capacity Ratio
           </span>
-          <div className="text-2xl font-black text-[#0B2D6E] font-mono">92.4%</div>
+          <div className="text-2xl font-black text-[#3D1E10] font-mono">92.4%</div>
           <p className="text-[11px] text-emerald-700 font-bold flex items-center gap-1">
             <CheckCircle2 size={12} /> High civic participation
           </p>
@@ -926,7 +926,7 @@ const AdminEventsSection = () => {
                     px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5
                     ${
                       statusFilter === status
-                        ? 'bg-[#06402B] text-white shadow-xs'
+                        ? 'bg-[#5B2E19] text-white shadow-xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                     }
                   `}
@@ -953,7 +953,7 @@ const AdminEventsSection = () => {
                 placeholder="Search assembly, venue, pillar..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-7 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#06402B] focus:bg-white"
+                className="w-full pl-9 pr-7 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#5B2E19] focus:bg-white"
               />
               {searchQuery && (
                 <button
@@ -986,7 +986,7 @@ const AdminEventsSection = () => {
                 onClick={() => setViewMode('grid')}
                 className={`p-1.5 rounded-lg cursor-pointer ${
                   viewMode === 'grid'
-                    ? 'bg-white text-[#0B2D6E] shadow-2xs'
+                    ? 'bg-white text-[#3D1E10] shadow-2xs'
                     : 'text-slate-400 hover:text-slate-700'
                 }`}
                 title="Cards Grid View"
@@ -998,7 +998,7 @@ const AdminEventsSection = () => {
                 onClick={() => setViewMode('table')}
                 className={`p-1.5 rounded-lg cursor-pointer ${
                   viewMode === 'table'
-                    ? 'bg-white text-[#0B2D6E] shadow-2xs'
+                    ? 'bg-white text-[#3D1E10] shadow-2xs'
                     : 'text-slate-400 hover:text-slate-700'
                 }`}
                 title="Table Ledger View"
@@ -1038,7 +1038,7 @@ const AdminEventsSection = () => {
                       />
                       {/* Floating Date Badge */}
                       <div className="absolute top-3.5 left-3.5 bg-white/95 backdrop-blur-xs rounded-xl px-2.5 py-1.5 shadow-md border border-white/80 text-center select-none min-w-[56px]">
-                        <span className="block text-base sm:text-lg font-black text-[#06402B] leading-none">
+                        <span className="block text-base sm:text-lg font-black text-[#5B2E19] leading-none">
                           {evt.dateDay}
                         </span>
                         <span className="block text-[10px] font-extrabold uppercase text-slate-700 tracking-wider leading-none mt-1">
@@ -1062,7 +1062,7 @@ const AdminEventsSection = () => {
 
                     {/* Card Body */}
                     <div className="p-5 space-y-3">
-                      <h3 className="text-base sm:text-[17px] font-extrabold text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors line-clamp-2">
+                      <h3 className="text-base sm:text-[17px] font-extrabold text-[#3D1E10] leading-snug group-hover:text-[#5B2E19] transition-colors line-clamp-2">
                         {evt.title}
                       </h3>
                       <p className="text-slate-600 text-xs leading-relaxed line-clamp-2">
@@ -1071,7 +1071,7 @@ const AdminEventsSection = () => {
 
                       <div className="space-y-1.5 pt-1 text-xs">
                         <div className="flex items-center gap-1.5 text-slate-700 font-semibold">
-                          <Clock size={13} className="text-[#06402B] shrink-0" />
+                          <Clock size={13} className="text-[#5B2E19] shrink-0" />
                           <span className="truncate">{evt.time}</span>
                         </div>
                         <div className="flex items-center gap-1.5 text-slate-600">
@@ -1099,7 +1099,7 @@ const AdminEventsSection = () => {
                           <span className="text-slate-400 font-normal">Cap: {evt.capacity} ({capacityPct}%)</span>
                         </div>
                         <div className="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
-                          <div className="h-full rounded-full bg-[#06402B]" style={{ width: `${capacityPct}%` }} />
+                          <div className="h-full rounded-full bg-[#5B2E19]" style={{ width: `${capacityPct}%` }} />
                         </div>
                       </div>
                     </div>
@@ -1126,7 +1126,7 @@ const AdminEventsSection = () => {
                           e.stopPropagation();
                           setSelectedEventDossier(evt);
                         }}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-[#06402B] hover:text-white text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-[#5B2E19] hover:text-white text-slate-700 text-xs font-bold transition-colors cursor-pointer"
                       >
                         <Eye size={12} />
                         <span>Dossier</span>
@@ -1165,7 +1165,7 @@ const AdminEventsSection = () => {
                           <img src={evt.image} alt="" className="w-full h-full object-cover" />
                         </div>
                         <div>
-                          <p className="font-bold text-slate-900 group-hover:text-[#06402B] transition-colors">
+                          <p className="font-bold text-slate-900 group-hover:text-[#5B2E19] transition-colors">
                             {evt.title}
                           </p>
                           <span className="text-[10px] text-slate-400">{evt.category}</span>
@@ -1175,7 +1175,7 @@ const AdminEventsSection = () => {
 
                     <td className="py-3.5 px-3 whitespace-nowrap">
                       <div className="flex items-center gap-1.5 font-bold text-slate-800">
-                        <Clock size={12} className="text-[#06402B]" />
+                        <Clock size={12} className="text-[#5B2E19]" />
                         <span>{evt.date}</span>
                       </div>
                       <span className="text-[10px] text-slate-400 block mt-0.5">{evt.time}</span>
@@ -1201,7 +1201,7 @@ const AdminEventsSection = () => {
                       </div>
                       <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
                         <div
-                          className="h-full rounded-full bg-[#06402B]"
+                          className="h-full rounded-full bg-[#5B2E19]"
                           style={{ width: `${Math.min((evt.registered / evt.capacity) * 100, 100)}%` }}
                         />
                       </div>

@@ -84,7 +84,7 @@ const DonationDetailDrawer = ({ donation, onClose, onOpenReceipt, onSendGratitud
         <div className="p-6 border-b border-slate-100 bg-slate-50/70 sticky top-0 z-10 flex items-center justify-between">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-black text-[#0B2D6E] px-2.5 py-1 rounded-md bg-white border border-slate-200 shadow-2xs">
+              <span className="font-mono text-xs font-black text-[#3D1E10] px-2.5 py-1 rounded-md bg-white border border-slate-200 shadow-2xs">
                 {donation.reference}
               </span>
               <button
@@ -114,7 +114,7 @@ const DonationDetailDrawer = ({ donation, onClose, onOpenReceipt, onSendGratitud
         {/* Drawer Body */}
         <div className="p-6 space-y-6 flex-1 text-xs sm:text-sm">
           {/* Main Amount Callout */}
-          <div className="p-5 rounded-2xl bg-gradient-to-br from-[#06402B] to-[#0B2D6E] text-white space-y-2 shadow-md">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-[#5B2E19] to-[#3D1E10] text-white space-y-2 shadow-md">
             <span className="text-[11px] font-bold text-emerald-200 uppercase tracking-wider block">
               Contribution Valuation
             </span>
@@ -146,7 +146,7 @@ const DonationDetailDrawer = ({ donation, onClose, onOpenReceipt, onSendGratitud
                 { title: 'Gratitude & Impact Dispatch', desc: `Impact notice dispatched to ${donation.email}`, time: 'Delivered', done: true },
               ].map((step, idx) => (
                 <div key={idx} className="relative space-y-0.5">
-                  <div className="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-[#06402B] text-white flex items-center justify-center ring-4 ring-white shadow-2xs">
+                  <div className="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-[#5B2E19] text-white flex items-center justify-center ring-4 ring-white shadow-2xs">
                     <Check size={10} strokeWidth={3} />
                   </div>
                   <div className="flex items-center justify-between">
@@ -175,7 +175,7 @@ const DonationDetailDrawer = ({ donation, onClose, onOpenReceipt, onSendGratitud
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-slate-500 font-medium">Designated Cause:</span>
-                <span className="font-bold text-[#06402B]">{donation.campaign}</span>
+                <span className="font-bold text-[#5B2E19]">{donation.campaign}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-slate-100">
                 <span className="text-slate-500 font-medium">Strategic Pillar:</span>
@@ -207,7 +207,7 @@ const DonationDetailDrawer = ({ donation, onClose, onOpenReceipt, onSendGratitud
               onClose();
               onOpenReceipt(donation);
             }}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-sm transition-all cursor-pointer"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-sm transition-all cursor-pointer"
           >
             <Receipt size={14} />
             <span>Official Receipt PDF</span>
@@ -439,13 +439,13 @@ const AdminDonationsSection = () => {
                 setCurrentView('ledger');
                 setCurrentStep(1);
               }}
-              className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
             >
               <Home size={15} className="text-sky-600" />
               <span className="font-semibold text-sky-600">Donations</span>
             </button>
             <ChevronRight size={13} className="text-slate-300" />
-            <span className="font-bold text-[#0B2D6E]">Record Philanthropic Contribution</span>
+            <span className="font-bold text-[#3D1E10]">Record Philanthropic Contribution</span>
           </div>
 
           <button
@@ -454,7 +454,7 @@ const AdminDonationsSection = () => {
               setCurrentView('ledger');
               setCurrentStep(1);
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Ledger</span>
@@ -480,11 +480,11 @@ const AdminDonationsSection = () => {
                       className="flex flex-col items-center text-center px-1 cursor-pointer group"
                     >
                       {isPassed ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                           <Check size={16} strokeWidth={3} />
                         </div>
                       ) : isCurrent ? (
-                        <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                        <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                           {step.id}
                         </div>
                       ) : (
@@ -496,7 +496,7 @@ const AdminDonationsSection = () => {
                       <p
                         className={`text-xs mt-2 font-bold max-w-[120px] leading-tight ${
                           isCurrent
-                            ? 'text-[#06402B]'
+                            ? 'text-[#5B2E19]'
                             : isPassed
                             ? 'text-slate-800'
                             : 'text-slate-400'
@@ -519,8 +519,8 @@ const AdminDonationsSection = () => {
             {/* STEP 1: Donor Identity */}
             {currentStep === 1 && (
               <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-                <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-                  <User size={18} className="text-[#06402B]" />
+                <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+                  <User size={18} className="text-[#5B2E19]" />
                   <span>Benefactor Identity & Philanthropic Classification</span>
                 </h2>
                 <p className="text-xs text-slate-500">
@@ -539,7 +539,7 @@ const AdminDonationsSection = () => {
                         value={newGift.donorName}
                         onChange={(e) => setNewGift({ ...newGift, donorName: e.target.value })}
                         placeholder="e.g. Chief (Dr.) Michael Ade.Ojo / Access Bank CSR"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       />
                     </div>
 
@@ -550,7 +550,7 @@ const AdminDonationsSection = () => {
                       <select
                         value={newGift.donorType}
                         onChange={(e) => setNewGift({ ...newGift, donorType: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       >
                         <option value="Individual">Individual Benefactor</option>
                         <option value="Corporate">Corporate / CSR Partner</option>
@@ -568,7 +568,7 @@ const AdminDonationsSection = () => {
                         value={newGift.email}
                         onChange={(e) => setNewGift({ ...newGift, email: e.target.value })}
                         placeholder="e.g. benefactor@organization.ng"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       />
                     </div>
 
@@ -579,7 +579,7 @@ const AdminDonationsSection = () => {
                         value={newGift.phone}
                         onChange={(e) => setNewGift({ ...newGift, phone: e.target.value })}
                         placeholder="e.g. +234 803 000 0000"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       />
                     </div>
                   </div>
@@ -590,8 +590,8 @@ const AdminDonationsSection = () => {
             {/* STEP 2: Gift & Channel */}
             {currentStep === 2 && (
               <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-                <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-                  <CreditCard size={18} className="text-[#06402B]" />
+                <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+                  <CreditCard size={18} className="text-[#5B2E19]" />
                   <span>Gift Valuation, Currency & Settlement Channel</span>
                 </h2>
 
@@ -607,7 +607,7 @@ const AdminDonationsSection = () => {
                           onClick={() => setNewGift({ ...newGift, amount: amt.value })}
                           className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
                             newGift.amount === amt.value
-                              ? 'bg-[#06402B] text-white border-[#06402B] shadow-xs'
+                              ? 'bg-[#5B2E19] text-white border-[#5B2E19] shadow-xs'
                               : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
                           }`}
                         >
@@ -628,7 +628,7 @@ const AdminDonationsSection = () => {
                         value={newGift.amount}
                         onChange={(e) => setNewGift({ ...newGift, amount: e.target.value })}
                         placeholder="e.g. 5,000,000"
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono text-sm font-bold text-[#0B2D6E] focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono text-sm font-bold text-[#3D1E10] focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       />
                     </div>
 
@@ -637,7 +637,7 @@ const AdminDonationsSection = () => {
                       <select
                         value={newGift.paymentMethod}
                         onChange={(e) => setNewGift({ ...newGift, paymentMethod: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       >
                         <option value="Direct Bank Wire Transfer">Direct Bank Wire Transfer (Zenith Bank)</option>
                         <option value="Bank Certified Cheque">Bank Certified Cheque / Draft</option>
@@ -655,7 +655,7 @@ const AdminDonationsSection = () => {
                       value={newGift.bankReference}
                       onChange={(e) => setNewGift({ ...newGift, bankReference: e.target.value })}
                       placeholder="e.g. CBN-NIP-098274928173 or Cheque No. 0048291"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                     />
                   </div>
                 </div>
@@ -665,8 +665,8 @@ const AdminDonationsSection = () => {
             {/* STEP 3: Cause & Receipt */}
             {currentStep === 3 && (
               <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-                <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-                  <Shield size={18} className="text-[#06402B]" />
+                <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+                  <Shield size={18} className="text-[#5B2E19]" />
                   <span>Designated Cause, Transparency & Official Receipt</span>
                 </h2>
 
@@ -685,7 +685,7 @@ const AdminDonationsSection = () => {
                             : 'Community Resilience';
                           setNewGift({ ...newGift, campaign: camp, pillar });
                         }}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       >
                         <option value="School Support Programme">School Support Programme (Pillar 1)</option>
                         <option value="Primary Maternal & Child Health">Primary Maternal & Child Health (Pillar 2)</option>
@@ -714,7 +714,7 @@ const AdminDonationsSection = () => {
                       value={newGift.dedicatedNote}
                       onChange={(e) => setNewGift({ ...newGift, dedicatedNote: e.target.value })}
                       placeholder="e.g. Dedicated in support of girl-child STEM scholarships across target primary schools..."
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                     />
                   </div>
 
@@ -724,10 +724,10 @@ const AdminDonationsSection = () => {
                       id="taxReceipt"
                       checked={newGift.taxReceiptRequired}
                       onChange={(e) => setNewGift({ ...newGift, taxReceiptRequired: e.target.checked })}
-                      className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                      className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                     />
                     <label htmlFor="taxReceipt" className="text-xs text-slate-700 font-medium cursor-pointer">
-                      <span className="font-bold text-[#06402B]">Generate Tax Compliance Certificate:</span> Issue official
+                      <span className="font-bold text-[#5B2E19]">Generate Tax Compliance Certificate:</span> Issue official
                       signed CMAOF charitable contribution receipt and update the public transparency ledger.
                     </label>
                   </div>
@@ -753,7 +753,7 @@ const AdminDonationsSection = () => {
                 <button
                   type="button"
                   onClick={() => toast.success('Offline contribution draft stored in session.')}
-                  className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+                  className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
                 >
                   Save Draft
                 </button>
@@ -775,7 +775,7 @@ const AdminDonationsSection = () => {
                       handleConfirmRecordGift();
                     }
                   }}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+                  className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
                 >
                   <span>{currentStep === 3 ? 'Confirm & Issue Receipt' : 'Next'}</span>
                   <ArrowRight size={14} />
@@ -796,7 +796,7 @@ const AdminDonationsSection = () => {
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-3 text-xs">
               <div>
                 <span className="text-[10px] uppercase font-bold text-slate-400 block">Benefactor</span>
-                <p className="font-extrabold text-[#0B2D6E] text-sm">
+                <p className="font-extrabold text-[#3D1E10] text-sm">
                   {newGift.donorName || 'Donor / Organization'}
                 </p>
                 <span className="text-[11px] text-slate-500 font-medium">
@@ -844,7 +844,7 @@ const AdminDonationsSection = () => {
         <div className="space-y-1.5">
           <div className="flex items-center gap-2.5 flex-wrap">
             <span className="w-1.5 h-7 rounded-full bg-[#f97316]" />
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight">
               Donations & Philanthropic Capital
             </h1>
             {/* Live Gateway Pulse Badge */}
@@ -879,7 +879,7 @@ const AdminDonationsSection = () => {
             type="button"
             onClick={handleRefreshFeed}
             className={`p-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 transition-colors cursor-pointer ${
-              isRefreshing ? 'animate-spin text-[#06402B]' : ''
+              isRefreshing ? 'animate-spin text-[#5B2E19]' : ''
             }`}
             title="Refresh Live Ledger"
           >
@@ -904,7 +904,7 @@ const AdminDonationsSection = () => {
               setCurrentStep(1);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md hover:shadow-lg transition-all cursor-pointer"
           >
             <Plus size={15} strokeWidth={2.5} />
             <span>Record Offline Gift</span>
@@ -925,12 +925,12 @@ const AdminDonationsSection = () => {
           }}
           className={`bg-white rounded-3xl p-5 border shadow-xs hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group ${
             activeTab === 'all' && typeFilter === 'All'
-              ? 'border-[#06402B] ring-2 ring-[#06402B]/15 bg-emerald-50/20'
+              ? 'border-[#5B2E19] ring-2 ring-[#5B2E19]/15 bg-emerald-50/20'
               : 'border-slate-200/80 hover:border-slate-300'
           }`}
         >
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-50 border border-emerald-100 text-[#06402B] flex items-center justify-center font-bold group-hover:scale-105 transition-transform shadow-2xs">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-50 border border-emerald-100 text-[#5B2E19] flex items-center justify-center font-bold group-hover:scale-105 transition-transform shadow-2xs">
               <DollarSign size={18} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/60">
@@ -941,7 +941,7 @@ const AdminDonationsSection = () => {
             <p className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
               Total Capital Raised
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1 font-mono">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
               ₦333.4M
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -964,10 +964,10 @@ const AdminDonationsSection = () => {
           }`}
         >
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 text-[#0B2D6E] flex items-center justify-center font-bold group-hover:scale-105 transition-transform shadow-2xs">
+            <div className="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-100 text-[#3D1E10] flex items-center justify-center font-bold group-hover:scale-105 transition-transform shadow-2xs">
               <HeartHandshake size={18} />
             </div>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-[#0B2D6E] border border-blue-200/60">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-50 text-[#3D1E10] border border-blue-200/60">
               Monthly Active
             </span>
           </div>
@@ -975,7 +975,7 @@ const AdminDonationsSection = () => {
             <p className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
               Recurring Patrons
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1 font-mono">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
               ₦4,250,000 <span className="text-xs text-slate-400 font-sans font-bold">/ mo</span>
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -1010,7 +1010,7 @@ const AdminDonationsSection = () => {
             <p className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
               Corporate & CSR Grants
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1 font-mono">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
               ₦220.0M
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -1039,7 +1039,7 @@ const AdminDonationsSection = () => {
             <p className="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">
               Average Benefactor Gift
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1 font-mono">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1 font-mono">
               ₦234,800
             </p>
             <p className="text-[11px] text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -1059,7 +1059,7 @@ const AdminDonationsSection = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-base font-black text-[#0B2D6E] tracking-tight">
+                <h2 className="text-base font-black text-[#3D1E10] tracking-tight">
                   Capital Inflow Trajectory & Target Velocity
                 </h2>
                 <span className="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-md uppercase">
@@ -1081,7 +1081,7 @@ const AdminDonationsSection = () => {
                   onClick={() => setChartMode('monthly')}
                   className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                     chartMode === 'monthly'
-                      ? 'bg-white text-[#06402B] shadow-2xs font-black'
+                      ? 'bg-white text-[#5B2E19] shadow-2xs font-black'
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -1092,7 +1092,7 @@ const AdminDonationsSection = () => {
                   onClick={() => setChartMode('quarterly')}
                   className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
                     chartMode === 'quarterly'
-                      ? 'bg-white text-[#06402B] shadow-2xs font-black'
+                      ? 'bg-white text-[#5B2E19] shadow-2xs font-black'
                       : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -1102,7 +1102,7 @@ const AdminDonationsSection = () => {
 
               <div className="hidden sm:flex items-center gap-3 text-xs font-bold pl-2">
                 <span className="flex items-center gap-1.5 text-emerald-800">
-                  <span className="w-3 h-3 rounded-md bg-[#06402B]" /> Inflow
+                  <span className="w-3 h-3 rounded-md bg-[#5B2E19]" /> Inflow
                 </span>
                 <span className="flex items-center gap-1.5 text-slate-400">
                   <span className="w-3 h-1 rounded-full bg-slate-300" /> Target
@@ -1160,7 +1160,7 @@ const AdminDonationsSection = () => {
                         className={`w-full rounded-t-lg transition-all duration-300 ${
                           isHovered
                             ? 'bg-[#f97316] shadow-md shadow-orange-500/20'
-                            : 'bg-[#06402B] group-hover:bg-[#0B2D6E]'
+                            : 'bg-[#5B2E19] group-hover:bg-[#3D1E10]'
                         }`}
                         style={{ height: `${barHeightPct}%` }}
                       />
@@ -1180,7 +1180,7 @@ const AdminDonationsSection = () => {
         {/* Right 4 Cols: Pillar Allocation Breakdown */}
         <div className="lg:col-span-4 bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/80 shadow-xs space-y-4 flex flex-col justify-between">
           <div>
-            <h2 className="text-base font-black text-[#0B2D6E] tracking-tight">
+            <h2 className="text-base font-black text-[#3D1E10] tracking-tight">
               Pillar Capital Deployment
             </h2>
             <p className="text-xs text-slate-500">
@@ -1193,10 +1193,10 @@ const AdminDonationsSection = () => {
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs">
                 <span className="font-bold text-slate-800">Education & Human Capital</span>
-                <span className="font-bold text-[#06402B]">45% (₦150.0M)</span>
+                <span className="font-bold text-[#5B2E19]">45% (₦150.0M)</span>
               </div>
               <div className="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
-                <div className="h-full rounded-full bg-[#06402B]" style={{ width: '45%' }} />
+                <div className="h-full rounded-full bg-[#5B2E19]" style={{ width: '45%' }} />
               </div>
             </div>
 
@@ -1261,7 +1261,7 @@ const AdminDonationsSection = () => {
                   px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer flex items-center gap-1.5
                   ${
                     activeTab === tab.id
-                      ? 'bg-[#06402B] text-white shadow-xs'
+                      ? 'bg-[#5B2E19] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }
                 `}
@@ -1289,7 +1289,7 @@ const AdminDonationsSection = () => {
                 placeholder="Search donor, ref, email..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-7 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#06402B] focus:bg-white"
+                className="w-full pl-9 pr-7 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#5B2E19] focus:bg-white"
               />
               {searchQuery && (
                 <button
@@ -1331,7 +1331,7 @@ const AdminDonationsSection = () => {
                 onClick={() => setViewMode('table')}
                 className={`p-1.5 rounded-lg cursor-pointer ${
                   viewMode === 'table'
-                    ? 'bg-white text-[#0B2D6E] shadow-2xs'
+                    ? 'bg-white text-[#3D1E10] shadow-2xs'
                     : 'text-slate-400 hover:text-slate-700'
                 }`}
                 title="Table View"
@@ -1343,7 +1343,7 @@ const AdminDonationsSection = () => {
                 onClick={() => setViewMode('grid')}
                 className={`p-1.5 rounded-lg cursor-pointer ${
                   viewMode === 'grid'
-                    ? 'bg-white text-[#0B2D6E] shadow-2xs'
+                    ? 'bg-white text-[#3D1E10] shadow-2xs'
                     : 'text-slate-400 hover:text-slate-700'
                 }`}
                 title="Grid Cards View"
@@ -1369,14 +1369,14 @@ const AdminDonationsSection = () => {
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#06402B] border border-emerald-100 text-[10px] font-bold">
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#5B2E19] border border-emerald-100 text-[10px] font-bold">
                         {camp.pillar}
                       </span>
                       <span className="text-[11px] font-bold text-slate-400">
                         {camp.donorsCount} Donors
                       </span>
                     </div>
-                    <h3 className="text-sm font-black text-[#0B2D6E] leading-snug group-hover:text-[#06402B] transition-colors">
+                    <h3 className="text-sm font-black text-[#3D1E10] leading-snug group-hover:text-[#5B2E19] transition-colors">
                       {camp.name}
                     </h3>
                   </div>
@@ -1389,7 +1389,7 @@ const AdminDonationsSection = () => {
 
                     <div className="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-[#06402B] transition-all duration-500"
+                        className="h-full rounded-full bg-[#5B2E19] transition-all duration-500"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
@@ -1408,7 +1408,7 @@ const AdminDonationsSection = () => {
                           setSearchQuery(camp.name);
                           setActiveTab('all');
                         }}
-                        className="text-xs font-bold text-[#0B2D6E] hover:underline cursor-pointer"
+                        className="text-xs font-bold text-[#3D1E10] hover:underline cursor-pointer"
                       >
                         Ledger →
                       </button>
@@ -1433,7 +1433,7 @@ const AdminDonationsSection = () => {
                         setCurrentView('record');
                         setCurrentStep(2);
                       }}
-                      className="px-3 py-1 rounded-lg bg-slate-100 hover:bg-[#06402B] hover:text-white text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                      className="px-3 py-1 rounded-lg bg-slate-100 hover:bg-[#5B2E19] hover:text-white text-slate-700 text-xs font-bold transition-colors cursor-pointer"
                     >
                       + Allocate
                     </button>
@@ -1454,11 +1454,11 @@ const AdminDonationsSection = () => {
                 <div className="space-y-2">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 text-[#06402B] font-bold flex items-center justify-center text-xs shrink-0 shadow-2xs group-hover:bg-[#06402B] group-hover:text-white transition-colors">
+                      <div className="w-9 h-9 rounded-xl bg-white border border-slate-200 text-[#5B2E19] font-bold flex items-center justify-center text-xs shrink-0 shadow-2xs group-hover:bg-[#5B2E19] group-hover:text-white transition-colors">
                         {d.type === 'Corporate' ? <Building size={16} /> : <User size={16} />}
                       </div>
                       <div>
-                        <h4 className="font-bold text-slate-900 text-xs leading-tight line-clamp-1 group-hover:text-[#06402B] transition-colors">
+                        <h4 className="font-bold text-slate-900 text-xs leading-tight line-clamp-1 group-hover:text-[#5B2E19] transition-colors">
                           {d.donorName}
                         </h4>
                         <span className="text-[10px] text-slate-400 truncate block">{d.email}</span>
@@ -1471,7 +1471,7 @@ const AdminDonationsSection = () => {
                     <span className="text-[10px] uppercase font-bold text-slate-400 block">
                       Valuation
                     </span>
-                    <p className="font-black text-[#0B2D6E] font-mono text-lg">
+                    <p className="font-black text-[#3D1E10] font-mono text-lg">
                       ₦{d.amountFormatted}
                     </p>
                   </div>
@@ -1498,7 +1498,7 @@ const AdminDonationsSection = () => {
                         e.stopPropagation();
                         setSelectedDonationDetail(d);
                       }}
-                      className="p-1.5 rounded-xl border border-slate-200 bg-white text-slate-500 hover:text-[#06402B] hover:bg-slate-100 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-xl border border-slate-200 bg-white text-slate-500 hover:text-[#5B2E19] hover:bg-slate-100 transition-colors cursor-pointer"
                       title="View Full Audit Lifecycle"
                     >
                       <Eye size={13} />
@@ -1509,7 +1509,7 @@ const AdminDonationsSection = () => {
                         e.stopPropagation();
                         setSelectedReceipt(d);
                       }}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:bg-[#06402B] hover:text-white transition-colors cursor-pointer shadow-2xs"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 hover:bg-[#5B2E19] hover:text-white transition-colors cursor-pointer shadow-2xs"
                     >
                       <Receipt size={13} />
                       <span>Receipt</span>
@@ -1554,7 +1554,7 @@ const AdminDonationsSection = () => {
                         <button
                           type="button"
                           onClick={(e) => handleCopyRef(d.reference, e)}
-                          className="font-mono font-bold text-slate-800 hover:text-[#06402B] flex items-center gap-1.5 cursor-pointer text-left"
+                          className="font-mono font-bold text-slate-800 hover:text-[#5B2E19] flex items-center gap-1.5 cursor-pointer text-left"
                           title="Click to copy reference"
                         >
                           <span>{d.reference}</span>
@@ -1567,11 +1567,11 @@ const AdminDonationsSection = () => {
 
                       <td className="py-3.5 px-3">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-xl bg-slate-100 text-[#06402B] font-bold flex items-center justify-center text-xs shrink-0 border border-slate-200/80 group-hover:bg-[#06402B] group-hover:text-white transition-colors">
+                          <div className="w-8 h-8 rounded-xl bg-slate-100 text-[#5B2E19] font-bold flex items-center justify-center text-xs shrink-0 border border-slate-200/80 group-hover:bg-[#5B2E19] group-hover:text-white transition-colors">
                             {d.type === 'Corporate' ? <Building size={15} /> : <User size={15} />}
                           </div>
                           <div>
-                            <span className="font-bold text-slate-900 block group-hover:text-[#06402B] transition-colors">
+                            <span className="font-bold text-slate-900 block group-hover:text-[#5B2E19] transition-colors">
                               {d.donorName}
                             </span>
                             <span className="text-[10px] text-slate-400">{d.email}</span>
@@ -1589,7 +1589,7 @@ const AdminDonationsSection = () => {
                         {d.paymentMethod}
                       </td>
 
-                      <td className="py-3.5 px-3 font-black text-[#0B2D6E] font-mono text-sm">
+                      <td className="py-3.5 px-3 font-black text-[#3D1E10] font-mono text-sm">
                         ₦{d.amountFormatted}
                       </td>
 
@@ -1616,7 +1616,7 @@ const AdminDonationsSection = () => {
                               e.stopPropagation();
                               setSelectedReceipt(d);
                             }}
-                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-[#06402B] hover:text-white text-slate-700 text-xs font-bold cursor-pointer transition-colors shadow-2xs"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-[#5B2E19] hover:text-white text-slate-700 text-xs font-bold cursor-pointer transition-colors shadow-2xs"
                             title="Generate Official Receipt"
                           >
                             <Receipt size={13} />

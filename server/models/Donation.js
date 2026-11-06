@@ -18,7 +18,6 @@ const donationSchema = new mongoose.Schema(
     },
     pillar: {
       type: String,
-      enum: ['general', 'education', 'healthcare', 'community'],
       default: 'general',
     },
     donorName: {
@@ -45,7 +44,6 @@ const donationSchema = new mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      enum: ['card', 'transfer', 'ussd', 'wallet', 'bank_transfer'],
       default: 'card',
     },
     transactionRef: {
@@ -55,7 +53,6 @@ const donationSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ['pending', 'completed', 'failed'],
       default: 'completed',
     },
     notes: {

@@ -39,13 +39,13 @@ const YEAR_DATA = {
     pillarStats: [
       { name: 'Education & Human Capital', count: '5,240', pct: 42, color: '#0284c7', circleClass: 'bg-[#0284c7]' },
       { name: 'Health & Well-being', count: '4,120', pct: 33, color: '#ef4444', circleClass: 'bg-[#ef4444]' },
-      { name: 'Community Resilience', count: '3,120', pct: 25, color: '#06402B', circleClass: 'bg-[#06402B]' },
+      { name: 'Community Resilience', count: '3,120', pct: 25, color: '#5B2E19', circleClass: 'bg-[#5B2E19]' },
     ],
     outcomes: [
       { id: 'edu', label: 'School Enrollment', count: '2,340', icon: GraduationCap, color: 'bg-[#0284c7]', border: 'border-sky-100', bg: 'bg-sky-50/60' },
       { id: 'health', label: 'Medical Care', count: '8,520', icon: HeartPulse, color: 'bg-rose-500', border: 'border-rose-100', bg: 'bg-rose-50/60' },
       { id: 'food', label: 'Food Support', count: '3,120', icon: Sprout, color: 'bg-emerald-600', border: 'border-emerald-100', bg: 'bg-emerald-50/60' },
-      { id: 'water', label: 'Water Projects', count: '24', icon: Droplets, color: 'bg-[#06402B]', border: 'border-teal-100', bg: 'bg-teal-50/60' },
+      { id: 'water', label: 'Water Projects', count: '24', icon: Droplets, color: 'bg-[#5B2E19]', border: 'border-teal-100', bg: 'bg-teal-50/60' },
     ],
     monthlyBars: [
       { month: 'Jan', value: 420 },
@@ -75,13 +75,13 @@ const YEAR_DATA = {
     pillarStats: [
       { name: 'Education & Human Capital', count: '4,620', pct: 42, color: '#0284c7', circleClass: 'bg-[#0284c7]' },
       { name: 'Health & Well-being', count: '3,610', pct: 33, color: '#ef4444', circleClass: 'bg-[#ef4444]' },
-      { name: 'Community Resilience', count: '2,720', pct: 25, color: '#06402B', circleClass: 'bg-[#06402B]' },
+      { name: 'Community Resilience', count: '2,720', pct: 25, color: '#5B2E19', circleClass: 'bg-[#5B2E19]' },
     ],
     outcomes: [
       { id: 'edu', label: 'School Enrollment', count: '1,980', icon: GraduationCap, color: 'bg-[#0284c7]', border: 'border-sky-100', bg: 'bg-sky-50/60' },
       { id: 'health', label: 'Medical Care', count: '7,150', icon: HeartPulse, color: 'bg-rose-500', border: 'border-rose-100', bg: 'bg-rose-50/60' },
       { id: 'food', label: 'Food Support', count: '2,720', icon: Sprout, color: 'bg-emerald-600', border: 'border-emerald-100', bg: 'bg-emerald-50/60' },
-      { id: 'water', label: 'Water Projects', count: '18', icon: Droplets, color: 'bg-[#06402B]', border: 'border-teal-100', bg: 'bg-teal-50/60' },
+      { id: 'water', label: 'Water Projects', count: '18', icon: Droplets, color: 'bg-[#5B2E19]', border: 'border-teal-100', bg: 'bg-teal-50/60' },
     ],
     monthlyBars: [
       { month: 'Jan', value: 350 },
@@ -111,13 +111,13 @@ const YEAR_DATA = {
     pillarStats: [
       { name: 'Education & Human Capital', count: '3,880', pct: 42, color: '#0284c7', circleClass: 'bg-[#0284c7]' },
       { name: 'Health & Well-being', count: '3,050', pct: 33, color: '#ef4444', circleClass: 'bg-[#ef4444]' },
-      { name: 'Community Resilience', count: '2,310', pct: 25, color: '#06402B', circleClass: 'bg-[#06402B]' },
+      { name: 'Community Resilience', count: '2,310', pct: 25, color: '#5B2E19', circleClass: 'bg-[#5B2E19]' },
     ],
     outcomes: [
       { id: 'edu', label: 'School Enrollment', count: '1,620', icon: GraduationCap, color: 'bg-[#0284c7]', border: 'border-sky-100', bg: 'bg-sky-50/60' },
       { id: 'health', label: 'Medical Care', count: '6,280', icon: HeartPulse, color: 'bg-rose-500', border: 'border-rose-100', bg: 'bg-rose-50/60' },
       { id: 'food', label: 'Food Support', count: '2,310', icon: Sprout, color: 'bg-emerald-600', border: 'border-emerald-100', bg: 'bg-emerald-50/60' },
-      { id: 'water', label: 'Water Projects', count: '12', icon: Droplets, color: 'bg-[#06402B]', border: 'border-teal-100', bg: 'bg-teal-50/60' },
+      { id: 'water', label: 'Water Projects', count: '12', icon: Droplets, color: 'bg-[#5B2E19]', border: 'border-teal-100', bg: 'bg-teal-50/60' },
     ],
     monthlyBars: [
       { month: 'Jan', value: 280 },
@@ -199,7 +199,7 @@ const AdminImpactSection = () => {
         <div className="flex items-start gap-2.5">
           <span className="w-1.5 h-8 sm:h-9 rounded-full bg-[#f97316] mt-0.5 shrink-0" />
           <div>
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight">
               Impact Dashboard
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
@@ -215,7 +215,7 @@ const AdminImpactSection = () => {
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="bg-transparent font-black text-[#0B2D6E] focus:outline-none cursor-pointer"
+              className="bg-transparent font-black text-[#3D1E10] focus:outline-none cursor-pointer"
             >
               <option value="2026">2026</option>
               <option value="2025">2025</option>
@@ -226,7 +226,7 @@ const AdminImpactSection = () => {
           <button
             type="button"
             onClick={handleDownloadReport}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer active:scale-[0.98]"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer active:scale-[0.98]"
           >
             <Download size={14} />
             <span>Download Report</span>
@@ -240,14 +240,14 @@ const AdminImpactSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
         {/* Card 1: People Reached */}
         <div className="bg-white rounded-2xl p-4 sm:p-4.5 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:shadow-md transition-shadow group">
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#06402B] border border-emerald-100 flex items-center justify-center font-bold shrink-0 group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#5B2E19] border border-emerald-100 flex items-center justify-center font-bold shrink-0 group-hover:scale-105 transition-transform">
             <Users size={22} />
           </div>
           <div className="min-w-0">
             <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight truncate">
               People Reached
             </p>
-            <p className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight leading-tight mt-0.5 truncate">
+            <p className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight leading-tight mt-0.5 truncate">
               {currentData.peopleReached}
             </p>
             <p className="text-[11px] text-emerald-700 font-bold mt-0.5 flex items-center gap-1">
@@ -259,14 +259,14 @@ const AdminImpactSection = () => {
 
         {/* Card 2: Communities Served */}
         <div className="bg-white rounded-2xl p-4 sm:p-4.5 border border-slate-200/80 shadow-xs flex items-center gap-3.5 hover:shadow-md transition-shadow group">
-          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#06402B] border border-emerald-100 flex items-center justify-center font-bold shrink-0 group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#5B2E19] border border-emerald-100 flex items-center justify-center font-bold shrink-0 group-hover:scale-105 transition-transform">
             <Building2 size={22} />
           </div>
           <div className="min-w-0">
             <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight truncate">
               Communities Served
             </p>
-            <p className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight leading-tight mt-0.5 truncate">
+            <p className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight leading-tight mt-0.5 truncate">
               {currentData.communitiesServed}
             </p>
             <p className="text-[11px] text-emerald-700 font-bold mt-0.5 flex items-center gap-1">
@@ -285,7 +285,7 @@ const AdminImpactSection = () => {
             <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight truncate">
               Scholarships
             </p>
-            <p className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight leading-tight mt-0.5 truncate">
+            <p className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight leading-tight mt-0.5 truncate">
               {currentData.scholarships}
             </p>
             <p className="text-[11px] text-emerald-700 font-bold mt-0.5 flex items-center gap-1">
@@ -304,7 +304,7 @@ const AdminImpactSection = () => {
             <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight truncate">
               Medical Interventions
             </p>
-            <p className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight leading-tight mt-0.5 truncate">
+            <p className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight leading-tight mt-0.5 truncate">
               {currentData.medicalInterventions}
             </p>
             <p className="text-[11px] text-emerald-700 font-bold mt-0.5 flex items-center gap-1">
@@ -323,7 +323,7 @@ const AdminImpactSection = () => {
         <div className="lg:col-span-5 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm sm:text-base font-black text-[#0B2D6E] tracking-tight">
+              <h2 className="text-sm sm:text-base font-black text-[#3D1E10] tracking-tight">
                 People Reached by Pillar
               </h2>
               <span className="text-[11px] font-bold text-slate-400">Audited {selectedYear}</span>
@@ -364,7 +364,7 @@ const AdminImpactSection = () => {
                     cy="50"
                     r="38"
                     fill="none"
-                    stroke="#06402B"
+                    stroke="#5B2E19"
                     strokeWidth="15"
                     strokeDasharray="59.69 238.76"
                     strokeDashoffset="-178.99"
@@ -373,7 +373,7 @@ const AdminImpactSection = () => {
                 </svg>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                  <span className="text-xl font-black text-[#0B2D6E] leading-tight">
+                  <span className="text-xl font-black text-[#3D1E10] leading-tight">
                     {currentData.totalDonut}
                   </span>
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
@@ -391,7 +391,7 @@ const AdminImpactSection = () => {
                       <p className="text-xs font-bold text-slate-700 leading-tight">
                         {pillar.name}
                       </p>
-                      <p className="text-xs font-extrabold text-[#0B2D6E] mt-0.5">
+                      <p className="text-xs font-extrabold text-[#3D1E10] mt-0.5">
                         {pillar.count}{' '}
                         <span className="text-slate-400 font-medium">({pillar.pct}%)</span>
                       </p>
@@ -414,14 +414,14 @@ const AdminImpactSection = () => {
         <div className="lg:col-span-7 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm sm:text-base font-black text-[#0B2D6E] tracking-tight">
+              <h2 className="text-sm sm:text-base font-black text-[#3D1E10] tracking-tight">
                 Geographic Reach
               </h2>
 
               <select
                 value={selectedPillarFilter}
                 onChange={(e) => setSelectedPillarFilter(e.target.value)}
-                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
               >
                 <option value="All Pillars">All Pillars</option>
                 <option value="Education">Education</option>
@@ -455,7 +455,7 @@ const AdminImpactSection = () => {
               <div className="sm:col-span-4 space-y-3">
                 <div className="space-y-2.5 text-xs font-bold">
                   <div className="flex items-center gap-2 text-slate-800">
-                    <span className="w-3.5 h-3.5 rounded-full bg-[#06402B] shadow-xs" />
+                    <span className="w-3.5 h-3.5 rounded-full bg-[#5B2E19] shadow-xs" />
                     <span>High Impact</span>
                   </div>
                   <div className="flex items-center gap-2 text-slate-700">
@@ -481,7 +481,7 @@ const AdminImpactSection = () => {
                         onClick={() => setSelectedState(st)}
                         className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-colors cursor-pointer ${
                           selectedState?.state === st.state
-                            ? 'bg-[#06402B] text-white shadow-2xs'
+                            ? 'bg-[#5B2E19] text-white shadow-2xs'
                             : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                         }`}
                       >
@@ -509,7 +509,7 @@ const AdminImpactSection = () => {
         <div className="lg:col-span-5 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm sm:text-base font-black text-[#0B2D6E] tracking-tight">
+              <h2 className="text-sm sm:text-base font-black text-[#3D1E10] tracking-tight">
                 Key Outcome Indicators
               </h2>
               <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
@@ -534,7 +534,7 @@ const AdminImpactSection = () => {
                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight truncate w-full">
                       {item.label}
                     </p>
-                    <p className="text-base sm:text-lg font-black text-[#0B2D6E] mt-0.5">
+                    <p className="text-base sm:text-lg font-black text-[#3D1E10] mt-0.5">
                       {item.count}
                     </p>
                   </div>
@@ -545,7 +545,7 @@ const AdminImpactSection = () => {
 
           <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between">
             <span>SDG 1, 3, 4, 6 Compliance</span>
-            <span className="font-bold text-[#06402B]">100% Verified Outcomes</span>
+            <span className="font-bold text-[#5B2E19]">100% Verified Outcomes</span>
           </div>
         </div>
 
@@ -553,14 +553,14 @@ const AdminImpactSection = () => {
         <div className="lg:col-span-7 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-sm sm:text-base font-black text-[#0B2D6E] tracking-tight">
+              <h2 className="text-sm sm:text-base font-black text-[#3D1E10] tracking-tight">
                 Impact Trends (People Reached)
               </h2>
 
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
               >
                 <option value="2026">2026</option>
                 <option value="2025">2025</option>
@@ -618,7 +618,7 @@ const AdminImpactSection = () => {
                           ${
                             isHovered
                               ? 'bg-[#10b981] scale-y-105 shadow-xs'
-                              : 'bg-gradient-to-t from-[#06402B] to-[#0A5238]'
+                              : 'bg-gradient-to-t from-[#5B2E19] to-[#0A5238]'
                           }
                         `}
                       />
@@ -647,7 +647,7 @@ const AdminImpactSection = () => {
       <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h3 className="text-sm font-black text-[#0B2D6E]">
+            <h3 className="text-sm font-black text-[#3D1E10]">
               State-by-State Impact Roster ({filteredStates.length} Focal States)
             </h3>
             <p className="text-xs text-slate-400 font-medium">
@@ -687,14 +687,14 @@ const AdminImpactSection = () => {
                   }`}
                 >
                   <td className="py-2.5 font-bold text-slate-900 flex items-center gap-1.5">
-                    <MapPin size={12} className="text-[#06402B]" />
+                    <MapPin size={12} className="text-[#5B2E19]" />
                     <span>{st.state}</span>
                   </td>
                   <td className="py-2.5">
                     <span
                       className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                         st.tier === 'High'
-                          ? 'bg-emerald-100 text-[#06402B]'
+                          ? 'bg-emerald-100 text-[#5B2E19]'
                           : st.tier === 'Medium'
                           ? 'bg-sky-100 text-sky-800'
                           : 'bg-slate-100 text-slate-600'
@@ -703,7 +703,7 @@ const AdminImpactSection = () => {
                       {st.tier} Impact
                     </span>
                   </td>
-                  <td className="py-2.5 font-mono font-bold text-[#0B2D6E]">{st.beneficiaries}</td>
+                  <td className="py-2.5 font-mono font-bold text-[#3D1E10]">{st.beneficiaries}</td>
                   <td className="py-2.5 text-slate-600">{st.communities} Communities</td>
                   <td className="py-2.5 font-semibold text-slate-800">{st.primaryPillar}</td>
                   <td className="py-2.5 text-slate-500">{st.coordinator}</td>

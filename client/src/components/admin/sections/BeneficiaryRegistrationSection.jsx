@@ -133,20 +133,20 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
           <button
             type="button"
             onClick={onCancel}
-            className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
           >
             <Home size={15} className="text-sky-600" />
             <span className="font-semibold text-sky-600">Beneficiaries</span>
           </button>
           <ChevronRight size={13} className="text-slate-300" />
-          <span className="font-bold text-[#0B2D6E]">Register New Beneficiary</span>
+          <span className="font-bold text-[#3D1E10]">Register New Beneficiary</span>
         </div>
 
         {onCancel && (
           <button
             type="button"
             onClick={onCancel}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Directory</span>
@@ -176,11 +176,11 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                   >
                     {/* Step Number Circle */}
                     {isPassed ? (
-                      <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                      <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                         <Check size={16} strokeWidth={3} />
                       </div>
                     ) : isCurrent ? (
-                      <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                      <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                         {step.id}
                       </div>
                     ) : (
@@ -193,7 +193,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                     <p
                       className={`text-xs mt-2 font-bold max-w-[100px] leading-tight ${
                         isCurrent
-                          ? 'text-[#06402B]'
+                          ? 'text-[#5B2E19]'
                           : isPassed
                           ? 'text-slate-800'
                           : 'text-slate-400'
@@ -216,7 +216,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
         <div className="space-y-6 animate-[fadeIn_0.2s_ease]">
           {/* Card 1: Personal Information */}
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
               Personal Information
             </h2>
 
@@ -235,7 +235,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                       value={formData.fullName}
                       onChange={(e) => handleInputChange('fullName', e.target.value)}
                       placeholder="Enter full name"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                     />
                   </div>
 
@@ -249,7 +249,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                         value={formData.dob}
                         onChange={(e) => handleInputChange('dob', e.target.value)}
                         placeholder="DD/MM/YYYY"
-                        className="w-full pl-3.5 pr-9 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                        className="w-full pl-3.5 pr-9 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                       />
                       <Calendar
                         size={16}
@@ -265,7 +265,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                     <select
                       value={formData.gender}
                       onChange={(e) => handleInputChange('gender', e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                     >
                       <option value="">Select</option>
                       <option value="Male">Male</option>
@@ -283,7 +283,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                     <select
                       value={formData.beneficiaryType}
                       onChange={(e) => handleInputChange('beneficiaryType', e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                     >
                       <option value="">Select type</option>
                       <option value="Individual">Individual</option>
@@ -303,7 +303,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                       placeholder="Enter phone number"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                     />
                   </div>
                 </div>
@@ -318,7 +318,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="Enter email address"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                   />
                 </div>
               </div>
@@ -338,7 +338,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 </div>
 
                 <label className="cursor-pointer">
-                  <span className="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-[#06402B] bg-white hover:bg-emerald-50 text-[#06402B] font-bold text-xs shadow-xs transition-colors">
+                  <span className="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-[#5B2E19] bg-white hover:bg-emerald-50 text-[#5B2E19] font-bold text-xs shadow-xs transition-colors">
                     Upload Photo
                   </span>
                   <input
@@ -355,7 +355,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
 
           {/* Card 2: Additional Information */}
           <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-4">
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
               Additional Information
             </h2>
 
@@ -367,7 +367,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 <select
                   value={formData.nationality}
                   onChange={(e) => handleInputChange('nationality', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   <option value="Nigeria">Nigeria</option>
                   <option value="Ghana">Ghana</option>
@@ -382,7 +382,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 <select
                   value={formData.state}
                   onChange={(e) => handleInputChange('state', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   <option value="">Select</option>
                   <option value="Lagos">Lagos</option>
@@ -403,7 +403,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 <select
                   value={formData.lga}
                   onChange={(e) => handleInputChange('lga', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   <option value="">Select</option>
                   <option value="Ajeromi-Ifelodun">Ajeromi-Ifelodun</option>
@@ -423,7 +423,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 <select
                   value={formData.community}
                   onChange={(e) => handleInputChange('community', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] cursor-pointer"
                 >
                   <option value="">Select</option>
                   <option value="Ajegunle Central">Ajegunle Central</option>
@@ -443,7 +443,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
       ───────────────────────────────────────────────────────────── */}
       {currentStep === 2 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-          <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+          <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
             Household Context & Residential Location
           </h2>
 
@@ -455,7 +455,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 value={formData.address}
                 onChange={(e) => handleInputChange('address', e.target.value)}
                 placeholder="e.g. 14 Boundary Road, Ajegunle, Lagos"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -465,7 +465,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 type="number"
                 value={formData.householdSize}
                 onChange={(e) => handleInputChange('householdSize', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -474,7 +474,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
               <select
                 value={formData.householdIncome}
                 onChange={(e) => handleInputChange('householdIncome', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               >
                 <option value="Extremely Low (Below Poverty Line)">Extremely Low (Below Poverty Line)</option>
                 <option value="Low-income">Low-income</option>
@@ -489,7 +489,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 value={formData.guardianName}
                 onChange={(e) => handleInputChange('guardianName', e.target.value)}
                 placeholder="e.g. Mary Mohammed"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -500,7 +500,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 value={formData.guardianPhone}
                 onChange={(e) => handleInputChange('guardianPhone', e.target.value)}
                 placeholder="+234 800 000 0000"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
           </div>
@@ -512,7 +512,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
       ───────────────────────────────────────────────────────────── */}
       {currentStep === 3 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-          <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+          <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
             Vulnerability & Needs Assessment
           </h2>
 
@@ -522,7 +522,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
               <select
                 value={formData.schoolStatus}
                 onChange={(e) => handleInputChange('schoolStatus', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               >
                 <option value="Enrolled">Currently Enrolled</option>
                 <option value="Out of School">Out of School (At Risk)</option>
@@ -536,7 +536,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
               <select
                 value={formData.priorityLevel}
                 onChange={(e) => handleInputChange('priorityLevel', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               >
                 <option value="Critical">Critical Priority (Immediate)</option>
                 <option value="High">High Priority</option>
@@ -551,7 +551,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 value={formData.needsNotes}
                 onChange={(e) => handleInputChange('needsNotes', e.target.value)}
                 placeholder="Key vulnerability factors, family socio-economic status, special healthcare needs..."
-                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B] resize-none"
+                className="w-full p-3 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19] resize-none"
               />
             </div>
           </div>
@@ -563,7 +563,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
       ───────────────────────────────────────────────────────────── */}
       {currentStep === 4 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-          <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+          <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
             Assigned Programme & Intervention Package
           </h2>
 
@@ -573,7 +573,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
               <select
                 value={formData.pillar}
                 onChange={(e) => handleInputChange('pillar', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               >
                 <option value="Education">Education & Human Capital</option>
                 <option value="Health">Health & Well-being</option>
@@ -588,7 +588,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 value={formData.programme}
                 onChange={(e) => handleInputChange('programme', e.target.value)}
                 placeholder="e.g. Tertiary STEM Scholarship or Free Cataract Surgery"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -598,7 +598,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 type="text"
                 value={formData.grantEstimated}
                 onChange={(e) => handleInputChange('grantEstimated', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
           </div>
@@ -610,7 +610,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
       ───────────────────────────────────────────────────────────── */}
       {currentStep === 5 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-          <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+          <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
             Safeguarding Consent & Verification Documentation
           </h2>
 
@@ -621,7 +621,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 <select
                   value={formData.idType}
                   onChange={(e) => handleInputChange('idType', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                 >
                   <option value="National ID (NIN)">National ID (NIN)</option>
                   <option value="Birth Certificate / Declaration">Birth Certificate / Declaration</option>
@@ -637,7 +637,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                   value={formData.idNumber}
                   onChange={(e) => handleInputChange('idNumber', e.target.value)}
                   placeholder="e.g. NIN-9284102849"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#06402B]"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-[#5B2E19]"
                 />
               </div>
             </div>
@@ -648,7 +648,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                   type="checkbox"
                   checked={formData.consentSigned}
                   onChange={(e) => handleInputChange('consentSigned', e.target.checked)}
-                  className="mt-0.5 accent-[#06402B] w-4 h-4"
+                  className="mt-0.5 accent-[#5B2E19] w-4 h-4"
                 />
                 <span className="text-slate-700 font-medium leading-relaxed">
                   I confirm that the beneficiary (or their legal guardian) has provided informed consent for biometric data collection, profiling, and monitoring in compliance with the Nigeria Data Protection Regulation (NDPR) and CMAOF Safeguarding Charter.
@@ -664,7 +664,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
       ───────────────────────────────────────────────────────────── */}
       {currentStep === 6 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
-          <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight">
+          <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight">
             Review Beneficiary Profile & Confirm Registration
           </h2>
 
@@ -682,7 +682,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
                 <p className="text-xs text-slate-500">
                   {formData.beneficiaryType || 'Individual'} • {formData.gender || 'Not specified'} • DOB: {formData.dob || 'N/A'}
                 </p>
-                <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-[#06402B]">
+                <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-[#5B2E19]">
                   Pillar: {formData.pillar}
                 </span>
               </div>
@@ -730,7 +730,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
           <button
             type="button"
             onClick={handleSaveDraft}
-            className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+            className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
           >
             Save Draft
           </button>
@@ -738,7 +738,7 @@ const BeneficiaryRegistrationSection = ({ onSave, onCancel }) => {
           <button
             type="button"
             onClick={handleNext}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
           >
             <span>{currentStep === 6 ? 'Confirm & Register' : 'Next'}</span>
             <ArrowRight size={14} />

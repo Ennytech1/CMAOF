@@ -168,7 +168,7 @@ const AdminAuditSection = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md bg-emerald-50 text-[#06402B] text-[11px] font-black uppercase tracking-wider border border-emerald-200">
+            <span className="px-2.5 py-1 rounded-md bg-emerald-50 text-[#5B2E19] text-[11px] font-black uppercase tracking-wider border border-emerald-200">
               Cryptographic Telemetry
             </span>
             <span className="text-slate-400 text-xs font-semibold">ISO 27001 & PSEA Compliant</span>
@@ -195,7 +195,7 @@ const AdminAuditSection = () => {
           <button
             type="button"
             onClick={handleExportAudit}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-sm cursor-pointer transition-all active:scale-95"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-sm cursor-pointer transition-all active:scale-95"
           >
             <Download size={14} />
             <span>Export Encrypted Ledger</span>
@@ -222,7 +222,7 @@ const AdminAuditSection = () => {
         <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-slate-300 transition-all">
           <div className="flex items-center justify-between text-slate-400 mb-2">
             <span className="text-xs font-semibold">Active Endpoint Sessions</span>
-            <Smartphone size={16} className="text-[#0B2D6E]" />
+            <Smartphone size={16} className="text-[#3D1E10]" />
           </div>
           <div className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
             {sessions.length} Authorized Nodes
@@ -267,7 +267,7 @@ const AdminAuditSection = () => {
               flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap
               ${
                 activeSubTab === 'logs'
-                  ? 'bg-[#06402B] text-white shadow-xs'
+                  ? 'bg-[#5B2E19] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }
             `}
@@ -290,7 +290,7 @@ const AdminAuditSection = () => {
               flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap
               ${
                 activeSubTab === 'sessions'
-                  ? 'bg-[#06402B] text-white shadow-xs'
+                  ? 'bg-[#5B2E19] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }
             `}
@@ -313,7 +313,7 @@ const AdminAuditSection = () => {
               flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap
               ${
                 activeSubTab === 'integrity'
-                  ? 'bg-[#06402B] text-white shadow-xs'
+                  ? 'bg-[#5B2E19] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }
             `}
@@ -342,7 +342,7 @@ const AdminAuditSection = () => {
                     px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer
                     ${
                       filterSeverity === sev
-                        ? 'bg-[#06402B] text-white shadow-xs'
+                        ? 'bg-[#5B2E19] text-white shadow-xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                     }
                   `}
@@ -360,7 +360,7 @@ const AdminAuditSection = () => {
                   placeholder="Search event, actor, IP, or hash..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#06402B] focus:bg-white"
+                  className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#5B2E19] focus:bg-white"
                 />
               </div>
 
@@ -370,7 +370,7 @@ const AdminAuditSection = () => {
                   type="button"
                   onClick={() => setViewMode('grid')}
                   className={`p-1.5 rounded-lg transition-all cursor-pointer ${
-                    viewMode === 'grid' ? 'bg-white shadow-xs text-[#06402B]' : 'text-slate-400 hover:text-slate-600'
+                    viewMode === 'grid' ? 'bg-white shadow-xs text-[#5B2E19]' : 'text-slate-400 hover:text-slate-600'
                   }`}
                   title="Grid Cards View"
                 >
@@ -380,7 +380,7 @@ const AdminAuditSection = () => {
                   type="button"
                   onClick={() => setViewMode('table')}
                   className={`p-1.5 rounded-lg transition-all cursor-pointer ${
-                    viewMode === 'table' ? 'bg-white shadow-xs text-[#06402B]' : 'text-slate-400 hover:text-slate-600'
+                    viewMode === 'table' ? 'bg-white shadow-xs text-[#5B2E19]' : 'text-slate-400 hover:text-slate-600'
                   }`}
                   title="Ledger Table View"
                 >
@@ -405,7 +405,7 @@ const AdminAuditSection = () => {
                         {getSeverityBadge(log.severity)}
                         <span className="text-[11px] font-mono text-slate-400">{log.id}</span>
                       </div>
-                      <h3 className="text-sm font-black text-slate-900 group-hover:text-[#06402B] transition-colors leading-snug">
+                      <h3 className="text-sm font-black text-slate-900 group-hover:text-[#5B2E19] transition-colors leading-snug">
                         {log.event}
                       </h3>
                     </div>
@@ -420,7 +420,7 @@ const AdminAuditSection = () => {
 
                   <div className="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[11px]">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-[#06402B]/10 text-[#06402B] flex items-center justify-center font-bold text-[10px]">
+                      <div className="w-5 h-5 rounded-full bg-[#5B2E19]/10 text-[#5B2E19] flex items-center justify-center font-bold text-[10px]">
                         {log.actor.charAt(0).toUpperCase()}
                       </div>
                       <div>
@@ -511,7 +511,7 @@ const AdminAuditSection = () => {
                           <button
                             type="button"
                             onClick={() => setSelectedLog(log)}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-[#06402B] hover:bg-emerald-100 font-bold text-[11px] cursor-pointer transition-colors"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-50 text-[#5B2E19] hover:bg-emerald-100 font-bold text-[11px] cursor-pointer transition-colors"
                           >
                             <Eye size={11} />
                             <span>Inspect</span>
@@ -534,7 +534,7 @@ const AdminAuditSection = () => {
         <div className="space-y-4">
           <div className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#06402B] text-white flex items-center justify-center shadow-xs">
+              <div className="w-10 h-10 rounded-xl bg-[#5B2E19] text-white flex items-center justify-center shadow-xs">
                 <ShieldCheck size={20} />
               </div>
               <div>
@@ -653,7 +653,7 @@ const AdminAuditSection = () => {
                   type="button"
                   onClick={handleRunVerification}
                   disabled={isVerifying}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-xs cursor-pointer transition-all disabled:opacity-50"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-xs cursor-pointer transition-all disabled:opacity-50"
                 >
                   <RefreshCw size={13} className={isVerifying ? 'animate-spin' : ''} />
                   <span>{isVerifying ? 'Checking Hashes...' : 'Re-verify All Vaults'}</span>
@@ -788,7 +788,7 @@ const AdminAuditSection = () => {
                   <button
                     type="button"
                     onClick={() => handleCopyHash(selectedLog.hash || '0x49f2...88cc')}
-                    className="text-[11px] text-[#06402B] font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                    className="text-[11px] text-[#5B2E19] font-bold hover:underline flex items-center gap-1 cursor-pointer"
                   >
                     <Copy size={11} />
                     <span>{copiedHash === selectedLog.hash ? 'Copied' : 'Copy Hash'}</span>

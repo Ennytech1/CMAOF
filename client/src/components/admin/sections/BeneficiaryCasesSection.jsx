@@ -95,11 +95,11 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
         <div className="flex items-start gap-3">
           <span className="w-1.5 h-10 rounded-full bg-[#f97316] shrink-0 mt-0.5" />
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#06402B] uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#5B2E19] uppercase tracking-wider">
               <GitBranch size={15} />
               <span>Full Lifecycle & Milestones</span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight mt-0.5">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight mt-0.5">
               Case Management & Timelines Hub
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
@@ -137,7 +137,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
               toast.success(`Opening Case Timeline for ${firstCase.name} (${firstCase.code})`);
               navigate(`/admin/beneficiaries/${firstCase.code}/cases`);
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
           >
             <GitBranch size={14} />
             <span>Open Active Timeline</span>
@@ -150,7 +150,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
       ───────────────────────────────────────────────────────────── */}
       <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-xs space-y-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
             <Layers size={14} className="text-[#f97316]" />
             <span>Standard 8-Stage Beneficiary Progression Framework</span>
           </div>
@@ -173,7 +173,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
               onClick={() => setSelectedStage(s.name.toLowerCase())}
               className={`p-3 rounded-xl border transition-all cursor-pointer text-center group ${
                 selectedStage.toLowerCase().includes(s.name.toLowerCase())
-                  ? 'border-[#06402B] bg-emerald-50/60 shadow-xs'
+                  ? 'border-[#5B2E19] bg-emerald-50/60 shadow-xs'
                   : 'border-slate-200/80 hover:border-slate-300 bg-white hover:bg-slate-50'
               }`}
             >
@@ -182,7 +182,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
                 <span className="text-[10px] font-bold text-slate-400">Step {s.step}</span>
               </div>
               <p className="text-xs font-black text-slate-800 truncate">{s.name}</p>
-              <p className="text-xs font-bold text-[#06402B] mt-0.5">{s.count}</p>
+              <p className="text-xs font-bold text-[#5B2E19] mt-0.5">{s.count}</p>
             </div>
           ))}
         </div>
@@ -204,7 +204,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
                   ${
                     (stage.id === 'all' && selectedStage === 'all') ||
                     selectedStage.toLowerCase().includes(stage.id.toLowerCase())
-                      ? 'bg-[#06402B] text-white shadow-xs'
+                      ? 'bg-[#5B2E19] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }
                 `}
@@ -231,7 +231,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
                 placeholder="Search beneficiary, officer..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#06402B] focus:bg-white"
+                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#5B2E19] focus:bg-white"
               />
             </div>
 
@@ -292,7 +292,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
 
                     {/* Programme & Pillar */}
                     <td className="py-3.5 px-3">
-                      <span className="font-bold text-[#0B2D6E] block">{item.programme || 'Core Support Programme'}</span>
+                      <span className="font-bold text-[#3D1E10] block">{item.programme || 'Core Support Programme'}</span>
                       <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 mt-1">
                         {item.pillar}
                       </span>
@@ -305,11 +305,11 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
                           <span className="text-slate-800">
                             Stage {item.milestoneIndex}/8: {item.currentMilestoneStage}
                           </span>
-                          <span className="text-[#06402B] font-mono">{item.progressPct}%</span>
+                          <span className="text-[#5B2E19] font-mono">{item.progressPct}%</span>
                         </div>
                         <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                           <div
-                            className="h-full rounded-full bg-[#06402B] transition-all"
+                            className="h-full rounded-full bg-[#5B2E19] transition-all"
                             style={{ width: `${item.progressPct}%` }}
                           />
                         </div>
@@ -339,7 +339,7 @@ const BeneficiaryCasesSection = ({ onNavigateToDirectory, onNavigateToAssessment
                         {/* 1-Click Action: Open Case Timeline */}
                         <Link
                           to={`/admin/beneficiaries/${item.code}/cases`}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 hover:bg-[#0B2D6E] hover:text-white font-bold text-xs transition-all border border-sky-200/80 shadow-2xs"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 hover:bg-[#3D1E10] hover:text-white font-bold text-xs transition-all border border-sky-200/80 shadow-2xs"
                           title="Open Interactive Case Timeline"
                         >
                           <GitBranch size={13} />

@@ -433,13 +433,13 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
           <button
             type="button"
             onClick={onCancel}
-            className="flex items-center gap-1.5 hover:text-[#06402B] text-sky-600 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 hover:text-[#5B2E19] text-sky-600 transition-colors cursor-pointer"
           >
             <Home size={15} className="text-sky-600" />
             <span className="font-semibold text-sky-600">Programmes</span>
           </button>
           <ChevronRight size={13} className="text-slate-300" />
-          <span className="font-bold text-[#0B2D6E]">
+          <span className="font-bold text-[#3D1E10]">
             {isEditing ? `Edit: ${formData.name || 'Programme'}` : 'Launch Strategic Programme'}
           </span>
         </div>
@@ -448,7 +448,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
           <button
             type="button"
             onClick={onCancel}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#06402B] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#5B2E19] transition-colors cursor-pointer"
           >
             <ArrowLeft size={13} />
             <span>Back to Portfolio</span>
@@ -479,11 +479,11 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                     className="flex flex-col items-center text-center px-1 cursor-pointer group"
                   >
                     {isPassed ? (
-                      <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
+                      <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center shadow-xs ring-4 ring-white">
                         <Check size={16} strokeWidth={3} />
                       </div>
                     ) : isCurrent ? (
-                      <div className="w-9 h-9 rounded-full bg-[#06402B] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
+                      <div className="w-9 h-9 rounded-full bg-[#5B2E19] text-white flex items-center justify-center font-black text-sm shadow-md ring-4 ring-emerald-100">
                         {step.id}
                       </div>
                     ) : (
@@ -494,7 +494,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
 
                     <p
                       className={`text-xs mt-2 font-bold max-w-[110px] leading-tight ${
-                        isCurrent ? 'text-[#06402B]' : isPassed ? 'text-slate-800' : 'text-slate-400'
+                        isCurrent ? 'text-[#5B2E19]' : isPassed ? 'text-slate-800' : 'text-slate-400'
                       }`}
                     >
                       {step.label}
@@ -513,8 +513,8 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
       {currentStep === 1 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Briefcase size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Briefcase size={18} className="text-[#5B2E19]" />
               <span>Core Initiative Overview & Strategic Objectives</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -533,7 +533,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 value={formData.name}
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 placeholder="e.g. School Support Programme / Clean Water & Community Resilience"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               />
             </div>
 
@@ -545,7 +545,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 <select
                   value={formData.pillar}
                   onChange={(e) => handleInputChange('pillar', e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 >
                   <option value="Education & Human Capital">Education & Human Capital (Pillar 1)</option>
                   <option value="Health & Well-being">Health & Well-being (Pillar 2)</option>
@@ -562,7 +562,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   value={formData.targetBeneficiaries}
                   onChange={(e) => handleInputChange('targetBeneficiaries', e.target.value)}
                   placeholder="e.g. Children (6–18 yrs), smallholder female farmers, rural households"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
             </div>
@@ -576,7 +576,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 value={formData.objective}
                 onChange={(e) => handleInputChange('objective', e.target.value)}
                 placeholder="Detail the developmental problem, proposed field solution, key milestones, and verified target outcome for the community..."
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               />
             </div>
 
@@ -584,7 +584,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
             <div className="pt-2 border-t border-slate-100 space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+                  <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
                     Discrete Strategic Objectives ({formData.objectivesList.length})
                   </h3>
                   <p className="text-[11px] text-slate-400">
@@ -629,12 +629,12 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                     }
                   }}
                   placeholder="Add another strategic objective..."
-                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#06402B]"
+                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#5B2E19]"
                 />
                 <button
                   type="button"
                   onClick={handleAddObjective}
-                  className="px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042A1D] text-white text-xs font-bold cursor-pointer shrink-0"
+                  className="px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#042A1D] text-white text-xs font-bold cursor-pointer shrink-0"
                 >
                   + Add Objective
                 </button>
@@ -650,8 +650,8 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
       {currentStep === 2 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <DollarSign size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <DollarSign size={18} className="text-[#5B2E19]" />
               <span>Capital Budget & Institutional Delivery Partners</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -670,7 +670,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 value={formData.budgetFormatted}
                 onChange={(e) => handleInputChange('budgetFormatted', e.target.value)}
                 placeholder="e.g. ₦350,000,000"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono text-xs sm:text-sm font-bold text-[#0B2D6E] focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono text-xs sm:text-sm font-bold text-[#3D1E10] focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               />
             </div>
 
@@ -679,7 +679,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
               <select
                 value={formData.fundingType}
                 onChange={(e) => handleInputChange('fundingType', e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 font-semibold focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               >
                 <option value="Foundation Core Endowment">Foundation Core Endowment</option>
                 <option value="Donor Designated Grant">Donor Designated Grant</option>
@@ -695,7 +695,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 value={formData.completionRate}
                 onChange={(e) => handleInputChange('completionRate', e.target.value)}
                 placeholder="e.g. 85%"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-emerald-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-emerald-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               />
             </div>
 
@@ -706,14 +706,14 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 value={formData.budgetNotes}
                 onChange={(e) => handleInputChange('budgetNotes', e.target.value)}
                 placeholder="e.g. Tranche 1 (40%) on site mobilization, Tranche 2 (60%) on audit sign-off"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               />
             </div>
           </div>
 
           {/* Strategic Partners (Dimension 5) */}
           <div className="pt-4 border-t border-slate-100 space-y-3">
-            <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
               Strategic Delivery & Funding Partners ({formData.partners.length})
             </h3>
 
@@ -750,20 +750,20 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 placeholder="Partner Organization Name"
                 value={newPartnerInput.name}
                 onChange={(e) => setNewPartnerInput({ ...newPartnerInput, name: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <input
                 type="text"
                 placeholder="Collaboration Scope / Role"
                 value={newPartnerInput.role}
                 onChange={(e) => setNewPartnerInput({ ...newPartnerInput, role: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <div className="flex items-center gap-2">
                 <select
                   value={newPartnerInput.tier}
                   onChange={(e) => setNewPartnerInput({ ...newPartnerInput, tier: e.target.value })}
-                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 >
                   <option value="Strategic Government Partner">Government Partner</option>
                   <option value="Corporate CSR Co-Funder">Corporate Co-Funder</option>
@@ -773,7 +773,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 <button
                   type="button"
                   onClick={handleAddPartner}
-                  className="px-3 py-2 rounded-xl bg-[#06402B] text-white font-bold cursor-pointer shrink-0"
+                  className="px-3 py-2 rounded-xl bg-[#5B2E19] text-white font-bold cursor-pointer shrink-0"
                 >
                   + Add
                 </button>
@@ -789,8 +789,8 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
       {currentStep === 3 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <MapPin size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <MapPin size={18} className="text-[#5B2E19]" />
               <span>Geographic Locations & Beneficiary Footprint</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -809,7 +809,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 value={formData.locations}
                 onChange={(e) => handleInputChange('locations', e.target.value)}
                 placeholder="e.g. Lagos, Kano, Oyo, Kaduna, Enugu"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
               />
             </div>
 
@@ -821,7 +821,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   value={formData.locationsCount}
                   onChange={(e) => handleInputChange('locationsCount', e.target.value)}
                   placeholder="18"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -832,7 +832,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   value={formData.schoolsCount}
                   onChange={(e) => handleInputChange('schoolsCount', e.target.value)}
                   placeholder="12"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -843,14 +843,14 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   value={formData.beneficiariesCount}
                   onChange={(e) => handleInputChange('beneficiariesCount', e.target.value)}
                   placeholder="e.g. 5,000"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-emerald-800 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-bold text-emerald-800 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
             </div>
 
             {/* Operating Hubs Breakdown (Dimension 4) */}
             <div className="pt-4 border-t border-slate-100 space-y-3">
-              <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+              <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
                 Operating Field Hubs & Centers ({formData.locationsList.length})
               </h3>
 
@@ -889,21 +889,21 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   placeholder="State (e.g. Oyo State)"
                   value={newLocationInput.state}
                   onChange={(e) => setNewLocationInput({ ...newLocationInput, state: e.target.value })}
-                  className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 />
                 <input
                   type="text"
                   placeholder="LGA Coverage"
                   value={newLocationInput.lga}
                   onChange={(e) => setNewLocationInput({ ...newLocationInput, lga: e.target.value })}
-                  className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 />
                 <input
                   type="text"
                   placeholder="Hub / Center Name"
                   value={newLocationInput.hubName}
                   onChange={(e) => setNewLocationInput({ ...newLocationInput, hubName: e.target.value })}
-                  className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 />
                 <div className="flex items-center gap-2">
                   <input
@@ -911,12 +911,12 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                     placeholder="Enrolled Count"
                     value={newLocationInput.pupilsCount}
                     onChange={(e) => setNewLocationInput({ ...newLocationInput, pupilsCount: e.target.value })}
-                    className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                    className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                   />
                   <button
                     type="button"
                     onClick={handleAddLocation}
-                    className="px-3 py-2 rounded-xl bg-[#06402B] text-white font-bold cursor-pointer shrink-0"
+                    className="px-3 py-2 rounded-xl bg-[#5B2E19] text-white font-bold cursor-pointer shrink-0"
                   >
                     + Add
                   </button>
@@ -933,8 +933,8 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
       {currentStep === 4 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Calendar size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Calendar size={18} className="text-[#5B2E19]" />
               <span>Core Activities Schedule & Outcome KPIs</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -944,7 +944,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
 
           {/* Activities (Dimension 2) */}
           <div className="space-y-3">
-            <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
               Core Activities & Implementation Schedule ({formData.activities.length})
             </h3>
 
@@ -983,12 +983,12 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 placeholder="Activity Title (e.g. Tutoring Sessions)"
                 value={newActivityInput.title}
                 onChange={(e) => setNewActivityInput({ ...newActivityInput, title: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <select
                 value={newActivityInput.frequency}
                 onChange={(e) => setNewActivityInput({ ...newActivityInput, frequency: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               >
                 <option value="Weekly">Weekly</option>
                 <option value="Termly">Termly</option>
@@ -1002,12 +1002,12 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   placeholder="Lead Unit"
                   value={newActivityInput.lead}
                   onChange={(e) => setNewActivityInput({ ...newActivityInput, lead: e.target.value })}
-                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 />
                 <button
                   type="button"
                   onClick={handleAddActivity}
-                  className="px-3 py-2 rounded-xl bg-[#06402B] text-white font-bold cursor-pointer shrink-0"
+                  className="px-3 py-2 rounded-xl bg-[#5B2E19] text-white font-bold cursor-pointer shrink-0"
                 >
                   + Add
                 </button>
@@ -1017,7 +1017,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
 
           {/* Outcome KPIs (Dimension 6) */}
           <div className="pt-4 border-t border-slate-100 space-y-3">
-            <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
               Outcome KPIs & Target Milestones ({formData.kpis.length})
             </h3>
 
@@ -1051,21 +1051,21 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 placeholder="Indicator (e.g. Net Retention Rate)"
                 value={newKpiInput.indicator}
                 onChange={(e) => setNewKpiInput({ ...newKpiInput, indicator: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <input
                 type="text"
                 placeholder="Baseline (e.g. 40%)"
                 value={newKpiInput.baseline}
                 onChange={(e) => setNewKpiInput({ ...newKpiInput, baseline: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <input
                 type="text"
                 placeholder="Target Goal (e.g. 85%)"
                 value={newKpiInput.target}
                 onChange={(e) => setNewKpiInput({ ...newKpiInput, target: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <div className="flex items-center gap-2">
                 <input
@@ -1073,12 +1073,12 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                   placeholder="Unit (e.g. Pupils)"
                   value={newKpiInput.unit}
                   onChange={(e) => setNewKpiInput({ ...newKpiInput, unit: e.target.value })}
-                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 />
                 <button
                   type="button"
                   onClick={handleAddKpi}
-                  className="px-3 py-2 rounded-xl bg-[#06402B] text-white font-bold cursor-pointer shrink-0"
+                  className="px-3 py-2 rounded-xl bg-[#5B2E19] text-white font-bold cursor-pointer shrink-0"
                 >
                   + Add
                 </button>
@@ -1094,8 +1094,8 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
       {currentStep === 5 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-6 animate-[fadeIn_0.2s_ease]">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <ImageIcon size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <ImageIcon size={18} className="text-[#5B2E19]" />
               <span>Media Assets, Documents & Accountability</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -1105,7 +1105,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
 
           {/* Media Assets (Dimension 7) */}
           <div className="space-y-3">
-            <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
               Field Media Gallery Assets ({formData.mediaList.length})
             </h3>
 
@@ -1144,20 +1144,20 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 placeholder="Photo Title / Description"
                 value={newMediaInput.title}
                 onChange={(e) => setNewMediaInput({ ...newMediaInput, title: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <input
                 type="text"
                 placeholder="Image URL"
                 value={newMediaInput.url}
                 onChange={(e) => setNewMediaInput({ ...newMediaInput, url: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <div className="flex items-center gap-2">
                 <select
                   value={newMediaInput.tag}
                   onChange={(e) => setNewMediaInput({ ...newMediaInput, tag: e.target.value })}
-                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 >
                   <option value="Field Operations">Field Operations</option>
                   <option value="Community">Community</option>
@@ -1167,7 +1167,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 <button
                   type="button"
                   onClick={handleAddMedia}
-                  className="px-3 py-2 rounded-xl bg-[#06402B] text-white font-bold cursor-pointer shrink-0"
+                  className="px-3 py-2 rounded-xl bg-[#5B2E19] text-white font-bold cursor-pointer shrink-0"
                 >
                   + Add
                 </button>
@@ -1177,7 +1177,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
 
           {/* Governance Documents (Dimension 8) */}
           <div className="pt-4 border-t border-slate-100 space-y-3">
-            <h3 className="text-xs font-bold text-[#0B2D6E] uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-[#3D1E10] uppercase tracking-wider">
               Governance & Audit Documents ({formData.documentsList.length})
             </h3>
 
@@ -1214,12 +1214,12 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 placeholder="Document Title (e.g. M&E Framework)"
                 value={newDocInput.title}
                 onChange={(e) => setNewDocInput({ ...newDocInput, title: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
               <select
                 value={newDocInput.category}
                 onChange={(e) => setNewDocInput({ ...newDocInput, category: e.target.value })}
-                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               >
                 <option value="Governance & Framework">Governance & Framework</option>
                 <option value="Institutional MoU">Institutional MoU</option>
@@ -1230,7 +1230,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 <select
                   value={newDocInput.type}
                   onChange={(e) => setNewDocInput({ ...newDocInput, type: e.target.value })}
-                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                  className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
                 >
                   <option value="PDF">PDF</option>
                   <option value="XLSX">XLSX</option>
@@ -1239,7 +1239,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 <button
                   type="button"
                   onClick={handleAddDoc}
-                  className="px-3 py-2 rounded-xl bg-[#06402B] text-white font-bold cursor-pointer shrink-0"
+                  className="px-3 py-2 rounded-xl bg-[#5B2E19] text-white font-bold cursor-pointer shrink-0"
                 >
                   + Add
                 </button>
@@ -1255,7 +1255,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 type="text"
                 value={formData.programmeManager}
                 onChange={(e) => handleInputChange('programmeManager', e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold text-slate-800 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold text-slate-800 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
             <div>
@@ -1264,7 +1264,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 type="text"
                 value={formData.startDate}
                 onChange={(e) => handleInputChange('startDate', e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
             <div>
@@ -1273,7 +1273,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
                 type="text"
                 value={formData.endDate}
                 onChange={(e) => handleInputChange('endDate', e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
           </div>
@@ -1286,8 +1286,8 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
       {currentStep === 6 && (
         <div className="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/80 shadow-xs space-y-5 animate-[fadeIn_0.2s_ease]">
           <div>
-            <h2 className="text-base sm:text-lg font-black text-[#0B2D6E] tracking-tight flex items-center gap-2">
-              <Shield size={18} className="text-[#06402B]" />
+            <h2 className="text-base sm:text-lg font-black text-[#3D1E10] tracking-tight flex items-center gap-2">
+              <Shield size={18} className="text-[#5B2E19]" />
               <span>Comprehensive 8-Dimension Dossier Review</span>
             </h2>
             <p className="text-xs text-slate-500">
@@ -1300,9 +1300,9 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Programme Title</span>
-                <p className="text-base font-extrabold text-[#0B2D6E]">{formData.name || 'Untitled Initiative'}</p>
+                <p className="text-base font-extrabold text-[#3D1E10]">{formData.name || 'Untitled Initiative'}</p>
               </div>
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#06402B] border border-emerald-200 self-start sm:self-auto">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-[#5B2E19] border border-emerald-200 self-start sm:self-auto">
                 {formData.pillar}
               </span>
             </div>
@@ -1330,31 +1330,31 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
             <div className="pt-3 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Objectives</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.objectivesList.length} Defined</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.objectivesList.length} Defined</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Activities</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.activities.length} Scheduled</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.activities.length} Scheduled</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Operating Hubs</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.locationsList.length} Field Hubs</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.locationsList.length} Field Hubs</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Delivery Partners</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.partners.length} Attached</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.partners.length} Attached</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Outcome KPIs</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.kpis.length} Indicators</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.kpis.length} Indicators</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Media Assets</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.mediaList.length} Photos</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.mediaList.length} Photos</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Documents</span>
-                <p className="font-black text-[#0B2D6E] text-sm">{formData.documentsList.length} Charters/MoUs</p>
+                <p className="font-black text-[#3D1E10] text-sm">{formData.documentsList.length} Charters/MoUs</p>
               </div>
               <div className="p-2.5 rounded-xl bg-white border border-slate-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase">Beneficiaries</span>
@@ -1375,10 +1375,10 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
               id="complianceCheck"
               checked={formData.complianceVerified}
               onChange={(e) => handleInputChange('complianceVerified', e.target.checked)}
-              className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+              className="mt-0.5 w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
             />
             <label htmlFor="complianceCheck" className="text-xs text-slate-700 font-medium cursor-pointer">
-              <span className="font-bold text-[#06402B]">Institutional Governance Sign-off:</span> I confirm that all
+              <span className="font-bold text-[#5B2E19]">Institutional Governance Sign-off:</span> I confirm that all
               8 sub-tabs (Objectives, Activities, Beneficiaries, Locations, Partners, KPIs & Outcomes, Media, Documents)
               have been populated in accordance with CMAOF standards.
             </label>
@@ -1406,7 +1406,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
           <button
             type="button"
             onClick={() => toast.success('Programme parameters saved as local draft!')}
-            className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#0B2D6E] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
+            className="px-5 py-2.5 rounded-xl border border-slate-200 text-xs font-bold text-[#3D1E10] hover:bg-slate-50 transition-colors cursor-pointer shadow-xs"
           >
             Save Draft
           </button>
@@ -1414,7 +1414,7 @@ const ProgrammeRegistrationSection = ({ initialData, onSave, onCancel }) => {
           <button
             type="button"
             onClick={handleNext}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow-md cursor-pointer transition-all"
           >
             <span>{currentStep === 6 ? (isEditing ? 'Save Changes' : 'Confirm & Launch Programme') : 'Next'}</span>
             <ArrowRight size={14} />

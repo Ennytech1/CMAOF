@@ -72,7 +72,7 @@ const AdminSettingsSection = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md bg-emerald-50 text-[#06402B] text-[11px] font-black uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-emerald-50 text-[#5B2E19] text-[11px] font-black uppercase tracking-wider">
               Platform Configuration
             </span>
             <span className="text-slate-400 text-xs">Production Environment</span>
@@ -88,7 +88,7 @@ const AdminSettingsSection = () => {
         <button
           type="button"
           onClick={handleSave}
-          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white font-bold text-xs shadow-sm cursor-pointer transition-all self-start sm:self-auto"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white font-bold text-xs shadow-sm cursor-pointer transition-all self-start sm:self-auto"
         >
           <Save size={14} />
           <span>Save Changes</span>
@@ -116,7 +116,7 @@ const AdminSettingsSection = () => {
                 flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-xs transition-all whitespace-nowrap cursor-pointer
                 ${
                   isActive
-                    ? 'bg-[#06402B] text-white shadow-xs'
+                    ? 'bg-[#5B2E19] text-white shadow-xs'
                     : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
                 }
               `}
@@ -144,7 +144,7 @@ const AdminSettingsSection = () => {
                 type="text"
                 value={generalConfig.orgName}
                 onChange={(e) => setGeneralConfig({ ...generalConfig, orgName: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -154,7 +154,7 @@ const AdminSettingsSection = () => {
                 type="text"
                 value={generalConfig.cacNumber}
                 onChange={(e) => setGeneralConfig({ ...generalConfig, cacNumber: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -164,7 +164,7 @@ const AdminSettingsSection = () => {
                 type="email"
                 value={generalConfig.primaryEmail}
                 onChange={(e) => setGeneralConfig({ ...generalConfig, primaryEmail: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -174,7 +174,7 @@ const AdminSettingsSection = () => {
                 type="text"
                 value={generalConfig.telephone}
                 onChange={(e) => setGeneralConfig({ ...generalConfig, telephone: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
 
@@ -184,7 +184,7 @@ const AdminSettingsSection = () => {
                 type="text"
                 value={generalConfig.headquarters}
                 onChange={(e) => setGeneralConfig({ ...generalConfig, headquarters: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#06402B]"
+                className="w-full px-3 py-2 rounded-xl border border-slate-200 font-semibold focus:outline-none focus:border-[#5B2E19]"
               />
             </div>
           </div>
@@ -282,7 +282,7 @@ const AdminSettingsSection = () => {
                 type="checkbox"
                 checked={securityConfig.mandatoryMfa}
                 onChange={(e) => setSecurityConfig({ ...securityConfig, mandatoryMfa: e.target.checked })}
-                className="w-4 h-4 accent-[#06402B] cursor-pointer"
+                className="w-4 h-4 accent-[#5B2E19] cursor-pointer"
               />
             </div>
 
@@ -303,7 +303,7 @@ const AdminSettingsSection = () => {
                 type="checkbox"
                 checked={securityConfig.beneficiaryBiometricRetention}
                 onChange={(e) => setSecurityConfig({ ...securityConfig, beneficiaryBiometricRetention: e.target.checked })}
-                className="w-4 h-4 accent-[#06402B] cursor-pointer"
+                className="w-4 h-4 accent-[#5B2E19] cursor-pointer"
               />
             </div>
           </div>
@@ -329,7 +329,7 @@ const AdminSettingsSection = () => {
                 type="checkbox"
                 checked={notifConfig.highValueDonations}
                 onChange={(e) => setNotifConfig({ ...notifConfig, highValueDonations: e.target.checked })}
-                className="w-4 h-4 accent-[#06402B] cursor-pointer"
+                className="w-4 h-4 accent-[#5B2E19] cursor-pointer"
               />
             </div>
 
@@ -342,7 +342,7 @@ const AdminSettingsSection = () => {
                 type="checkbox"
                 checked={notifConfig.dailyDigestEmail}
                 onChange={(e) => setNotifConfig({ ...notifConfig, dailyDigestEmail: e.target.checked })}
-                className="w-4 h-4 accent-[#06402B] cursor-pointer"
+                className="w-4 h-4 accent-[#5B2E19] cursor-pointer"
               />
             </div>
 
@@ -355,7 +355,7 @@ const AdminSettingsSection = () => {
                 type="checkbox"
                 checked={notifConfig.smsDisbursementAlert}
                 onChange={(e) => setNotifConfig({ ...notifConfig, smsDisbursementAlert: e.target.checked })}
-                className="w-4 h-4 accent-[#06402B] cursor-pointer"
+                className="w-4 h-4 accent-[#5B2E19] cursor-pointer"
               />
             </div>
           </div>

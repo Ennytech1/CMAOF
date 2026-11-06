@@ -216,7 +216,7 @@ const AdminLoginPage = () => {
 
   return (
     <div
-      className="fixed inset-0 w-screen h-screen max-h-screen overflow-hidden bg-cover bg-center flex flex-col justify-between selection:bg-[#06402B] selection:text-white z-40"
+      className="fixed inset-0 w-screen h-screen max-h-screen overflow-hidden bg-cover bg-center flex flex-col justify-between selection:bg-[#5B2E19] selection:text-white z-40"
       style={{
         backgroundImage: `url('/images/admin_campus_bg.jpg')`,
       }}
@@ -227,7 +227,7 @@ const AdminLoginPage = () => {
       {/* ── Top Header Navigation Bar ── */}
       <header className="relative z-20 w-full px-4 sm:px-6 pt-3 sm:pt-3.5 pb-1 flex items-center justify-between shrink-0">
         {/* Pill Badge matching design screenshot */}
-        <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-[#06402B] text-white shadow-md border border-emerald-800/40">
+        <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-xl bg-[#5B2E19] text-white shadow-md border border-emerald-800/40">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="font-extrabold text-xs sm:text-[13px] tracking-tight">
             {activeStep === 1 ? '1. Login & MFA' : activeStep === 2 ? '2. Two-Factor Verification' : 'Admin Portal'}
@@ -240,7 +240,7 @@ const AdminLoginPage = () => {
             <button
               type="button"
               onClick={handleQuickFill}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-[#06402B] text-xs font-bold shadow-sm transition-all border border-slate-200 cursor-pointer hover:scale-[1.02]"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 hover:bg-white text-[#5B2E19] text-xs font-bold shadow-sm transition-all border border-slate-200 cursor-pointer hover:scale-[1.02]"
               title="Auto-fill demo credentials"
             >
               <KeyRound size={13} className="text-[#EA580C]" />
@@ -252,7 +252,7 @@ const AdminLoginPage = () => {
             <button
               type="button"
               onClick={() => setActiveStep(1)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 hover:bg-white text-slate-700 hover:text-[#06402B] text-xs font-bold shadow-sm transition-all border border-slate-200 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 hover:bg-white text-slate-700 hover:text-[#5B2E19] text-xs font-bold shadow-sm transition-all border border-slate-200 cursor-pointer"
             >
               <ArrowLeft size={13} />
               <span>Back to Login</span>
@@ -261,7 +261,7 @@ const AdminLoginPage = () => {
 
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/95 hover:bg-white text-slate-700 hover:text-[#06402B] text-xs sm:text-[13px] font-bold shadow-sm transition-all border border-slate-200 backdrop-blur-sm"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/95 hover:bg-white text-slate-700 hover:text-[#5B2E19] text-xs sm:text-[13px] font-bold shadow-sm transition-all border border-slate-200 backdrop-blur-sm"
           >
             <ArrowLeft size={13} />
             <span>Return to Site</span>
@@ -288,7 +288,7 @@ const AdminLoginPage = () => {
 
             {/* Title & Subtitle */}
             <div className="mb-4 sm:mb-5">
-              <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight leading-tight">
+              <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight leading-tight">
                 Admin Login
               </h1>
               <p className="text-xs text-slate-500 font-medium mt-0.5">
@@ -309,7 +309,7 @@ const AdminLoginPage = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@cmaof.org"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10 transition-colors"
                 />
               </div>
 
@@ -325,7 +325,7 @@ const AdminLoginPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter your password"
                     required
-                    className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10 transition-colors"
+                    className="w-full px-3.5 py-2.5 pr-10 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10 transition-colors"
                   />
                   <button
                     type="button"
@@ -345,7 +345,7 @@ const AdminLoginPage = () => {
                     type="checkbox"
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
-                    className="w-4 h-4 rounded border-slate-300 text-[#06402B] focus:ring-[#06402B] cursor-pointer"
+                    className="w-4 h-4 rounded border-slate-300 text-[#5B2E19] focus:ring-[#5B2E19] cursor-pointer"
                   />
                   <span className="text-xs text-slate-600 font-medium">
                     Remember me
@@ -366,7 +366,7 @@ const AdminLoginPage = () => {
                 <button
                   type="submit"
                   disabled={isLoggingIn}
-                  className="w-full bg-[#06402B] hover:bg-[#042C1D] text-white py-3 rounded-xl font-bold text-sm shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                  className="w-full bg-[#5B2E19] hover:bg-[#3D1E10] text-white py-3 rounded-xl font-bold text-sm shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                 >
                   {isLoggingIn ? (
                     <>
@@ -395,7 +395,7 @@ const AdminLoginPage = () => {
           <div className="bg-white rounded-3xl shadow-2xl p-6 sm:p-7 md:p-8 border border-slate-100/90 w-full max-w-[410px] animate-[fadeIn_0.25s_ease] my-auto">
             {/* Title & Subtitle */}
             <div className="mb-5">
-              <h2 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight leading-tight">
                 Two-Factor Authentication
               </h2>
               <p className="text-xs text-slate-500 font-medium mt-0.5">
@@ -418,7 +418,7 @@ const AdminLoginPage = () => {
                     onChange={(e) => handleOtpChange(idx, e.target.value)}
                     onKeyDown={(e) => handleOtpKeyDown(idx, e)}
                     onPaste={idx === 0 ? handleOtpPaste : undefined}
-                    className="w-10 sm:w-11 h-12 sm:h-13 rounded-xl border border-slate-200 bg-white text-center font-bold text-lg sm:text-xl text-[#0B2D6E] focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/15 transition-all shadow-xs"
+                    className="w-10 sm:w-11 h-12 sm:h-13 rounded-xl border border-slate-200 bg-white text-center font-bold text-lg sm:text-xl text-[#3D1E10] focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/15 transition-all shadow-xs"
                   />
                 ))}
               </div>
@@ -430,7 +430,7 @@ const AdminLoginPage = () => {
                     onClick={() => setTrustDevice(!trustDevice)}
                     className={`w-5 h-5 rounded-md flex items-center justify-center transition-colors cursor-pointer ${
                       trustDevice
-                        ? 'bg-[#06402B] text-white shadow-xs'
+                        ? 'bg-[#5B2E19] text-white shadow-xs'
                         : 'border-2 border-slate-300 bg-white'
                     }`}
                   >
@@ -447,7 +447,7 @@ const AdminLoginPage = () => {
                 <button
                   type="submit"
                   disabled={isVerifying}
-                  className="w-full bg-[#06402B] hover:bg-[#042C1D] text-white py-3 rounded-xl font-bold text-sm shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                  className="w-full bg-[#5B2E19] hover:bg-[#3D1E10] text-white py-3 rounded-xl font-bold text-sm shadow-md transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                 >
                   {isVerifying ? (
                     <>
@@ -494,13 +494,13 @@ const AdminLoginPage = () => {
           <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-6 sm:p-8 border border-slate-200/80 max-w-2xl w-full animate-[fadeIn_0.25s_ease] my-auto">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
               <div className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-2xl bg-[#06402B] text-white flex items-center justify-center shadow-md">
+                <div className="w-11 h-11 rounded-2xl bg-[#5B2E19] text-white flex items-center justify-center shadow-md">
                   <ShieldCheck size={24} />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="text-lg sm:text-xl font-black text-[#0B2D6E]">CMAOF Administration Portal</h2>
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-[#06402B] text-[10px] font-extrabold uppercase">
+                    <h2 className="text-lg sm:text-xl font-black text-[#3D1E10]">CMAOF Administration Portal</h2>
+                    <span className="px-2 py-0.5 rounded-full bg-[#FAF0D4] text-[#5B2E19] text-[10px] font-extrabold uppercase">
                       Active
                     </span>
                   </div>
@@ -524,19 +524,19 @@ const AdminLoginPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-5">
               <div className="p-3.5 rounded-2xl bg-emerald-50/60 border border-emerald-100">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-bold text-[#06402B] uppercase">Total Raised</span>
-                  <DollarSign size={15} className="text-[#06402B]" />
+                  <span className="text-[11px] font-bold text-[#5B2E19] uppercase">Total Raised</span>
+                  <DollarSign size={15} className="text-[#5B2E19]" />
                 </div>
-                <p className="text-xl font-black text-[#06402B]">{stats?.formattedTotal || '₦125,075,000'}</p>
+                <p className="text-xl font-black text-[#5B2E19]">{stats?.formattedTotal || '₦125,075,000'}</p>
                 <p className="text-[10px] text-emerald-700 font-medium">All active programmes</p>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-blue-50/60 border border-blue-100">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-[11px] font-bold text-[#0B2D6E] uppercase">Verified Donors</span>
-                  <Users size={15} className="text-[#0B2D6E]" />
+                  <span className="text-[11px] font-bold text-[#3D1E10] uppercase">Verified Donors</span>
+                  <Users size={15} className="text-[#3D1E10]" />
                 </div>
-                <p className="text-xl font-black text-[#0B2D6E]">{stats?.donorCount || '1,422'}</p>
+                <p className="text-xl font-black text-[#3D1E10]">{stats?.donorCount || '1,422'}</p>
                 <p className="text-[10px] text-blue-700 font-medium">All registered supporters</p>
               </div>
 
@@ -565,7 +565,7 @@ const AdminLoginPage = () => {
                     href={item.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 hover:border-emerald-200 border border-slate-200 flex items-center justify-between text-xs font-bold text-slate-700 hover:text-[#06402B] transition-all"
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-[#FAF6EE] hover:border-[#E8DEC2] border border-slate-200 flex items-center justify-between text-xs font-bold text-slate-700 hover:text-[#5B2E19] transition-all"
                   >
                     <span className="flex items-center gap-1">{item.icon} {item.label}</span>
                     <ExternalLink size={11} className="text-slate-400" />
@@ -578,7 +578,7 @@ const AdminLoginPage = () => {
               <span>Chief Michael Ade.Ojo Foundation • Administration</span>
               <button
                 onClick={() => setActiveStep(1)}
-                className="text-[#06402B] font-bold hover:underline cursor-pointer"
+                className="text-[#5B2E19] font-bold hover:underline cursor-pointer"
               >
                 Replay Flow
               </button>
@@ -598,7 +598,7 @@ const AdminLoginPage = () => {
       {mfaMethodModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.15s_ease]">
           <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100">
-            <h3 className="text-base font-black text-[#0B2D6E] mb-1">Verify Your Identity</h3>
+            <h3 className="text-base font-black text-[#3D1E10] mb-1">Verify Your Identity</h3>
             <p className="text-xs text-slate-500 mb-4">Select an alternative authentication method to access your account.</p>
 
             <div className="space-y-2.5">
@@ -607,7 +607,7 @@ const AdminLoginPage = () => {
                   id: 'authenticator',
                   title: 'Authenticator App (TOTP)',
                   desc: 'Google Authenticator, Microsoft Authenticator, or 1Password',
-                  icon: <Smartphone size={16} className="text-[#06402B]" />,
+                  icon: <Smartphone size={16} className="text-[#5B2E19]" />,
                 },
                 {
                   id: 'sms',
@@ -638,7 +638,7 @@ const AdminLoginPage = () => {
                   }}
                   className={`w-full p-3 rounded-2xl border text-left flex items-start gap-2.5 transition-all cursor-pointer ${
                     selectedMethod === m.id
-                      ? 'border-[#06402B] bg-emerald-50/50 ring-2 ring-[#06402B]/10'
+                      ? 'border-[#5B2E19] bg-emerald-50/50 ring-2 ring-[#5B2E19]/10'
                       : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
                   }`}
                 >
@@ -672,7 +672,7 @@ const AdminLoginPage = () => {
       {forgotModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-[fadeIn_0.15s_ease]">
           <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100">
-            <h3 className="text-base font-black text-[#0B2D6E] mb-1">Reset Admin Password</h3>
+            <h3 className="text-base font-black text-[#3D1E10] mb-1">Reset Admin Password</h3>
             <p className="text-xs text-slate-500 mb-4">
               Enter your verified CMAOF administrator email address. We will send a secure token to reset your password.
             </p>
@@ -688,7 +688,7 @@ const AdminLoginPage = () => {
                   onChange={(e) => setForgotEmail(e.target.value)}
                   placeholder="admin@cmaof.org"
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#06402B] focus:ring-2 focus:ring-[#06402B]/10"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#5B2E19] focus:ring-2 focus:ring-[#5B2E19]/10"
                 />
               </div>
 
@@ -703,7 +703,7 @@ const AdminLoginPage = () => {
                 <button
                   type="submit"
                   disabled={forgotSubmitting}
-                  className="px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042C1D] text-white text-xs font-bold shadow transition-all cursor-pointer disabled:opacity-60"
+                  className="px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#3D1E10] text-white text-xs font-bold shadow transition-all cursor-pointer disabled:opacity-60"
                 >
                   {forgotSubmitting ? 'Sending...' : 'Send Reset Link'}
                 </button>

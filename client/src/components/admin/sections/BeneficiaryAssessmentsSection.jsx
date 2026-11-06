@@ -94,11 +94,11 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
         <div className="flex items-start gap-3">
           <span className="w-1.5 h-10 rounded-full bg-[#f97316] shrink-0 mt-0.5" />
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#06402B] uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#5B2E19] uppercase tracking-wider">
               <FileCheck2 size={15} />
               <span>Diagnostic Intake & Triage</span>
             </div>
-            <h1 className="text-xl sm:text-2xl font-black text-[#0B2D6E] tracking-tight mt-0.5">
+            <h1 className="text-xl sm:text-2xl font-black text-[#3D1E10] tracking-tight mt-0.5">
               Needs Assessment Hub
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
@@ -123,7 +123,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
             <button
               type="button"
               onClick={onNavigateToCases}
-              className="px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[#0B2D6E] text-xs font-bold transition-all cursor-pointer"
+              className="px-3.5 py-2 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-[#3D1E10] text-xs font-bold transition-all cursor-pointer"
             >
               Case Timelines →
             </button>
@@ -136,7 +136,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
               toast.success(`Launching Needs Assessment for ${pending.name} (${pending.code})`);
               navigate(`/admin/beneficiaries/${pending.code}/assessment`);
             }}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#06402B] hover:bg-[#042c1d] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#5B2E19] hover:bg-[#042c1d] text-white text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
           >
             <Plus size={15} strokeWidth={2.5} />
             <span>Launch Assessment</span>
@@ -151,7 +151,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
         {/* Card 1: Completed Assessments */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-[#06402B] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-[#5B2E19] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <CheckCircle2 size={18} />
             </div>
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-100">
@@ -162,7 +162,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Completed Assessments
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               4,890
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -186,7 +186,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Pending Intake
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               320
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -210,7 +210,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Critical Vulnerability
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               45
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -223,10 +223,10 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
         {/* Card 4: Average Turnaround */}
         <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
           <div className="flex items-center justify-between gap-2 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-[#0B2D6E] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-[#3D1E10] flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <ShieldCheck size={18} />
             </div>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-[#0B2D6E] border border-blue-100">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-[#3D1E10] border border-blue-100">
               SLA Standard
             </span>
           </div>
@@ -234,7 +234,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
             <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
               Diagnostic Turnaround
             </p>
-            <p className="text-2xl sm:text-3xl font-black text-[#0B2D6E] tracking-tight mt-1">
+            <p className="text-2xl sm:text-3xl font-black text-[#3D1E10] tracking-tight mt-1">
               2.1 Days
             </p>
             <p className="text-xs text-slate-500 font-medium mt-1.5 flex items-center gap-1.5">
@@ -265,7 +265,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
                   px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer
                   ${
                     selectedStatusTab === tab.id
-                      ? 'bg-[#06402B] text-white shadow-xs'
+                      ? 'bg-[#5B2E19] text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }
                 `}
@@ -283,7 +283,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
                 placeholder="Search code, name, LGA..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#06402B] focus:bg-white"
+                className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#5B2E19] focus:bg-white"
               />
             </div>
 
@@ -428,7 +428,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
                             to={`/admin/beneficiaries/${item.code}/assessment`}
                             className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all shadow-2xs border ${
                               isPending
-                                ? 'bg-[#06402B] hover:bg-[#042c1d] text-white border-transparent'
+                                ? 'bg-[#5B2E19] hover:bg-[#042c1d] text-white border-transparent'
                                 : 'bg-amber-50 text-amber-800 hover:bg-amber-600 hover:text-white border-amber-200/80'
                             }`}
                             title={isPending ? 'Conduct Needs Assessment' : 'Update Needs Assessment'}
@@ -440,7 +440,7 @@ const BeneficiaryAssessmentsSection = ({ onNavigateToDirectory, onNavigateToCase
                           {/* Case Timeline Link */}
                           <Link
                             to={`/admin/beneficiaries/${item.code}/cases`}
-                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 hover:bg-[#0B2D6E] hover:text-white font-bold text-xs transition-all border border-sky-200/70"
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-sky-50 text-sky-800 hover:bg-[#3D1E10] hover:text-white font-bold text-xs transition-all border border-sky-200/70"
                             title="View Case Timeline"
                           >
                             <span>Cases</span>
